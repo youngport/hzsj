@@ -1,0 +1,23 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<script type="text/javascript" src="__ROOT__/statics/js/jquery/plugins/jquery.imagePreview.js"></script>
+<div class="pad-10" >
+    <div style="font-size:12px;line-height:25px;padding:20px;">
+		<form id="myform" name="myform" action="{:u('huodong/jinri_hd_fenxiang_up_get',array('jrhdlfxid'=>$items_cate_list['jrhdlfxid']))}" method="post" enctype="multipart/form-data"><br />
+ 
+			<img style="max-width:400px;" src="__ROOT__/{$items_cate_list.img}" />
+	    	<ul style="width:800px;background:#f4f4f4; padding:20px;margin:20px 0;"><li id='opid'>
+				<li id='opid'>图片：<input type="file" name="img" id="img" class="input-text" style="width:200px;margin:10px 0 ;" size=21 /><br /></li>
+	    		<li id='opid'>标题：<input type="text" placeholder="请输入标题" name="biaoti" id="biaoti" style="width:200px;margin:10px 0 ;" value="{$items_cate_list.biaoti}"><br /></li>
+	    		<li id='opid'>简介内容：<input type="text" placeholder="请输入分享简介" name="neirong" id="neirong" style="width:200px;margin:10px 0 ;" value="{$items_cate_list.neirong}"><br /></li>
+	    		<li><input type="radio" name="hd_youxiao" class="radio_style" value="0" <if condition="$items_cate_list.hd_youxiao eq 0 ">checked</if>>
+                   &nbsp;无效&nbsp;&nbsp;&nbsp;
+                   <input type="radio" name="hd_youxiao" class="radio_style" value="1" <if condition="$items_cate_list.hd_youxiao eq 1 ">checked</if>>
+                   &nbsp;有效<br style="height:10px;" /></li>
+	    	</ul>
+	    	<input type="submit" name="dosubmit" value="  保存  " />
+		</form>
+    </div>
+</div>
+</body> 
+</html>

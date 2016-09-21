@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head>
+  <meta  http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+  <form action="{:u('inventory/upload')}" method="post" enctype="multipart/form-data">
+  <table>
+  	<tr>
+  	   <td>
+  	   	   <select name="one">
+  	   	   	  <option>---请选择---</option>
+  	   	   	  <foreach name="data" item="val">
+  	   	   	     <option value="{$val['code']}">{$val['name']}</option>
+  	   	   	  </foreach>
+  	   	   </select>
+  	   </td>
+  	</tr>
+  	<tr>
+  	   <td>
+  	   	   <select name="two">
+  	   	   	  <option>---请选择---</option>
+  	   	   </select>
+  	   </td>
+  	</tr>
+  	<tr>
+  	   <td>
+  	   	   <select name="three">
+  	   	   	  <option>---请选择---</option>
+  	   	   </select>
+  	   </td>
+  	</tr>
+
+  	<tr><td><input type="file" name="file"></td></tr>
+  	<tr><td><input type="submit" value="上传货品"></td></tr>
+  </table>
+       
+  </form>
+</body>
+<script language="javascript" type="text/javascript" src="__ROOT__/statics/js/jquery/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+	$("select[name=one]").change(function(){
+             $.getJSON("{:u('inventory/good_name')}",{code:$(this).val()},function(msg){
+            	   $("select[name=two] option:gt(0)").remove();
+            	   $("select[name=three] option:gt(0)").remove();
+                   for(var i=0;i<msg.length;i++){
+                     $("<option value='"+msg[i].code+"'>"+msg[i].name+"</option>").appendTo($("select[name=two]")); 
+                   }
+                 });
+
+	});
+	$("select[name=two]").change(function(){
+             $.getJSON("{:u('inventory/good_names')}",{code:$(this).val()},function(msg){
+             	//alert(msg);
+            	   $("select[name=three] option:gt(0)").remove();
+                   for(var i=0;i<msg.length;i++){
+                     $("<option value='"+msg[i].categoryCode+"'>"+msg[i].categoryName+"</option>").appendTo($("select[name=three]")); 
+                   }
+                 });
+
+	});
+</script>
+</html>
+	

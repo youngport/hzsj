@@ -1,0 +1,46 @@
+<include file="public:header" />
+<div class="pad-10" >
+    <form name="searchform" action="?kucun=0" method="get" >
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+           <div class="explain-col">
+				 &nbsp;是否在活动 :
+                <select name="status" id='status'>
+            	<option value="-1" <if condition="$status eq -1">selected="selected"</if>>-请选择-</option>
+                <option value="1" <if condition="$status eq 1">selected="selected"</if>>是</option>
+                <option value="0" <if condition="$status eq 0">selected="selected"</if>>否</option>
+                </select>
+                &nbsp;关键字 :
+                <input name="keyword" type="text" id="tex" class="input-text" size="25" value="{$keyword}" />
+                <input type="hidden" name="m" value="gx_index" />
+                <span  class="smt" style="display:inline-block;float:none;" onclick="sousuo()">搜索</span>
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+    <thead>
+		<tr><th>ID</th><th>功效名称</th><th>是否在搞活动</th><th>操作</th></tr>
+    </thead>
+    <foreach name="items_cate_list" item="vo">
+		<tr><td align="center">{$vo.id}</td><td align="center">{$vo.name}</td><if condition="($vo.huodong eq 1)"><td style="color:red;" align="center">是<else /><td align="center">否</if></td><td align="center"><a class="blue" href="{:u('huodong/index',array('canyuhdid'=>$vo['id'],'leim'=>'3'))}">参与到活动</a>&nbsp;|&nbsp;<a class="blue" href="{:u('items_cate/gx_xiugai',array('id'=>$vo['id']))}">编辑</a>&nbsp;|&nbsp;<a class="blue" href="{:u('items_cate/gx_delete',array('deleteid'=>$vo['id']))}">删除</a></td></tr>
+	</foreach>
+	</table><br />
+	<div class="btn">
+    	<div id="pages">{$page}</div>
+    </div>
+	<a class="blue" href="{:u('items_cate/gx_add',array('id'=>$vo['id']))}"><div class="smt">添加功效</div></a>
+    </div>
+</div>
+<script>
+function sousuo(){
+	window.location.href='__GROUP__?a=gx_index&m=items_cate&tex='+$('#tex').val()+'&status='+$("#status").val();
+}
+</script>
+</body>
+</html>

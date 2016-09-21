@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head>
+  <meta  http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+  <form action="{:u('warehouse/upload')}" method="post" enctype="multipart/form-data">
+  <table>
+  	<tr>
+  		<td width="100">仓库：</td>
+  		<td>
+  		    <input type="radio" name="ware" value="4PHK">香港库
+  		    <input type="radio" name="ware" value="AUSY">澳大利亚库
+  		    <input type="radio" name="ware" value="BBBC">东莞BBBC保税仓
+  		    <input type="radio" name="ware" value="CAWH">加拿大库
+  		    <input type="radio" name="ware" value="DEWH">德国库
+  		    <input type="radio" name="ware" value="UKLH">英国库
+  		    <input type="radio" name="ware" value="USLA">美国落砂机库
+  		    <input type="radio" name="ware" value="SGP1">新加坡仓
+  		    <input type="radio" name="ware" value="SHHQ">上海虹桥仓库
+  		    <input type="radio" name="ware" value="STKJ">沙田快件仓
+  		    <input type="radio" name="ware" value="KRIC">韩国仁川仓
+  		</td>
+  	</tr>
+  	<tr>
+  		<td>派送方式：</td>
+  		<td>
+  			<select name="paisong">
+  				<option>---请选择---</option>
+  			</select>
+  		</td>
+  	</tr>
+  	<tr>
+  		<td>关税类型：</td>
+  		<td>
+  			<select name="guanshui">
+  				<option value="P">实报实销</option>
+  			</select>
+  		</td>
+  	</tr>
+  	<tr>
+  		<td>保险类型：</td>
+  		<td>
+  			<select name="baoxian">
+  				<option value="NI">---请选择---</option>
+  				<option value="8Y">平邮保险</option>
+  				<option value="6P">0.6%保险</option>
+  				<option value="5Y">挂号-快递保价</option>
+  			</select>
+  		</td>
+  	</tr>
+  	<tr>
+  		<td>报关类型：</td>
+  		<td>
+  			<select name="baoguan">
+  				<option>---请选择---</option>
+  				<option value="Y">单独退税报关</option>
+  				<option value="N">无退税报关</option>
+  				<option value="V">客户自有VAT税号清关</option>
+  			</select>
+  		</td>
+  	</tr>
+  	<tr>
+  		<td></td><td><input type="file" name="file"></td>
+  	</tr>
+  	<tr>
+  		<td></td><td><input type="submit" value="上传入库单"></td>
+  	</tr>
+  </table>
+    
+  </form>
+</body>
+<script language="javascript" type="text/javascript" src="__ROOT__/statics/js/jquery/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+	$("input[name=ware]").change(function(){
+             $.getJSON("{:u('warehouse/ware_ps')}",{code:$(this).val()},function(msg){
+            	   $("select[name=paisong] option:gt(0)").remove();
+                   for(var i=0;i<msg.length;i++){
+                     $("<option value='"+msg[i].code+"'>"+msg[i].name+"</option>").appendTo($("select[name=paisong]")); 
+                   }
+                 });
+
+	});
+</script>
+</html>
+	

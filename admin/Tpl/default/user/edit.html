@@ -1,0 +1,105 @@
+<include file="public:header"/>
+
+<div class="pad_10">
+    <form action="{:u('user/edit')}" method="post" name="myform" id="myform"  >
+        <div class="pad-10">
+            <div class="col-tab">
+                <ul class="tabBut cu-li">
+                    <li id="tab_setting_1" class="on">会员档案</li>
+                </ul>
+                <div id="div_setting_1" class="contentList pad-10">
+                    <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                        <tr>
+                            <th width="60">微信昵称</th>
+                            <td><if condition="$info.wei_nickname eq ''">--<else />{$info.wei_nickname}</if></td>
+                        </tr>
+                        <tr>
+                            <th width="60">会员二维码</th>
+                            <td><if condition="$info.hyerweima eq ''">--<else /><img width="150" src="__ROOT__{$info.hyerweima}" /></if></td>
+                        </tr>
+                        <tr>
+                            <th width="60">登录账户:</th>
+                            <td><input type="text" id="usrname" size="25" disabled="disabled"
+                                       value="{$info.usrname}"></td>
+                            <th width="60">登录密码:</th>
+                            <td><input class="input-text" type="password" name="usrpwd" id="usrpwd"
+                                       size="25" value="" placeholder="留空表示不修改登录密码">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="60">真实姓名:</th>
+                            <td><input type="text" name="real_name" id="real_name" size="25" value="{$info.real_name}"
+                                       placeholder="请输入会员真实姓名">
+                            </td>
+                            <th>性别 :</th>
+                            <td><label><input type="radio" name="gender" value="0" <if condition="$info.gender eq 0"> checked</if> >&nbsp;男&nbsp;&nbsp;&nbsp;</label>
+                                <label><input type="radio" name="gender" value="1" <if condition="$info.gender eq 1"> checked</if>>&nbsp;女&nbsp;&nbsp;&nbsp;</label>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="80">联系电话:</th>
+                            <td><input type="text" name="phone_mob" id="phone_mob" size="25" value="{$info.phone_mob}"
+                                       placeholder="请输入会员联系电话"></td>
+                            <th width="60">联系手机 :</th>
+                            <td><input type="text" name="phone_tel" id="phone_tel" size="25" value="{$info.phone_tel}"
+                                       placeholder="请输入会员联系手机"></td>
+                        </tr>
+                        <tr>
+                            <th width="80">电子邮箱:</th>
+                            <td><input type="text" name="email" id="email" size="25" value="{$info.email}"
+                                       placeholder="请输入会员电子邮箱"></td>
+                            <th width="60">出生年月 :</th>
+                            <td><input type="text" name="birthday" id="birthday"
+                                       onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd',startDate:'1980-05-01',alwaysUseStartDate:true})"
+                                       size="25" value="<notempty name='info.birthday'>{$info.birthday}</notempty>" placeholder="请设置会员生日"></td>
+                        </tr>
+                        <tr>
+                            <th width="80">联系QQ:</th>
+                            <td><input type="text" name="im_qq" id="im_qq" size="25" value="{$info.im_qq}"
+                                       placeholder="请输入会员联系QQ"></td>
+                            <th width="60">微信号码 :</th>
+                            <td><input type="text" name="im_weixin" id="im_weixin" size="25" value="{$info.im_weixin}"
+                                       placeholder="请输入会员微信号码"></td>
+                        </tr>
+                      <!--   <tr>
+                            <th width="60">QQ :</th>
+                            <td><input type="text" name="qq" id="qq" size="25" value="{$info.qq}"></td>
+
+                            <th width="60">微信 :</th>
+                            <td><input type="text" name="weixi" id="weixi" size="25" value="{$info.weixi}"></td>
+                        </tr> -->
+                        <tr>
+                            <th width="60">注册时间 :</th>
+                            <td>{$info.login_time}</td>
+
+                            <th width="60"><nobr>最近登录时间 :</nobr></th>
+                            <td><notempty name="info.last_login">{$info.last_login|date="Y-m-d H:i:s",###}<br><font
+                                    color=green>{$info.last_ip}</font>
+                                <else/>
+                                --
+                            </notempty></td>
+                        </tr>
+                        <tr>
+                            <th width="60">数据配置 :</th>
+                            <td colspan="3"><textarea name="feed_config"  rows="4" cols="110">{$info.feed_config}</textarea></td>
+
+                        </tr>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+        <input type="hidden" name="usrid" id="id" value="{$info.usrid}">
+        <input type="submit" name="dosubmit" id="dosubmit" class="smt " value="提交">
+    </form>
+</div>
+
+
+</body>
+</html>
+<script type="text/javascript">
+
+
+</script>

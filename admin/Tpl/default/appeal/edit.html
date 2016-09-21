@@ -1,0 +1,73 @@
+<include file="public:header" />
+<div class="pad_10">
+    <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+        <tr>
+            <th width="80">盟友微信号 :</th>
+            <td>{$data.wei_id}</td>
+        </tr>
+        <tr>
+            <th>联系电话 :</th>
+            <td>{$data.number}</td>
+        </tr>
+        <tr>
+            <th>申诉时间 :</th>
+            <td>
+                {$data.create_time|date="Y-m-d h:i:s",###} 
+            </td>
+        </tr>
+        <tr>
+            <th>申诉图片 :</th>
+            <td>
+                <!--图片列表-->
+                <ul>
+                    <volist name="imglist" id="img">
+                        <li><img width="320px" height="280px" src="{$img['img_path']}" style="float: left;margin-right: 10px;"/></li>
+                    </volist>
+                </ul>
+                <!--图片列表-->
+            </td>
+        </tr>
+        <tr>
+            <th>审核状态 :</th>
+            <td>
+        <input type="radio" name="shenhe" class="radio_style" value="2" <if condition="$val.shenhe eq 0 ">checked</if>>&nbsp;未审核&nbsp;&nbsp;&nbsp;
+        <input type="radio" name="shenhe" class="radio_style" value="1" <if condition="$val.shenhe eq 0 ">checked</if>> &nbsp;通过&nbsp;&nbsp;&nbsp;
+        <input type="radio" name="shenhe" class="radio_style" value="0" <if condition="$val.shenhe eq 0 ">checked</if>>&nbsp;不通过&nbsp;&nbsp;&nbsp;
+        </td>
+        </tr>
+        <tr>
+            <th>更新时间 :</th>
+            <td>
+        <if condition="$data.modify_time eq ''">无更新<else/>{$data.modify_time|date="Y-m-d h:i:s",###}</if>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <a class="blue"  id="huifu"><div class="smt" style="margin-right:20px;">确定</div></a>
+                <a class="blue"  onclick="javascript:history.go(-1);"><div class="smt">返回</div></a>
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" value="{$data.id}" id='opid' data-id='{$data.id}'/>
+    <script>
+        $('#huifu').click(function () {
+            $.ajax({
+                type: "POST",
+                url: "{:U('appeal/shenhe')}",
+                data: {id: $('#opid').attr('data-id'), shenhe: $('input[name="shenhe"]:checked ').val()},
+                success: function (data) {
+                    data = eval("(" + data + ")");
+                    if (data.status == 0) {
+                        alert('审核失败！');
+                    } else if (data.status == 1) {
+                        alert("审核成功！");
+                        window.location.href = document.referrer;
+                        //window.location.href='__GROUP__?a=geren_dianpu&m=public&openid='+$('#opid').attr('data-opid');
+                    }
+                }
+            });
+        });
+    </script>
+</div>
+</body>
+</html>

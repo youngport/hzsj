@@ -1,0 +1,48 @@
+<admintpl file="header"/>
+<style>
+.home_info li em {
+float: left;
+width: 100px;
+font-style: normal;
+}
+li {
+list-style: none;
+}
+
+</style>
+</head>
+
+<body>
+<div class="wrap">
+  <div id="home_toptip"></div>
+  <h4 class="well">系统通知</h4>
+  <div class="home_info">
+    <ul  id="thinkcmf_notices">
+      <li>
+        <h5>尊敬的<span class="text-success">{$admin.user_nicename|default=$admin[user_login]}</span>,您好</h5>
+        <p>
+          <eq name="xiaoxi" value="0">
+            暂时没有新消息
+          <else/>
+            您还有{$xiaoxi}条消息没有查看,<a href="{:U('message/index')}">赶紧点开查看吧</a>
+          </eq>
+        </p>
+      </li>
+    </ul>
+  </div>
+  <eq name="Think.Session.name" value="admin">
+    <h4 class="well">系统信息</h4>
+      <div class="home_info">
+        <ul>
+          <volist name="server_info" id="vo">
+            <li> <em>{$key}</em> <span>{$vo}</span> </li>
+          </volist>
+        </ul>
+      </div>
+  </eq>
+</div>
+<script src="__ROOT__/statics/js/common.js"></script> 
+<script>
+</script>
+</body>
+</html>

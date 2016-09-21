@@ -1,0 +1,53 @@
+
+<include file="public:header" />
+<div class="pad-10" >
+    <form name="searchform" action="{:u('items_cate/mp_index')}" method="get" >
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <div class="explain-col">
+				<!--  &nbsp;审核通过 :
+                <select name="status" id='status'>
+            	<option value="-1" <if condition="$status eq -1">selected="selected"</if>>-请选择-</option>
+                <option value="1" <if condition="$status eq 1">selected="selected"</if>>通过</option>
+                <option value="0" <if condition="$status eq 0">selected="selected"</if>>待审</option>
+                </select>
+                &nbsp;店铺名称关键字 :
+                <input name="keyword" type="text" id="tex" class="input-text" size="25" value="{$keyword}" />
+                <input type="hidden" name="m" value="mp_index" /> -->
+                <span  class="smt" style="display:inline-block;float:none;" onclick="sousuo()">添加</span>
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+    <thead>
+		<tr><th>ID</th><th>广告图片</th><th>有效性</th><th>排序</th><th>操作</th></tr>
+    </thead>
+    <foreach name="items_cate_list" item="vo">
+		<tr>
+			<td align="center">{$vo.gg_id}</td>
+			<td align="center"><img width=100 src="{$vo.gg_imgurl}" /></td>
+			<td align="center"><if condition="$vo.gg_youxiao eq 0 ">无效<else />有效</if></td>
+			<td align="center">{$vo.gg_paixu}</td>
+			<td align="center"><a href="{:U('guanggao/guanggao_xg',array('id'=>$vo['gg_id']))}">编辑</a> / <a href="{:U('guanggao/guanggao_del',array('id'=>$vo['gg_id']))}">删除</a></td>
+		</tr>
+	</foreach>
+	</table><br />
+	<div class="btn">
+    	<div id="pages">{$page}</div>
+    </div>
+    </div>
+</div>
+
+<script>
+function sousuo(){
+	window.location.href='__GROUP__?a=guanggao_add&m=guanggao';
+}
+</script>
+</body>
+</html>

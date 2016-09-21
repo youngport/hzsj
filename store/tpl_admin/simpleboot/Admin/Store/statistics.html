@@ -1,0 +1,109 @@
+<admintpl file="header" />
+<script></script>
+</head>
+<body class="J_scroll_fixed">
+<div class="wrap J_check_wrap">
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="javascript:;">所有店铺</a></li>
+	</ul>
+	<form class="well form-search" method="post" action="{:U('Store/statistics')}">
+		<div class="search_type cc mb10">
+			<div class="mb10">
+						&nbsp;店铺名称：
+						<input type="text" name="dianpuName" style="width: 150px;" value="{$formget.dianpuName }" placeholder="请输入店铺名称">
+						&nbsp;时间：
+						<input type="text" name="start_time" class="J_date" value="{$formget.start_time}" style="width: 80px;" autocomplete="off">-
+						<input type="text" class="J_date" name="end_time" value="{$formget.end_time}" style="width: 80px;" autocomplete="off">
+						<input type="submit" class="btn btn-primary" value="搜索" />
+						<input type="reset" class="btn btn-primary" value="重置" />
+						<input type="submit" name="daochu" class="btn btn-primary" value="导出" />
+					</span>
+			</div>
+		</div>
+	</form>
+	<table class="table table-hover table-bordered table-list">
+		<thead>
+		<tr>
+			<th>店铺名称</th>
+			<th>总盟友</th>
+			<th>总会员</th>
+			<th>一级盟友</th>
+			<th>一级会员</th>
+			<th>订单数</th>
+			<th>下单金额</th>
+			<th>已付金额</th>
+			<th>收益</th>
+		</tr>
+		</thead>
+		<tbody>
+		<foreach name="list" item="vo">
+			<tr>
+				<td>
+					<if condition="$vo.dianpname eq ''">0
+						<else /> {$vo.dianpname}
+					</if>
+				</td>
+				<td>
+					<if condition="$vo.mcount eq ''">0
+						<else /> {$vo.mcount}
+					</if>
+				</td>
+				<td>
+					<if condition="$vo.hycount eq ''">0
+						<else /> {$vo.hycount}
+					</if>
+				</td>
+				<td>
+					<if condition="$vo.yijimeng eq ''">0
+						<else /> {$vo.yijimeng}
+					</if>
+				</td>
+				<td>
+					<if condition="$vo.yijihuiyuan eq ''">0
+						<else /> {$vo.yijihuiyuan}
+					</if>
+				</td>
+				<td>
+					<if condition="$vo.ordercount eq ''">0
+						<else /> {$vo.ordercount}
+					</if>
+				</td>
+				<td>
+					<if condition="$vo.ordermoney eq ''">0
+						<else /> {$vo.ordermoney}
+					</if>
+				</td>
+				<td>
+					<if condition="$vo.paymoney eq ''">0
+						<else /> {$vo.paymoney}
+					</if>
+				</td>
+				<td>
+					<if condition="$vo.income eq ''">0
+						<else /> {$vo.income}
+					</if>
+				</td>
+			</tr>
+		</foreach>
+		</tbody>
+	</table>
+
+	<div class="pagination pull-right"><span href="#" class="btn btn-primary disabled">{$count}条记录</span>{$Page}</div>
+</div>
+<script src="__ROOT__/statics/js/common.js"></script>
+<script>
+	$("select[name='shenhe']").find("option").each(function(){
+		if($(this).val()=="{$formget.shenhe}")
+			$(this).attr("selected",true);
+	});
+	$("select[name='order']").find("option").each(function(){
+		if($(this).val()=="{$formget.order}")
+			$(this).attr("selected",true);
+	});
+	$("input[type='reset']").click(function(){
+		$(this).siblings("input").not("input[type='submit']").attr("value","");
+		$("select").find("option").attr("selected",false);
+	});
+</script>
+</body>
+</html>

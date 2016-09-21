@@ -1,0 +1,188 @@
+<include file="public:header"/>
+<div class="pad-10">
+    <form name="searchform" action="" method="get">
+        <table width="100%" cellspacing="0" class="search-form">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="explain-col">
+                            openid :
+                            <input name="open_id" type="text" class="input-text" size="25" value="{$open_id}"/>
+                            微信昵称关键字 :
+                            <input name="wei_name" type="text" class="input-text" size="25" value="{$wei_name}"/>
+                            真实姓名关键字 :
+                            <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}"/>
+                            <input type="hidden" name="m" value="user"/>
+                            &nbsp;
+                            <select name="flag" id="flag">
+                                <option value="-1">-账户状态-</option>
+                                <option value="0"  <if condition="$flag eq 0">selected="selected"</if> >普通用户</option>
+                                <option value="3"  <if condition="$flag eq 3">selected="selected"</if> >会员</option>
+                                <option value="1"  <if condition="$flag eq 1">selected="selected"</if> >普通会员</option>
+                                <option value="2"  <if condition="$flag eq 2">selected="selected"</if> >店铺会员</option>
+                            </select> &nbsp;
+                            注册时间段：
+                            <input type="text" name="addtime_start" id="addtime_start"  value="{$addtime_start}" width="130px"
+                                   onclick="WdatePicker({skin: 'whyGreen', readOnly: true, dateFmt: 'yyyy-MM-dd', startDate: '1980-05-01', alwaysUseStartDate: true})"
+                                   placeholder="选择注册起始时间">
+
+                            -  <input type="text" name="addtime_end" id="addtime_end"  value="{$addtime_end}" width="130px"
+                                      onclick="WdatePicker({skin: 'whyGreen', readOnly: true, dateFmt: 'yyyy-MM-dd', startDate: '1980-05-01', alwaysUseStartDate: true})"
+                                      placeholder="选择注册截止时间"> &nbsp;
+                            登录时间段：
+                            <input type="text" name="dltime_start" id="dltime_start"  value="{$dltime_start}" width="130px"
+                                   onclick="WdatePicker({skin: 'whyGreen', readOnly: true, dateFmt: 'yyyy-MM-dd', startDate: '1980-05-01', alwaysUseStartDate: true})"
+                                   placeholder="选择登录起始时间">
+
+                            -  <input type="text" name="dltime_end" id="dltime_end"  value="{$dltime_end}" width="130px"
+                                      onclick="WdatePicker({skin: 'whyGreen', readOnly: true, dateFmt: 'yyyy-MM-dd', startDate: '1980-05-01', alwaysUseStartDate: true})"
+                                      placeholder="选择登录截止时间">
+                            上级盟友查询(输入openid) :
+                            <input name="spid" type="text" class="input-text" size="30" value='{$spid}'/>
+                            下级盟友查询(输入openid) :
+                            <input name="xpid" type="text" class="input-text" size="30" value='{$xpid}'/>
+                            排序 :
+                            <select name="order">
+                                <option value="">请选择</option>
+                                <option value="pidnum">盟友人数</option>
+                            </select>
+                            <input type="submit" name="search" class="button" value="搜索"/>
+                            <input type="submit" name="daochu" class="button" value="搜索结果导出Excel" />
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <form id="myform" name="myform" action="{:U('user/delete')}" method="post" onsubmit="return check();">
+        <div class="table-list">
+            <table width="100%" cellspacing="0">
+                <thead>
+                <notempty name="count">
+                    <tr class="count">
+                        <th width=80 colspan="4">总盟友(包括下级的下级..)</th>
+                        <th width=40>{$count.count}人</th>
+                        <th width=50 colspan="4">总会员人数</th>
+                        <th width=40>{$count.mcount}人</th>
+                        <th width=50 colspan="4">总会员转化率</th>
+                        <th width=40 colspan="2">{$count.mper}%</th>
+                    </tr>
+                    <tr class="count">
+                        <th width=80 colspan="4">一级盟友</th>
+                        <th width=40>{$count.ycount}人</th>
+                        <th width=50 colspan="4">会员人数</th>
+                        <th width=40>{$count.ymcount}人</th>
+                        <th width=50 colspan="4">会员转化率</th>
+                        <th width=40 colspan="2">{$count.ymper}%</th>
+                    </tr>
+                </notempty>
+                <tr>
+                    <th width=15><input type="checkbox" value="" id="check_box" onclick="selectall('usrid[]');"></th>
+                    <th width="50">ID</th>
+                    <th width=80>微信昵称</th>
+                    <th width=80>登录账户</th>
+                    <th width=50>真实姓名</th>
+                    <th width=180>联系电话</th>
+                    <!--  <th width=40>QQ</th>
+                     <th width=80>电子邮箱</th>-->
+                    <th width=80>订单总数</th>
+                    <th width=50>盟友人数</th>
+                    <th width=50>总会员人数</th>
+                    <th width=80>总收益</th>
+                    <th width=60>登录次数</th>
+                    <th width=80>注册时间</th>
+                    <th width=80>最近登录时间</th>
+                    <th width=40>状态</th>
+                    <th width=50>个人消息</th>
+                    <th width=50>mac地址</th>
+                    <th width=60>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="list" id="val" key="k">
+                    <tr <if condition="($_GET['xpid'] neq '' and $val['pid'] neq $_GET['xpid'])">style="background:#ffcc33"</if>>
+                    <td align="center"><input type="checkbox" value="{$val.usrid}" name="usrid[]"></td>
+                    <td align="center">{$val.usrid}</td>
+                    <td align="center">{$val.wei_nickname}</td>
+                    <td align="center"><em class="blue">{$val.open_id}</em></td>
+                    <td align="center">{$val.real_name}</td>
+                    <td align="center">
+                    <notempty name="val.phone_mob">{$val.phone_mob}<else/>-</notempty>
+                    |
+                    <notempty name="val.phone_tel">{$val.phone_tel}<else/>-</notempty>
+                    </td>
+                    <!--                    <td align="center">{$val.im_qq}</td>
+                                        <td align="center">{$val.email}</td>-->
+                    <td align="center"><if condition="$val['ordernum'] eq 0">{$val.ordernum}<else/><a   href="{:U('orders/index',array('openid_txt'=>$val['open_id'],'status_txt'=>'1|2|3|4|5'))}">{$val.ordernum}</a></if></td>
+                    <td align="center">{$val.pidnum}</td>
+                    <td align="center"><a href="{:U(showhycount,array('openId'=>$val['open_id']))}">查看</a></td>
+                    <td align="center"><if condition="$val.sumpop eq '' ">0.00<else /><a href="{:U('user/shouyi',array('openid'=>$val['open_id']))}">{$val.sumpop}</a></if></td>
+                    <td align="center">{$val.logins}</td>
+                    <!-- <td align="center">
+                        <notempty name="val.reg_time">{$val.reg_time|date="Y-m-d H:i:s",###}<br><font
+                                color=green>{$val.reg_ip}</font><else/>--</notempty>
+                    </td> -->
+                    <td align="center">
+                        {$val.login_time}
+                    </td>
+                    <td align="center">
+                    <notempty name="val.last_login">{$val.last_login|date="Y-m-d H:i:s",###}<br><font
+                            color=green>{$val.last_ip}</font>
+                        <else/>
+                        --
+                    </notempty>
+                    </td>
+                    <!-- <td align="center"  onclick="status({$val.usrid},'flag')" id="flag_{$val.usrid}"><img  src="__ROOT__/statics/images/status_{$val.flag}.gif"/></td> -->
+                    <td align="center" ><if condition="$val.jointag eq 0 ">普通用户<elseif condition="$val.jointag eq 1"/>会员<elseif condition="$val.jointag eq 2 "/><a href="{:U('user/geren_dianpu',array('openid'=>$val['open_id']))}" style="color:#3a6ea5">店铺会员</a></if></td>
+                    <td align="center" ><a href="{:U('user/xiaoxi',array('id'=>$val['usrid']))}">推送</a></td>
+                    <td align="center" >{$val.mac_address}</td>
+                    <td align="center" ><a href="{:U('user/edit',array('id'=>$val['usrid']))}">编辑</a><br/><a href="{:U('user/index',array('xpid'=>$val['open_id']))}">盟友查询</a><br/><a href="{:U('dianpu/geren_dianpu',array('agentid'=>$val['open_id']))}">代理</a></td>
+                </volist>
+                </tbody>
+            </table>
+            <div class="btn">
+                <label for="check_box" style="float:left;">全选/取消</label>
+                <input type="submit" class="button" name="dosubmit" value="删除"  onclick="return confirm('您确定要删除勾选的数据项吗？')" style="float:left;margin:0 10px 0 10px;"/>
+                <div id="pages">{$page}</div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script language="javascript">
+    function check() {
+        if ($("#myform").attr('action') == '{:u("user/delete")}') {
+            var ids = '';
+            $("input[name='usrid[]']:checked").each(function (i, n) {
+                ids += $(n).val() + ',';
+            });
+            if (ids == '') {
+                window.top.art.dialog({
+                    content: lang_please_select + lang_cate_name,
+                    lock: true,
+                    width: '200',
+                    height: '50',
+                    time: 1.5
+                }, function () {
+                });
+                return false;
+            }
+        }
+        return true;
+    }
+    function status(id, type) {
+        $.get("{:u('user/status')}", {id: id, type: type}, function (jsondata) {
+            var return_data = eval("(" + jsondata + ")");
+            $("#" + type + "_" + id + " img").attr('src', '__ROOT__/statics/images/status_' + return_data.data + '.gif')
+        });
+    }
+    $("select[name='order']").find('option').each(function () {
+        if ($(this).val() == "{$order}")
+            $(this).attr("selected", true);
+    });
+    $('.count').find('th').css('border', '1px solid red').css('background', '#fff');
+    
+
+</script>
+</body>
+</html>

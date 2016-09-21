@@ -1,0 +1,361 @@
+<include file="public:header"/>
+
+<div class="pad_10">
+    <div class="pad-10">
+        <div class="col-tab">
+            <ul class="tabBut cu-li">
+                <li id="tab_setting_1" class="on" onclick="SwapTab('setting', 'on', '', 5, 1);">订单信息</li>
+                <li id="tab_setting_2" onclick="SwapTab('setting', 'on', '', 5, 2);">购买商品</li>
+                <li id="tab_setting_3" onclick="SwapTab('setting', 'on', '', 5, 3);">订单流水</li>
+                <li id="tab_setting_4" onclick="SwapTab('setting', 'on', '', 5, 4);">订单分成</li>
+                <eq name="info.erm" value="1"><li id="tab_setting_5" onclick="SwapTab('setting', 'on', '', 5, 5);">店铺信息</li></eq>
+            </ul>
+            <div id="div_setting_1" class="contentList pad-10" >
+                    <table width="100%" cellspacing="0" class="table-list">
+                        <thead>
+                            <tr>
+                                <th width="30">ID</th>
+                                <th width="40">&nbsp;</th>
+                                <th width="60">商品编号</th>
+                                <th width="80">商品名称</th>
+                                <th width="60"> 规格名称</th>
+                                <th width=60>价格(元)</th>
+                                <th width=60>商品数量</th>
+                                <th width=60>是否有效</th>
+                                <th width="60">商品描述</th>
+                                <th width="80">快递信息</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="goods" id="val">
+                            <tr>
+                                <td align="center">{$val.rec_id}</td>
+                                <td align="right"><img src="{$val.goods_images}" width="35" width="35" class="preview"
+                                                       bimg="{$val.goods_images}"></td>
+                                <td align="center">{$val.goods_code}</td>
+                                <td align="center">{$val.goods_name}</td>
+                                <td align="center">{$val.specification}</td>
+                                <td align="center"><em style="color:green;">{$val.price}</em></td>
+                                <td align="center">{$val.quantity}</td>
+                                <td align="center">
+                                    <switch name="val.is_valid">
+                            <case value="0">无效</case>
+                            <case value="1">有效</case>
+                            </switch>
+                            </td>
+                            <td align="center">{$val.specification}</td>
+                            <td align="left">快递公司:{$val.shipping_name}<br/>快递单号:{$val.invoice_no}</td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                    <tr>
+                        <th width="60">订单流水号:</th>
+                        <td colspan="3"> {$info.order_sn}</td>
+
+                    </tr>
+                    <tr>
+                        <th width="60">下单人:</th>
+                        <td colspan="3">{$info.buyer_name} ID:({$info.buyer_id})|Email:{$info.buyer_email}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="60">身份证号:</th>
+                        <td colspan="3">{$info.shenfenz}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="80">订单状态:</th>
+                        <td>
+                            <switch name="info.status">
+                            <case value="0">未付款</case>
+                            <case value="1">已付款</case>
+                            <case value="2">清关中</case>
+                            <case value="3">已发货</case>
+                            <case value="4">已完成</case>
+                            <case value="6">退换货申请中</case>
+                            <case value="7">退换货审核通过</case>
+                            <case value="8">退换货物流中</case>
+                            <case value="9">退换货审核不通过</case>
+                            <case value="10">退换货已完成</case>
+                            <case value="99" >已拒绝</case>
+                            <case value="98" >已关闭</case>
+                            </switch>
+                        </td>
+                        <th width="80">下单时间:</th>
+                    <td>
+                    <notempty name="info.add_time">{$info.add_time|date="Y-m-d H:i:s",###}
+                        <else/>
+                        --
+                    </notempty>
+                    </td>
+                    </tr>
+                    <tr>
+                        <th width="80">商品总价:</th>
+                        <td>{$info.goods_amount}</td>
+                        <th width="80">订单总价:</th>
+                        <td>{$info.order_amount}</td>
+                    </tr>
+                    <tr>
+                        <th width="120">优惠券ID(为0则没使用):</th>
+                        <td colspan="3">{$info.couponid}</td>
+                    </tr>
+                    <tr>
+                        <th width="80">支付方式:</th>
+                        <td>{$info.payment_name}</td>
+                        <th width="80">支付订单号:</th>
+                        <td>{$info.payment_code}</td>
+                    </tr>
+                    <tr>
+                        <th width="80">外部交易号:</th>
+                        <td>{$info.out_trade_sn}</td>
+                        <th width="80">支付时间:</th>
+                        <td>
+                    <notempty name="info.pay_time">{$info.pay_time|date="Y-m-d H:i:s",###}
+                        <else/>
+                        --
+                    </notempty>
+                    </td>
+                    </tr>
+                    <tr>
+                        <th width="80">银行卡姓名:</th>
+                        <td>{$thhuo.cname}</td>
+                        <th width="80">银行卡卡号:</th>
+                        <td>{$thhuo.credit}</td>
+                    </tr>
+                    <tr>
+
+                        <th width="80">收货地址:</th>
+                        <td colspan="3">{$extinfo.address}</td>
+
+                    </tr><tr>
+
+                        <th width="80">收货人电话:</th>
+                        <td colspan="3">{$extinfo.phone_tel} </td>
+
+                    </tr><tr>
+
+                        <th width="80">收货人邮编:</th>
+                        <td colspan="3">{$extinfo.post_code} </td>
+
+                    </tr>
+                    <tr>
+
+                        <th width="80">快递公司:</th>
+                        <td>{$info.shipping_name}</td>
+                        <th width="80">快递单号:</th>
+                        <td >{$info.invoice_no}</td>
+
+                    </tr>
+                    <tr>
+                        <th width="80">发货时间:</th>
+                        <td>
+                    <notempty name="val.pay_time">{$val.pay_time|date="Y-m-d H:i:s",###}
+                        <else/>
+                        --
+                    </notempty>
+                    </td>
+                        <th width="80">终端名称:</th>
+                        <td >{$storeName}</td>
+                    </tr>
+                    <tr>
+                        <th width="80">买家附言:</th>
+                        <td colspan="3">{$info.postscript}</td>
+                    </tr>
+                    <tr  >
+                        <th width="80">关闭原因:</th>
+                        <td colspan="3">{$info.close_info}</td>
+                    </tr>
+
+                    <tr  >
+                        <th width="80">拒绝原因:</th>
+                        <td colspan="3">{$info.refuse_info}</td>
+                    </tr>
+                    <tr>
+                        <th width="80">备注:</th>
+                        <td width="455">{$info.order_notes}</td>
+                    </tr>
+                     <tr>
+                        <th width="80">身份证:</th>
+                        <td width="850"> <if condition="$sfz_data.a eq '' "><img width="400px" height="400px" src="<?php  echo str_replace('../..','wei',$sfz_data['c']) ; ?>"/>&nbsp;&nbsp;<img width="400px" height="400px"  src="<?php  echo str_replace('../..','wei',$sfz_data['d']) ; ?>"/><else /><img  width="400px" height="400px"  src="<?php  echo str_replace('../..','wei',$sfz_data['a']) ; ?>"/>&nbsp;&nbsp;<img width="400px" height="400px"  src="<?php  echo str_replace('../..','wei',$sfz_data['b']) ; ?>"/></if></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="div_setting_2" class="contentList pad-10" style=" display: none;">
+                <div class="table-list">
+                    <table width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="30">ID</th>
+                                <th width="40">&nbsp;</th>
+                                <th width="60">商品编号</th>
+                                <th width="80">商品名称</th>
+                                <th width="60"> 规格名称</th>
+                                <th width=60>价格(元)</th>
+                                <th width=60>商品数量</th>
+                                <th width=60>是否有效</th>
+                                <th width="60">商品描述</th>
+                                <th width="80">快递信息</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="goods" id="val">
+                            <tr>
+                                <td align="center">{$val.rec_id}</td>
+                                <td align="right"><img src="{$val.goods_images}" width="35" width="35" class="preview"
+                                                       bimg="{$val.goods_images}"></td>
+                                <td align="center">{$val.goods_code}</td>
+                                <td align="center">{$val.goods_name}</td>
+                                <td align="center">{$val.specification}</td>
+                                <td align="center"><em style="color:green;">{$val.price}</em></td>
+                                <td align="center">{$val.quantity}</td>
+                                <td align="center">
+                                    <switch name="val.is_valid">
+                            <case value="0">无效</case>
+                            <case value="1">有效</case>
+                            </switch>
+                            </td>
+                            <td align="center">{$val.specification}</td>
+                            <td align="left">快递公司:{$val.shipping_name}<br/>快递单号:{$val.invoice_no}</td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="div_setting_3" class="contentList pad-10" style=" display: none;">
+                <div class="table-list">
+                    <table width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="30">ID</th>
+                                <th width="130">操作内容</th> 
+                                <th width="120">操作时间</th>
+                                <th> 备注信息</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="logs" id="val">
+                            <tr>
+                                <td align="center">{$val.log_id}</td>
+                            <if condition="$val.operator eq '备货中' "> <td align="center">清关中</td>
+                                <else /><td align="center">{$val.operator}</td>
+                            </if>
+                            <td align="left">
+                            <notempty name="val.log_time">{$val.log_time|date="Y-m-d H:i:s",###}
+                                <else/>
+                                --
+                            </notempty>
+                            </td>
+                            <td align="center">{$val.remark}</td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div id="div_setting_4" class="contentList pad-10" style=" display: none;">
+                <div class="table-list" <?php if($total_pop){echo "style='display:none;'"; } ?>>
+                    <table width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th  width="80">昵称 </th>
+                                <th  width="80">姓名 </th>
+                                <th  width="80" style="display: none;">openid </th>
+                                <th  width="50">积分</th>
+                                <th  width="50">提现状态</th>
+                                <th  width="80">时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="pops" id="val" >
+                            <tr>
+                                <td align="center">{$val.wei_nickname}</td>
+                                <td align="center">{$val.wei_username}</td>
+                                <td align="center" style="display: none;">{$val.openid}</td>
+                                <td align="left">{$val.pop} </td>
+                                <td align="center"  >
+                                    <switch  name="val.duitag">
+                            <case value="0" >否</case>
+                            <case value="1"  >是</case>
+                            <case value="2"  >处理中</case>
+                            </switch > </td>
+                            <td align="center"><notempty name="val.poptime">{$val.poptime}<else/>--</notempty></td>
+
+                        </volist>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 预分成开始 -->
+
+                <div class="table-list"  <?php if(!$total_pop){echo "style='display:none;'"; } ?> >
+                <span style="font-size: 24px;margin-left:50%;color: red">预收益显示</span>
+                    <table width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="25%">昵称 </th>
+                                <th width="25%">姓名 </th>
+                                <th width="25%">openid </th>
+                                <th width="25%">收益</th>
+                              
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="total_pop" id="val" >
+                            <tr>
+                                <td align="center">{$val.wei_nickname}</td>
+                                <td align="center">{$val.wei_username}</td>
+                                <td align="center">{$val.open_id}</td>
+                                <td align="center">{$val.pop} </td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 预分成结束 -->
+
+            </div>
+            <eq name="info.erm" value="1">
+            <div id="div_setting_5" class="contentList pad-10" style=" display: none;">
+                <div>微信昵称：{$dianpu.wei_nickname}</div><br />
+                <div>ID：{$dianpu.open_id}</div><br />
+                姓名：{$dianpu.name}<br /><br />
+                手机号码：{$dianpu.hsouji}<br /><br />
+                微信/QQ：{$dianpu.weixinqq}<br /><br />
+                地址：{$dianpu.jiameng_dizhi}<br /><br />
+                代理人名称：{$dianpu.daili_name}<br /><br />
+                代理人号码：{$dianpu.daili_haoma}<br /><br />
+            </div>
+            </eq>
+        </div>
+    </div>
+    <center>&nbsp; <input type="button"  onclick="javascript:history.go(-1);"  id="btnreturn" class="smt " value="返回">
+    </center>
+</div>
+
+
+</body>
+</html>
+<script type="text/javascript">
+
+    function SwapTab(name, cls_show, cls_hide, cnt, cur) {
+        for (i = 1; i <= cnt; i++) {
+            if (i == cur) {
+                $('#div_' + name + '_' + i).show();
+                $('#tab_' + name + '_' + i).attr('class', cls_show);
+            } else {
+                $('#div_' + name + '_' + i).hide();
+                $('#tab_' + name + '_' + i).attr('class', cls_hide);
+            }
+        }
+    }
+    function submitOrder(handle, id) {
+
+    }
+</script>

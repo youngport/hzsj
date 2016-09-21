@@ -1,0 +1,61 @@
+<include file="public:header"/>
+
+<div class="pad_10">
+    <div class="pad-10">
+        <div class="col-tab">
+            <div id="div_setting_1" class="contentList pad-10" >
+                <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+
+                    <tr>			
+                        <th colspan="4" style="text-align: left;" width="60">回访次数:&nbsp;&nbsp;&nbsp;&nbsp;<span id="return_visit">{$rmb.return_visit}</span><span style="margin-left:25px;"><input type="submit"  value="增加" onclick="add();"></span><span style="margin-left:5px;"><input type="submit"  value="减少" onclick="del();"></span></th>
+                    <tr>
+                        <td colspan="4">最近回访时间：&nbsp;&nbsp;<if condition="($rmb.last_visit_time eq '') or ($rmb.last_visit_time eq 0)">暂无回访<else/>{$rmb.last_visit_time|date="Y-m-d H:i:s",###}</if></td>	
+                    </tr>
+                    </tr>
+                    <tr>			
+                        <th width="60">备注修改:</th>
+                        <td colspan="3"><textarea  name="order_beiz" id="order_beiz"  rows="10" cols="60" class="neirong" >{$rmb.rmb_beiz}</textarea>（注意：500字以内）</td>	
+                    </tr>
+                    <tr>
+                        <th width="60"></th>
+                        <td><input type="button" id="order_beiz_inpuxt" onclick="order_beiz();" name="refuseOrder" data-id="{$rmb.id}" class="button " value="确认修改">
+                        <!-- <input type="button" id="order_beiz_inpuxt" onclick="order_beiz();" name="refuseOrder" data-id="{$rmb.id}"  value="查看">
+                        </td> -->
+                        <a class="button" href="index.php?a=listedd&m=orders&id={$rmb.id}">查看</a>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
+<script type="text/javascript">
+     function add(){
+        var return_visit = parseInt($('#return_visit').text());
+           //alert(return_visit+1)
+                return_visit ++;
+                $('#return_visit').text(return_visit);
+     }
+     function del(){
+        var return_visit = parseInt($('#return_visit').text());
+        return_visit --;
+                $('#return_visit').text(return_visit);
+     }
+    function order_beiz() {
+        var beiz_text = $('#order_beiz').val();
+        var beiz_id = $('#order_beiz_inpuxt').attr('data-id');
+        var return_visit=$('#return_visit').text();
+        //alert(return_visit);
+        $.post('index.php?a=poprmb_upd&m=orders', {order_beiz_text: beiz_text, id: beiz_id,return_visit:return_visit}, function (data) {
+            if (data == 1) {
+                alert('该备注已修改成功！');
+            } else {
+                alert('备注修改失败！');
+            }
+            ;
+        });
+    }
+</script>

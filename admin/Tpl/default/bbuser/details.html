@@ -1,0 +1,34 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<div>
+    <h3>会员详细信息</h3>
+    <ul>
+        <li><span>会员ID：</span>{$res.id}</li>
+        <li><span>名字：</span>{$res.name}</li>
+        <li><span>手机：</span>{$res.phone}</li>
+        <li><span>状态：</span><eq name="res.status" value="1">审核通过<else/>未审核</eq></li>
+        <li><span>锁定：</span><eq name="res.lock" value="0">未锁定<else/>已锁定</eq></li>
+        <li><span>省份：</span>{$res.province}</li>
+        <li><span>城市：</span>{$res.city}</li>
+        <li><span>地区：</span>{$res.area}</li>
+        <li><span>详细地址：</span>{$res.address}</li>
+        <li><span>QQ：</span>{$res.qq}</li>
+        <li><span>电子邮箱：</span>{$res.email}</li>
+        <li><span>注册时间：</span>{$res.rgstime|date="Y-m-d H:i:s",###}</li>
+        <?php if($res['license']){?>
+            <li><span>营业执照：</span></li>
+            <img src="store<?php echo $res['license']?>" alt="营业执照">
+            <?php }else{ ?>
+            <li><span>营业执照：</span>图片为空</li>
+        <?php } ?>
+    </ul>
+    <input type="button"  onclick="javascript:history.go(-1);"  id="btnreturn" class="smt " value="返回">
+</div>
+<style>
+h3 {font-size: 26px;  margin: 20px;  color: #666;  }
+img {width: 600px;  height: 450px; margin: 15px 20px; }
+ul li {margin: 15px 20px;  }
+input {margin: 15px 20px;  }
+</style>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<h3 style="text-align:center">入库单信息</h3>
+<table border="1" style="width:98%;margin-left:1%">
+<tr><th>入库单号</th><th>仓库</th><th>入库时间</th><th>状态</th><th>产品号</th><th>预收货数量</th><th>收货数量</th><th>目的仓上架数量</th><th>收货时间</th></tr>
+<foreach name="data" item="value">
+	
+	<tr align="center">
+	<td>{$value['receivingCode']}</td>
+	<td>{$value['warehouseCode']}</td>
+	<td>{$value['createDate']|date="y-m-d",###}</td>
+	<td>
+	    <if condition="$value['status'] eq 'O'"> 待审核
+			<elseif condition="$value['status'] eq 'R'"/>已收货
+			<elseif condition="$value['status'] eq 'T'"/>转运中
+			<elseif condition="$value['status'] eq 'E'"/>待入库
+			<elseif condition="$value['status'] eq 'I'"/>已入库
+			<elseif condition="$value['status'] eq 'P'"/>已上架
+			<elseif condition="$value['status'] eq 'X'"/>已取消
+			<else />彻底删除
+		</if>
+	</td>
+	<td>{$value['sku']}</td>
+	<td>{$value['quantity']}</td>
+	<td>{$value['acceptedQuantity']}</td>
+	<td>{$value['destAcceptedQuantity']}</td>
+	<td>{$value['receivedDate']|date="y-m-d",###}</td>
+	</tr>
+
+</foreach>	
+</table>
+<div style="text-align: center;">{$pageinfo}</div>
+</body>
+</html>

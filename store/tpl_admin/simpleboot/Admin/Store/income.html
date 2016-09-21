@@ -1,0 +1,105 @@
+<admintpl file="header" />
+</head>
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Store/index')}" target="_self">所有终端</a></li>
+			<li class="active"><a href="javascript:;">收益信息</a></li>
+		</ul>
+		<form class="well form-search" method="post" action="{:U('Store/income')}">
+			<div class="search_type cc mb10">
+				<div class="mb10">
+					<span class="mr20">
+						&nbsp;微信名称：
+						<input type="text" name="nickname" style="width: 150px;" value="{$formget.nickname}" placeholder="请输入名称...">
+						&nbsp;订单号：
+						<input type="text" name="order_sn" style="width: 150px;" value="{$formget.order_sn}" placeholder="请输入订单编号...">
+						&nbsp;付款时间：
+						<input type="text" name="start_time" class="J_date" value="{$formget.start_time}" style="width: 80px;" autocomplete="off">-
+						<input type="text" class="J_date" name="end_time" value="{$formget.end_time}" style="width: 80px;" autocomplete="off">
+						&nbsp;
+						<select name="order" style="width:100px">
+							<option value="">排序</option>
+							<option value="pop">收益</option>
+							<option value="order_amount">订单金额</option>
+						</select>
+						<input type="hidden" name="sid" value="{$sid}"/>
+						<input type="submit" class="btn btn-primary" value="搜索" />
+						<input type="reset" class="btn btn-primary" value="重置" />
+					</span>
+				</div>
+			</div>
+		</form>
+		<table class="table table-hover table-bordered table-list">
+			<thead>
+				<tr>
+					<th>订单流水号</th>
+					<th>购买人</th>
+					<th>订单总价</th>
+					<th>付款时间</th>
+					<th>店家收益</th>
+					<eq name="groups" value="1">
+						<th>代理人收益</th>
+					</eq>
+				</tr>
+			</thead>
+			<foreach name="list" item="vo">
+			<tr>
+				<td>{$vo.order_sn}</td>
+				<td>{$vo.wei_nickname}</td>
+				<td>￥{$vo.order_amount}</td>
+				<td>{$vo.shijianc|date="Y-m-d H:i:s",###}</td>
+				<td>￥{$vo.pop|default=0}</td>
+				<!--假如groups为1,那么代表是代理商,则此列可看.
+				代码流程:因为商家可能会一笔订单获取两笔收益,而代理商只会获取一笔,如果俩笔都显示1块钱就显得不好看,所以要处理下.
+				首先排序是按时间和order_sn来的,所以只要匹配前面的order_sn是否存在,存在则为0元,不存在就显示一次,后面因为检测到了就不会反复1元了.
+				-->
+				<eq name="groups" value="1">
+					<td>￥
+						<php>
+							$pop=0;
+							if(!(isset($order_sn)&&$order_sn==$vo['order_sn'])){
+								$where['openid']=M("role_store","sk_")->where("pid='".$open_id."'")->getField("agentid");
+								if(!empty($where['openid'])){
+									$where['order_sn']=$vo['order_sn'];
+									$pops=M("pop","wei_")->where($where)->getField("pop");
+									if($pops>0){
+										$pop=$pops;
+										$order_sn=$where['order_sn'];
+									}
+								}
+							}
+							echo $pop;
+						</php>
+					</td>
+				</eq>
+			</tr>
+			</foreach>
+			<tfoot>
+				<tr>
+					<th>订单流水号</th>
+					<th>购买人</th>
+					<th>订单总价</th>
+					<th>付款时间</th>
+					<th>店家收益</th>
+					<eq name="groups" value="1">
+						<th>代理人收益</th>
+					</eq>
+				</tr>
+			</tfoot>
+		</table>
+		<div class="pagination pull-right"><span href="#" class="btn btn-primary disabled">{$count}条记录</span>{$Page}</div>
+	</div>
+	<script src="__ROOT__/statics/js/common.js"></script>
+	<script>
+		$("select[name='order']").find("option").each(function(){
+			if($(this).val()=="{$formget.order}")
+				$(this).attr("selected",true);
+		});
+		$("input[type='reset']").click(function(){
+			$(this).siblings("input").not("input[type='submit']").attr("value","");
+			$("select").find("option").attr("selected",false);
+		});
+	</script>
+</body>
+</html>

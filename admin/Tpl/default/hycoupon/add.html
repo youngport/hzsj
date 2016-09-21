@@ -1,0 +1,153 @@
+<tagLib name="wego" />
+<include file="public:header" />
+
+<form action="{:u('hycoupon/add')}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+    <div class="pad-10">
+        <div class="col-tab">
+            <div id="div_setting_1" class="contentList pad-10">
+                <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                    <tr>
+                        <th width="100">优惠券标题:</th>
+                        <td><input type="text" name="coupon_title" id="coupon_title" class="input-text" size="60" placeholder="请填写优惠券标题"></td>
+                    </tr>
+                    <tr>
+                        <th>openid:</th>
+                        <td><input type="text" name="openid" id="openid" class="input-text" size="60"></td>
+                    </tr>
+                    <tr>
+                        <th>mac地址:</th>
+                        <td><input type='text' name='mac_address' id='mac_address'  size="60"/></td>
+                    </tr>
+                    <tr>
+                        <th>总金额:</th>
+                        <td><input type='text' name='money' id='money'  size="60" /></td>
+                    </tr>
+
+                    <tr>
+                        <th>满减:</th>
+                        <td><input type='text' name='manjian' id='manjian' size="60" placeholder="商品满多少可以使用优惠券" /></td>
+                    </tr>
+
+                    <tr>
+                        <th>面值:</th>
+                        <td><input type='text' name='per_money' id='per_money'  size="60"/></td>
+                    </tr>
+                    <tr> 
+                    <tr>
+                        <th> 开始时间:</th>
+                        <td><input type="text" size="40"  class="Wdate" name="start_time" id="start_time"  onFocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss', alwaysUseStartDate: true})"/></td>
+                    </tr>
+                    <tr>
+                        <th> 结束时间:</th>
+                        <td><input type="text" size="40"  class="Wdate" name="end_time" id="end_time"  onFocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss', alwaysUseStartDate: true})"/></td>
+                    </tr>
+                    <tr>
+
+                        <th>审核:</th>
+                        <td>
+                            <input type="radio" name="shenhe" class="radio_style" value="1" checked="checked">
+                            &nbsp;通过&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="shenhe" class="radio_style" value="0" >
+                            &nbsp;禁用
+                        </td>
+                        
+                        <tr>
+                        <th>是否可转发:</th>
+                        <td>
+                            <input type="radio" name="is_repost" class="radio_style" value="1" checked="checked">
+                            &nbsp;是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="is_repost" class="radio_style" value="0" >
+                            &nbsp;否
+                        </td>
+                        </tr>
+
+                        <tr>
+                        <th>使用范围:</th>
+                        <td>
+                            <input type="radio" name="rule" class="radio_style" value="0" checked="checked">
+                            全场使用&nbsp;
+                            <input type="radio" name="rule" class="radio_style" value="2">
+                            会员区使用
+                        </td>
+                        </tr>
+
+                         <tr>
+                        <th>优惠券使用描述:</th>
+                        <td>
+                           <wego:editor  name="coupon_desc" id="coupon_desc" type="KINDEDITOR" style="width:70%;height:350px;" ></wego:editor>
+                        </td>
+                        </tr>
+
+                    </tr>
+                </table>
+            </div>
+            <div class="bk15"></div>
+            <div class="btn"><input type="submit" value="{$Think.lang.submit}" onclick="return submitFrom();" name="dosubmit" class="button" id="dosubmit"></div>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(function () {
+        $.formValidator.initConfig({
+            formid: "myform",
+            autotip: true,
+            onerror: function (msg, obj) {
+                window.top.art.dialog({
+                    content: msg,
+                    lock: true,
+                    width: '200',
+                    height: '50'},
+                        function ()
+                        {
+                            this.close();
+                            $(obj).focus();
+                        })
+            }});
+        $("#openid").formValidator({
+            onshow: "不能为空", onfocus: "openid不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入openid"
+        });
+
+        // $("#mac_address").formValidator({
+        //     onshow: "不能为空", onfocus: "mac地址不能为空哦"
+        // }).inputValidator({
+        //     min: 1, onerror: "请输入mac地址"
+        // });
+
+        $("#money").formValidator({
+            onshow: "不能为空", onfocus: "总金额不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入总金额"
+        });
+
+        $("#per_money").formValidator({
+            onshow: "不能为空", onfocus: "面值不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入面值"
+        });
+
+        $("#manjian").formValidator({
+            onshow: "不能为空", onfocus: "商品金额不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入金额"
+        });
+
+        $("#start_time").formValidator({
+            onshow: "不能为空", onfocus: "开始时间不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入开始时间"
+        });
+
+        $("#end_time").formValidator({
+            onshow: "不能为空", onfocus: "结束时间不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入结束时间"
+        }).compareValidator({
+            desid: "start_time", operateor: ">=", datatype: "datetime", onerror: "结束时间不能小于开始时间"
+        });
+    });
+</script>
+</body>
+</html>

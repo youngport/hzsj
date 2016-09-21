@@ -1,0 +1,44 @@
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ app_begin ] --START--
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001480s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | INFO: Run CheckLang Behavior [ RunTime:0.002312s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ app_begin ] --END-- [ RunTime:0.003964s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.003797s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.003969s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.003140s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.002911s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.002898s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.003270s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | NOTIC: [8] Undefined index: admin_info baseAction.class.php 第 80 行.
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | NOTIC: [8] Undefined index: admin_info baseAction.class.php 第 39 行.
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.038538s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | NOTIC: [8] Undefined index: admin_info baseAction.class.php 第 43 行.
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id= LIMIT 1   [ RunTime:0.000196s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.013800s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000471s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.018254s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.001237s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.003405s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ view_template ] --START--
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | INFO: Run LocationTemplate Behavior [ RunTime:0.073132s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ view_template ] --END-- [ RunTime:0.073259s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ view_parse ] --START--
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | INFO: Run ParseTemplate Behavior [ RunTime:0.077053s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ view_parse ] --END-- [ RunTime:0.077173s ]
+[ 2016-02-25T11:01:41+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ view_filter ] --START--
+[ 2016-02-25T11:01:42+08:00 ] /hz/index.php?a=login&m=public | INFO: Run ContentReplace Behavior [ RunTime:0.015970s ]
+[ 2016-02-25T11:01:42+08:00 ] /hz/index.php?a=login&m=public | INFO: Run TokenBuild Behavior [ RunTime:0.009004s ]
+[ 2016-02-25T11:01:42+08:00 ] /hz/index.php?a=login&m=public | INFO: Run WriteHtmlCache Behavior [ RunTime:0.001346s ]
+[ 2016-02-25T11:01:42+08:00 ] /hz/index.php?a=login&m=public | INFO: Run ShowRuntime Behavior [ RunTime:0.001632s ]
+[ 2016-02-25T11:01:42+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ view_filter ] --END-- [ RunTime:0.028234s ]
+[ 2016-02-25T11:01:42+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ view_end ] --START--
+[ 2016-02-25T11:01:42+08:00 ] /hz/index.php?a=login&m=public | INFO: Run ShowPageTrace Behavior [ RunTime:0.001535s ]
+[ 2016-02-25T11:01:42+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ view_end ] --END-- [ RunTime:0.001625s ]
+[ 2016-02-25T11:01:42+08:00 ] /hz/index.php?a=verify&m=verify&rand=1456369301 | INFO: Tag[ app_begin ] --START--
+[ 2016-02-25T11:01:42+08:00 ] /hz/index.php?a=verify&m=verify&rand=1456369301 | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001007s ]
+[ 2016-02-25T11:01:42+08:00 ] /hz/index.php?a=verify&m=verify&rand=1456369301 | INFO: Run CheckLang Behavior [ RunTime:0.001684s ]
+[ 2016-02-25T11:01:42+08:00 ] /hz/index.php?a=verify&m=verify&rand=1456369301 | INFO: Tag[ app_begin ] --END-- [ RunTime:0.002867s ]
+[ 2016-02-25T11:01:42+08:00 ] /hz/index.php?a=verify&m=verify&rand=1456369301 | INFO: Tag[ app_begin ] --START--
+[ 2016-02-25T11:01:42+08:00 ] /hz/index.php?a=verify&m=verify&rand=1456369301 | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001313s ]
+[ 2016-02-25T11:01:42+08:00 ] /hz/index.php?a=verify&m=verify&rand=1456369301 | INFO: Run CheckLang Behavior [ RunTime:0.002093s ]
+[ 2016-02-25T11:01:42+08:00 ] /hz/index.php?a=verify&m=verify&rand=1456369301 | INFO: Tag[ app_begin ] --END-- [ RunTime:0.003587s ]

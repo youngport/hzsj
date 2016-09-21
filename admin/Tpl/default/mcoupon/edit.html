@@ -1,0 +1,56 @@
+<tagLib name="wego" />
+<include file="public:header" />
+
+<form action="{:u('mcoupon/edit')}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+  <div class="pad-10">
+    <div class="col-tab">
+      <ul class="tabBut cu-li">
+        <li id="tab_setting_1" class="on">{$Think.lang.general_info}</li>
+      </ul>
+      <div id="div_setting_1" class="contentList pad-10">
+        <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+          <tr>
+            <th width="100">发放用户:</th>
+            <td><input type="text" name="open_id" id="open_id" class="input-text" size="60" placeholder="发放用户需要是店铺会员" value="{$info.open_id}"></td>
+          </tr>
+           <tr>
+            <th>原始金额:</th>
+            <td><input type='text' name='y_money' id='y_money' placeholder="输入金额" value="{$info.y_money}"/></td>
+          </tr>
+          <tr>
+          	<th>余额:</th>
+            <td><input type='text' name='money' id='money' placeholder="输入金额" value="{$info.money}"/></td>
+          </tr>
+        <tr>
+            <th>时间:</th>
+            <td>
+                <wego:calendar name="start_time">{$info.start_time|date='Y-m-d H:i:s',###}</wego:calendar>
+                 -
+                <wego:calendar name="end_time" more="true">{$info.end_time|date='Y-m-d H:i:s',###}</wego:calendar>
+            </td>
+        </tr>
+         <tr>
+            <th>{:L('status')} :</th>
+            <td>
+              <input type="radio" name="status" class="radio_style" value="1">
+              &nbsp;正常&nbsp;
+              <input type="radio" name="status" class="radio_style" value="0">
+              &nbsp;停用&nbsp;
+              </td>
+          </tr>
+        </table>
+      </div>
+      <div class="bk15"></div>
+      <div class="btn"><input type="hidden" name="id" value="{$info.id}"/><input type="submit" value="{$Think.lang.submit}" onclick="return submitFrom();" name="dosubmit" class="button" id="dosubmit"></div>
+    </div>
+  </div>
+</form>
+</body>
+<script>
+    $("input[name='status']").each(function(){
+        if($(this).val()=="{$info.status}"){
+            $(this).attr("checked",true);
+        }
+    });
+</script>
+</html>

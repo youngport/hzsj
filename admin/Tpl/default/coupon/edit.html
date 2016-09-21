@@ -1,0 +1,119 @@
+<tagLib name="wego" />
+<include file="public:header" />
+
+<form action="{:u('coupon/edit')}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+    <div class="pad-10">
+        <div class="col-tab">
+            <ul class="tabBut cu-li">
+                <li id="tab_setting_1" class="on">{$Think.lang.general_info}</li>
+            </ul>
+            <div id="div_setting_1" class="contentList pad-10">
+                <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                    <tr>
+                        <th width="100">优惠券标题:</th>
+                        <td><input type="text" name="coupon_title" id="coupon_title" class="input-text" size="60" value="{$info.coupon_title}" placeholder="请填写优惠券标题"></td>
+                    </tr>
+                    <tr>
+                        <th width="100">发放用户:</th>
+                        <td><input type="text" name="rec" id="rec" class="input-text" size="60" placeholder="空默认为全体用户" value="{$info.rec}"></td>
+                    </tr>
+                    <tr>
+                        <th width="100">使用范围:</th>
+                        <td>
+                    <input type="radio" name="type" value="0" <if condition="$info.type eq 0">checked</if>>&nbsp;通用&nbsp;
+                            <input type="radio" name="type" value="1" <if condition="$info.type eq 1">checked</if>>&nbsp;栏目(65(母婴),100(美妆),118(保健),147(零食))&nbsp;
+                            <input type="radio" name="type" value="2" <if condition="$info.type eq 2">checked</if>>&nbsp;会员商品&nbsp;
+<!--                            <input type="radio" name="type" value="3" <if condition="$info.type eq 3">checked</if>>&nbsp;活动区&nbsp;-->
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="100">主键ID:</th>
+                        <td><input type="text" name="tid" id="tid" class="input-text" size="60" value="{$info.tid}"/>根据使用范围填写,通用不需要填,用逗号隔开，例如：123,456,789</td>
+                    </tr>
+                    <tr>
+                        <th>限额:</th>
+                        <td><input type='text' name='xz' id='xz' placeholder="输入限额" value="{$info.xz}"/></td>
+                    </tr>
+                    <tr>
+                        <th>减免:</th>
+                        <td><input type="text" name="js" id="js" placeholder="输入减少的金额" value="{$info.js}"></td>
+                    </tr>
+                    <tr>
+                        <th>开始时间:</th>
+                        <td>
+                    <wego:calendar name="start_time">{$info.start_time|date='Y-m-d H:i:s',###}</wego:calendar>
+                    -
+                    <wego:calendar name="end_time" more="true">{$info.end_time|date='Y-m-d H:i:s',###}</wego:calendar>
+                    </td>
+                    </tr>
+                    <tr>
+                        <th>发放原因:</th>
+                        <td>
+                            <select name="reason">
+                            <option value ="">--请选择发放原因--</option>
+                                <option value ="生日关怀" <if condition="$info.reason eq '生日关怀'">selected = "selected"</if>>生日关怀</option>
+                                <option value ="商城活动--橙色周三" <if condition="$info.reason eq '商城活动--橙色周三'">selected = "selected"</if>>商城活动--橙色周三</option>  
+                                <option value ="商城活动--葡萄节" <if condition="$info.reason eq '商城活动--葡萄节'">selected = "selected"</if>>商城活动--葡萄节</option> 
+                                <option value ="商城活动--专题活动" <if condition="$info.reason eq '商城活动--专题活动'">selected = "selected"</if>>商城活动--专题活动</option> 
+                                <option value="购物满发" <if condition="$info.reason eq '购物满发'">selected = "selected"</if>>购物满发</option>
+                                <option value="第一次购" <if condition="$info.reason eq '第一次购'">selected = "selected"</if>>第一次购</option>
+                                <option value="每日推荐" <if condition="$info.reason eq '每日推荐'">selected = "selected"</if>>每日推荐</option>
+                                <option value="用户分享" <if condition="$info.reason eq '用户分享'">selected = "selected"</if>>用户分享</option>
+                                <option value="每日签到" <if condition="$info.reason eq '每日签到'">selected = "selected"</if>>每日签到</option>
+                                <option value="红包优惠" <if condition="$info.reason eq '红包优惠'">selected = "selected"</if>>红包优惠</option>
+                                <option value="补偿"  <if condition="$info.reason eq '补偿'">selected = "selected"</if>>补偿</option>
+                                <option value="其他"  <if condition="$info.reason eq '其他'">selected = "selected"</if>>其他</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>是否可转发:</th>
+                        <td>
+                            <input type="radio" name="is_repost" class="radio_style" value="1"  <if condition="$info.is_repost eq 1">checked="checked"</if>>
+                            &nbsp;是&nbsp;
+                            <input type="radio" name="is_repost" class="radio_style" value="0" <if condition="$info.is_repost eq 0">checked="checked"</if>>
+                            &nbsp;否&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>{:L('status')} :</th>
+                        <td><input type="radio" name="status" class="radio_style" value="1" <if condition="$info.status eq 1">checked="checked"</if>>
+                            &nbsp;未使用&nbsp;
+                            <input type="radio" name="status" class="radio_style" value="2" <if condition="$info.status eq 2">checked="checked"</if>>
+                            &nbsp;已使用&nbsp;
+                            <input type="radio" name="status" class="radio_style" value="0" <if condition="$info.status eq 0">checked="checked"</if>>
+                            &nbsp;停用&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>优惠券使用描述:</th>
+                        <td>
+                           <wego:editor  name="coupon_desc" id="coupon_desc" type="KINDEDITOR" style="width:70%;height:350px;" > {$info.coupon_desc}</wego:editor>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="bk15"></div>
+            <div class="btn"><input type="hidden" name="id" value="{$info.id}"/><input type="submit" value="{$Think.lang.submit}" onclick="return submitFrom();" name="dosubmit" class="button" id="dosubmit"></div>
+        </div>
+    </div>
+</form>
+</body>
+<script>
+    $("input[name='type']").each(function () {
+        if ($(this).val() == "{$info.type}") {
+            $(this).attr("checked", true);
+        }
+    });
+    $("input[name='status']").each(function () {
+        if ($(this).val() == "{$info.status}") {
+            $(this).attr("checked", true);
+        }
+    });
+    $("input[name='is_repost']").each(function () {
+        if ($(this).val() == "{$info.is_repost}") {
+            $(this).attr("checked", true);
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,48 @@
+<include file="public:header"/>
+
+<style>
+.tu1{ max-width:200px;}
+.tu2{ max-width:220px;}
+.fomh{ float:left; margin:20px;}
+.zitik{ color:#72ACE3; line-height:30px; font-size:14px; text-align:center;cursor:pointer;font-weight: bold;}
+</style>
+<div class="pad_10">
+	<div style="font-size:12px;line-height:25px;padding:20px;">
+    	<foreach name="th" item="val">
+    	<ul style="width:800px;">
+    		<li>姓名：{$val.name}</li>
+    		<li>退换货：<if condition="$val.tuihuan eq 0">退货<else />换货</if></li>
+    		<li>联系方式：{$val.lianxi}</li>
+    		<li>内容：<br /><div style="background:#f4f4f4; padding:10px;">{$val.liyou}</div></li>
+    		<li>快递名称：{$val.kuaidiname}</li>
+    		<li>快递单号：{$val.kuaididan}</li>
+    	</ul>
+        </foreach>
+        <!--<td align="center">{$val.id}</td>
+        	<td align="center">{$val.openid}</td>
+        	<td align="center">{$val.date|date="Y-m-d H:i:s",###}</td>
+        	<td align="center">{$val.lei}</td>
+        	<td align="center">{$val.lianx}</td>-->
+	<a class="blue" id="tongguo" data-i={$val.ordersid} ><div class="smt" style="margin-right:20px;">确认收货</div></a>
+	<a class="blue"   onclick="javascript:history.go(-1);"><div class="smt">返回</div></a>
+    </div>
+
+</div>
+<script>
+$('#tongguo').click(function(){
+	$.ajax({
+		type: "POST",
+		url: "{:U('orders/wlwc')}",
+		data: "id="+$(this).attr('data-i'),
+		success: function(data){
+			if(data==0){
+				javascript:history.go(-1);
+	        }else{
+	        	alert("错误!请稍后再试");
+	        };
+		}
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<include file="public:header"/>
+
+<div class="pad_10">
+    <div class="pad-10">
+        <div class="col-tab">
+            <ul class="tabBut cu-li">
+                <li id="tab_setting_1" class="on" onclick="SwapTab('setting','on','',3,1);">订单信息</li>
+            </ul>
+            <div id="div_setting_1" class="contentList pad-10" >
+                <form method="post" action="{:U('bborder/editchuli')}">
+                    <table width="100%" cellspacing="0" class="table-list">
+                        <thead>
+                        <tr>
+                            <th width="30">ID</th>
+                            <th width="40">&nbsp;</th>
+                            <th width="60">商品编号</th>
+                            <th width="80">商品名称</th>
+                            <th width="60"> 规格名称</th>
+                            <th width=60>价格(元)</th>
+                            <th width=60>商品数量</th>
+                            <th width=30>快递单号</th>
+                            <th width=50>快递公司</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="goods" id="val">
+                            <input type="hidden" name="goodsid[]" value="{$val.id}">
+                            <tr>
+                                <td align="center">{$val.id}</td>
+                                <td align="right"><img src="http://m.hz41319.com/{$val.img}" width="35" width="35" class="preview"
+                                                       bimg="http://m.hz41319.com/{$val.img}"></td>
+                                <td align="center">{$val.pcode}</td>
+                                <td align="center">{$val.good_name}</td>
+                                <td align="center">{$val.guige}</td>
+                                <td align="center"><em style="color:green;">{$val.price}</em></td>
+                                <td align="center">{$val.goodnum}</td>
+                                <td style="position: relative;left:100px;"><input type="text" name="goods_invoice_no[]" value="{$val.invoice_no}"/></td>
+                                <td style="position: relative;left:80px;"><select name="goods_shipping_name[]">
+                                    <option value="" <eq name="val.shipping_name" value="">selected</eq>>请选择</option>
+                                    <option value="ems" <eq name="val.shipping_name" value="ems">selected</eq>>EMS</option>
+                                    <option value="kingfreight" <eq name="val.shipping_name" value="kingfreight">selected</eq>>貨運皇</option>
+                                    <option value="pcaexpress" <eq name="val.shipping_name" value="pcaexpress">selected</eq>>PCA Express</option>
+                                    <option value="youzhengguoji" <eq name="val.shipping_name" value="youzhengguoji">selected</eq>>邮政小包（国际）</option>
+                                    <option value="youzhengguonei" <eq name="val.shipping_name" value="youzhengguonei">selected</eq>>邮政小包（国内）</option>
+                                    <option value="yunda" <eq name="val.shipping_name" value="yunda">selected</eq>>韵达快运</option>
+                                    <option value="shunfeng" <eq name="val.shipping_name" value="shunfeng">selected</eq>>顺丰速递</option>
+                                    <option value="zhongtong" <eq name="val.shipping_name" value="zhongtong">selected</eq>>中通速递</option>
+                                    <option value="yuantong" <eq name="val.shipping_name" value="yuantong">selected</eq>>圆通速递</option>
+                                    <option value="shentong" <eq name="val.shipping_name" value="shentong">selected</eq>>申通快递</option>
+                                    <option value="tiantian" <eq name="val.shipping_name" value="tiantian">selected</eq>>天天快递</option>
+                                    <option value="quanfengkuaidi" <eq name="val.shipping_name" value="quanfengkuaidi">selected</eq>>全峰快递</option>
+                                    <option value="huitongkuaidi" <eq name="val.shipping_name" value="huitongkuaidi">selected</eq>>百世汇通</option>
+                                    <option value="disifang" <eq name="val.shipping_name" value="disifang">selected</eq>>递四方快递</option>
+                                    <option value="youshuwuliu" <eq name="val.shipping_name" value="youshuwuliu">selected</eq>>优速物流</option>
+                                    <option value="guotongkuaidi" <eq name="val.shipping_name" value="guotongkuaidi">selected</eq>>国通快递</option>
+                                </select></td>
+
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                    <tr>
+                        <th width="60">订单流水号:</th>
+                        <td colspan="3"> {$info.ordersn}</td>
+
+                    </tr>                  
+                    <tr>
+                        <th width="80">订单状态:</th>
+                        <td>
+                             <select name="status" id="shipping_name" >
+                                    <option value="" <eq name="info.status" value="">selected</eq>>请选择</option>
+                                    <option value="1" <eq name="info.status" value="1">selected</eq>>未付款</option>
+                                    <option value="2" <eq name="info.status" value="2">selected</eq>>已付款</option>
+                                    <option value="3" <eq name="info.status" value="3">selected</eq>>已发货</option>
+                                    <option value="4" <eq name="info.status" value="4">selected</eq>>已完成</option>
+                                    <option value="5" <eq name="info.status" value="5">selected</eq>>退换货申请中</option>
+                                    <option value="6" <eq name="info.status" value="6">selected</eq>>退换货审核通过</option>
+                                    <option value="7" <eq name="info.status" value="7">selected</eq>>退换货审核不通过</option>
+                                    <option value="8" <eq name="info.status" value="8">selected</eq>>退换货物流中</option>
+                                    <option value="9" <eq name="info.status" value="9">selected</eq>>退换货已完成</option>
+                                    <option value="10" <eq name="info.status" value="10">selected</eq>>已拒绝</option>
+                                    <option value="11" <eq name="info.status" value="11">selected</eq>>已关闭</option>
+                 
+                            </select></br>
+                        </td>
+                        <th width="80">下单时间:</th>
+                        <td>
+                            {$info.add_time|date="Y-m-d H:i:s",###}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="80">订单总价:</th>
+                        <td>{$info.goodprice}</td>
+                    </tr>
+                    <tr>
+                        <th width="80">支付方式:</th>
+                        <td>{$info.payment_name}
+
+                    </tr>
+                    <tr>
+                        <th width="80">支付时间:</th>
+                        <td>
+                           <notempty name="info.pay_time">{$info.pay_time|date="Y-m-d H:i:s",###}
+                           <else/>
+                                --
+                            </notempty>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <th width="80">快递公司:</th>
+                        <td>
+                            <select name="shipping_name">
+                                    <option value="" <eq name="info.shipping_name" value="">selected</eq>>请选择</option>
+                                    <option value="EMS" <eq name="info.shipping_name" value="EMS">selected</eq>>EMS</option>
+                                    <option value="PCA" <eq name="info.shipping_name" value="PCA">selected</eq>>PCA Express</option>
+                                    <option value="YZPY" <eq name="info.shipping_name" value="YZPY">selected</eq>>邮政小包（国际）</option>
+                                    <option value="GJYZ" <eq name="info.shipping_name" value="GJYZ">selected</eq>>邮政小包（国内）</option>
+                                    <option value="YD" <eq name="info.shipping_name" value="YD">selected</eq>>韵达快运</option>  
+                                    <option value="SF" <eq name="info.shipping_name" value="SF">selected</eq>>顺丰速递</option>
+                                    <option value="ZTO" <eq name="info.shipping_name" value="ZTO">selected</eq>>中通速递</option>
+                                    <option value="YTO" <eq name="info.shipping_name" value="YTO">selected</eq>>圆通速递</option>
+                                    <option value="STO" <eq name="info.shipping_name" value="STO">selected</eq>>申通快递</option>
+                                    <option value="HHTT" <eq name="info.shipping_name" value="HHTT">selected</eq>>天天快递</option>
+                                    <option value="QFKD" <eq name="info.shipping_name" value="QFKD">selected</eq>>全峰快递</option>
+                                    <option value="HTKY" <eq name="info.shipping_name" value="HTKY">selected</eq>>百世汇通</option>
+                                    <option value="D4PX" <eq name="info.shipping_name" value="D4PX">selected</eq>>递四方快递</option>
+                                    <option value="UC" <eq name="info.shipping_name" value="UC">selected</eq>>优速物流</option>
+                                    <option value="GTO" <eq name="info.shipping_name" value="GTO">selected</eq>>国通快递</option>
+                            </select></br>
+
+                        </td>
+                        <th width="80">快递单号:</th>
+                        <td><input type="text" name="invoice_no" value="{$info.invoice_no}"/></td>
+                    </tr> <tr> <th width="80">发货时间:</th>
+                    <td colspan="3">
+                         <notempty name="info.shiptime">{$info.shiptime|date="Y-m-d H:i:s",###}
+                           <else/>
+                                --
+                        </notempty>
+                    </td>
+                </tr>
+                    <tr>
+                        <th>备注：</th>
+                        <td><input type="text" name="remark" style="width: 500px;height: 60px" value="{$info.remark}"></td>
+                    </tr>
+                    <tr><th></th>
+                    <td colspan="1">
+                        <input type="hidden" name="oid" value="{$info.id}"/>
+                    <input type="submit" id="dosubmit" class="smt " value="提交">
+                    </td>
+                </tr>
+                </table>
+            </form>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

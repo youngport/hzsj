@@ -1,0 +1,18 @@
+<include file="public:header" />
+<div class="pad-10" >
+	<volist name="items_cate_list" id="vo">
+	<form id="myform" name="myform" action="{:u('guanggao/guanggao_xgget',array('id'=>$vo['gg_id']))}" method="post" enctype="multipart/form-data" ><br />
+	    <div>编号ID：{$vo.gg_id}</div><br />
+		广告图：<if condition="($vo.gg_imgurl neq '')"><img src="__ROOT__/{$vo.gg_imgurl}"/><else /></if><br /><br />
+		广告图修改：<input type="file" name="img" id="img" class="input-text" size=21 /><br /><br />
+		有效：<input type="radio" name="gg_youxiao" class="radio_style" value="1" checked >
+                            &nbsp;有效&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="gg_youxiao" class="radio_style" value="0" <if condition="($vo.gg_youxiao eq 0)">checked</if>>
+                            &nbsp;无效<br /><br />
+		排序：<input type="text" size="60" width=50px class="textinput requireinput" name="gg_paixu" id="gg_paixu" value="{$vo.gg_paixu}" ><br /><br />
+	    <div><input type="submit" name="dosubmit" value="  保存  " /></div>
+	</form>
+	</volist>
+</div>
+</body>
+</html>

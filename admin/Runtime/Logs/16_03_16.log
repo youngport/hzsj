@@ -1,0 +1,436 @@
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ app_begin ] --START--
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001467s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Run CheckLang Behavior [ RunTime:0.002379s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ app_begin ] --END-- [ RunTime:0.004030s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.005445s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.005730s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.004731s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.003933s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.004664s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.004898s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | NOTIC: [8] Undefined index: admin_info baseAction.class.php 第 80 行.
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | NOTIC: [8] Undefined index: admin_info baseAction.class.php 第 39 行.
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.004886s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | NOTIC: [8] Undefined index: admin_info baseAction.class.php 第 43 行.
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id= LIMIT 1   [ RunTime:0.000344s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.005100s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000503s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.005119s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000313s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.005201s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ view_template ] --START--
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Run LocationTemplate Behavior [ RunTime:0.070180s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ view_template ] --END-- [ RunTime:0.070327s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ view_parse ] --START--
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Run ParseTemplate Behavior [ RunTime:0.129160s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ view_parse ] --END-- [ RunTime:0.129300s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ view_filter ] --START--
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Run ContentReplace Behavior [ RunTime:0.013727s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Run TokenBuild Behavior [ RunTime:0.002231s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Run WriteHtmlCache Behavior [ RunTime:0.001494s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Run ShowRuntime Behavior [ RunTime:0.001939s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ view_filter ] --END-- [ RunTime:0.019814s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ view_end ] --START--
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Run ShowPageTrace Behavior [ RunTime:0.002173s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=login&m=public | INFO: Tag[ view_end ] --END-- [ RunTime:0.002316s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=verify&m=verify&rand=1458122474 | INFO: Tag[ app_begin ] --START--
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=verify&m=verify&rand=1458122474 | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001677s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=verify&m=verify&rand=1458122474 | INFO: Run CheckLang Behavior [ RunTime:0.002905s ]
+[ 2016-03-16T18:01:14+08:00 ] /hz/index.php?a=verify&m=verify&rand=1458122474 | INFO: Tag[ app_begin ] --END-- [ RunTime:0.004829s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Tag[ app_begin ] --START--
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001511s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Run CheckLang Behavior [ RunTime:0.002486s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Tag[ app_begin ] --END-- [ RunTime:0.004224s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.004444s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.004678s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.003693s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.003308s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.003306s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.003586s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.004879s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.000373s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.003700s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000372s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.003515s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000300s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Tag[ view_template ] --START--
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Run LocationTemplate Behavior [ RunTime:0.014819s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Tag[ view_template ] --END-- [ RunTime:0.014937s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Tag[ view_parse ] --START--
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | NOTIC: [8] Undefined variable: lang 61acf2961088e1c8be817cc708b9bd0a.php 第 38 行.
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Run ParseTemplate Behavior [ RunTime:0.029266s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Tag[ view_parse ] --END-- [ RunTime:0.029375s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Tag[ view_filter ] --START--
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Run ContentReplace Behavior [ RunTime:0.001076s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Run TokenBuild Behavior [ RunTime:0.001048s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000855s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Run ShowRuntime Behavior [ RunTime:0.001468s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Tag[ view_filter ] --END-- [ RunTime:0.004757s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Tag[ view_end ] --START--
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Run ShowPageTrace Behavior [ RunTime:0.001246s ]
+[ 2016-03-16T18:01:24+08:00 ] /hz/index.php?a=index&m=index | INFO: Tag[ view_end ] --END-- [ RunTime:0.001358s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Tag[ app_begin ] --START--
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001276s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Run CheckLang Behavior [ RunTime:0.002339s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Tag[ app_begin ] --END-- [ RunTime:0.003814s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.004920s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.005821s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.008835s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.005643s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.004822s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.005801s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.005584s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.000667s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.007346s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000482s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.004195s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000328s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | SQL: select version() as ver [ RunTime:0.000203s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Tag[ view_template ] --START--
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Run LocationTemplate Behavior [ RunTime:0.001462s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Tag[ view_template ] --END-- [ RunTime:0.001583s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Tag[ view_parse ] --START--
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | NOTIC: [8] Undefined variable: sub_menu 39668b7739752a70dba9b6d72f8d0b27.php 第 37 行.
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | NOTIC: [8] Undefined variable: big_menu 39668b7739752a70dba9b6d72f8d0b27.php 第 37 行.
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Run ParseTemplate Behavior [ RunTime:0.045226s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Tag[ view_parse ] --END-- [ RunTime:0.045343s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Tag[ view_filter ] --START--
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Run ContentReplace Behavior [ RunTime:0.001124s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Run TokenBuild Behavior [ RunTime:0.001061s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000856s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Run ShowRuntime Behavior [ RunTime:0.001123s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Tag[ view_filter ] --END-- [ RunTime:0.004442s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Tag[ view_end ] --START--
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Run ShowPageTrace Behavior [ RunTime:0.001277s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=main&m=public | INFO: Tag[ view_end ] --END-- [ RunTime:0.001405s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Tag[ app_begin ] --START--
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001821s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Run CheckLang Behavior [ RunTime:0.003418s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Tag[ app_begin ] --END-- [ RunTime:0.005454s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.004276s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.004585s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.004129s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.004139s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.003521s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.003898s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.004934s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.000422s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.005453s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000769s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.005764s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000492s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.004562s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SELECT `role_id` FROM `sk_admin` WHERE id=1 LIMIT 1   [ RunTime:0.000323s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_access` [ RunTime:0.041563s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SELECT `node_id` FROM `sk_access` WHERE role_id=8  [ RunTime:0.063559s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_node` [ RunTime:0.005592s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | SQL: SELECT `id`,`action`,`action_name`,`module`,`module_name`,`data` FROM `sk_node` WHERE auth_type<>2 AND status=1 AND is_show=0 AND group_id=6 ORDER BY sort DESC  [ RunTime:0.001255s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | NOTIC: [8] Undefined offset: 1 publicAction.class.php 第 26 行.
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Tag[ view_template ] --START--
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Run LocationTemplate Behavior [ RunTime:0.002620s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Tag[ view_template ] --END-- [ RunTime:0.002767s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Tag[ view_parse ] --START--
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | NOTIC: [8] Undefined variable: lang 7cb575b33561d89a8912b1581f6b6fb7.php 第 1 行.
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | NOTIC: [8] Undefined variable: lang 7cb575b33561d89a8912b1581f6b6fb7.php 第 1 行.
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Run ParseTemplate Behavior [ RunTime:0.041269s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Tag[ view_parse ] --END-- [ RunTime:0.041403s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Tag[ view_filter ] --START--
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Run ContentReplace Behavior [ RunTime:0.001212s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Run TokenBuild Behavior [ RunTime:0.001139s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000940s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Run ShowRuntime Behavior [ RunTime:0.001251s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Tag[ view_filter ] --END-- [ RunTime:0.004927s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Tag[ view_end ] --START--
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Run ShowPageTrace Behavior [ RunTime:0.001174s ]
+[ 2016-03-16T18:01:25+08:00 ] /hz/index.php?a=menu&m=public&tag=0 | INFO: Tag[ view_end ] --END-- [ RunTime:0.001297s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Tag[ app_begin ] --START--
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001467s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Run CheckLang Behavior [ RunTime:0.005972s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Tag[ app_begin ] --END-- [ RunTime:0.007663s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.004421s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.004865s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.004144s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.003418s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.003534s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.004713s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.004110s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.000274s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.004999s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000905s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.004621s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000516s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.005058s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SELECT `role_id` FROM `sk_admin` WHERE id=1 LIMIT 1   [ RunTime:0.000314s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SHOW COLUMNS FROM `sk_access` [ RunTime:0.004438s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SELECT `node_id` FROM `sk_access` WHERE role_id=8  [ RunTime:0.001211s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SHOW COLUMNS FROM `sk_node` [ RunTime:0.004407s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | SQL: SELECT `id`,`action`,`action_name`,`module`,`module_name`,`data` FROM `sk_node` WHERE auth_type<>2 AND status=1 AND is_show=0 AND group_id=31 ORDER BY sort DESC  [ RunTime:0.000749s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Tag[ view_template ] --START--
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Run LocationTemplate Behavior [ RunTime:0.001951s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Tag[ view_template ] --END-- [ RunTime:0.002087s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Tag[ view_parse ] --START--
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | NOTIC: [8] Undefined variable: lang 7cb575b33561d89a8912b1581f6b6fb7.php 第 1 行.
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | NOTIC: [8] Undefined variable: lang 7cb575b33561d89a8912b1581f6b6fb7.php 第 1 行.
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Run ParseTemplate Behavior [ RunTime:0.016771s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Tag[ view_parse ] --END-- [ RunTime:0.016884s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Tag[ view_filter ] --START--
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Run ContentReplace Behavior [ RunTime:0.001015s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Run TokenBuild Behavior [ RunTime:0.001008s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000829s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Run ShowRuntime Behavior [ RunTime:0.001288s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Tag[ view_filter ] --END-- [ RunTime:0.004425s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Tag[ view_end ] --START--
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Run ShowPageTrace Behavior [ RunTime:0.001175s ]
+[ 2016-03-16T18:01:27+08:00 ] /hz/index.php?a=menu&m=public&tag=31 | INFO: Tag[ view_end ] --END-- [ RunTime:0.001302s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Tag[ app_begin ] --START--
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001289s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Run CheckLang Behavior [ RunTime:0.002679s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Tag[ app_begin ] --END-- [ RunTime:0.004216s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.005302s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.006141s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.004672s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.004433s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.004410s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.005061s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.005250s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.000408s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.005414s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000589s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.004171s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000340s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | SQL: SHOW COLUMNS FROM `sk_erweima` [ RunTime:0.005803s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | NOTIC: [8] Undefined variable: tj dianpuAction.class.php 第 70 行.
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | SQL: SELECT COUNT(*) AS tp_count FROM `sk_erweima` LEFT JOIN sk_orders on sk_erweima.dingdan=sk_orders.order_id LEFT JOIN sk_role_store on pid=openid and sid=id LIMIT 1   [ RunTime:0.000844s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | NOTIC: [8] Undefined variable: agentid dianpuAction.class.php 第 73 行.
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | NOTIC: [8] Undefined variable: tj dianpuAction.class.php 第 73 行.
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | SQL: SELECT sk_erweima.*,(select count(*) from sk_role_store b where sid=id and b.agentid='' and b.pid=openid) sel FROM `sk_erweima` LEFT JOIN sk_orders on sk_erweima.dingdan=sk_orders.order_id LEFT JOIN sk_role_store c on pid=openid and sid=id ORDER BY `sel` desc,`id` desc LIMIT 0,20   [ RunTime:0.001867s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Tag[ view_template ] --START--
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Run LocationTemplate Behavior [ RunTime:0.019247s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Tag[ view_template ] --END-- [ RunTime:0.019401s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Tag[ view_parse ] --START--
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | NOTIC: [8] Undefined variable: sub_menu 9354bdaba61aa89a5bed8c3560cccae5.php 第 38 行.
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | NOTIC: [8] Undefined variable: big_menu 9354bdaba61aa89a5bed8c3560cccae5.php 第 38 行.
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | NOTIC: [8] Undefined index: dianpname 9354bdaba61aa89a5bed8c3560cccae5.php 第 58 行.
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | NOTIC: [8] Undefined index: dizhi 9354bdaba61aa89a5bed8c3560cccae5.php 第 60 行.
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | NOTIC: [8] Undefined index: openid 9354bdaba61aa89a5bed8c3560cccae5.php 第 62 行.
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | NOTIC: [8] Undefined index: pid 9354bdaba61aa89a5bed8c3560cccae5.php 第 64 行.
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | NOTIC: [8] Undefined variable: agentid 9354bdaba61aa89a5bed8c3560cccae5.php 第 67 行.
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | NOTIC: [8] Undefined variable: openid 9354bdaba61aa89a5bed8c3560cccae5.php 第 107 行.
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | NOTIC: [8] Undefined index: shenhe 9354bdaba61aa89a5bed8c3560cccae5.php 第 125 行.
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Run ParseTemplate Behavior [ RunTime:0.041631s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Tag[ view_parse ] --END-- [ RunTime:0.041766s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Tag[ view_filter ] --START--
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Run ContentReplace Behavior [ RunTime:0.002458s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Run TokenBuild Behavior [ RunTime:0.001304s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000867s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Run ShowRuntime Behavior [ RunTime:0.001262s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Tag[ view_filter ] --END-- [ RunTime:0.006235s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Tag[ view_end ] --START--
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Run ShowPageTrace Behavior [ RunTime:0.001244s ]
+[ 2016-03-16T18:01:28+08:00 ] /hz/index.php?a=geren_dianpu&m=dianpu | INFO: Tag[ view_end ] --END-- [ RunTime:0.001376s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ app_begin ] --START--
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001168s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run CheckLang Behavior [ RunTime:0.002284s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ app_begin ] --END-- [ RunTime:0.003655s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.004354s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.005090s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.003838s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.003399s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.003735s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.003864s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.004178s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.000303s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.004061s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000595s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.004018s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000413s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_erweima` [ RunTime:0.004755s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SELECT COUNT(*) AS tp_count FROM `sk_erweima` LEFT JOIN sk_orders on sk_erweima.dingdan=sk_orders.order_id LEFT JOIN sk_role_store on pid=openid and sid=id WHERE ( `shenhe` = 0 ) LIMIT 1   [ RunTime:0.000509s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | NOTIC: [8] Undefined variable: agentid dianpuAction.class.php 第 73 行.
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SELECT sk_erweima.*,(select count(*) from sk_role_store b where sid=id and b.agentid='' and b.pid=openid) sel FROM `sk_erweima` LEFT JOIN sk_orders on sk_erweima.dingdan=sk_orders.order_id LEFT JOIN sk_role_store c on pid=openid and sid=id WHERE ( `shenhe` = 0 ) ORDER BY `sel` desc,`id` desc LIMIT 0,20   [ RunTime:0.001209s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ view_template ] --START--
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run LocationTemplate Behavior [ RunTime:0.002047s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ view_template ] --END-- [ RunTime:0.002200s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ view_parse ] --START--
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | NOTIC: [8] Undefined variable: sub_menu 9354bdaba61aa89a5bed8c3560cccae5.php 第 38 行.
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | NOTIC: [8] Undefined variable: big_menu 9354bdaba61aa89a5bed8c3560cccae5.php 第 38 行.
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | NOTIC: [8] Undefined variable: agentid 9354bdaba61aa89a5bed8c3560cccae5.php 第 67 行.
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | NOTIC: [8] Undefined variable: openid 9354bdaba61aa89a5bed8c3560cccae5.php 第 107 行.
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run ParseTemplate Behavior [ RunTime:0.028639s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ view_parse ] --END-- [ RunTime:0.028748s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ view_filter ] --START--
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run ContentReplace Behavior [ RunTime:0.001260s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run TokenBuild Behavior [ RunTime:0.001139s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000867s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run ShowRuntime Behavior [ RunTime:0.001098s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ view_filter ] --END-- [ RunTime:0.004650s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ view_end ] --START--
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run ShowPageTrace Behavior [ RunTime:0.001396s ]
+[ 2016-03-16T18:01:31+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ view_end ] --END-- [ RunTime:0.001513s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ app_begin ] --START--
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001160s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run CheckLang Behavior [ RunTime:0.002097s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ app_begin ] --END-- [ RunTime:0.003433s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.004155s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.004384s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.004259s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.003779s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.003538s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.003634s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.004053s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.000327s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.003887s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000387s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.003489s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000262s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SHOW COLUMNS FROM `sk_erweima` [ RunTime:0.004211s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SELECT COUNT(*) AS tp_count FROM `sk_erweima` LEFT JOIN sk_orders on sk_erweima.dingdan=sk_orders.order_id LEFT JOIN sk_role_store on pid=openid and sid=id WHERE ( `shenhe` = 0 ) LIMIT 1   [ RunTime:0.000439s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | NOTIC: [8] Undefined variable: agentid dianpuAction.class.php 第 73 行.
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | SQL: SELECT sk_erweima.*,(select count(*) from sk_role_store b where sid=id and b.agentid='' and b.pid=openid) sel FROM `sk_erweima` LEFT JOIN sk_orders on sk_erweima.dingdan=sk_orders.order_id LEFT JOIN sk_role_store c on pid=openid and sid=id WHERE ( `shenhe` = 0 ) ORDER BY `sel` desc,`id` desc LIMIT 0,20   [ RunTime:0.000675s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ view_template ] --START--
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run LocationTemplate Behavior [ RunTime:0.001507s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ view_template ] --END-- [ RunTime:0.001601s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ view_parse ] --START--
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | NOTIC: [8] Undefined variable: sub_menu 9354bdaba61aa89a5bed8c3560cccae5.php 第 38 行.
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | NOTIC: [8] Undefined variable: big_menu 9354bdaba61aa89a5bed8c3560cccae5.php 第 38 行.
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | NOTIC: [8] Undefined variable: agentid 9354bdaba61aa89a5bed8c3560cccae5.php 第 67 行.
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | NOTIC: [8] Undefined variable: openid 9354bdaba61aa89a5bed8c3560cccae5.php 第 107 行.
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run ParseTemplate Behavior [ RunTime:0.022071s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ view_parse ] --END-- [ RunTime:0.022171s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ view_filter ] --START--
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run ContentReplace Behavior [ RunTime:0.001355s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run TokenBuild Behavior [ RunTime:0.001226s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000926s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run ShowRuntime Behavior [ RunTime:0.001161s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ view_filter ] --END-- [ RunTime:0.004953s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ view_end ] --START--
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Run ShowPageTrace Behavior [ RunTime:0.001030s ]
+[ 2016-03-16T18:01:38+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=5fa138d02e0749a49cca148afe456f23_5a34c68c8d31c204aa05d15dc112dc8d | INFO: Tag[ view_end ] --END-- [ RunTime:0.001119s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ app_begin ] --START--
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001241s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run CheckLang Behavior [ RunTime:0.002423s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ app_begin ] --END-- [ RunTime:0.003912s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.004865s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.004750s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.003917s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.003723s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.003859s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.003737s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.003955s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.000290s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.003767s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000388s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.003725s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000284s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_erweima` [ RunTime:0.004857s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SELECT COUNT(*) AS tp_count FROM `sk_erweima` LEFT JOIN sk_orders on sk_erweima.dingdan=sk_orders.order_id LEFT JOIN sk_role_store on pid=openid and sid=id WHERE ( `shenhe` = 0 ) LIMIT 1   [ RunTime:0.000491s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | NOTIC: [8] Undefined variable: agentid dianpuAction.class.php 第 73 行.
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SELECT sk_erweima.*,(select count(*) from sk_role_store b where sid=id and b.agentid='' and b.pid=openid) sel FROM `sk_erweima` LEFT JOIN sk_orders on sk_erweima.dingdan=sk_orders.order_id LEFT JOIN sk_role_store c on pid=openid and sid=id WHERE ( `shenhe` = 0 ) ORDER BY `sel` desc,`id` desc LIMIT 0,20   [ RunTime:0.000569s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ view_template ] --START--
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run LocationTemplate Behavior [ RunTime:0.001371s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ view_template ] --END-- [ RunTime:0.001473s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ view_parse ] --START--
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | NOTIC: [8] Undefined variable: sub_menu 9354bdaba61aa89a5bed8c3560cccae5.php 第 38 行.
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | NOTIC: [8] Undefined variable: big_menu 9354bdaba61aa89a5bed8c3560cccae5.php 第 38 行.
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | NOTIC: [8] Undefined variable: agentid 9354bdaba61aa89a5bed8c3560cccae5.php 第 67 行.
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | NOTIC: [8] Undefined variable: openid 9354bdaba61aa89a5bed8c3560cccae5.php 第 107 行.
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run ParseTemplate Behavior [ RunTime:0.021809s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ view_parse ] --END-- [ RunTime:0.021911s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ view_filter ] --START--
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run ContentReplace Behavior [ RunTime:0.001034s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run TokenBuild Behavior [ RunTime:0.001054s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000791s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run ShowRuntime Behavior [ RunTime:0.001144s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ view_filter ] --END-- [ RunTime:0.004288s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ view_end ] --START--
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run ShowPageTrace Behavior [ RunTime:0.001062s ]
+[ 2016-03-16T18:01:44+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ view_end ] --END-- [ RunTime:0.001158s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ app_begin ] --START--
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001160s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run CheckLang Behavior [ RunTime:0.002107s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ app_begin ] --END-- [ RunTime:0.003440s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.004842s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.004598s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.003763s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.003268s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.003390s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.003965s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.003747s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.000389s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.004906s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000612s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.004139s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000375s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SHOW COLUMNS FROM `sk_erweima` [ RunTime:0.005002s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SELECT COUNT(*) AS tp_count FROM `sk_erweima` LEFT JOIN sk_orders on sk_erweima.dingdan=sk_orders.order_id LEFT JOIN sk_role_store on pid=openid and sid=id WHERE ( `shenhe` = 0 ) LIMIT 1   [ RunTime:0.000523s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | NOTIC: [8] Undefined variable: agentid dianpuAction.class.php 第 73 行.
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | SQL: SELECT sk_erweima.*,(select count(*) from sk_role_store b where sid=id and b.agentid='' and b.pid=openid) sel FROM `sk_erweima` LEFT JOIN sk_orders on sk_erweima.dingdan=sk_orders.order_id LEFT JOIN sk_role_store c on pid=openid and sid=id WHERE ( `shenhe` = 0 ) ORDER BY `sel` desc,`id` desc LIMIT 0,20   [ RunTime:0.000859s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ view_template ] --START--
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run LocationTemplate Behavior [ RunTime:0.001928s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ view_template ] --END-- [ RunTime:0.002035s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ view_parse ] --START--
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | NOTIC: [8] Undefined variable: sub_menu 9354bdaba61aa89a5bed8c3560cccae5.php 第 38 行.
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | NOTIC: [8] Undefined variable: big_menu 9354bdaba61aa89a5bed8c3560cccae5.php 第 38 行.
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | NOTIC: [8] Undefined variable: agentid 9354bdaba61aa89a5bed8c3560cccae5.php 第 67 行.
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | NOTIC: [8] Undefined variable: openid 9354bdaba61aa89a5bed8c3560cccae5.php 第 107 行.
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run ParseTemplate Behavior [ RunTime:0.021242s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ view_parse ] --END-- [ RunTime:0.021339s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ view_filter ] --START--
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run ContentReplace Behavior [ RunTime:0.001054s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run TokenBuild Behavior [ RunTime:0.001057s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000819s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run ShowRuntime Behavior [ RunTime:0.001580s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ view_filter ] --END-- [ RunTime:0.004779s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ view_end ] --START--
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Run ShowPageTrace Behavior [ RunTime:0.001261s ]
+[ 2016-03-16T18:01:49+08:00 ] /hz/index.php?shenhe=0&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=ad003061cebc1659d551ac468fa5ea84_1fe21cc706d92658d3511708c3aa83dd | INFO: Tag[ view_end ] --END-- [ RunTime:0.001364s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Tag[ app_begin ] --START--
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001600s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Run CheckLang Behavior [ RunTime:0.002782s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Tag[ app_begin ] --END-- [ RunTime:0.004609s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.004240s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.004637s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.003777s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.003731s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.003579s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.003730s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.004016s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.000292s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.003675s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000355s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.003447s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000275s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | SQL: SHOW COLUMNS FROM `sk_erweima` [ RunTime:0.004378s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | SQL: SELECT COUNT(*) AS tp_count FROM `sk_erweima` LEFT JOIN sk_orders on sk_erweima.dingdan=sk_orders.order_id LEFT JOIN sk_role_store on pid=openid and sid=id WHERE ( `shenhe` = 1 ) LIMIT 1   [ RunTime:0.000459s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | NOTIC: [8] Undefined variable: agentid dianpuAction.class.php 第 73 行.
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | SQL: SELECT sk_erweima.*,(select count(*) from sk_role_store b where sid=id and b.agentid='' and b.pid=openid) sel FROM `sk_erweima` LEFT JOIN sk_orders on sk_erweima.dingdan=sk_orders.order_id LEFT JOIN sk_role_store c on pid=openid and sid=id WHERE ( `shenhe` = 1 ) ORDER BY `sel` desc,`id` desc LIMIT 0,20   [ RunTime:0.000946s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Tag[ view_template ] --START--
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Run LocationTemplate Behavior [ RunTime:0.001619s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Tag[ view_template ] --END-- [ RunTime:0.001715s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Tag[ view_parse ] --START--
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | NOTIC: [8] Undefined variable: sub_menu 9354bdaba61aa89a5bed8c3560cccae5.php 第 38 行.
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | NOTIC: [8] Undefined variable: big_menu 9354bdaba61aa89a5bed8c3560cccae5.php 第 38 行.
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | NOTIC: [8] Undefined variable: agentid 9354bdaba61aa89a5bed8c3560cccae5.php 第 67 行.
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | NOTIC: [8] Undefined variable: openid 9354bdaba61aa89a5bed8c3560cccae5.php 第 107 行.
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Run ParseTemplate Behavior [ RunTime:0.025168s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Tag[ view_parse ] --END-- [ RunTime:0.025266s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Tag[ view_filter ] --START--
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Run ContentReplace Behavior [ RunTime:0.001131s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Run TokenBuild Behavior [ RunTime:0.001105s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000838s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Run ShowRuntime Behavior [ RunTime:0.001097s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Tag[ view_filter ] --END-- [ RunTime:0.004420s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Tag[ view_end ] --START--
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Run ShowPageTrace Behavior [ RunTime:0.001177s ]
+[ 2016-03-16T18:01:51+08:00 ] /hz/index.php?shenhe=1&dianpname=&dizhi=&openid=&pid=&m=dianpu&a=geren_dianpu&agentid=&__hash__=f6e9a769554f3dedbcd20a939cf57830_ce848f626a36f70b800247ec3b703dff | INFO: Tag[ view_end ] --END-- [ RunTime:0.001268s ]

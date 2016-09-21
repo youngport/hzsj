@@ -1,0 +1,25 @@
+<include file="public:header" />
+<div class="pad-10" style="margin-left:20px;">
+	<volist name="items_cate_list" id="vo">
+	<form id="myform" name="myform" action="{:u('public/dianpu_shenheget',array('id'=>$vo['id']))}" method="post" enctype="multipart/form-data" ><br />
+	    
+		<img style="max-width:400px;" src="{$vo.dianp_img}" /><br /><br />
+	    <div>微信昵称：{$vo.wei_nickname}</div><br />
+	    <div>ID：{$val.open_id}</div><br />
+		店铺图修改：<input type="file" name="img" id="img" class="input-text" size=21 /><br /><br />
+		店铺名称：<input type="text" size="60"  class="textinput requireinput" name="dianpname" id="dianpname" value="{$vo.dianpname}"   placeholder="请输入经纬度坐标"><br /><br />
+		店铺联系方式：<input type="text" size="60"  class="textinput requireinput" name="dianp_lxfs" id="dianp_lxfs" value="{$vo.dianp_lxfs}"   placeholder="请输入经纬度坐标"><br /><br />
+		经纬坐标：<input type="text" size="60"  class="textinput requireinput" name="zuobiao" id="zuobiao" value="{$vo.zuobiao}"   placeholder="请输入经纬度坐标"><br /><br />
+		详细地址：<input type="text" size="60"  class="textinput requireinput" name="xxdizhi" id="xxdizhi" value="{$vo.xxdizhi}"   placeholder="请输入详细地址"><br /><br />
+	    <div><input type="radio" name="shenhe" class="radio_style" value="0" checked >
+                     &nbsp;待审&nbsp;&nbsp;&nbsp;
+                     <input type="radio" name="shenhe" class="radio_style" value="1" <if condition="$vo.shenhe eq 1 ">checked</if>>
+                      &nbsp;通过&nbsp;&nbsp;&nbsp;
+                     <input type="radio" name="shenhe" class="radio_style" value="2" <if condition="$vo.shenhe eq 2 ">checked</if>>
+                      &nbsp;不通过<br /><br />
+	    <div><input type="submit" name="dosubmit" value="  保存  " /></div>
+	</form>
+	</volist>
+</div>
+</body>
+</html>

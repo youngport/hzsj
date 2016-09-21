@@ -1,0 +1,103 @@
+<tagLib name="wego" />
+<include file="public:header" />
+
+<form action="{:u('lefen/edit')}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+    <div class="pad-10">
+        <div class="col-tab">
+            <div id="div_setting_1" class="contentList pad-10">
+                <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                    <input type="hidden" name="id" value="{$data['id']}"/>
+                    <neq name='table' value='sms'>
+                    <tr>
+                        <th>标题:</th>
+                        <td><input type="text" name="title" id="title" class="input-text" value="{$data['biaoti']}" size="30"></td>
+                    </tr>
+                    <tr>
+                        <th>分类:</th>
+                        <td>
+                            <select name="fenlei">
+                                <option value="0" <if condition="$data['fenlei'] eq -0">selected="selected"</if>>--请选择--</option>
+                                <option value="1" <if condition="$data['fenlei'] eq 1">selected="selected"</if>>最优惠</option>
+                                <option value="2" <if condition="$data['fenlei'] eq 2">selected="selected"</if>>新入手</option>
+                                <option value="3" <if condition="$data['fenlei'] eq 3">selected="selected"</if>>爆款</option>
+                                <option value="4" <if condition="$data['fenlei'] eq 4">selected="selected"</if>>热推 </option>
+                                <option value="5" <if condition="$data['fenlei'] eq 5">selected="selected"</if>>最爱</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>乐分享插入商品:</th>
+                        <td><input type='text' name='good' id='good' placeholder="输入商品ID或名称"/><input type='button' value='插入' id='search'/></td>
+                    </tr>
+                    </neq>
+                     <tr>
+                        <th>上传图片:</th>
+                        <td>
+                            <input type="file" name="img1" id="img1" class="input-text"  style="width:200px;margin:5px 0;"  /><br/>
+                            <input type="file" name="img2" id="img2" class="input-text"  style="width:200px;margin:5px 0;" /><br/>
+                            <input type="file" name="img3" id="img3" class="input-text"  style="width:200px;margin:5px 0;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>内容:</th>
+                        <td>            	
+                    <wego:editor id="contents" name="contents" type="KINDEDITOR" style="width:70%;height:350px;" >{$data['neirong']}</wego:editor>
+                    </td>
+                    </tr>
+                    <tr>
+                        <th>内容:</th>
+                        <td>            	
+                            <textarea name="showContent" id="showContent" row="60" cols="90" >{$data['show_share']}</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>{:L('status')} :</th>
+                        <td><input type="radio" name="status" class="radio_style" value="1" <if condition="$data['shenhe'] eq 1">checked</if>>
+                            &nbsp;已审核&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="status" class="radio_style" value="0" <if condition="$data['shenhe'] eq 0">checked</if>>
+                            &nbsp;待审核
+                        </td>
+                    </tr>
+<!--                    <tr>
+                        <th>排序 :</th>
+                        <td>
+                            <input type="text" name="orders" id="" class="input-text" value="{$data['orders']}"  style="width:200px;margin:5px 0;"  />
+                        </td>
+                    </tr>-->
+                    <tr>
+                        <th>是否置顶 :</th>
+                        <td><input type="radio" name="zhiding" class="radio_style" value="1" <if condition="$data['zhiding'] eq 1">checked</if>>
+                            &nbsp;置顶&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="zhiding" class="radio_style" value="0" <if condition="$data['zhiding'] eq 0">checked</if>>
+                            &nbsp;不置顶
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>置顶结束时间：</th>
+                        <td><input type="text"  style="width:200px;margin:5px 0;"  class="input-text" name="zhiding_time" id="zhiding_time" value="{$data['zhiding_time']|date='Y-m-d H:i:s',###}"  onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss',startDate:'1980-05-01',alwaysUseStartDate:true})"  placeholder="置顶结束日期"></td>   
+                    </tr>
+                </table>
+            </div>
+            <div class="bk15"></div>
+            <div class="btn"><input type='hidden' name='table' value="{$table}"/><input type="submit" value="{$Think.lang.submit}" onclick="return submitFrom();" name="dosubmit" class="button" id="dosubmit"></div>
+        </div>
+    </div>
+</form>
+</body>
+<script>
+    window.K = KindEditor;
+    var e = K.create('#intro', {allowFileManager: true});
+    $('#search').click(function () {
+        var good = $('#good').val();
+        var url = 'index.php?a=search&m=goods';
+        $.post(url, {good: good}, function (data) {
+            data = eval('(' + data + ')');
+            if (data.status == 1) {
+                e.insertHtml("</br><a href='http://m.hz41319.com/wei/main/goods/goods.php?id=" + data.data.id + "'><img src='/" + data.data.img + "' style='width:100%'/></a></br>");
+            } else {
+                alert('没有这个商品');
+            }
+        });
+    });
+</script>
+</html>

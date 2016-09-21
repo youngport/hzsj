@@ -1,0 +1,76 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<div class="pad-10" >
+    <form name="searchform" action="" method="get" >
+        <table width="100%" cellspacing="0" class="search-form">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="explain-col">
+                            &nbsp;用户 :
+                            <input type="text" name="open_id" placeholder="输入用户ID" value="{$get.open_id}"/>
+                            &nbsp;使用时间：
+                            <wego:calendar name="start_time">{$get.start_time}</wego:calendar>
+                            -      
+                            <wego:calendar name="end_time" more="true">{$get.end_time}</wego:calendar>
+                            <input type="hidden" name="m" value="mcoupon" />
+                            <input type="submit" name="search" class="button" value="搜索" />
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <form id="myform" name="myform" action="{:u('mcoupon/delete')}" method="post" onsubmit="return check();">
+        <div class="table-list">
+            <table width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th width=50>ID</th>
+                        <th width=25><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+                        <th>用户</th>
+                        <th>原始金额</th>
+                        <th>现金券余额</th>
+                        <th>有效开始时间</th>
+                        <th>有效结束时间</th>
+                        <th>添加时间</th>
+                        <th>状态</th>
+                        <th>发券人</th>
+                        <th width="80">编辑</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <volist name="list" id="val" >
+                    <tr>       
+                        <td align="center">{$val.id}</td>
+                        <td align="center">
+                            <input type="checkbox" value="{$val.id}" name="id[]">
+                        </td>
+                        <td align="center">{$val.open_id}</td>
+                        <td align="center">{$val.y_money}元</td>
+                        <td align="center">{$val.money}元</td>
+                        <td align="center">{$val.start_time|date='Y-m-d H:i:s',###}</td>
+                        <td align="center">{$val.end_time|date='Y-m-d H:i:s',###}</td>
+                        <td align="center">{$val.add_time|date='Y-m-d H:i:s',###}</td>
+                        <td align="center"><switch name="val.status"><case value="0">停用</case><case value="1">正常</case></switch></td>
+                         <td align="center">{$val.add_name}</td>
+                    <td align="center"><a class="blue" href="{:u('mcoupon/edit', array('id'=>$val['id']))}">编辑</a></td>
+                </volist>
+                </tbody>
+            </table>
+
+            <div class="btn">
+                <label for="check_box" style="float:left;">{$Think.lang.select_all}/{$Think.lang.cancel}</label>
+                <input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin:0 10px 0 10px;"/>
+
+                <div id="pages">{$page}</div>
+            </div>
+
+        </div>
+    </form>
+</div>
+<script language="javascript">
+</script>
+</body>
+</html>

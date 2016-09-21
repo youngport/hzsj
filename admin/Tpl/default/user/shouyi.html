@@ -1,0 +1,76 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<script type="text/javascript" src="__ROOT__/statics/js/jquery/plugins/jquery.imagePreview.js"></script>
+<div class="pad-10" >
+    <form name="searchform" action="" method="get" >
+        <table width="100%" cellspacing="0" class="search-form">
+            <tbody>
+            <tr>
+                <td>
+                    <div class="explain-col">
+                    购买人：
+                        <input name="buyer_name" type="text" class="input-text" size="15" value="{$buyer_name}" /> &nbsp;
+                        openid：
+                        <input name="buyer_id" type="text" class="input-text" size="15" value="{$buyer_id}" /> &nbsp;
+                        下单时间：
+                        <input id="time_start" style="width: 120px;" type="text"  value="{$start_time}" placeholder="选择下单起始时间" onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd',minDate:'2015-01-01'})"
+                               name="start_time" />-到-<input id="time_end" style="width: 120px;" type="text"
+                                                           onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd',minDate:'2015-01-01'})"
+                                                           name="end_time"  value="{$end_time}" placeholder="选择下单截止时间" />
+                        &nbsp;订单流水号 :
+                       <input name="order_sn" type="text" class="input-text" size="15" value="{$order_sn}" />
+                        &nbsp;排序 :
+                        <select name="order">
+                            <option value="">请选择</option>
+                            <option value="pop">收益</option>
+                            <option value="order_amount">订单金额</option>
+                        </select>
+                        <input type="hidden" name="m" value="user" />
+                        <input type="hidden" name="a" value="shouyi" />
+                        <input type="hidden" name="openid" value="{$openid}" />
+                        <input type="submit" name="search" class="button" value="搜索" />
+                        <input type="submit" name="daochu" class="button" value="搜索结果导出Excel" />
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+    <form id="myform" name="myform"  method="post"  >
+        <div class="table-list">
+            <table width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th  width="80">订单流水号</th>
+                    <th   width="80">购买人 </th>
+                    <th  width="50">订单总价</th>
+                    <th width=110>付款时间</th>
+                    <th width=110>收益</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="list" id="val" >
+                    <tr>
+                        <td align="center">  <a href="{:U('orders/detail',array('id'=>$val['order_id']))}">{$val.order_sn}</a></td>
+                        <td align="center">{$val.buyer_name}</td>
+                        <td align="center">{$val.order_amount} </td>
+                        <td align="center">{$val.shijianc|date='Y-m-d H:i:s',###} </td>
+                        <td align="center">{$val.pop} </td>
+                </volist>
+                </tbody>
+            </table>
+
+            <div class="btn">
+                <div id="pages">{$page}</div>
+            </div>
+        </div>
+    </form>
+</div>
+<script language="javascript">
+    $("select[name='order']").find('option').each(function(){
+        if($(this).val()=='{$order}')
+            $(this).attr("selected",true);
+    });
+</script>
+</body>
+</html>

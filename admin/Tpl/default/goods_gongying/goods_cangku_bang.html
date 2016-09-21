@@ -1,0 +1,13 @@
+<include file="public:header" />
+<div class="pad-10" >
+	<volist name="items_cate_list" id="vo">
+		<form id="myform" name="myform" action="{:u('goods_cangku_bangget',array('goods_id'=>$vo['id']))}" method="post"><br />
+			<div><img src="{$vo.simg}" width="200" class="preview" bimg="{$vo.img}"></div><br />
+			<div>商品名称：{$vo.good_name}</div><br />
+		    <div>仓库编号：<input type="text" name="cangku_bianhao" id="cangku_bianhao" ></div><br />
+		    <div> <input type="submit" name="dosubmit" value="确认绑定" /></div>
+		</form>
+	</volist>
+</div>
+</body>
+</html>

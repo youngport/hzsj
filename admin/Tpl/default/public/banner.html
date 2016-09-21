@@ -1,0 +1,53 @@
+
+<include file="public:header" />
+<div class="pad-10" >
+    <form name="searchform" action="{:u('items_cate/mp_index')}" method="get" >
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <div class="explain-col">
+				<!--  &nbsp;审核通过 :
+                <select name="status" id='status'>
+            	<option value="-1" <if condition="$status eq -1">selected="selected"</if>>-请选择-</option>
+                <option value="1" <if condition="$status eq 1">selected="selected"</if>>通过</option>
+                <option value="0" <if condition="$status eq 0">selected="selected"</if>>待审</option>
+                </select>
+                &nbsp;店铺名称关键字 :
+                <input name="keyword" type="text" id="tex" class="input-text" size="25" value="{$keyword}" />
+                <input type="hidden" name="m" value="mp_index" /> -->
+                <span  class="smt" style="display:inline-block;float:none;" onclick="sousuo()">添加</span>
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+    <thead>
+		<tr><th>ID</th><th>banner图片</th><th>links链接</th><th>排序</th><th>操作</th></tr>
+    </thead>
+    <foreach name="items_cate_list" item="vo">
+		<tr>
+			<td align="center">{$vo.id}</td>
+			<td align="center"><img width=100 src="{$vo.imgurl}" /></td>
+			<td align="center"><if condition="$vo.links eq '' ">--<else />{$vo.links}</if></td>
+			<td align="center">{$vo.paixu}</td>
+			<td align="center"><a href="{:U('public/banner_xg',array('id'=>$vo['id']))}">编辑</a> / <a href="{:U('public/banner_del',array('id'=>$vo['id']))}">删除</a></td>
+		</tr>
+	</foreach>
+	</table><br />
+	<div class="btn">
+    	<div id="pages">{$page}</div>
+    </div>
+    </div>
+</div>
+
+<script>
+function sousuo(){
+	window.location.href='__GROUP__?a=banner_add&m=public';
+}
+</script>
+</body>
+</html>

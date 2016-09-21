@@ -1,0 +1,27 @@
+<include file="public:header" />
+<div class="pad-10" style="margin-left:20px;">
+    <volist name="items_cate_list" id="val" >
+	<form id="myform" name="myform" action="{:u('jiamengshenhe_get',array('dpgou_id'=>$val['dpgou_id']))}" method="post" enctype="multipart/form-data" ><br />
+	    
+	    <div>微信昵称：<input type="text" name="wei_nickname" value="{$val.wei_nickname}"/></div><br />
+	    <div>ID：<input type="text" name="open_id" value="{$val.open_id}" readOnly="true"/></div><br />
+		姓名：{$val.name}<br /><br />
+		手机号码：<input type="text" name="mobile" value="{$val.hsouji}" readOnly="true"/><br /><br />
+		微信号：{$val.weixinqq}<br /><br />
+		地址：{$val.jiameng_dizhi}<br /><br />
+		代理人名称：{$val.daili_name}<br /><br />
+		代理人号码：{$val.daili_haoma}<br /><br />
+		店招：<img src="{$val.dianzhao}" style="max-width:500px;max-height:500px"/><br /><br />
+		营业执照：<img src="{$val.business}" style="max-width:500px;max-height:500px"/><br /><br />
+	    <div><input type="radio" name="jiamengshenhe" class="radio_style" value="0" <if condition="$val.jiamengshenhe eq 0 ">checked</if>>
+                     &nbsp;待审&nbsp;&nbsp;&nbsp;
+                     <input type="radio" name="jiamengshenhe" class="radio_style" value="1" <if condition="$val.jiamengshenhe eq 1 ">checked</if>>
+                     &nbsp;通过&nbsp;&nbsp;&nbsp;
+                     <input type="radio" name="jiamengshenhe" class="radio_style" value="2" <if condition="$val.jiamengshenhe eq 2 ">checked</if>>
+                      &nbsp;不通过&nbsp;&nbsp;&nbsp;<br /><br />
+	    <div><input type="submit" name="dosubmit" value="  保存  " /></div>
+	</form>
+	</volist>
+</div>
+</body>
+</html>

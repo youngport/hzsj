@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<h3 style="text-align:center">更新数据</h3>
+<table border="1" style="width:60%;margin-left:20%">
+<tr><th>序列号</th><th>订单号</th><th>操作</th></tr>
+
+<foreach name="data" item="value">	
+	<tr align="center">
+		<td><input type="checkbox" name="id[]" value="{$value['orderCode']}"  class='chooseId'/></td>
+		<td>
+		    {$value['orderCode']}
+		</td>
+		<td>
+		    <a href="{:u('order/edit',array('orderCode'=>$value['orderCode']))}">更新订单数据</a>
+		</td>
+	</tr>
+</foreach>
+<tr>
+	<td>
+	  <input type="checkbox" id="choose"/>全选&nbsp;&nbsp;&nbsp;&nbsp;
+      <a  href="javascript:void(0)" class="preview" data-id="1">全部更新</a>
+	</td>
+</tr>
+</table>
+<div style="text-align: center;">{$pageinfo}</div>
+</body>
+<script language="javascript" type="text/javascript" src="__ROOT__/statics/js/jquery/jquery-2.0.3.min.js"></script>
+<script>
+$(function(){
+	$("#choose").click(function(){
+		var status=this.checked;
+		$(".chooseId").prop("checked",status);
+	})
+	$(".preview").click(function(){
+		if($(this).attr("data-id")==1){
+			var id='';
+			$(".chooseId:checked").each(function(){
+				id+=$(this).val()+",";
+			})
+			if(id==''){
+				alert("请选择至少一项");
+				return false;
+			}
+		}
+		$.get("{:u('order/edits')}", {orderCode:id},function(data){
+		   alert(data)
+		});
+	})
+
+})	
+
+</script>
+</html>

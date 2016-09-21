@@ -1,0 +1,110 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<div class="pad-10" >
+    <form name="searchform" action="" method="get" >
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <div class="explain-col">
+            	{:L('time')}：         
+				<wego:calendar name="time_start">{$time_start}</wego:calendar>
+                -      
+				<wego:calendar name="time_end" more="true">{$time_end}</wego:calendar>
+                &nbsp;用户 :
+                <input type="text" name="rec" placeholder="输入用户ID" value="{$rec}"/>
+                &nbsp;关键字 :
+                <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
+                <input type="hidden" name="m" value="message" />
+                <input type="hidden" name="table" value="{$Think.get.table}" />
+                <input type="submit" name="search" class="button" value="搜索" />
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+
+    <form id="myform" name="myform" action="{:u('message/delete')}" method="post" onsubmit="return check();">
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th width=50>ID</th>
+                <th width=25><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+				<eq name='table' value='message'>
+                <th width=100>{:L('文章主显示图')}</th>               
+                <th width=280>{:L('title')}</th>
+				<else/>
+				<th width=280>内容</th>
+				</eq>
+                <th width=100>目标用户</th>
+                <th width=150>{:L('time')}</th>
+                <th width="40">{:L('status')}</th>
+				<th width="80">编辑</th>
+            </tr>
+        </thead>
+    	<tbody>
+        <volist name="list" id="val" >
+        <tr>       
+		 	<td align="center"><a href="{:u('message/edit', array('id'=>$val['id']))}">{$val.id}</a></td> 	
+            <td align="center">
+           	 <input type="checkbox" value="{$val.id}" name="id[]">
+			</td>
+			<eq name='table' value='message'>
+            <td align="center"><neq name='val.img' value=''><img src="{$val.img}" style="width:200px;height:60px;"/></neq></td>          
+            <td align="center"><a class="blue" href="{:u('message/edit', array('id'=>$val['id']))}">{$val.title}</a></td>
+			<else/>
+			<td align="center"><a class="blue" href="{:u('message/edit', array('id'=>$val['id']))}">{$val.intro}</a></td>
+			</eq>
+            <td align="center"><b><eq name='val.rec' value=''>全体<else/>{$val.rec}</eq></b></td>
+            <td align="center">{$val.create_time|date="Y-m-d H:i:s",###}</td>
+      		<td align="center" onclick="status({$val.id})" id="status_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.status}.gif" /></td>
+			<td align="center"><a class="blue" href="{:u('message/edit', array('id'=>$val['id'],'table'=>$table))}">编辑</a></td>
+        </volist>
+    	</tbody>
+    </table>
+
+    <div class="btn">
+    	<label for="check_box" style="float:left;">{$Think.lang.select_all}/{$Think.lang.cancel}</label>
+		<input type='hidden' name='table' value="{$table}"/>
+    	<input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin:0 10px 0 10px;"/>
+    	
+    	<div id="pages">{$page}</div>
+    </div>
+
+    </div>
+    </form>
+</div>
+<script language="javascript">
+ function edit(id, name) {
+	var lang_edit = "编辑资讯";
+	window.top.art.dialog({id:'edit'}).close();
+	window.top.art.dialog({title:lang_edit+'--'+name,id:'edit',iframe:'?m=article&a=edit&id='+id,width:'550',height:'400'}, function(){var d = window.top.art.dialog({id:'edit'}).data.iframe;d.document.getElementById('dosubmit').click();return false;}, function(){window.top.art.dialog({id:'edit'}).close()});
+}
+
+var lang_cate_name = "资讯标题";
+function check(){
+	if($("#myform").attr('action') != '{:u("article/sort_order")}') {
+		var ids='';
+		$("input[name='id[]']:checked").each(function(i, n){
+			ids += $(n).val() + ',';
+		});
+
+		if(ids=='') {
+			window.top.art.dialog({content:lang_please_select+lang_cate_name,lock:true,width:'200',height:'50',time:1.5},function(){});
+			return false;
+		}
+	}
+	return true;
+}
+
+function status(id){
+    $.get("{:u('message/status')}", { id: id}, function(jsondata){
+		var return_data  = eval("("+jsondata+")");
+		$("#status_"+id+" img").attr('src', '__ROOT__/statics/images/status_'+return_data.data+'.gif')
+	}); 
+}
+</script>
+</body>
+</html>

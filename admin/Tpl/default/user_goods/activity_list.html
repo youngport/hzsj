@@ -1,0 +1,51 @@
+
+<include file="public:header" />
+     <div class="col-tab">
+      <ul class="tabBut cu-li">
+        <li class="on">商品列表</li>
+      </ul>
+      </div>
+
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th width=200>轮播图1(精选图)</th>            
+                <th width=200>轮播图2(购买会员规则)</th>
+                <th width=200>轮播图3(9.9购买会员商品)</th>
+                <th width=200>99会员区</th>             
+                <th width=200>199会员区</th>         
+                <th width=200>200以上会员区</th>
+                <th width="100">操作</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+        <tr>       
+            <td align="center">
+                <a class="MagicZoomPlus" href='{$data.img_path1}'><img id="img_show" src="{$data.img_path1}"  style="width:200px;" />
+            </td>   
+            <td align="center">
+                <a class="MagicZoomPlus" href='{$data.img_path2}'><img id="img_show" src="{$data.img_path2}"  style="width:200px;" />
+            </td>        
+            <td align="center">
+                <a class="MagicZoomPlus" href='{$data.img_path3}'><img id="img_show" src="{$data.img_path3}"  style="width:200px;" />
+            </td>
+            <td align="center">
+                <a class="MagicZoomPlus" href='{$data.img_path4}'><img id="img_show" src="{$data.img_path4}"  style="width:200px;" />
+            </td>
+            <td align="center">
+                <a class="MagicZoomPlus" href='{$data.img_path5}'><img id="img_show" src="{$data.img_path5}"  style="width:200px;" />
+            </td>
+            <td align="center">
+                <a class="MagicZoomPlus" href='{$data.img_path6}'><img id="img_show" src="{$data.img_path6}"  style="width:200px;" />
+            </td> 
+            <td align="center"><a href="{:U('user_goods/activity_modify')}"><font color="red">修改</font></a></td>       
+        </tbody>
+    </table>
+
+    </div>
+
+</body>
+</html>

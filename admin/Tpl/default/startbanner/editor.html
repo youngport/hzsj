@@ -1,0 +1,94 @@
+<tagLib name="wego" />
+<include file="public:header" />
+
+<form action="{:u('startbanner/editor')}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+    <div class="pad-10">
+        <div class="col-tab">
+            <div id="div_setting_1" class="contentList pad-10">
+                <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                    <tr>
+                        <th width="100">启动页名称:</th>
+                        <td><input type="text" name="banner_name" id="banner_name" class="input-text" size="60" value="{$info.banner_name}"></td>
+                    </tr>
+                    
+                    <tr>
+                        <th>URL:</th>
+                        <td><input type="text" name="url" id="url" class="input-text" size="60" value="{$info.url}" ></td>
+                    </tr>
+
+                    <tr>
+                        <th>使用范围:</th>
+
+                        <td><input type="radio" name="type" id="type" class="radio_style" value="0" <?php echo $info['type'] ? '' : "checked = 'checked'" ?> />商城&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="type" id="type" class="radio_style" value="1"  <?php echo $info['type'] ? "checked = 'checked'" : '' ?> /> App
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>是否禁用:</th>
+                        <td><input type="radio" name="disable" id="type" class="radio_style" value="0" <?php echo $info['disable'] ? '' : "checked = 'checked'" ?> />否&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="disable" id="type" class="radio_style" value="1" <?php echo $info['disable'] ? "checked = 'checked'" : '' ?> />是
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>启动图片:</th>
+                        <td>
+                            <img src="{$info.path}"  style="width:200px;"  alt="点击放大">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>修改图片:</th>
+                        <td>
+                            <input type="file" name="path" id="path" class="input-text" size=21 />
+                        </td>
+                    </tr>
+            
+
+
+                </table>
+            </div>
+            <div class="bk15"></div>
+            <div class="btn"><input type="submit" value="{$Think.lang.submit}" onclick="return submitFrom();" name="dosubmit" class="button" id="dosubmit"></div>
+        </div>
+    </div>
+        <input type="hidden" name="id" value="{$info.id}"> 
+</form>
+
+<script>
+    $(function () {
+        $.formValidator.initConfig({
+            formid: "myform",
+            autotip: true,
+            onerror: function (msg, obj) {
+                window.top.art.dialog({
+                    content: msg,
+                    lock: true,
+                    width: '200',
+                    height: '50'},
+                        function ()
+                        {
+                            this.close();
+                            $(obj).focus();
+                        })
+            }});
+
+
+        $("#banner_name").formValidator({
+            onshow: "不能为空", onfocus: "启动页名称不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入启动页名称"
+        });
+
+        $("#url").formValidator({
+            onshow: "不能为空", onfocus: "url不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请填写url"
+        });
+
+
+    });
+</script>
+</body>
+</html>

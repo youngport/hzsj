@@ -1,0 +1,14 @@
+<include file="public:header" />
+<div class="pad-10" >
+	<form id="myform" name="myform" action="{:u('guanggao/guanggao_addget')}" method="post" enctype="multipart/form-data" ><br />
+		广告图：<input type="file" name="img" id="img" class="input-text" size=21 /><br /><br />
+		有效：<input type="radio" name="gg_youxiao" class="radio_style" value="1" checked >
+                            &nbsp;有效&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="gg_youxiao" class="radio_style" value="0" >
+                            &nbsp;无效<br /><br />
+                            排序：<input type="text" size="60" width=50px class="textinput requireinput" name="gg_paixu" id="gg_paixu" value="0" ><br /><br />
+	    <div><input type="submit" name="dosubmit" value="  保存  " /></div>
+	</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<tagLib name="wego" />
+<include file="public:header" />
+
+<form action="{:u('intelligentterminal/editor')}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+    <div class="pad-10">
+        <div class="col-tab">
+            <div id="div_setting_1" class="contentList pad-10">
+                <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                    <tr>
+                        <th width="100">商品名称:</th>
+                        <td><input type="text" name="good_name" id="good_name" class="input-text" value="{$info.good_name}" size="60" ></td>
+                    </tr>
+                    <tr>
+                        <th>商品价格:</th>
+                        <td><input type="text" name="good_price" id="good_price" class="input-text" value="{$info.good_price}" size="60"></td>
+                    </tr>
+                    <tr>
+                        <th>邮费:</th>
+                        <td><input type='text' name='good_postage' id='good_postage' value="{$info.good_postage}" size="60"/></td>
+                    </tr>
+
+                    <tr>
+                        <th>商品详情:</th>
+                        <td><img src="{$info.good_detail_img}"  style="width:200px;"  alt="点击放大"></td>
+                    </tr>
+
+                    <tr>
+                        <th>商品详情:</th>
+                        <td><input type='file' name='good_detail_img' id='good_detail_img'  size="60" /></td>
+                    </tr>
+
+                    <tr>
+                        <th>商品轮播图1:</th>
+                        <td><img src="{$info.carousel1}"  style="width:200px;"  alt="点击放大"></td>
+                    </tr>
+
+                    <tr>
+                        <th>商品轮播图1:</th>
+                        <td><input type='file' name='carousel1' id='carousel1'  size="60" /></td>
+                    </tr>
+
+                    <tr>
+                        <th>商品轮播图2:</th>
+                        <td><img src="{$info.carousel2}"  style="width:200px;"  alt="点击放大"></td>
+                    </tr>
+
+                    <tr>
+                        <th>商品轮播图2:</th>
+                        <td><input type='file' name='carousel2' id='carousel2'  size="60" /></td>
+                    </tr>
+                    
+                    <tr>
+                        <th>商品轮播图3:</th>
+                        <td><img src="{$info.carousel3}"  style="width:200px;"  alt="点击放大"></td>
+                    </tr>
+
+                    <tr>
+                        <th>商品轮播图3:</th>
+                        <td><input type='file' name='carousel3' id='carousel3'  size="60" /></td>
+                    </tr>
+
+                </table>
+            </div>
+            <input type="hidden" name="id" value="{$info.id}">
+            <input type="hidden" name="carousel_id" value="{$info.carousel_id}">
+            <div class="bk15"></div>
+            <div class="btn"><input type="submit" value="{$Think.lang.submit}" onclick="return submitFrom();" name="dosubmit" class="button" id="dosubmit"></div>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(function () {
+        $.formValidator.initConfig({
+            formid: "myform",
+            autotip: true,
+            onerror: function (msg, obj) {
+                window.top.art.dialog({
+                    content: msg,
+                    lock: true,
+                    width: '200',
+                    height: '50'},
+                        function ()
+                        {
+                            this.close();
+                            $(obj).focus();
+                        })
+            }});
+        $("#good_price").formValidator({
+            onshow: "不能为空", onfocus: "商品价格不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入商品价格"
+        });
+
+        // $("#mac_address").formValidator({
+        //     onshow: "不能为空", onfocus: "mac地址不能为空哦"
+        // }).inputValidator({
+        //     min: 1, onerror: "请输入mac地址"
+        // });
+
+        $("#good_name").formValidator({
+            onshow: "不能为空", onfocus: "商品名称不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入商品名称"
+        });
+
+        $("#good_postage").formValidator({
+            onshow: "不能为空", onfocus: "邮费不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入邮费"
+        });
+  
+    });
+</script>
+</body>
+</html>

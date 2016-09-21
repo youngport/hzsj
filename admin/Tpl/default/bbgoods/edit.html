@@ -1,0 +1,35 @@
+<include file="public:header"/>
+
+<div class="pad_10">
+    <div class="pad-10">
+        <div class="col-tab">
+            <ul class="tabBut cu-li">
+                <li id="tab_setting_1" class="on" onclick="SwapTab('setting','on','',3,1);">商品信息</li>
+            </ul>
+            <div id="div_setting_1" class="contentList pad-10" >
+                <form method="post" action="{:U('bbgoods/editchuli')}">
+                <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                    <tr>
+                        <th width="150">是否在BB商城上架:</th>
+                        <td colspan="3"><input type="radio" name="bbshop" value="0"/>&nbsp;否</td>
+                    </tr>                  
+                </tr>
+                    <tr><th></th>
+                    <td colspan="1">
+                        <input type="hidden" name="bid" value="{$id}"/>
+                    <input type="submit" id="dosubmit" class="smt " value="提交">
+                    </td>
+                </tr>
+                </table>
+            </form>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

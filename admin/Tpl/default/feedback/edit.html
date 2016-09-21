@@ -1,0 +1,105 @@
+<include file="public:header"/>
+
+<div class="pad_10">
+    <form action="{:u('feedback/edit')}" method="post" name="myform" id="myform" >
+        <div class="pad-10">
+            <div class="col-tab">
+                <ul class="tabBut cu-li">
+                    <li id="tab_setting_1" class="on">客户反馈意见</li>
+                </ul>
+                <div id="div_setting_1" class="contentList pad-10">
+                    <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                        <tr>
+                            <th width="60">反馈主题:</th>
+                            <td colspan="3"> {$info.title}</td>
+                        </tr>
+                        <tr>
+                            <th width="60">单位名称:</th>
+                            <td> {$info.corpname}</td>
+                            <th width="60">联系人:</th>
+                            <td> {$info.linker}</td>
+                        </tr>
+                        <tr>
+                            <th width="60">单位地址:</th>
+                            <td colspan="3"> {$info.address}</td>
+                        </tr>
+                        <tr>
+                            <th width="60">联系电话:</th>
+                            <td> {$info.mobile}</td>
+                            <th width="60">传真号码:</th>
+                            <td> {$info.fax}</td>
+                        </tr>
+                        <tr>
+                            <th width="80">电子邮箱:</th>
+                            <td >{$info.email}</td>
+                            <th width="80">邮编号码:</th>
+                            <td >{$info.zipcode}</td>
+                        </tr>
+                        <tr>
+                            <th width="60">反馈内容 :</th>
+                            <td colspan="3">{$info.content}</td>
+                        </tr>
+                        <tr>
+                            <th width="80">审核状态:</th>
+                            <td ><select name="status" id="status">
+                                <option value="-1">-请选择-</option>
+                                <option value="0"
+                                <if condition="$info.status eq 0">selected="selected"</if>
+                                >未审核</option>
+                                <option value="1"
+                                <if condition="$info.status eq 1">selected="selected"</if>
+                                >已审核</option>
+                                <option value="2"  <if condition="$info.status eq 2">selected="selected"</if>
+                                >拒绝</option>
+                            </select></td>
+                            <th width="80">回访状态:</th>
+                            <td ><select name="visit_status" id="visit_status">
+                                <option value="-1">-请选择-</option>
+                                <option value="1"
+                                <if condition="$info.visit_status eq 1">selected="selected"</if>
+                                >已回访</option>
+                                <option value="0"
+                                <if condition="$info.visit_status eq 0">selected="selected"</if>
+                                >未回访</option>
+                            </select></td>
+                        </tr>
+                        <tr>
+                            <th width="60">回访内容 :</th>
+                            <td colspan="3"><textarea name="visit_conx"  rows="4" cols="110" placeholder="请输入回访内容">{$info.visit_conx}</textarea></td>
+                        </tr>
+                        <tr>
+                            <th width="80">反馈时间:</th>
+                            <td colspan="3" > <notempty name="info.add_time">{$info.add_time|date="Y-m-d H:i:s",###}&nbsp;&nbsp;&nbsp;IP:{$info.add_ip}<else/>--</notempty></td>
+
+                        </tr>
+
+                        <notempty name="info.visit_usrid">
+                        <tr>
+                            <th width="80">回访时间:</th>
+                            <td  > {$info.visit_time|date="Y-m-d H:i:s",###}</td>
+                        <th width="80">回访人:</th>
+                        <td  > {$info.visit_usrname} ({$info.visit_usrid})</td>
+                        </tr>
+                        </notempty>
+                        <tr>
+                            <th width="60"></th>
+                            <td colspan="3">
+                                <input type="hidden" name="id" id="id" value="{$info.id}">
+                               <input type="submit" name="dosubmit" id="dosubmit" class="smt " style="margin-left: 10px;"  value="提交"></td>
+                        </tr>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</body>
+</html>
+<script type="text/javascript">
+
+
+</script>

@@ -1,0 +1,68 @@
+<include file="public:header" />
+<script type="text/javascript" src="__ROOT__/statics/js/jquery/plugins/jquery.imagePreview.js"></script>     
+        <div class="table-list">
+            <table width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th  width="80">订单流水号</th>
+                    <th   width="80">购买人 </th>
+                    <th  width="50">商品总价</th>
+                     <th width="50">订单状态</th>
+                    <th width="80">支付方式</th>
+                    <th width="80">支付订单号</th>
+                    <th width=110>下单时间</th>
+                    <th width=110>快递单号</th>
+                    <th width=120>订单完成时间</th>
+                    <th width=120>备注</th>
+                    <th width=120>分成总额</th>
+                    <th width="40">二维码</th>
+                    <th width="40">店铺加盟审核</th>
+                    <th width="40">支付方</th>
+                    <th width="60">支付方审核</th>
+                    <th width=60>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="result" id="val" >
+                    <tr>
+                        <td align="center">{$val.order_sn}</td>
+
+                        <td align="center">{$val.buyer_name}</td>
+                        <td align="left">{$val.goods_amount} </td>
+                        <td align="center"  >
+                        <switch  name="val.status">
+                            <case value="0" >未付款</case>
+                            <case value="1"  >已付款</case>
+                            <case value="2"  >清关中</case>
+                            <case value="3" >已发货</case>
+                            <case value="4" >已完成</case>
+                            <case value="6" ><a class="blue" href="{:U('orders/tuihh_sq',array('id'=>$val['order_id']))}">退换货申请中</a></case>
+                            <case value="7" ><a class="blue" href="{:U('orders/tuihh_sq',array('id'=>$val['order_id']))}">退换货审核通过</a></case>
+                            <case value="10" ><a class="blue" href="{:U('orders/tuihh_sq',array('id'=>$val['order_id']))}">退换货审核不通过</a></case>
+                            <case value="8" ><a class="blue" href="{:U('orders/tuihh_wl',array('id'=>$val['order_id']))}">退换货物流中</a></case>
+                            <case value="9" ><a class="blue" href="{:U('orders/tuihh_wl',array('id'=>$val['order_id']))}">退换货已完成</a></case>
+                            <case value="99" >已拒绝</case>
+                            <case value="98" >已关闭</case>
+                        </switch > </td>
+                        <td align="left">{$val.payment_name} </td>
+                        <td align="left">{$val.payment_code}<br/><notempty name="val.pay_time">{$val.pay_time|date="Y-m-d H:i:s",###}</notempty></td>
+                        <td align="center"><notempty name="val.add_time">{$val.add_time|date="Y-m-d H:i:s",###}</notempty></td>
+                        <td align="center">{$val.invoice_no}</td>
+                        <td align="center"><notempty name="val.finish_time">{$val.finish_time|date="Y-m-d H:i:s",###}<else/>--</notempty></td>
+                        <td align="center">{$val.order_notes}</td>
+                        <td align="center">{$val.fp_price|default='--'}</td>
+                        <td align="center"><if condition="$val.erm eq 1 "><a class="blue" href="{:U('orders/erweima',array('id'=>$val['order_id']))}">查看</a><else />--</if></td>
+                        <td align="center"><if condition="$val.jiamengshenhe eq 0 && $val.erm eq 1"><a class="blue" href="{:U('jiamengshenhe',array('order_id'=>$val['order_id']))}">待审</a><elseif condition="$val.jiamengshenhe eq 1 " />通过<elseif condition="$val.jiamengshenhe eq 2 " />不通过<else />--</if></td>
+                        <td align="center"><if condition="$val.jiezhangren neq 0 "><a class="blue" href="{:U('orders/shenheimg',array('id'=>$val['order_id']))}"><if condition="$val.jiezhangren eq 1 ">推广<elseif condition="$val.jiezhangren eq 2"/>店家</if></a><else />--</if></td>
+                        <td align="center"><span class="shenhe" style="cursor:pointer;color: #72ACE3" data-id="{$val.order_id}" data-state="{$val.shenhe_jiez}"><if condition="$val.shenhe_jiez eq 0 ">未审<else />属实</if></span></td>
+                        <td align="center">
+                            <a class="blue" href="{:U('orders/detail',array('id'=>$val['order_id']))}">查看</a>&nbsp;
+                        </td>
+                </volist>
+                </tbody>
+            </table>
+
+            <div class="btn">
+                <div id="pages">{$page}</div>
+            </div>
+        </div>

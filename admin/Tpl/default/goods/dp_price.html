@@ -1,0 +1,32 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<form action="{:u('goods/dp_price')}" method="post" name="myform" id="myform" enctype="multipart/form-data" style="margin-top:10px;">
+  <div class="pad-10">
+  <div class="col-tab">
+  <ul class="tabBut cu-li">
+    <li id="tab_setting_1" class="on">店铺会员价格调整</li>
+  </ul>
+  <div id="div_setting_1" class="contentList pad-10">
+    <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+
+    <tr style="height:50px;">目前店铺会员价格调整百分比为：{$price*100}%</tr>
+	  <tr>
+          	<th>调整:</th>
+            <td><input type='num' name='dp_price' placeholder="请填写小数，如0.70" size='35'/></td>
+          </tr>
+      <tr>
+     
+      <tr><td><input type="hidden" name="id" value="{$info.id}" id="id"/></td></tr>
+    </table>
+  </div>
+  <div class="bk15"></div>
+  <div class="btn">
+    <input type='hidden' name='table' value="{$table}"/>
+    <input type="submit" value="{$Think.lang.submit}" name="dosubmit" class="button" id="dosubmit">
+  </div>
+
+</div>
+</div>
+</form>
+</body>
+</html>

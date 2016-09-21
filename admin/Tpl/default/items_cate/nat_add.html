@@ -1,0 +1,71 @@
+<include file="public:header" />
+<form action="{:u('items_cate/nat_add_get')}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+    <div class="pad-10">
+        <div class="col-tab">
+            <div id="div_setting_1" class="contentList pad-10">
+                <input type="hidden" value="{$id}" name="id" />
+                <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                    <tr style="text-align: left">
+                        <td>国家: &nbsp;&nbsp;<input type="text" name="nat_name" id="nat_name" value="{$data[0]['nationality']}"></td>
+                    </tr>
+                    <tr>
+                        <td>上传图片：<input type="file" name="img" id="img" value="{$data[0]['nationality_img']}"></td>
+                    </tr>
+                    <tr>
+                        <td>所属上级：
+                            <select name="cate_id"  id="cate_id">
+                                <option value="0" >--请选择--</option> 
+                                <volist name="arr" id="vo">
+                                    <option value="{$vo.id}"  <if condition="$data[0]['cate_id'] eq $vo['id']">selected="selected"</if> >{$vo.name}</option>
+                                </volist>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="bk15"></div>
+            <div class="btn"><input type="submit" value="{$Think.lang.submit}"  name="dosubmit" class="button" id="dosubmit"></div>
+        </div>
+    </div>
+</form>
+
+     <script>
+        $(function(){
+
+            $.formValidator.initConfig({
+            formid: "myform",
+            autotip: true,
+            onerror: function (msg, obj) {
+                window.top.art.dialog({
+                    content: msg,
+                    lock: true,
+                    width: '200',
+                    height: '50'},
+                        function ()
+                        {
+                            this.close();
+                            $(obj).focus();
+                        })
+            }});
+
+        $("#nat_name").formValidator({
+            onshow: "不能为空", onfocus: "国家不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入名称"
+        });
+        $("#img").formValidator({ 
+            onshow: "请选择一张图片", oncorrect: "图片名格式正确" 
+        }).regexValidator({ 
+            regexp: "picture", datatype: "enum", onerror: "图片名格式不正确"
+        });
+        $("#cate_id").formValidator({ 
+            onshow: "上级不能为空", onfocus: "所属上级不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请选择上级"
+        });
+
+
+    });
+
+    </script>
+</body></html>

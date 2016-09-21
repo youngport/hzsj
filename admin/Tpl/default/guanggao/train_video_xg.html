@@ -1,0 +1,72 @@
+<include file="public:header" />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CSSettings = {"pluginPath":"images"};
+/* ]]> */
+</script>
+<script>
+		$(function(){
+	    $.formValidator.initConfig({
+	    formid: "myform",
+	    autotip: true,
+	    onerror: function (msg, obj) {
+	        window.top.art.dialog({
+	            content: msg,
+	            lock: true,
+	            width: '200',
+	            height: '50'},
+	                function ()
+	                {
+	                    this.close();
+	                    $(obj).focus();
+	                })
+	    }});
+
+	    $("#vi_url").formValidator({ 
+	        onshow: "不能为空", onfocus: "发放原因不能为空哦"
+	    }).inputValidator({
+	        min: 1, onerror: "请选择发放原因"
+	    });
+
+	    $("#vi_name").formValidator({ 
+	        onshow: "不能为空", onfocus: "发放原因不能为空哦"
+	    }).inputValidator({
+	        min: 1, onerror: "请选择发放原因"
+	    });
+
+	});
+</script>
+<div class="pad-10" >
+	<form id="myform" name="myform" action="{:u('guanggao/train_video_xgget',array('id'=>$vo['vi_id']))}" method="post" enctype="multipart/form-data" ><br />
+		
+	<div id="a1"></div><br />
+	<!--<js href="http://code.jquery.com/jquery-1.8.0.min.js" />-->
+	<js href="__PUBLIC__/ckplayer/ckplayer/ckplayer.js" charset="utf-8"/>
+	<script type="text/javascript">
+		var flashvars={
+			p:0,
+			e:1,
+			hl:'{$vo.vi_url}',
+			ht:'20',
+			hr:''
+			};
+		var video=['{$vo.vi_url}->video/mp4','http://www.ckplayer.com/webm/0.webm->video/webm','http://www.ckplayer.com/webm/0.ogv->video/ogg'];
+		var support=['all'];
+		CKobject.embedHTML5('a1','ckplayer_a1','960','540',video,flashvars,support);
+	</script>
+	
+	
+	    <div>编号ID：{$vo.vi_id}</div><br />
+		<div>视频地址：<input type="text" size="60" width=140px class="textinput requireinput" name="vi_url" id="vi_url" value="{$vo.vi_url}" ></div><br />
+        <div>视频名称：<input type="text" size="60" width=140px class="textinput requireinput" name="vi_name" id="vi_name" value="{$vo.vi_name}" ></div><br />
+		有效：<input type="radio" name="vi_youxiao" class="radio_style" value="1" checked >
+                            &nbsp;有效&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="vi_youxiao" class="radio_style" value="0" <if condition="($vo.vi_youxiao eq 0)">checked</if>>
+                            &nbsp;无效<br /><br />
+        广告图：<img src=" <?php echo str_replace('http://m.hz41319.com/','', $vo['vi_bgimg']) ;?> " /><br />
+		排序：<input type="text" size="60" width=50px class="textinput requireinput" name="vi_paixu" id="vi_paixu" value="{$vo.vi_paixu}" ><br /><br />
+	    <div><input type="submit" name="dosubmit" value="  保存  " /></div>
+	</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<admintpl file="header" />
+</head>
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Store/index')}" target="_self">所有终端</a></li>
+			<li class="active"><a href="javascript:;">终端信息</a></li>
+		</ul>
+		<div id="myCarousel" class="carousel slide pull-left" style="width:45%">
+			<!-- Carousel items -->
+			<div class="carousel-inner">
+				<div class="active item"><img src="..{$info.dianp_img}" style="width:100%"/></div>
+				<neq name="info.dianp_img2" value=""><div class="item"><img src="..{$info.dianp_img2}" style="width:100%"/></div></neq>
+			</div>
+			<neq name="info.dianp_img2" value="">
+			<!-- Carousel nav -->
+			<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+			<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+			</neq>
+		</div>
+		<div class="clearfix"></div>
+		<div class="hero-unit">
+			<div class="pull-left">
+				<h3>店铺名称:{$info.dianpname}</h3>
+				<h5>编号:{$info.bianhao}</h5>
+				<h5>地址:{$info.xxdizhi}</h5>
+				<h5>所有者:{$info.wei_nickname|default='匿名'}</h5>
+				<h5>微信登录帐号:{$info.weixin_account|default='未填写'}</h5>
+				<h5>状态:<switch name="vo.shenhe"><case value="1">通过</case><case value="2">不通过</case><default />待审</switch></h5>
+			</div>
+			<div class="pull-right">
+				<ul class="thumbnails">
+					<li class="span4">
+						<div class="thumbnail">
+							<img src="../{$info.dizhi}" style="width:100%">
+							<h4 class='text-center'>店铺二维码</h4>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<script src="__ROOT__/statics/js/common.js"></script>
+	<script>
+		$('.carousel').carousel({
+			interval: 2000
+		})
+	</script>
+</body>
+</html>

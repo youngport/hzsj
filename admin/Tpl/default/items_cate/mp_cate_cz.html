@@ -1,0 +1,110 @@
+<include file="public:header" />
+<form action="{:u('items_cate/mp_cate_cz',array('cz'=>$cz))}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+    <div class="col-tab">
+      <ul class="tabBut cu-li">
+        <li><a href="{:U('items_cate/mp_cate')}">分类列表</a></li>
+        <li class="on">添加分类</li>
+      </ul>
+        <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+		<tr>
+			<th width="100">名称:</th>
+			<td><input type='text' name='name' id='mingcheng' size='30'></td>
+		</tr>
+		<tr>
+			<th width="100">关键词:</th>
+			<td><input type='text' name='keywords' id='keywords' size='60'></td>
+		</tr>
+		<tr>
+			<th width="100">排序值:</th>
+			<td><input type='text' name='sort' id="sort" size='4'></td>
+		</tr>
+                <tr>
+			<th width="100">上传图片:</th>
+			<td><input type='file' name='mpimg' id="mpimg" size='60'></td>
+		</tr>
+                <tr>
+			<th width="100">所属上级:</th>
+                        <td>
+                            <select name="cate_id"  id="cate_id">
+                                <option value='0'>--请选择--</option>
+                                <volist name="arr" id="vo" key="k" >
+                                    <option value="{$vo.id}"  <if condition="$data['cate_id'] eq $vo['id']">selected="selected"</if> >{$vo.name}</option>
+                                </volist>
+                            </select>
+                        </td>
+		</tr>
+		<tr>
+            <th>{:L('status')} :</th>
+            <td><input type="radio" name="status" class="radio_style" value="1" checked="checked">
+              &nbsp;默认已启用&nbsp;&nbsp;&nbsp;
+              <input type="radio" name="status" class="radio_style" value="0">
+              &nbsp;待启用
+              </td>
+          </tr>
+        </table>
+      <div class="bk15"></div>
+      <div class="btn"><input type="submit" value="{$Think.lang.submit}"  name="dosubmit" class="button" id="dosubmit"></div>
+  </div>
+</form>
+<script type="text/javascript">
+if("{$cz}"=='edit'){
+	$('div.btn').append("<input type='hidden' name='id' value='{$data.id}'/>");
+	$("input[name='name']").val("{$data.name}");
+	$("input[name='keywords']").val("{$data.keywords}");
+	$("input[name='sort']").val("{$data.sort}");
+	if("{$data.status}"==false){
+		$("input[name='status']").eq(0).attr('checked',false);
+		$("input[name='status']").eq(1).attr('checked',true);
+	}
+}
+</script>
+</script>
+     <script>
+        $(function(){
+
+            $.formValidator.initConfig({
+            formid: "myform",
+            autotip: true,
+            onerror: function (msg, obj) {
+                window.top.art.dialog({
+                    content: msg,
+                    lock: true,
+                    width: '200',
+                    height: '50'},
+                        function ()
+                        {
+                            this.close();
+                            $(obj).focus();
+                        })
+            }});
+
+        $("#mingcheng").formValidator({
+            onshow: "不能为空", onfocus: "名称不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入名称"
+        });
+        $("#keywords").formValidator({ 
+            onshow: "关键词不能为空", onfocus: "关键词不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入关键词"
+        });
+        $("#sort").formValidator({ 
+            onshow: "排序值不能为空", onfocus: "排序值不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入排序值"
+        });
+        $("#mpimg").formValidator({ 
+            onshow: "请选择一张图片", oncorrect: "图片名格式正确" 
+        }).regexValidator({ 
+            regexp: "picture", datatype: "enum", onerror: "图片名格式不正确"
+        });
+        $("#cate_id").formValidator({ 
+            onshow: "上级不能为空", onfocus: "所属上级不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请选择上级"
+        });
+
+
+    });
+    </script>
+</body></html>

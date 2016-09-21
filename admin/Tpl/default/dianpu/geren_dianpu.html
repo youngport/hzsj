@@ -1,0 +1,98 @@
+
+<include file="public:header" />
+<div class="pad-10" >
+    <form name="searchform" method="get" >
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <div class="explain-col">
+				 &nbsp;审核通过 :
+                <select name="shenhe" id='shenhe'>
+            	<option value="">-请选择-</option>
+                <option value="1">通过</option>
+                <option value="0">待审</option>
+                <option value="2">不通过</option>
+                </select>
+                &nbsp;店铺名称关键字 :
+                <input name="dianpname" type="text" id="dianpname" class="input-text" size="25" value="{$get.dianpname}" />
+                &nbsp;店铺地址 :
+                <input name="dizhi" type="text" id="dizhi" class="input-text" size="25" value="{$get.dizhi}" />
+                &nbsp;&nbsp; mac地址: <input name="mac" type="text" id="mac" class="input-text" size="25" value="{$get.mac}" />
+                <br/><br/>
+                &nbsp;代理人openid:
+                <input type="input" name="openid" value="{$get.openid}" size="35"/>
+                &nbsp;店铺人openid:
+                <input type="input" name="pid" value="{$get.pid}" size="35"/>
+                <input type="hidden" name="m" value="dianpu" />
+                <input type="hidden" name="a" value="geren_dianpu" />
+                <input type="hidden" name="agentid" value="{$agentid}"/>
+                <input type="submit" value="搜索" style="width:100px;"/>
+                <input type="submit" style='float:right' name="daochu" value="导出下列店铺信息" style="width:100px;"/>
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+    <form id="myform" name="myform" action="{:u('dianpu/dianpu_cz')}" method="post" onsubmit="return check();">
+    <div class="table-list">
+    <table width="100%" cellspacing="0">    
+    <thead>
+		<tr><th>ID</th><th width=15><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>  <th>店铺门面图</th><th>店铺名称</th><th>账号</th><th>联系方式</th><th>店铺地址</th><th>经纬度坐标</th><th>审核</th><th>操作</th></tr>
+    </thead>
+    <foreach name="items_cate_list" item="vo">
+		<tr>
+			<td align="center">{$vo.id}</td>
+            <td align="center"><input type="checkbox" value="{$vo.id}" name="id[]" <eq name="vo.sel" value="1">checked</eq>></td>
+            <td align="center"><if condition="$vo.dianp_img eq '' ">[该店铺尚未布置]<else /><img width=100 src="{$vo.dianp_img}" /></if></td>
+			<td align="center"><if condition="$vo.dianpname eq '' ">[该店铺尚未布置]<else />{$vo.dianpname}</if></td>
+			<td align="center"><if condition="$vo.dianp_lxfs eq '' ">--<else />{$vo.dianp_lxfs}</if></td>
+            <td align="center"><if condition="$vo.dianp_lxfs eq '' ">--<else />{$vo.dianp_num}</if></td>
+			<td align="center"><if condition="$vo.xxdizhi eq '' ">--<else />{$vo.xxdizhi}</if></td>
+			<td align="center"><if condition="$vo.zuobiao eq '' ">--<else />{$vo.zuobiao}</if></td>
+			<td align="center"><if condition="$vo.shenhe eq 1 ">通过<elseif condition="$vo.shenhe eq 0 "/>待审<elseif condition="$vo.shenhe eq 2 "/>不通过</if></td>
+			<td align="center"><a href="{:u('dianpu/router',array('id'=>$vo['id']))}">路由信息</a> | <a href="{:u('dianpu/dianpuchakan',array('id'=>$vo['id']))}">查看</a> | <a href="{:u('dianpu/geren_dpshenhe',array('id'=>$vo['id']))}">编辑</a></td>
+		</tr>
+	</foreach>
+	</table><br />
+	<div class="btn">
+        <label for="check_box" style="float:left;">全选/取消</label>
+        <empty name="agentid">
+            <input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin:0 10px 0 10px;"/>
+        <else/>
+            <input type="hidden" name="cz" value="1"/>
+            <input type="hidden" name="agentid" value="{$agentid}"/>
+            <input type="submit" class="button" name="dosubmit" value="绑定" onclick="return confirm('{$Think.lang.sure_agent}')" style="float:left;margin:0 10px 0 10px;"/>
+        </empty>
+    	<div id="pages">{$page}</div>
+    </div>
+    </div>
+</div>
+
+<script>
+//function sousuo(){
+//	window.location.href='__GROUP__?a=geren_dianpu&m=dianpu&tex='+$('#tex').val()+'&status='+$("#status").val()+'&openid={$openid}';
+//}
+var lang_cate_name = "商品名称";
+function check(){
+    if($("#myform").attr('action') == '{:u("dianpu/dianpu_delete")}') {
+        var ids='';
+        $("input[name='id[]']:checked").each(function(i, n){
+            ids += $(n).val() + ',';
+        });
+
+        if(ids=='') {
+            window.top.art.dialog({content:lang_please_select+lang_cate_name,lock:true,width:'200',height:'50',time:1.5},function(){});
+            return false;
+        }
+    }
+    return true;
+}
+$("#shenhe").find('option').each(function(){
+    if($(this).val()=="{$get.shenhe}")
+        $(this).attr("selected",true);
+});
+</script>
+</body>
+</html>

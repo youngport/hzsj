@@ -1,0 +1,83 @@
+<admintpl file="header" />
+</head>
+<body class="J_scroll_fixed">
+		<div id="chart" style="width:100%;height:{$height|default=200}px;"></div>
+</body>
+<script src="__ROOT__/statics/js/common.js"></script>
+<script src="__ROOT__/statics/js/echarts.min.js"></script>
+<script>
+	var chart={$chart};
+	var myChart = echarts.init(document.getElementById('chart'));
+
+	// 指定图表的配置项和数据
+	option = {
+		tooltip : {
+			trigger: 'axis'
+		},
+		legend: {
+			data:['总盟友','总会员','一级盟友','一级会员']
+		},
+		xAxis : [
+			{
+				type : 'category',
+				boundaryGap : false,
+				data :chart.key
+			}
+		],
+		yAxis : [
+			{
+				type : 'value',
+				axisLabel : {
+					formatter: '{value}'
+				}
+			}
+		],
+		series : [
+			{
+				name:'总盟友',
+				type:'line',
+				data:chart.zcount,
+				markPoint : {
+					data : [
+						{type : 'max', name: '最大值'}
+					]
+				}
+			},
+			{
+				name:'总会员',
+				type:'line',
+				data:chart.zmcount,
+				markPoint : {
+					data : [
+						{type : 'max', name: '最大值'}
+					]
+				}
+			},
+			{
+				name:'一级盟友',
+				type:'line',
+				data:chart.ncount,
+				markPoint : {
+					data : [
+						{type : 'max', name: '最大值'}
+					]
+				}
+			},
+			{
+				name:'一级会员',
+				type:'line',
+				data:chart.nmcount,
+				markPoint : {
+					data : [
+						{type : 'max', name: '最大值'}
+					]
+				}
+			}
+		]
+	};
+
+
+	// 使用刚指定的配置项和数据显示图表。
+	myChart.setOption(option);
+</script>
+</html>

@@ -1,0 +1,51 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<script type="text/javascript" src="http://m.hz41319.com/wei/js/jquery.qrcode.js"></script>
+<script type="text/javascript" src="http://m.hz41319.com/wei/js/utf.js"></script>
+<script type="text/javascript" src="__ROOT__/statics/js/jquery/plugins/jquery.imagePreview.js"></script>
+<div class="pad-10" >
+    <div style="font-size:12px;line-height:25px;padding:20px;">
+        <foreach name="items_cate_list" item="val">
+            <img style="max-width:400px;" src="{$val.dianp_img}" />
+            <neq name="val.dianp_img2" value=""><img style="max-width:400px;" src="{$val.dianp_img2}" /></neq>
+            <ul style="width:800px;background:#f4f4f4; padding:20px;margin:20px 0;">
+                <li>微信昵称：{$val.wei_nickname}</li>
+                <li id="opid" data-id="{$val.id}" data-opid ="{$val.open_id}">ID：{$val.open_id}</li>
+                <li>微信登录帐号：{$val.weixin_account}</li>
+                <li>店铺名称：{$val.dianpname}</li>
+                <li>店铺性质：{$val.attribute}</li>
+                <li>店铺账号：{$val.dianp_num}</li>
+                <li>店铺联系方式：{$val.dianp_lxfs}</li>
+                <li>经纬坐标：{$val.zuobiao}</li>
+                <li>详细地址：{$val.xxdizhi}</li>
+                <li>终端透明柜编号：{$val.zd_bianhao}</li>
+                <li>终端透明柜MAC：{$val.mac}</li>
+                <li>路由器MAC：{$val.rmac}</li>
+                <li>区域负责人：{$val.regional}</li>
+                <li>代理人联系电话：{$val.proxy}</li>
+                <li>实体店老板：{$val.storeboss}</li>
+                <li>店铺实际对接人：{$val.docking}</li>
+                <li>店铺启动时间：{$val.starttime}</li>
+                <li>店铺布点人联系方式：{$val.budian}</li>
+                <li>备注：{$val.remark}</li>
+                <li>审核状态：<if condition="$val.shenhe eq 1 ">通过<elseif condition="$val.shenhe eq 0 "/>待审<elseif condition="$val.shenhe eq 2 "/>不通过</if></li>
+                <li>二维码：<div id="goods_erweima"></div></li>
+
+            </ul>
+        </foreach>
+        <a class="blue"  onclick="javascript:history.go(-1);"><div class="smt">返回</div></a>
+    </div>
+</div>
+<script>
+                 $("#goods_erweima").qrcode({
+                        render : "canvas", //设置渲染方式，有table和canvas，使用canvas方式渲染性能相对来说比较好
+                                text : "{$link}", //扫描了二维码后的内容显示,在这里也可以直接填一个网址，扫描二维码后
+                                width : "256", //二维码的宽度
+                                height : "256", //二维码的高度
+                                background : "#ffffff", //二维码的后景色
+                                foreground : "#000000", //二维码的前景色
+                                src: 'http://m.hz41319.com/wei/img/youngport.png'             //二维码中间的图片
+                        });         
+         </script>
+</body> 
+</html>

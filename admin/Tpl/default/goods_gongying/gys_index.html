@@ -1,0 +1,42 @@
+<include file="public:header" />
+<div class="pad-10" >
+    <form name="searchform" action="" method="get" >
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <div class="explain-col">
+                &nbsp;关键字 :
+                <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
+                <input type="hidden" name="m" value="goods_gongying" />
+                <input type="hidden" name="a" value="gys_index" />
+                <input type="submit" name="search" class="button" value="搜索" />
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+    <thead>
+		<tr><th>ID</th><th>供应商编码</th><th>供应商名称</th><th>手机号码</th><th>企鹅QQ</th><th>操作</th></tr>
+    </thead>
+    <foreach name="items_cate_list" item="vo">
+		<tr>
+		<td align="center">{$vo.gys_id}</td>
+		<td align="center">{$vo.gys_bianma}</td>
+		<td align="center">{$vo.gys_name}</td>
+		<td align="center"><if condition="($vo.gys_shouji eq '')">--<else />{$vo.gys_shouji}</if></td>
+		<td align="center"><if condition="($vo.gys_qq eq '')">--<else />{$vo.gys_qq}</if></td>
+		<td align="center"><a class="blue" href="{:u('gys_cangku_index',array('gys'=>$vo['gys_bianma']))}">查看仓库</a>&nbsp;|&nbsp;<a class="blue" href="{:u('gys_bianji',array('id'=>$vo['gys_id']))}">编辑</a>&nbsp;|&nbsp;<a class="blue" href="{:u('gys_delete',array('id'=>$vo['gys_id']))}">删除</a></td></tr>
+	</foreach>
+	</table><br />
+	<div class="btn">
+    	<div id="pages">{$page}</div>
+    </div>
+	<a class="blue" href="{:u('gys_add')}"><div class="smt">添加供应商</div></a>
+    </div>
+</div>
+</body>
+</html>

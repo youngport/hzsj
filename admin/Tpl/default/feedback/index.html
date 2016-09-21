@@ -1,0 +1,129 @@
+<include file="public:header"/>
+<div class="pad-10">
+    <form name="searchform" action="" method="get">
+        <table width="100%" cellspacing="0" class="search-form">
+            <tbody>
+            <tr>
+                <td>
+                    <div class="explain-col">
+                        关键字 :
+                        <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}"/>
+                        <input type="hidden" name="m" value="feedback"/>
+                        &nbsp;
+                         反馈时间:<input type="text" name="time_start" id="time_start"
+                                     onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd'})"
+                                     size="15" value="{$time_start}" placeholder="请起始反馈时间"><=T<
+                        <input type="text" name="time_end" id="time_end"
+                               onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd'})"
+                                                                                                 size="15" value="{$time_end}" placeholder="请截止反馈时间">
+                        &nbsp;
+                        <select name="status" id="status">
+                            <option value="-1">-请选择-</option>
+                            <option value="0"
+                            <if condition="$status eq 0">selected="selected"</if>
+                            >未审核</option>
+                            <option value="1"
+                            <if condition="$status eq 1">selected="selected"</if>
+                            >已审核</option>
+                            <option value="2"  <if condition="$status eq 2">selected="selected"</if>
+                            >拒绝</option>
+                        </select> &nbsp;&nbsp;
+                        <select name="visit_status" id="visit_status">
+                            <option value="-1">-请选择-</option>
+                            <option value="0"
+                            <if condition="$visit_status eq 0">selected="selected"</if>
+                            >未回访</option>
+                            <option value="1"
+                            <if condition="$visit_status eq 1">selected="selected"</if>
+                            >已回访</option>
+                        </select>&nbsp;
+                        <input type="submit" name="search" class="button" value="搜索"/>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+    <form id="myform" name="myform" action="{:u('feedback/delete')}" method="post" onsubmit="return check();">
+        <div class="table-list">
+            <table width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th width=15><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+                    <th width="20">ID</th>
+                    <th width=80>反馈主题</th>
+                    <th width=80>公司名称</th>
+                    <th width=80>联系人</th>
+                    <th width=40>联系电话</th>
+                    <th width=40>审核状态</th>
+                    <th width=80>反馈时间</th>
+                    <th width=60>回访时间</th>
+                    <th width=30>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="list" id="val" key="k">
+                    <tr>
+                        <td align="center"><input type="checkbox" value="{$val.id}" name="id[]"></td>
+                        <td align="center">{$val.id}</td>
+                        <td align="center">{$val.title}</td>
+                        <td align="center">{$val.corpname}</td>
+                        <td align="center"><notempty name="val.usr_id"><a href="{:U('user/edit',array('id'=>$val['usr_id']))}"><b style="color: red;">{$val.linker}</b></a><else/>{$val.linker}</notempty></td>
+                        <td align="center">{$val.mobile}</td>
+                        <td align="center"><switch name="val.status" >
+                            <case value="0"  >未审核</case>
+                            <case value="1">已审核</case>
+                            <case value="2">拒绝</case>
+                            <default />未审核
+                        </switch></td>
+                        <td align="center">
+                            <notempty name="val.add_time">{$val["add_time"]|date="Y-m-d H:i:s",###}<br><font
+                                    color=green>IP:{$val.add_ip}</font><else/>--</notempty>
+                        </td>
+                        <td align="center">
+                            <notempty name="val.visit_time">{$val["visit_time"]|date="Y-m-d H:i:s",###}<br><font
+                                    color=green>回访人：({$val.visit_usrid}|{$val.visit_usrname})</font>
+                                <else/>
+                               未回访
+                            </notempty>
+                        </td>
+                        <td><a href="{:U('feedback/edit',array('id'=>$val['id']))}">回访</a></td>
+                </volist>
+                </tbody>
+            </table>
+            <div class="btn">
+                <label for="check_box" style="float:left;">全选/取消</label>
+                <input type="submit" class="button" name="dosubmit" value="删除"
+                       onclick="return confirm('您确定要删除勾选的数据项吗？')" style="float:left;margin:0 10px 0 10px;"/>
+
+                <div id="pages">{$page}</div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script language="javascript">
+    function check() {
+        if ($("#myform").attr('action') == '{:u("feedback/delete")}') {
+            var ids = '';
+            $("input[name='id[]']:checked").each(function (i, n) {
+                ids += $(n).val() + ',';
+            });
+            if (ids == '') {
+                window.top.art.dialog({
+                    content: lang_please_select + lang_cate_name,
+                    lock: true,
+                    width: '200',
+                    height: '50',
+                    time: 1.5
+                }, function () {
+                });
+                return false;
+            }
+        }
+        return true;
+    }
+
+</script>
+</body>
+</html>

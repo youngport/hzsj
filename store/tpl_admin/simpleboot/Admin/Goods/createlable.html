@@ -1,0 +1,28 @@
+<admintpl file="header" />
+<style>
+    .erweima{width:930px;}
+    .erweima ul{list-style:none;}
+    .erweima ul li{width:280px;height:410px;margin: 0px 0px 20px 0px;padding-right:20px;float:left; border-bottom:1px dashed #000000;}
+    .erweima ul li img{width:280px;height:410px; border:1px dashed #000000;}
+</style>
+<script>
+    $(document).ready(function () {
+        $('.erweima ul').each(function () {
+            ($(this).children("li:last").css({"padding-right": "0px"}));
+        });
+    });
+</script>
+</head>
+<body class="J_scroll_fixed">
+    <div class="content">
+        <div class="erweima">
+            <ul>
+                <volist name="list" id="data">
+                    <li><img src="{$data.imgpath}" /></li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

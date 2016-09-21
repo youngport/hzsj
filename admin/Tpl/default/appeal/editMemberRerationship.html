@@ -1,0 +1,52 @@
+<tagLib name="wego" />
+<include file="public:header" />
+
+<form action="{:u('appeal/editMemberRerationship')}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+    <div class="pad-10">
+        <div class="col-tab">
+            <div id="div_setting_1" class="contentList pad-10">
+                <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                    <neq name='table' value='sms'>
+                    <tr>
+                        <th width="100">上级openid :</th>
+                        <td><input type="text" name="pid" id="pid" class="input-text" size="60"></td>
+                    </tr>
+                    <tr>
+                        <th>下级openid :</th>
+                        <td><input type="text" name="id" id="id" class="input-text" size="60"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="bk15"></div>
+            <div class="btn"><input type="submit" value="{$Think.lang.submit}" onclick="return submitFrom();" name="dosubmit" class="button" id="dosubmit"></div>
+        </div>
+    </div>
+</form>
+</body>
+<script>
+    window.K = KindEditor;
+    var e = K.create('#intro', {allowFileManager: true});
+    $('#search').click(function () {
+        var good = $('#good').val();
+        var url = 'index.php?a=search&m=goods';
+        $.post(url, {good: good}, function (data) {
+            data = eval('(' + data + ')');
+            if (data.status == 1) {
+                e.insertHtml("</br><a href='http://m.hz41319.com/wei/main/goods/goods.php?id=" + data.data.id + "'><img src='/" + data.data.img + "' style='width:100%'/></a></br>");
+            } else {
+                alert('没有这个商品');
+            }
+        });
+    });
+    $('#rec').blur(function () {
+        var rec = $('#rec').val();
+        var url = 'index.php?a=search&m=user';
+        $.post(url, {rec: rec}, function (data) {
+            data = eval('(' + data + ')');
+            if (data.status != 1) {
+                alert('没有这个用户');
+            }
+        });
+    });
+</script>
+</html>

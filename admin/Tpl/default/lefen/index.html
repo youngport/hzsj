@@ -1,0 +1,97 @@
+
+<include file="public:header" />
+<div class="pad-10" >
+    <form name="searchform" action="{:u('items_cate/mp_index')}" method="get" >
+        <table width="100%" cellspacing="0" class="search-form">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="explain-col">
+                            &nbsp;分类:
+                            <select name="fenlei_sel" id='fenlei_sel'>
+                                <option value="-1" <if condition="$fenlei_sel eq -1">selected="selected"</if>>-请选择-</option>
+                                <option value="0" <if condition="$fenlei_sel eq 0">selected="selected"</if>>母婴</option>
+                                <option value="1" <if condition="$fenlei_sel eq 1">selected="selected"</if>>美妆</option>
+                                <option value="2" <if condition="$fenlei_sel eq 2">selected="selected"</if>>吃货</option>
+                            </select>
+                            &nbsp;审核通过 :
+                            <select name="status" id='status'>
+                                <option value="-1" <if condition="$status eq -1">selected="selected"</if>>-请选择-</option>
+                                <option value="1" <if condition="$status eq 1">selected="selected"</if>>通过</option>
+                                <option value="0" <if condition="$status eq 0">selected="selected"</if>>待审</option>
+                                <option value="2" <if condition="$status eq 2">selected="selected"</if>>不通过</option>
+                            </select>
+                            &nbsp;乐分享关键字 :
+                            <input name="keyword" type="text" id="keyword" class="input-text" size="25" value="{$keyword}" />
+                            <input type="hidden" name="m" value="lefen" />
+                            <input type="submit" name="search" class="button" value="搜索" />
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <div class="table-list">
+        <form id="myform" name="myform" action="{:U('lefen/deletes')}" method="post" onsubmit="return check();">
+        <table width="100%" cellspacing="0">    
+            <thead>
+                <tr><th><input type="checkbox" value="" id="check_box" onclick="selectall('lfxid[]');"></th><th>ID</th><th>乐分享面图</th><th>乐分享标题</th><th>分类</th><th>分享人</th><th>时间</th><th>阅读量</th><th>状态</th><th>操作</th></tr>
+            </thead>
+            <foreach name="items_cate_list" item="vo">
+                <tr>
+                     <td align="center"> <input type="checkbox" value="{$vo.id}" name="lfxid[]"></td>
+                    <td align="center">{$vo.id}</td>
+                    <td align="center"><if condition="$vo.imgurl eq '' ">[--]<else /><img width=100 src="{$vo.imgurl}" /></if></td>
+                <td align="center">{$vo.biaoti}</td>
+                <td align="center"><if condition="$vo.fenlei eq 1 ">最优惠<elseif condition="$vo.fenlei eq 2"/>新入手<elseif condition="$vo.fenlei eq 3"/>爆款<elseif condition="$vo.fenlei eq 4"/>热推<elseif condition="$vo.fenlei eq 5"/>最爱</if></td>
+                <td align="center">
+                 <if condition="$vo.openid eq '0'">[管理员]
+                 <elseif condition="$vo.wei_nickname eq ''"/>[匿名] 
+                 <else /> {$vo.wei_nickname}
+                 </if>
+<!--                <if condition="$vo.wei_nickname eq '' ">[管理员]<else />{$vo.wei_nickname}</if>-->
+                </td>
+                <td align="center">{$vo.shijian|date="Y-m-d H:i:s",###}</td>
+                <td align="center">{$vo.dianji}</td>
+                <td align="center"><if condition="$vo.shenhe eq 1 ">通过<elseif condition="$vo.shenhe eq 2"/>不通过<else />待审</if></td>
+                <td align="center">
+                    <a href="{:U('lefen/yige_denxiang',array('id'=>$vo['id']))}">去审核</a> | 
+                    <a href="{:U('lefen/count',array('id'=>$vo['id']))}">查看哪些人阅读过</a>
+                <if condition="$vo.wei_nickname eq '' "> | <a href="{:U('lefen/edit',array('id'=>$vo['id']))}">编辑</a> | <a href="{:U('lefen/del',array('id'=>$vo['id']))}">删除</a> </if>
+                </td>
+                </tr>
+            </foreach>
+        </table><br />
+        <div class="btn">
+            <label for="check_box" style="float:left;">全选/取消</label>
+                <input type="submit" class="button" name="dosubmit" value="删除"  onclick="return confirm('您确定要删除勾选的数据项吗？')" style="float:left;margin:0 10px 0 10px;"/>
+            <div id="pages">{$page}</div>
+        </div>
+        </form>
+    </div>
+</div>
+
+<script language="javascript">
+    function check() {
+        if ($("#myform").attr('action') == '{:u("lefen/deletes")}') {
+            var ids = '';
+            $("input[name='lfxid[]']:checked").each(function (i, n) {
+                ids += $(n).val() + ',';
+            });
+            if (ids == '') {
+                window.top.art.dialog({
+                    content: lang_please_select + lang_cate_name,
+                    lock: true,
+                    width: '200',
+                    height: '50',
+                    time: 1.5
+                }, function () {
+                });
+                return false;
+            }
+        }
+        return true;
+    }
+
+</body>
+</html>

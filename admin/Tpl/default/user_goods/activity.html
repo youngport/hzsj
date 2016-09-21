@@ -1,0 +1,130 @@
+<tagLib name="wego" />
+<include file="public:header" />
+
+<form action="{:u('user_goods/activity')}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+    <div class="pad-10">
+        <div class="col-tab">
+            <div id="div_setting_1" class="contentList pad-10">
+                <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+
+                <tr>
+                        <th>轮播图1(精品图):</th>
+                        <td>
+                            <img id="img_show" src="" style="display:none" style="width:200px;" /><br /><br />
+                            <input type="file" name="img_path1" id="img_path1" class="input-text" size=21 />
+                        </td>
+                </tr>
+                    
+                <tr>
+                        <th>轮播图2(购买会员流程):</th>
+                        <td>
+                            <img id="img_show" src="" style="display:none" style="width:200px;" /><br /><br />
+                            <input type="file" name="img_path2" id="img_path2" class="input-text" size=21 />
+                        </td>
+                </tr>
+
+                    <tr>
+                        <th>轮播图3(购买9.9会员):</th>
+                        <td>
+                            <img id="img_show" src="" style="display:none" style="width:200px;" /><br /><br />
+                            <input type="file" name="img_path3" id="img_path3" class="input-text" size=21 />
+                        </td>
+                </tr>
+
+                <tr>
+                        <th>0-99会员区:</th>
+                        <td>
+                            <img id="img_show" src="" style="display:none" style="width:200px;" /><br /><br />
+                            <input type="file" name="img_path4" id="img_path4" class="input-text" size=21 />
+                        </td>
+                </tr>
+
+
+                <tr>
+                        <th>99-199会员区:</th>
+                        <td>
+                            <img id="img_show2" src="" style="display:none" style="width:200px;" /><br /><br />
+                            <input type="file" name="img_path5" id="img_path5" class="input-text" size=21 />
+                        </td>
+                </tr>
+
+                <tr>
+                        <th>199以上会员区:</th>
+                        <td>
+                            <img id="img_show2" src="" style="display:none" style="width:200px;" /><br /><br />
+                            <input type="file" name="img_path6" id="img_path6" class="input-text" size=21 />
+                        </td>
+                </tr>
+
+                </table>
+            </div>
+            <div class="bk15"></div>
+            <div class="btn"><input type="submit" value="{$Think.lang.submit}" onclick="return submitFrom();" name="dosubmit" class="button" id="dosubmit"></div>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(function () {
+        $.formValidator.initConfig({
+            formid: "myform",
+            autotip: true,
+            onerror: function (msg, obj) {
+                window.top.art.dialog({
+                    content: msg,
+                    lock: true,
+                    width: '200',
+                    height: '50'},
+                        function ()
+                        {
+                            this.close();
+                            $(obj).focus();
+                        })
+            }});
+        $("#openid").formValidator({
+            onshow: "不能为空", onfocus: "openid不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入openid"
+        });
+
+        // $("#mac_address").formValidator({
+        //     onshow: "不能为空", onfocus: "mac地址不能为空哦"
+        // }).inputValidator({
+        //     min: 1, onerror: "请输入mac地址"
+        // });
+
+        $("#money").formValidator({
+            onshow: "不能为空", onfocus: "总金额不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入总金额"
+        });
+
+        $("#per_money").formValidator({
+            onshow: "不能为空", onfocus: "面值不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入面值"
+        });
+
+        $("#manjian").formValidator({
+            onshow: "不能为空", onfocus: "商品金额不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入金额"
+        });
+
+        $("#start_time").formValidator({
+            onshow: "不能为空", onfocus: "开始时间不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入开始时间"
+        });
+
+        $("#end_time").formValidator({
+            onshow: "不能为空", onfocus: "结束时间不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入结束时间"
+        }).compareValidator({
+            desid: "start_time", operateor: ">=", datatype: "datetime", onerror: "结束时间不能小于开始时间"
+        });
+    });
+</script>
+</body>
+</html>

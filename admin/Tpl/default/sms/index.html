@@ -1,0 +1,52 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<script type="text/javascript">	
+$(function(){
+	$("#add_attatch").click(function(){
+		$("#attatch_tr").clone().prependTo($("#attatch_tr").parent());
+	});
+	$(".delete_attatch").click(function(){
+		var info_id = $("#info_id").val();
+		var aid = $(this).attr('aid');
+		$.get("admin.php?m=info&a=delete_attatch&id="+info_id+"&aid="+aid, function(data){
+			$("#list_"+aid).hide();
+		});
+	});
+})
+</script>
+
+<form action="{:u('sms/index')}" method="post" name="myform" id="myform" enctype="multipart/form-data" style="margin-top:10px;">
+  <div class="pad-10">
+  <div class="col-tab">
+  <ul class="tabBut cu-li">
+    <li id="tab_setting_1" class="on">{$Think.lang.general_info}</li>
+  </ul>
+  <div id="div_setting_1" class="contentList pad-10">
+    <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+		<neq name='table' value='sms'> 
+	  </neq>
+	  <tr>
+          	<th>接收的人:</th>
+            <td><input type='text' name='rec_id' id='rec_id' placeholder="不填写默认全体,需要请填写微信ID" value="{$info.rec_id}" size='35'/></td>
+          </tr>
+      <tr>
+      <tr>
+        <th>模板:</th>
+        <td><input type='text' name='sms_id' id='sms_id' placeholder="需要请填写模板ID" size='35' value="{$info.sms_id}"/></td>
+      </tr>
+
+     
+      <tr><td><input type="hidden" name="id" value="{$info.id}" id="id"/></td></tr>
+    </table>
+  </div>
+  <div class="bk15"></div>
+  <div class="btn">
+    <input type='hidden' name='table' value="{$table}"/>
+    <input type="submit" value="{$Think.lang.submit}" name="dosubmit" class="button" id="dosubmit">
+  </div>
+
+</div>
+</div>
+</form>
+</body>
+</html>

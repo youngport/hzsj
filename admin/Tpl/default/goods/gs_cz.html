@@ -1,0 +1,133 @@
+<include file="public:header" />
+<form action="{:u('goods/gs_cz',array('cz'=>$cz))}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+    <div class="col-tab">
+      <ul class="tabBut cu-li">
+        <li><a href="{:U('goods/gs')}">团购列表</a></li>
+        <li class="on">添加团购</li>
+      </ul>
+        <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+		<tr>
+			<th width="100">商品ID:</th>
+			<td><input type='text' name='gid' id='goodsid' size='30' value="<eq name='cz' value='add'>{$Think.get.gid}</eq>"></td>
+		</tr>
+		<tr>
+			<th>团购展示图：</th>
+			<td>
+				<notempty  name="data.view"><img id="img_show" src="{$data.view}" style="width:200px;" /><br /><br /></notempty>
+				<input type="file" name="view" id="view" class="input-text" size=21 />
+			</td>
+		</tr>
+		<tr>
+			<th>团购价格图：</th>
+			<td>
+				<notempty  name="data.price_view"><img id="img_show" src="{$data.price_view}" style="width:200px;" /><br /><br /></notempty>
+				<input type="file" name="price_view" id="price_view" class="input-text" size=21 />
+			</td>
+		</tr>
+		<tr>
+			<th width="100">团购价(元) :</th>
+			<td>
+				<input type="text" size="60"  class="textinput requireinput" name="price" id="price" placeholder="请输入商品团购时的售卖价(元)" value="{$data.price}">
+
+			</td>
+		</tr>
+		<tr>
+			<th width="100">团购开始时间 :</th>
+			<td>
+				<input type="text" size="60"  class="textinput requireinput" name="start_time" id="start_time"  placeholder="请输入团购开始时间  例如：2008-09-09 10:20:00">
+			</td>
+		</tr>
+		<tr>
+			<th width="100">团购结束时间 :</th>
+			<td>
+				<input type="text" size="60"  class="textinput requireinput" name="end_time" id="end_time" placeholder="请输入团购结束时间 例如：2008-09-09 10:20:00">
+			</td>
+		</tr>
+		<tr>
+			<th width="100">团购人数 :</th>
+			<td>
+				<input type='text' name='number' size='10' value="{$data.number}">
+			</td>
+		</tr>
+		<tr>
+            <th>{:L('status')} :</th>
+            <td><input type="radio" name="status" class="radio_style" value="1" checked="checked">
+              &nbsp;默认已启用&nbsp;&nbsp;&nbsp;
+              <input type="radio" name="status" class="radio_style" value="0">
+              &nbsp;待启用
+              </td>
+          </tr>
+        </table>
+      <div class="bk15"></div>
+      <div class="btn"><input type="submit" value="{$Think.lang.submit}"  name="dosubmit" class="button" id="dosubmit"></div>
+  </div>
+</form>
+<script type="text/javascript">
+if("{$cz}"=='edit'){
+	$(".on").text('修改');
+	$("input[name='gid']").val("{$data.gid}");
+	$("input[name='gid']").attr("disabled",true);
+	$('div.btn').append("<input type='hidden' name='id' value='{$data.id}'/>");
+	$("input[name='start_time']").val("{$data.start_time|date='Y-m-d H:i:s',###}");
+	$("input[name='end_time']").val("{$data.end_time|date='Y-m-d H:i:s',###}");
+	if("{$data.status}"==false){
+		$("input[name='status']").eq(0).attr('checked',false);
+		$("input[name='status']").eq(1).attr('checked',true);
+	}
+}
+</script>
+
+<script>
+$(function(){
+    $.formValidator.initConfig({
+    formid: "myform",
+    autotip: true,
+    onerror: function (msg, obj) {
+        window.top.art.dialog({
+            content: msg,
+            lock: true,
+            width: '200',
+            height: '50'},
+                function ()
+                {
+                    this.close();
+                    $(obj).focus();
+                })
+    }});
+
+    $("#goodsid").formValidator({
+        onshow: "不能为空", onfocus: "商品ID不能为空哦"
+    }).inputValidator({
+        min: 1,onerror: "请输入库存"
+    });
+    $("#view").formValidator({ 
+            onshow: "请选择一张图片", oncorrect: "图片名格式正确" 
+        }).regexValidator({ 
+            regexp: "picture", datatype: "enum", onerror: "图片名格式不正确"
+        });
+
+    $("#price_view").formValidator({ 
+            onshow: "请选择一张图片", oncorrect: "图片名格式正确" 
+        }).regexValidator({ 
+            regexp: "picture", datatype: "enum", onerror: "图片名格式不正确"
+        });    
+    $("#price").formValidator({
+        onshow: "不能为空", onfocus: "团购价不能为空哦"
+    }).inputValidator({
+        min: 1,onerror: "请输入团购价"
+    });
+    $("#start_time").formValidator({
+        onshow: "不能为空", onfocus: "团购开始时间不能为空哦"
+    }).inputValidator({
+        min: 1,onerror: "请输入团购开始时间"
+    });
+    $("#end_time").formValidator({
+        onshow: "不能为空", onfocus: "团购结束时间不能为空哦"
+    }).inputValidator({
+        min: 1,onerror: "请输入团购结束时间"
+    }).compareValidator({
+          desid:"start_time",operateor:">=",datatype:"datetime",onerror:"结束时间不能小于开始时间"
+        });
+});
+</script>
+</body></html>

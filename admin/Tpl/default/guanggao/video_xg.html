@@ -1,0 +1,127 @@
+<include file="public:header" />
+<script type='text/javascript'>
+    /* <![CDATA[ */
+    var CSSettings = {"pluginPath": "images"};
+    /* ]]> */
+</script>
+<script>
+    $(function () {
+        $.formValidator.initConfig({
+            formid: "myform",
+            autotip: true,
+            onerror: function (msg, obj) {
+                window.top.art.dialog({
+                    content: msg,
+                    lock: true,
+                    width: '200',
+                    height: '50'},
+                        function ()
+                        {
+                            this.close();
+                            $(obj).focus();
+                        })
+            }});
+
+        $("#vi_url").formValidator({
+            onshow: "不能为空", onfocus: "视频地址不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请填写视频地址"
+        });
+
+        $("#vi_name").formValidator({
+            onshow: "不能为空", onfocus: "视频名称不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入视频名称"
+        });
+
+    });
+</script>
+<div class="pad-10" >
+    <volist name="items_cate_list" id="vo">
+        <form id="myform" name="myform" action="{:u('guanggao/video_xgget',array('id'=>$vo['vi_id']))}" method="post" enctype="multipart/form-data" >
+            <div id="a1"></div><br />
+            <!--<js href="http://code.jquery.com/jquery-1.8.0.min.js" />-->
+            <js href="__PUBLIC__/ckplayer/ckplayer/ckplayer.js" charset="utf-8"/>
+            <script type="text/javascript">
+                var flashvars = {
+                    p: 0,
+                    e: 1,
+                    hl: '{$vo.vi_url}',
+                    ht: '20',
+                    hr: ''
+                };
+                var video = ['{$vo.vi_url}->video/mp4', 'http://www.ckplayer.com/webm/0.webm->video/webm', 'http://www.ckplayer.com/webm/0.ogv->video/ogg'];
+                var support = ['all'];
+                CKobject.embedHTML5('a1', 'ckplayer_a1', '960', '540', video, flashvars, support);
+            </script>
+
+            <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                <tr>
+                    <td >编号ID：</td>
+                    <td >{$vo.vi_id}</td>
+                </tr>
+                <tr>
+                    <td > 视频地址：</td>
+                    <td > <input type="text" size="60" width=140px class="textinput requireinput" name="vi_url" id="vi_url" value="{$vo.vi_url}" >上传时注意文件夹格式和文件名,例如:/20160323/20160323-01.flv(要严格按照,否则APP不识别)</td>
+                </tr>
+                <tr>
+                    <td >视频名称：</td>
+                    <td ><input type="text" size="60" width=140px class="textinput requireinput" name="vi_name" id="vi_name" value="{$vo.vi_name}" ></td>
+                </tr>
+                <tr>
+                    <td >有效：</td>
+                    <td ><input type="radio" name="vi_youxiao" class="radio_style" value="1" <if condition="($vo.vi_youxiao eq 1)">checked</if> >
+                        &nbsp;有效&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="vi_youxiao" class="radio_style" value="0" <if condition="($vo.vi_youxiao eq 0)">checked</if>>
+                &nbsp;无效</td>
+                </tr>
+                 <tr>
+                     
+                    
+                    <td >  是否默认播放：</td>
+                    <td >  <input type="radio" name="is_default" class="radio_style" value="1" <if condition="($vo.is_default eq 1)">checked</if> >
+                        &nbsp;是&nbsp;&nbsp;&nbsp;
+                        <input type="radio" name="is_default" class="radio_style" value="0" <if condition="($vo.is_default eq 0)">checked</if> >
+                        &nbsp;否</td>
+                </tr>
+                <tr>
+                    <td >排序：</td>
+                    <td ><input type="text" size="60" width=50px class="textinput requireinput" name="vi_paixu" id="vi_paixu" value="{$vo.vi_paixu}" ></td>
+                </tr>
+                <tr>
+                    <td > 所属终端客户：<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label>
+                            <input type="checkbox" class="module_cbo" id="chk_all"/>&nbsp;&nbsp;(全选)
+                        </label>
+                    </td>
+                    <td style="width: 90%;">
+                        <ul style="width:100%;" id="list">
+                            <foreach name="list" item="action_item" key="k"> 
+                                <li style="width: 20%;float: left;">
+                                    <label>
+                                        <input type="checkbox" value="{$action_item.id}" name="chk_list[]" <if condition="$action_item.type eq 1">checked="checked"</if> /> 
+                                        &nbsp;&nbsp;{$action_item.dianpname}  
+                                    </label>
+                                </li>
+                            </foreach>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" name="dosubmit"  class="button" value="  保存  " /></td>
+                </tr>             
+        </form>
+    </volist>
+    <script>
+        $("#chk_all").click(function () {
+            if (this.checked) {
+                $("#list :checkbox").attr("checked", true);
+            } else {
+                $("#list :checkbox").attr("checked", false);
+            }
+        });
+
+    </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<admintpl file="header" />
+</head>
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Usermessage/index')}">消息列表</a></li>
+			<li><a href="{:U('Usermessage/add',array('message'=>1))}">推送短消息</a></li>
+			<li><a href="{:U('Usermessage/add')}">推送文章</a></li>
+		</ul>
+		<form class="well form-search" method="post" action="{:U('Usermessage/index')}">
+			<input type="hidden" name="my" value="{$my}"/>
+			<div class="search_type cc mb10">
+				<div class="mb10">
+					<span class="mr20">
+						&nbsp;用户：
+						<input type="text" name="rec" style="width: 200px;" value="{$formget.rec}" placeholder="请输入用户名称...">
+						&nbsp;标题：
+						<input type="text" name="title" style="width: 200px;" value="{$formget.title}" placeholder="请输入标题...">
+						<input type="submit" class="btn btn-primary" value="搜索" />
+						<input type="reset" class="btn btn-primary" value="重置" />
+					</span>
+				</div>
+			</div>
+		</form>
+		<table class="table table-hover table-bordered table-list">
+			<thead>
+				<tr>
+					<th>发送方</th>
+					<th>接收用户</th>
+					<th>类型</th>
+					<th>发布时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<foreach name="list" item="vo">
+			<tr>
+				<td>{$vo.dianpname|default="系统"}</td>
+				<td><notempty name="vo.wei_nickname">{$vo.wei_nickname}</notempty><notempty name="vo.recpid">&nbsp;&nbsp;发送方的下级</notempty></td>
+				<td><if condition="($vo.title eq '') OR ($vo.abst eq '') ">短消息<else/>文章</if></td>
+				<td>{$vo.create_time|date='Y-m-d',###}</td>
+				<td>
+					<a href="{:U('Usermessage/info',array('id'=>$vo['id']))}">查看</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{:U('Usermessage/edit',array('id'=>$vo['id']))}">修改</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{:U('Usermessage/delete',array('id'=>$vo['id']))}">删除</a>
+				</td>
+			</tr>
+			</foreach>
+			<tfoot>
+				<tr>
+					<th>发送方</th>
+					<th>接收用户</th>
+					<th>类型</th>
+					<th>发布时间</th>
+					<th>操作</th>
+				</tr>
+			</tfoot>
+		</table>
+		<div class="pagination pull-right"><span href="#" class="btn btn-primary disabled">{$count}条记录</span>{$Page}</div>
+	</div>
+	<script src="__ROOT__/statics/js/common.js"></script>
+	<script>
+		$("select[name='shenhe']").find("option").each(function(){
+			if($(this).val()=="{$formget.shenhe}")
+				$(this).attr("selected",true);
+		});
+		$("select[name='order']").find("option").each(function(){
+			if($(this).val()=="{$formget.order}")
+				$(this).attr("selected",true);
+		});
+		$("input[type='reset']").click(function(){
+			$(this).siblings("input").not("input[type='submit']").attr("value","");
+			$("select").find("option").attr("selected",false);
+		});
+		if("{$my}"==1) {
+			$(".nav-tabs").find("li").removeClass("active");
+			$(".nav-tabs").find("li:eq(1)").addClass("active");
+		}
+	</script>
+</body>
+</html>

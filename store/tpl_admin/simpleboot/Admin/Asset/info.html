@@ -1,0 +1,20 @@
+<admintpl file="header" />
+</head>
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Message/index')}">公众消息</a></li>
+			<li><a href="{:U('Message/index',array('my'=>1))}">个人消息</a></li>
+			<li class="active"><a href="javascript:;">{$data.title}</a></li>
+		</ul>
+		<div id="myCarousel" class="carousel slide hero-unit" style="overflow: hidden">
+			<h2 class="text-center">{$data.title}</h2>
+			<p class="text-center text-info" style="font-size:14px">{$data.add_time|date='Y-m-d H:i:s',###}</p>
+			<p>{$data.content|htmlspecialchars_decode=###}</p>
+		</div>
+	</div>
+	<script src="__ROOT__/statics/js/common.js"></script>
+	<script>
+	</script>
+</body>
+</html>

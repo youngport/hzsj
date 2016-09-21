@@ -1,0 +1,45 @@
+<include file="public:header" />
+<div class="pad-10" >
+    <a class="blue" href="{:u('bbbrands/add')}"><div class="smt">添加品牌</div></a>
+    <form name="search" action="" method="get" >
+        <table width="100%" cellspacing="0" class="search-form">
+            <tbody>
+            <tr>
+                <td>
+                    <div class="explain-col">
+
+                        &nbsp;品牌名 :
+                        <input name="keyword" type="text" id="tex" class="input-text" size="25" value="{$keyword}" />
+                        <span  class="smt" style="display:inline-block;float:none;" onclick="sousuo()">搜索</span>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+    <div class="table-list">
+        <table width="100%" cellspacing="0">
+            <thead>
+            <tr><th>ID</th>
+                <th>品牌名称</th>
+                <th>图片</th>
+                <th>排序</th>
+                <th>操作</th></tr>
+            </thead>
+            <foreach name="bbbrands" item="vo">
+                <tr>
+                    <td align="center">{$vo.id}</td>
+                    <td align="center">{$vo.name}</td>
+                    <td align="center"><img width="80px" height="80px" src="store{$vo.img}"/></td>
+                    <td align="center">{$vo.sort}</td>
+                    <td align="center"><a class="blue" href="{:u('bbbrands/del',array('id'=>$vo['id']))}" onclick="return confirm('你真的要删除这个品牌吗？') ? true : false">删除</a></td>
+                </tr>
+            </foreach>
+        </table><br />
+        <div class="btn">
+            <div id="pages">{$page}</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

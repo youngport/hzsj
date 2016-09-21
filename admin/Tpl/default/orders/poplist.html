@@ -1,0 +1,84 @@
+<tagLib name="wego" />
+<include file="public:header" />
+ <div class="pad-10" >
+    <form name="searchform" action="" method="get" >
+        <table width="100%" cellspacing="0" class="search-form">
+            <tbody>
+            <tr>
+                <td>
+                    <div class="explain-col">
+                        下单时间：
+                        <input id="time_start" style="width: 120px;" type="text"  placeholder="选择下单截止时间" onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd',minDate:'2015-01-01'})"
+                               name="time_start" />-到-<input id="time_end" style="width: 120px;" type="text"
+                                                             onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd',minDate:'2015-01-01'})"
+                                                             name="time_end" placeholder="选择下单起始时间" />
+
+                        &nbsp;提现状态
+                        <select name="status">
+                            <option value="-1">-请选择-</option>
+                            <option value="0" <if condition="$duitag eq 0">selected="selected"</if>>拒绝</option>
+                            <option value="1" <if condition="$duitag eq 1">selected="selected"</if>>同意</option>
+                            <option value="2" <if condition="$duitag eq 2">selected="selected"</if>>审核中</option>
+                        </select>
+                        &nbsp;订单流水号 :
+                        <input name="order_sn" type="text" class="input-text" size="15" value="{$order_sn}" /> &nbsp;
+                        <input type="hidden" name="m" value="orders" />
+                        <input type="submit" name="search" class="button" value="搜索" />
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+    <form id="myform" name="myform"  method="post"  >
+        <div class="table-list">
+            <table width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th width=15><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+                    <th  width="80">订单流水号</th>
+                    <th   width="80">购买人 </th>
+                    <th  width="50">提现金额</th>
+                    <th width="50">提现状态</th>
+                    <th width=110>创建时间</th>
+                    <th width=60>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="items_list" id="val" >
+                    <tr>
+                        <td align="center"><input type="checkbox" value="{$val.id}" name="id[]"></td>
+                        <td align="center">{$val.order_sn}</td>
+                        <td align="center">{$val.buyer_name}</td>
+                        <td align="left">{$val.pop} </td>
+                        <td align="center"  >
+                            <switch  name="val.duitag">
+                                <case value="0" >拒绝</case>
+                                <case value="1"  >同意</case>
+                                <case value="2"  >处理中</case>
+                            </switch > </td>
+                        <td align="center"><notempty name="val.poptime">{$val.poptime|date="Y-m-d H:i:s",###}</notempty></td>
+                        <td align="center">
+                            <a class="blue" href="{:U('orders/agree',array('id'=>$val['id']))}">同意</a>&nbsp;
+                            <a class="blue" href="{:U('orders/disagree',array('id'=>$val['id']))}">拒绝</a>
+                        </td>
+                </volist>
+                </tbody>
+            </table>
+            <div class="btn">
+                <label for="check_box" style="float:left;">全选/取消</label>
+                <input type="submit" class="button" name="dosubmit" value="删除"
+                       onclick="return confirm('您确定要删除勾选的数据项吗？')" style="float:left;margin:0 10px 0 10px;"/>
+
+                <div id="pages">{$page}</div>
+            </div>
+
+        </div>
+    </form>
+</div>
+<script language="javascript">
+
+
+</script>
+</body>
+</html>

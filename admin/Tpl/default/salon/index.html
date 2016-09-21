@@ -1,0 +1,95 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<div class="pad-10" >
+    <form name="searchform" action="" method="get" >
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <div class="explain-col">
+            	{:L('time')}：         
+				<wego:calendar name="start_time">{$get.start_time}</wego:calendar>
+                -      
+				<wego:calendar name="end_time" more="true">{$get.end_time}</wego:calendar>
+                &nbsp;姓名 :
+                <input type="text" name="name" placeholder="输入姓名" value="{$get.name}"/>
+                &nbsp;手机 :
+                <input name="mobile" type="text" class="input-text" size="25" value="{$get.mobile}" />
+                &nbsp;状态 :
+                <select name="status">
+                    <option value="1">通过</option>
+                    <option value="2">不通过</option>
+                    <option value="0">待审核</option>
+                </select>
+                <input type="hidden" name="m" value="salon" />
+                <input type="submit" name="search" class="button" value="搜索" />
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+
+    <form id="myform" name="myform" action="{:u('salon/delete')}" method="post" onsubmit="return check();">
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th width="5%">ID</th>
+                <th width="5%"><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+                <th width="20%">姓名</th>
+                <th width="25%">手机号</th>
+                <th width="25%">申请时间</th>
+                <th width="20%">状态</th>
+            </tr>
+        </thead>
+    	<tbody>
+        <volist name="list" id="val" >
+        <tr>       
+		 	<td align="center" class="id"><a href="{:u('message/edit', array('id'=>$val['id']))}">{$val.id}</a></td>
+            <td align="center">
+           	 <input type="checkbox" value="{$val.id}" name="id[]">
+			</td>
+			<td align="center">{$val.name}</td>
+            <td align="center">{$val.mobile}</td>
+            <td align="center">{$val.addtime|date="Y-m-d H:i:s",###}</td>
+            <td align="center">
+                <input type="radio" name="status{$val.id}" class="status" value="1" <eq name="val.status" value="1">checked</eq>/>通过
+                &nbsp;<input type="radio" name="status{$val.id}" class="status" value="0" <eq name="val.status" value="0">checked</eq>/>待审核
+                &nbsp;<input type="radio" name="status{$val.id}" class="status" value="2" <eq name="val.status" value="2">checked</eq>/>不通过
+            </td>
+        </volist>
+    	</tbody>
+    </table>
+
+    <div class="btn">
+    	<label for="check_box" style="float:left;">{$Think.lang.select_all}/{$Think.lang.cancel}</label>
+    	<input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin:0 10px 0 10px;"/>
+    	
+    	<div id="pages">{$page}</div>
+    </div>
+
+    </div>
+    </form>
+</div>
+<script language="javascript">
+    $(".status").click(function(){
+        var status=$(this).val();
+        var id=$(this).parent().siblings(".id").text();
+        $.ajax({
+            type:"POST",
+            url:"{:U('salon/status')}",
+            data:{id:id,status:status},
+            success:function(data){
+                if(data!=1)
+                        alert("操作失败");
+            }
+        });
+    });
+    $("select[name='status']").find('option').each(function(){
+        if($(this).val()=="{$get.status}")
+            $(this).attr("selected",true);
+    });
+</script>
+</body>
+</html>

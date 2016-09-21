@@ -1,0 +1,86 @@
+<tagLib name="wego" />
+<include file="public:header" />
+
+<form action="{:u('message/add')}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+  <div class="pad-10">
+    <div class="col-tab">
+      <ul class="tabBut cu-li">
+        <li id="tab_setting_1" class="on">{$Think.lang.general_info}</li>
+      </ul>
+      <div id="div_setting_1" class="contentList pad-10">
+        <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+		<neq name='table' value='sms'>
+          <tr>
+            <th width="100">{:L('title')}:</th>
+            <td><input type="text" name="title" id="title" class="input-text" size="60"></td>
+          </tr>
+          <tr>
+          	<th>{:L('img')} :</th>
+            <td><input type="file" name="img" id="img" class="input-text"  style="width:200px;" />注意:此为宣传图,不包含在内容里</td>
+          </tr>
+          <tr>
+          	<th>文章插入商品:</th>
+            <td><input type='text' name='good' id='good' placeholder="输入商品ID或名称"/><input type='button' value='插入' id='search'/></td>
+          </tr>
+          <tr>
+            <th>{:L('abst')} :</th>
+            <td><textarea name="abst" id="abst" style="width:68%;height:50px;resize: none;"></textarea></td>
+          </tr>
+		  </neq>
+			<tr>
+          	<th>接收的人:</th>
+            <td><input type='text' name='rec' id='rec' placeholder="不填写默认全体,需要请填写微信ID" size='35'/></td>
+            </tr>
+          <tr>
+            <th>发送给此用户的下级:</th>
+            <td><input type='text' name='recpid' id='recpid' placeholder="需要请填写微信ID" size='35'/></td>
+          </tr>
+           <tr>
+            <th>{:L('intro')} :</th>
+            <td>            	
+				<wego:editor id="intro" name="intro" type="KINDEDITOR" style="width:70%;height:350px;" ></wego:editor>
+			</td>
+          </tr>
+         <tr>
+            <th>{:L('status')} :</th>
+            <td><input type="radio" name="status" class="radio_style" value="1" checked="checked">
+              &nbsp;默认已审核&nbsp;&nbsp;&nbsp;
+              <input type="radio" name="status" class="radio_style" value="0">
+              &nbsp;待审核
+              </td>
+          </tr>
+        </table>
+      </div>
+      <div class="bk15"></div>
+      <div class="btn"><input type='hidden' name='table' value="{$table}"/><input type="submit" value="{$Think.lang.submit}" onclick="return submitFrom();" name="dosubmit" class="button" id="dosubmit"></div>
+    </div>
+  </div>
+</form>
+</body>
+<script>
+window.K = KindEditor;
+var e=K.create('#intro',{allowFileManager : true});
+$('#search').click(function(){
+	var good=$('#good').val();
+	var url='index.php?a=search&m=goods';
+	$.post(url, { good: good }, function (data) {
+		data=eval('(' + data + ')');
+		if(data.status==1){
+			e.insertHtml("</br><a href='http://m.hz41319.com/wei/main/goods/goods.php?id="+data.data.id+"'><img src='/"+data.data.img+"' style='width:100%'/></a></br>");
+		}else {
+			alert('没有这个商品');
+		}
+	});
+});
+$('#rec').blur(function(){
+	var rec=$('#rec').val();
+	var url='index.php?a=search&m=user';
+	$.post(url, { rec: rec }, function (data) {
+		data=eval('(' + data + ')');
+		if(data.status!=1){
+			alert('没有这个用户');
+		}
+	});
+});
+</script>
+</html>

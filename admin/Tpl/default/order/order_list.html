@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<h3 style="text-align:center">订单信息</h3>
+<table border="1" style="width:98%;margin-left:1%">
+<tr><th>订单号</th><th>仓库</th><th>创建时间</th><th>状态</th><th>收件人</th><th>收件地址</th><th>联系电话</th><th>出货时间</th><th>货品名称</th><th>货品数量</th><th>货品质量</th></tr>
+<foreach name="data" item="value">	
+	<tr align="center">
+	<td rowspan="{$value['goods']|count}">{$value['orderCode']}</td>
+	<td rowspan="{$value['goods']|count}">{$value['warehouseCode']}</td>
+	<td rowspan="{$value['goods']|count}">{$value['createTime']|date="y-m-d",###}</td>
+	<td rowspan="{$value['goods']|count}">
+	    <if condition="$value['status'] eq 'O'"> 待审核
+			<elseif condition="$value['status'] eq 'R'"/>已审核
+			<elseif condition="$value['status'] eq 'P'"/>待发货
+			<elseif condition="$value['status'] eq 'S'"/>已发货
+			<elseif condition="$value['status'] eq 'F'"/>已冻结
+			<elseif condition="$value['status'] eq 'P'"/>已签收
+			<elseif condition="$value['status'] eq 'X'"/>已取消
+			<elseif condition="$value['status'] eq 'E'"/>异常
+			<else />已删除
+		</if>
+	</td>
+	<td rowspan="{$value['goods']|count}">{$value['fullName']}</td>
+	<td rowspan="{$value['goods']|count}">{$value['state']}{$value['city']}{$value['street']}{$value['doorplate']}</td>
+	<td rowspan="{$value['goods']|count}">{$value['phone']}</td>
+	<td rowspan="{$value['goods']|count}">{$value['shippingTime']|date="y-m-d",###}</td>
+	
+	<foreach name="value['goods']" item="v">	
+	<td>{$v['skuName']}</td>
+	<td>{$v['quantity']}</td>
+	<td>{$v['quality']}</td>
+	</tr>
+	</foreach>
+	</tr>
+
+</foreach>	
+</table>
+<div style="text-align: center;">{$pageinfo}</div>
+</body>
+</html>

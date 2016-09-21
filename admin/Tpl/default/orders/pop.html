@@ -1,0 +1,154 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<script type="text/javascript" src="__ROOT__/statics/js/jquery/plugins/jquery.imagePreview.js"></script>
+<div class="pad-10" >
+    <form name="searchform" action="" method="get" >
+        <table width="100%" cellspacing="0" class="search-form">
+            <tbody>
+            <tr>
+                <td>
+                    <div class="explain-col">
+                        提交时间：
+                        <input id="time_start" style="width: 120px;" type="text" value="{$addtime_start}" placeholder="选择起始提交时间" onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd',minDate:'2015-01-01'})"
+                               name="time_start" />-到-<input id="time_end" value="{$addtime_end}" style="width: 120px;" type="text"
+                                                             onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd' })"
+                                                             name="time_end" placeholder="选择截止提交时间" />
+
+                        &nbsp;审核标记
+                        <select name="audit_tag">
+                            <option value="-1">-请选择审核标记-</option>
+                            <option value="0" <if condition="$audit_tag eq 0">selected="selected"</if>>提交申请中</option>
+                            <option value="1" <if condition="$audit_tag eq 1">selected="selected"</if>>兑换成功</option>
+                            <option value="2" <if condition="$audit_tag eq 2">selected="selected"</if>>拒绝兑换</option>
+                        </select>
+
+                        <input type="hidden" name="a" value="pop" />
+                        <input type="hidden" name="m" value="orders" />
+                        <input type="submit" name="search" class="button" value="搜索" />
+                        <input type="submit" name="daochu" class="button" value="搜索结果导出Excel" />
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+    <form id="myform" name="myform"  method="post"  >
+        <div class="table-list">
+            <table width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <!--<th width=15><input type="checkbox" value="" id="check_box" onclick="selectall('oid[]');"></th>-->
+                    <th   width="50">姓名 </th>
+                    <th   width="80">openid </th>
+                    <th   width="80">微信昵称 </th>
+                    <th   width="80">支付宝账户 </th>
+                    <th   width="80">收款银行户名 </th>
+                    <th   width="80">收款银行账号 </th>
+                    <th   width="80">收款银行 </th>
+                    <!-- <th  width="50">收款银行地址</th>
+                    <th  width="50">收款银行支行</th> -->
+                    <th width="50">提现金额</th>
+                    <th width="50">提现方式</th>
+                    <th width="50">审核标记</th>
+                    <th width="80">提交时间</th>
+                    <th width="80">备注</th>
+                     <th width="80">回访次数</th>
+                    <th width=80>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="items_list" id="val" >
+                    <tr>
+                        <!--<td align="center"><input type="checkbox" value="{$val.id}" name="oid[]"></td>-->
+                        <td align="center">{$val.wei_username}</td>
+                        <td align="center"><a href="{:U('user/index',array('open_id'=>$val['openid'],'search'=>'搜索'))}">{$val.openid}</a></td>
+                        <td align="center">{$val.wei_nickname}</td>
+                        <td align="center">{$val.pay_code}</td>
+                        <td align="center">{$val.yin_username}</td>
+                        <td align="center">{$val.yin_code}</td>
+                        <td align="center">{$val.brank}</td>
+                        <!-- <td align="center">{$val.brank_adda}{$val.brank_addb}</td>
+                        <td align="center">{$val.brank_zhi}</td> -->
+                        <td align="center"><a href="{:U('user/shouyi',array('openid'=>$val['openid']))}">{$val.totpop}</a> </td>
+                        <td align="center"><if condition="($val.wy_zfb eq 1)">支付宝<else />银行卡</if></td>
+                        <td align="center"  >
+                            <switch  name="val.audit_tag">
+                                <case value="0" >提交申请中</case>
+                                <case value="1"  >兑换成功</case>
+                                <case value="2"  >拒绝兑换</case>
+                            </switch > </td>
+                        <td align="center"><notempty name="val.submit">{$val.submit}<else/>--</notempty></td>
+                        <td align="center">{$val.rmb_beiz}</td>
+                        <td align="center">{$val.return_visit}</td>
+                        <td align="center">
+                            <a class="blue" href="{:U('orders/poprmb',array('id'=>$val['id']))}">修改备注</a>
+                            <eq name="val.audit_tag" value="0">
+                            <a class="blue" href="javascript:;"  onclick="dotixian('{$val.id}','agree')">同意</a>
+                            <a class="blue" href="javascript:;"  onclick="dotixian('{$val.id}','disagree')">拒绝</a>
+                            </eq>
+                            <eq name="val.audit_tag" value="3">
+                                <a class="blue" href="javascript:;"  onclick="dotixian('{$val.id}','money')">确认提现</a>
+                            </eq>
+                        </td>
+
+                </volist>
+                </tbody>
+            </table>
+
+            <div class="btn">
+                <!--<label for="check_box" style="float:left;">全选/取消</label>-->
+                <!--<input type="submit" class="button" name="dosubmit" value="删除"  onclick="return confirm('您确定要删除勾选的数据项吗？')" style="float:left;margin:0 10px 0 10px;"/>-->
+                <div id="pages">{$page}</div>
+            </div>
+
+        </div>
+    </form>
+</div>
+<script language="javascript">
+//    function check() {
+//        if ($("#myform").attr('action') == '{:u("user/delete")}') {
+//            var ids = '';
+//            $("input[name='usrid[]']:checked").each(function (i, n) {
+//                ids += $(n).val() + ',';
+//            });
+//            if (ids == '') {
+//                window.top.art.dialog({
+//                    content: lang_please_select + lang_cate_name,
+//                    lock: true,
+//                    width: '200',
+//                    height: '50',
+//                    time: 1.5
+//                }, function () {
+//                });
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+function dotixian(id, act) {
+    var info = '';
+    switch (act) {
+        case "agree":
+            info = '您确定要同意该申请提现操作';
+            break;
+        case "disagree":
+            info = '您确定要拒绝该申请提现操作';
+            break;
+        case "money":
+            info = '您确定要执行提现操作';
+            break;
+    }
+    if (window.confirm(info)) {
+        $.get("{:u('orders/extstatus')}", {id: id, act: act}, function (jsondata) {
+            var return_data = eval("(" + jsondata + ")");
+            if (return_data.status == 1) {
+                alert(return_data.info);
+                location.reload();
+            } else
+                alert(return_data.info);
+        });
+    }
+}
+</script>
+</body>
+</html>

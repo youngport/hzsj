@@ -1,0 +1,45 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<script type="text/javascript" src="__ROOT__/statics/js/jquery/plugins/jquery.imagePreview.js"></script>
+<div class="pad-10" >
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th width="30">ID</th>
+                <th  width="60">用户名称</th>
+                <th  width="60">用户ID</th>
+                <th  width="60">日期</th>
+                <th width=60>信息类型</th>
+                <th width=60>联系方式</th>
+                <th width=60>审核</th>
+                <th width=30>操作</th>
+            </tr>
+        </thead>
+    	<tbody>
+    	<foreach name="fankui" item="val">
+        <tr>
+        	<td align="center">{$val.id}</td>
+        	<td align="center">{$val.wei_nickname}</td>
+        	<td align="center">{$val.openid}</td>
+        	<td align="center">{$val.date|date="Y-m-d H:i:s",###}</td>
+        	<td align="center">{$val.lei}</td>
+        	<td align="center">{$val.lianx}</td>
+            <td align="center" style="cursor: pointer;" class="tg" ><if condition="($val.jifen_fanhuan eq 0)"><a class="blue" href="{:U('public/shenhe_fankui',array('id'=>$val['id']))}">待审核</a><elseif condition="$val.jifen_fanhuan eq 1"/>通过<else />不通过</if></td>
+            <td align="center"><a class="blue" href="{:U('public/fankui_xq',array('id'=>$val['id']))}">详情</a> / <a class="blue" href="{:U('public/fankui',array('id'=>$val['id']))}">删除</a></td>
+        </tr>
+        </foreach>
+    	</tbody>
+    </table>
+
+    <div class="btn">
+    	<!--<label for="check_box" style="float:left;">全选/取消</label>
+    	<input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin:0 10px 0 10px;"/>
+        -->
+    	<div id="pages">{$page}</div>
+    </div>
+    </div>
+    </form>
+</div>
+</body>
+</html>

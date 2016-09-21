@@ -1,0 +1,84 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<div class="pad-10">
+    <div class="col-tab">
+        <ul class="tabBut cu-li">
+            <li id="tab_setting_1" class="on">{$Think.lang.general_info}</li>
+        </ul>
+        <form name="searchform" action="" method="post" >
+            <table width="100%" cellspacing="0" class="search-form">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="explain-col">
+                                <input type="button"  value="批量修改"  id="morebtn"  class="button">&nbsp;&nbsp;
+                                &nbsp;商家名称 :
+                                <input name="keyword" type="text" id="keyword" class="input-text" value="{$keyword}" size="25"/>
+                                &nbsp;&nbsp; openid:<input name="openid" type="text" id="openid" class="input-text" value="{$openid}" size="25"/>
+                                <input type="submit" name="search" class="button" value="搜索" />
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <div id="div_setting_1" class="contentList pad-10">
+            <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                <tr>
+                    <td><input  type="checkbox" id="SelectAll"  onclick="selectAll()" /></td>
+                    <td>id</td>
+                    <td>商家名称</td>
+                    <td>联系方式</td>
+                    <td>openid</td>
+                    <td>操作</td>
+                </tr>
+                <volist name="list" id="data">
+                    <tr>
+                        <td><input  name="ids[]" type="checkbox" value="{$data.id}" /></td>
+                        <td>{$data.id}</td>
+                        <td>{$data.dianpname}</td>
+                        <td>{$data.dianp_lxfs}</td>
+                        <td>{$data.openid}</td>
+                        <td><a href="{:U('me/edit',array('id'=>$data['id']))}">加入mac地址</a></td>
+                    </tr>
+                </volist>
+            </table>
+            <div id="pages">{$page}</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function selectAll() {
+        if ($("#SelectAll").attr("checked")) {
+            $(":checkbox").attr("checked", true);
+        } else {
+            $(":checkbox").attr("checked", false);
+        }
+    }
+
+    $("#morebtn").click(function () {
+        var _list = {};
+        $("input[name='ids[]']:checked").each(
+            function (i) {
+                _list["ids[" + i + "]"] = $(this).val();
+            });
+         //console.log(_list);
+        $.ajax({
+            url: "{:U('me/more')}",
+            data: _list,
+            dataType: "json",
+            type: "POST",
+            success: function (data) { 
+                console.log(data);
+               if(data==1){
+                   alert("修改成功");
+               }else{
+                   alert("失败");
+               }
+            }});
+    });
+</script>
+</body>
+</html>

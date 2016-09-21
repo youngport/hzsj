@@ -1,0 +1,11 @@
+<include file="public:header" />
+<div class="pad-10" >
+	<form id="myform" name="myform" action="{:u('public/banner_addget')}" method="post" enctype="multipart/form-data" ><br />
+		banner图修改：<input type="file" name="img" id="img" class="input-text" size=21 /><br /><br />
+		图片链接：<input type="text" size="60"  class="textinput requireinput" name="links" id="links" value=""   placeholder="请输入链接"><br /><br />
+		排序：<input type="text" size="60"  class="textinput requireinput" name="paixu" id="paixu" value="0" ><br /><br />
+	    <div><input type="submit" name="dosubmit" value="  保存  " /></div>
+	</form>
+</div>
+</body>
+</html>

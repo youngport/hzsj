@@ -1,0 +1,117 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<script type="text/javascript" src="__ROOT__/statics/js/jquery/plugins/jquery.imagePreview.js"></script>
+<div class="pad-10" >
+    <form name="searchform" action="" method="post" >
+        <table width="100%" cellspacing="0" class="search-form">
+            <tbody>
+            <tr>
+                <td>
+                    <div class="explain-col">
+                        购买者：
+                        <input name="rec" type="text" class="input-text" size="15" value="{$rec}" /> &nbsp;
+                        手机号：
+                        <input name="tel" type="text" class="input-text" size="15" value="{$tel}" /> &nbsp;
+                        下单时间：
+                        <input id="time_start" style="width: 120px;" type="text" <notempty name="time_start"> value="{$time_start|date='Y-m-d',###}"</notempty> placeholder="选择下单起始时间" onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd',minDate:'2015-01-01'})"
+                               name="time_start" />-到-<input id="time_end" style="width: 120px;" type="text"
+                                                           onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd',minDate:'2015-01-01'})"
+                                                           name="time_end" <notempty name="time_end"> value="{$time_end|date='Y-m-d',###}"</notempty>  placeholder="选择下单截止时间" />
+
+                        &nbsp;订单状态
+                        <select name="status">
+                            <option value="-1">-请选择-</option>
+                            <option value="1" <if condition="$status eq 1">selected="selected"</if>>未付款</option>
+                            <option value="2" <if condition="$status eq 2">selected="selected"</if>>已付款</option>
+                            <option value="3" <if condition="$status eq 3">selected="selected"</if>>已发货</option>
+                            <option value="4" <if condition="$status eq 4">selected="selected"</if>>已完成</option>
+                            <option value="6" <if condition="$status eq 6">selected="selected"</if>>退换货申请中</option>
+                            <option value="7" <if condition="$status eq 7">selected="selected"</if>>退换货审核通过</option>
+                            <option value="10" <if condition="$status eq 10">selected="selected"</if>>退换货审核不通过</option>
+                            <option value="8" <if condition="$status eq 8">selected="selected"</if>>退换货物流中</option>
+                            <option value="9" <if condition="$status eq 9">selected="selected"</if>>退换货已完成</option>
+                        </select>
+                        &nbsp;订单流水号 :
+                        <input name="ordersn" type="text" class="input-text" size="15" value="{$ordersn}" /> &nbsp;
+                        快递单号 :
+                        <input name="invoice_no" type="text" class="input-text" size="15" value="{$invoice_no}" />
+                        <input type="hidden" name="m" value="orders" />
+                        <input type="submit" name="se" class="button" value="搜索" />
+                        <input type="submit" name="excel" class="button" value="搜索结果导出Excel" />
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+    <form id="myform" name="myform"  method="post"  >
+        <div class="table-list">
+            <table width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th width="100">订单流水号</th>
+                    <th width="100">订单所属账号 </th>
+                    <th width="100">购买人 </th>
+                    <th width="80">订单总价</th>
+                    <th width="60">订单状态</th>
+                    <th width="80">支付方式</th>
+                    <th width="150">下单时间</th>
+                    <th width="150">支付时间</th>
+                    <th width="110">快递单号</th>
+                    <th width="110">备注</th>
+                    <th width="120">订单完成时间</th>
+
+                    <th width="60">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="result" id="val" >
+                    <tr>
+                        <td align="center">{$val.ordersn}</td>
+                        <td align="center">{$val.phone}</td>
+                        <td align="center">{$val.receiver}</td>
+                        <td align="center">{$val.goodprice} </td>
+                        <td align="center"  >
+                        <switch  name="val.status">
+                            <case value="1" >未付款</case>
+                            <case value="2"  >已付款</case>
+                            <case value="3" >已发货</case>
+                            <case value="4" >已完成</case>
+                            <case value="6" ><a class="blue" href="{:U('orders/tuihh_sq',array('id'=>$val['order_id']))}">退换货申请中</a></case>
+                            <case value="7" ><a class="blue" href="{:U('orders/tuihh_sq',array('id'=>$val['order_id']))}">退换货审核通过</a></case>
+                            <case value="10" ><a class="blue" href="{:U('orders/tuihh_sq',array('id'=>$val['order_id']))}">退换货审核不通过</a></case>
+                            <case value="8" ><a class="blue" href="{:U('orders/tuihh_wl',array('id'=>$val['order_id']))}">退换货物流中</a></case>
+                            <case value="9" ><a class="blue" href="{:U('orders/tuihh_wl',array('id'=>$val['order_id']))}">退换货已完成</a></case>
+                            <case value="99" >已拒绝</case>
+                            <case value="98" >已关闭</case>
+                        </switch > </td>
+                        <td align="center">{$val.payment_name} </td>
+                        <td align="center">{$val.add_time|date="Y-m-d H:i:s",###}</td>
+                        <td align="center"> <notempty name="val.pay_time">{$val.pay_time|date="Y-m-d H:i:s",###}
+                           <else/>
+                                --
+                            </notempty></td>
+                        <td align="center">{$val.invoice_no}</td>
+                        <td align="center">{$val.remark}</td>
+                        <td align="center"><notempty name="val.finaltime">{$val.finaltime|date="Y-m-d H:i:s",###}
+                         <else/>
+                                --
+                            </notempty></td>
+
+                        <td align="center">
+                            <a class="blue" href="{:U('bborder/show',array('id'=>$val['id']))}">查看</a>&nbsp;
+                            <a class="blue" href="{:U('bborder/edit',array('id'=>$val['id']))}">修改</a>
+                        </td>
+                </volist>
+                </tbody>
+            </table>
+
+            <div class="btn">
+                <div id="pages">{$page}</div>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

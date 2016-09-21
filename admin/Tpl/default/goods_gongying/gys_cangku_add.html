@@ -1,0 +1,13 @@
+<include file="public:header" />
+<div class="pad-10" >
+		<form id="myform" name="myform" action="{:u('gys_cangku_addget',array('cangku_id'=>$vo['cangku_id']))}" method="post"><br />
+		    <div>供应商编码：<input type="text" name="gys_bianma" id="gys_bianma" value="{$vo.gys_bianma}"></div><br />
+		    <div>仓库名称：<input type="text" name="cangku_name" id="cangku_name" value="{$vo.cangku_name}"></div><br />
+		    <div>仓库编号：<input type="text" name="cangku_bianhao" id="cangku_bianhao" value="{$vo.cangku_bianhao}"></div><br />
+		    <div>预期到货日期：<input type="text" name="cangku_date" id="cangku_date" value="{$vo.cangku_date}" placeholder="格式：2008-09-09 10:20:00"></div><br />
+		    <div>发货地址：<input type="text" name="cangku_fahuodizhi" id="cangku_fahuodizhi" value="{$vo.cangku_fahuodizhi}"></div><br />
+		    <div> <input type="submit" name="dosubmit" value="确认添加" /></div>
+		</form>
+</div>
+</body>
+</html>

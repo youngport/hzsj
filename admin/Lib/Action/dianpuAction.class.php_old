@@ -1,0 +1,353 @@
+<?php
+
+class dianpuAction extends baseAction {
+	public function pinglun() {
+		$info_mod = new Model();
+		$info_mod = $info_mod->query("select pl.id,pl.neirong,pl.shijian,pl.jiancha,er.dianpname,r.wei_nickname from sk_dppinglun pl join sk_erweima er on er.id=pl.dianpid join sk_member r on r.open_id=er.openid order by pl.shijian desc");
+		//dump($info_mod);
+		import("ORG.Util.Page");
+
+		$count = count($info_mod);
+		if($_GET['p']){
+			$od = new Model();
+			$info_mod = $od->query("select pl.id,pl.neirong,pl.shijian,pl.jiancha,er.dianpname,r.wei_nickname from sk_dppinglun pl join sk_erweima er on er.id=pl.dianpid join sk_member r on r.open_id=er.openid order by pl.shijian desc limit ".($_GET['p']-1)*5 .",20");
+		}else{
+			$od = new Model();
+			$info_mod = $od->query("select pl.id,pl.neirong,pl.shijian,pl.jiancha,er.dianpname,r.wei_nickname from sk_dppinglun pl join sk_erweima er on er.id=pl.dianpid join sk_member r on r.open_id=er.openid order by pl.shijian desc limit 0,20");
+		}
+		$Page = new Page($count,20);
+
+		$show = $Page->show();
+
+		$this->assign('page',$show);
+
+
+
+
+
+
+
+		$this->assign('info', $info_mod);
+		$this->display();
+	}
+	public function pingluntg() {
+		$id = intval($_REQUEST['id']);
+		$type = trim($_REQUEST['type']);
+		$dppl = M('dppinglun');
+		$data['jiancha'] = $type;
+		$where['id'] = $id;
+
+
+		$i = $dppl->where($where)->data($data)->save();
+		//$i = $dppl->where($where)->data($data)->save($data);
+		//$items_mod = D('goods');
+		//$res = $items_mod->where('id=' . $id)->setField($type, array('exp', "(" . $type . "+1)%2"));
+		//$values = $items_mod->where('id=' . $id)->getField($type);
+		$this->ajaxReturn(5,5,$i);
+	}
+	function geren_dianpu(){
+		if (isset($_GET['agentid'])&&$_GET['agentid']!=''){
+			$agentid=$this->_get("agentid");
+			$this->assign('agentid',$agentid);
+			$tj['_string']="agentid is null or agentid='$agentid'";
+		}
+		if (isset($_GET['openid'])&&$_GET['openid']!=''){
+			$tj['agentid']=$this->_get("openid");
+		}
+		if (isset($_GET['pid'])&&$_GET['pid']!=''){
+			$tj['openid']=$this->_get("pid");
+		}
+		if (isset($_GET['shenhe'])&&is_numeric($_GET['shenhe'])){
+			$tj['shenhe'] =intval($_GET['shenhe']);
+		}
+		if (isset($_GET['dianpname'])&&$_GET['dianpname']!=""){
+			$tj['dianpname'] = array("like","%".$this->_get('dianpname')."%");
+		}
+		if (isset($_GET['dizhi'])&&$_GET['dizhi']!=""){
+			$tj['xxdizhi'] = array("like","%".$this->_get('dizhi')."%");
+		}
+
+		//店铺导出Excel
+		if(!empty($_GET['daochu'])){
+			$field='wei_nickname,openid,dianpname,dianp_num,xxdizhi,mac,regional,proxy,storeboss,macpayer,peixun,docking,starttime,budian';
+			$excel=M('erweima')->join('LEFT JOIN sk_member ON sk_erweima.openid=sk_member.open_id')->where($tj)->field($field)->select();
+
+	    Vendor('PHPExcel.PHPExcel');
+	    $objPHPExcel = new PHPExcel();
+        // 设置文件的一些属性，在xls文件——>属性——>详细信息里可以看到这些值，xml表格里是没有这些值的
+        $objPHPExcel
+            ->getProperties()  //获得文件属性对象，给下文提供设置资源
+            ->setCreator( "Maarten Balliauw")                 //设置文件的创建者
+            ->setLastModifiedBy( "Maarten Balliauw")          //设置最后修改者
+            ->setTitle( "Office 2007 XLSX Test Document" )    //设置标题
+            ->setSubject( "Office 2007 XLSX Test Document" )  //设置主题
+            ->setDescription( "Test document for Office 2007 XLSX, generated using PHP classes.") //设置备注
+            ->setKeywords( "office 2007 openxml php")        //设置标记
+            ->setCategory( "Test result file");                //设置类别
+        // 位置aaa  *为下文代码位置提供锚
+        // 给表格添加数据
+        $this_biao = $objPHPExcel->setActiveSheetIndex(0);             //设置第一个内置表（一个xls文件里可以有多个表）为活动的
+        $excel_canshu = $objPHPExcel->getActiveSheet();
+        $excel_canshu->getStyle('A')->getNumberFormat()
+            ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
+        $excel_canshu->getStyle('H')->getNumberFormat()
+            ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
+        $excel_canshu->getStyle('F')->getNumberFormat()
+            ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
+        $excel_canshu->getStyle('I')->getNumberFormat()
+            ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
+
+        $excel_canshu->getColumnDimension('A')->setWidth(20);
+        $excel_canshu->getColumnDimension('B')->setWidth(35);
+        $excel_canshu->getColumnDimension('C')->setWidth(25);
+        $excel_canshu->getColumnDimension('D')->setWidth(15);
+        $excel_canshu->getColumnDimension('E')->setWidth(25);
+        $excel_canshu->getColumnDimension('F')->setWidth(20);
+        $excel_canshu->getColumnDimension('G')->setWidth(20);
+        $excel_canshu->getColumnDimension('H')->setWidth(20);
+        $excel_canshu->getColumnDimension('I')->setWidth(20);
+        $excel_canshu->getColumnDimension('J')->setWidth(25);
+        $excel_canshu->getColumnDimension('K')->setWidth(10);
+        $excel_canshu->getColumnDimension('L')->setWidth(20);
+        $excel_canshu->getColumnDimension('M')->setWidth(20);
+        $excel_canshu->getColumnDimension('N')->setWidth(20);
+
+
+
+            $this_biao->setCellValue( 'A1', '微信昵称' )
+        ->setCellValue( 'B1', 'OPENID' )
+        ->setCellValue( 'C1', '店铺名称' )
+        ->setCellValue( 'D1', '店铺联系方式' )       
+        ->setCellValue( 'E1', '详细地址' )
+        ->setCellValue( 'F1', '终端透明柜MAC' )
+        ->setCellValue( 'G1', '区域负责人' )
+        ->setCellValue( 'H1', '代理人信息' )
+        ->setCellValue( 'I1', '实体店老板' )
+        ->setCellValue( 'J1', '终端付款人' )
+        ->setCellValue( 'K1', '是否培训' )
+        ->setCellValue( 'L1', '店铺实际对接人' )
+        ->setCellValue( 'M1', '店铺启动时间' )
+        ->setCellValue( 'N1', '布点人' );
+    	$i = 2;
+        foreach ($excel as $k => $v) {
+
+        	if($v['peixun']==0){
+        		$peixun='否';
+        	}else{
+        		$peixun='是';
+        	}
+             $objPHPExcel->setActiveSheetIndex(0)
+        ->setCellValue('A'.$i,$v['wei_nickname'])
+        ->setCellValue('B'.$i,$v['openid'])
+        ->setCellValue('C'.$i,$v['dianpname'])
+        ->setCellValue('D'.$i,$v['dianp_num'])
+        ->setCellValue('E'.$i,$v['xxdizhi'])
+        ->setCellValue('F'.$i,$v['mac'])
+        ->setCellValue('G'.$i,$v['regional'])
+        ->setCellValue('H'.$i,$v['proxy'])
+        ->setCellValue('I'.$i,$v['storeboss'])
+        ->setCellValue('J'.$i,$v['macpayer'])
+        ->setCellValue('K'.$i,$peixun)
+        ->setCellValue('L'.$i,$v['docking'])
+        ->setCellValue('M'.$i,$v['starttime'])
+        ->setCellValue('N'.$i,$v['budian']);
+			$i++;
+		}
+        
+
+        //得到当前活动的表,注意下文教程中会经常用到$objActSheet
+        $objActSheet = $objPHPExcel->getActiveSheet();
+        // 位置bbb  *为下文代码位置提供锚
+        // 给当前活动的表设置名称
+        $objActSheet->setTitle('店铺详细信息');
+
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="店铺详细信息.xls"');
+        header('Cache-Control: max-age=0');
+
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+        $objWriter->save('php://output');
+       
+        }else{ 
+
+		$dianp = M('erweima');
+		$count = $dianp->join('sk_orders on sk_erweima.dingdan=sk_orders.order_id')->join("sk_role_store on pid=openid and sid=id")->where($tj)->count();
+		import("ORG.Util.Page");
+		$Page = new Page($count,20);
+		$dianp = $dianp->field("sk_erweima.*,(select count(*) from sk_role_store b where sid=id and b.agentid='$agentid' and b.pid=openid) sel")->join('sk_orders on sk_erweima.dingdan=sk_orders.order_id')->join("sk_role_store c on pid=openid and sid=id")->order(array("sel"=>'desc',"id"=>'desc'))->where($tj)-> limit($Page->firstRow . ',' . $Page->listRows)->select();
+		$show = $Page->show();
+		$this->assign('page',$show);
+		$this->assign('get',$_GET);
+		$this->assign('items_cate_list',$dianp);
+		$this->display();
+	  }
+	}
+	function router(){
+		$info=M("erweima")->field("dianpname,rmac")->find(intval($_GET['id']));
+		import("@.Common.Router");
+		$router=new router();
+		$time1['startTime']=date("Y-m-d",strtotime("-1 day"));//昨日
+		$time1['endTime']=date("Y-m-d H:i:s",strtotime($time1['startTime']." +1 day")-1);
+		$time2['startTime']=date("Y-m-d H:i:s",strtotime("+0 week Monday"));//这周
+		$time2['endTime']=date("Y-m-d H:i:s",strtotime("+1 week Monday")-1);
+		$time3['startTime']=date("Y-m");//这月
+		$time3['endTime']=date('Y-m-d', strtotime(date('Y-m-01') . ' +1 month -1 day'));
+		$time4['startTime']=date("Y-m-d H:i:s",strtotime("2016-1-1"));//总
+		$time4['endTime']=date("Y-m-d H:i:s");
+		$post=array("apMac"=>$info['rmac'],"Timeslot"=>array($time1,$time2,$time3,$time4));
+		$post=json_encode($post);
+		$data['all']=$router->GetAllVistors($post);
+		$data['old']=$router->GetOldVistors($post);
+		$data['new']=$router->GetNewVistors($post);
+		$this->assign("info",$info);
+		$this->assign("data",$data);
+		$this->display();
+	}
+
+
+	function geren_dpshenhe(){
+		if (isset($_GET['id'])){
+			$id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error('ID非法');
+		}
+		$whe['id'] = $id;
+		$dianpu = M('erweima');
+		$dianpu = $dianpu -> where($whe) -> join('sk_member on sk_member.open_id = sk_erweima.openid')-> select();
+		$this->assign('items_cate_list', $dianpu);
+
+		$this -> display();
+	}
+	function dianpuchakan(){
+		if (isset($_GET['id'])){
+			$id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error('ID非法');
+		}
+		$whe['id'] = $id;
+		$dianpu = M('erweima');
+		$dianpu = $dianpu -> where($whe) -> join('sk_member on sk_member.open_id = sk_erweima.openid')-> select();
+		$this->assign('items_cate_list', $dianpu);
+
+		$this -> display();
+	}
+	function dianpu_shenheget(){
+		$dianpu = D("erweima");
+		if($dianpu->create()){
+			if (!empty($_FILES['img']['name'][0])){
+				//图片上传类
+				$savePath=$_FILES['img'];
+				import('ORG.Net.UploadFile');
+				$upload = new UploadFile();
+				//设置上传文件大小
+				$upload->maxSize = 32922000;
+				$upload->allowExts = explode(',', 'jpg,gif,png,jpeg,xls');
+				$upload->savePath = ROOT_PATH.'/data/'.$savePath.'/';
+				$upload->saveRule = uniqid;
+
+				if (!$upload->upload()) {
+					//捕获上传异常
+					$this->error($upload->getErrorMsg());
+				} else {
+					//取得成功上传的文件信息
+					$uploadList = $upload->getUploadFileInfo();
+				}
+				$uploadList[0]='./data/'.$savePath.'/'.$uploadList['0']['savename'];
+				
+				$dianpu->dianp_img= $uploadList[0];
+				if(!empty($uploadList[1]['name'])){
+					$uploadList[1]='./data/'.$savePath.'/'.$uploadList['1']['savename'];
+					$dianpu->dianp_img2=$uploadList[1];		
+				}
+		
+				}
+				
+			if($dianpu->save()!==false) {
+				if($_POST['shenhe']==1){
+					$hmuser=M("users","hm_");
+					$data=$hmuser->where("user_login='".$this->_post("dianp_lxfs")."'")->find();
+//                                        echo $hmuser->getLastSql();
+//                                        var_dump($data);
+					if(empty($data)){
+						$hmuser->user_login=$this->_post("dianp_lxfs");
+						$hmuser->create_time=time();
+						$hmuser->user_pass=sp_password(substr($this->_post("dianp_lxfs"),-6));
+						$result=$hmuser->add();
+						if($result!==false)
+							M("role_user","hm_")->add(array("role_id"=>2,"user_id"=>$result));
+					}else{
+						$result=$data['id'];
+					}
+					$store['sid']=$this->_post("id");
+					$store['type']=0;
+                                        $store['uid'] = $result;
+					$count = M("role_store", "hm_")->where($store)->count();
+//                                        echo  M("role_store", "hm_")->getLastSql();
+//					
+//                                        echo $result."---".$count; die;
+					//$count > 0 || M("role_store", "hm_")->add($store); //就是这个店铺是否被其他人绑定了,是的话就不给当前这个用户绑定
+                                          if($count==0){
+                                            M("role_store", "hm_")->add($store); //就是这个店铺是否被其他人绑定了,是的话就不给当前这个用户绑定
+                                        }
+				}
+				$this->success('修改成功');
+			}else
+				$this->error('修改失败');
+		}else
+			$this->error($dianpu->getError());
+	}
+	function dppl(){
+		if($this->isPost()){
+			M('dppinglun')->where("id=".$this->_post('id'))->setField('jiancha',$this->_post('status'));
+		}
+	}
+	function dianpu_cz(){
+		$ids=$_POST['id'];
+		$cz=intval($_POST['cz']);
+		$result=true;
+		if($cz==0) {
+			if(!is_array($ids))
+				$this->error("ERROR");
+			$where['id']=array("in",$ids);
+			$result = M("erweima")->where($where)->delete();
+		}elseif($cz==1) {
+			$role_store=M("RoleStore");
+			$model=M();
+			$hmuser=M("users","hm_");
+			$where['id']=array("in",$ids);
+			$agentid=$this->_post("agentid");
+			$list= M("erweima")->where($where)->field("id,openid")->select();
+			$phone=M("member")->getFieldByOpen_id($agentid,"phone_tel");
+			if(!empty($phone)){
+				$result=$hmuser->getFieldByUser_login($phone,"id");
+				if(empty($result)){
+					$hmuser->user_login=$phone;
+					$hmuser->create_time=time();
+					$hmuser->user_pass=sp_password(substr($phone,-6));
+					$result=$hmuser->add();
+				}
+				$role=array("role_id" => 5, "user_id" => $result);
+				if(M("role_user","hm_")->where($role)->count()<1){
+					M("role_user", "hm_")->add($role);
+				}
+				$where3=array("uid"=>$result,"type"=>1);
+				$model->table("hm_role_store")->where($where3)->delete();
+			}
+			$where2=array("agentid"=>$agentid);
+			$role_store->where($where2)->delete();
+			foreach($list as $v){
+				$where2['sid']=$v['id'];
+				$where2['pid']=$v['openid'];
+				$role_store->add($where2);
+				if(!empty($phone)) {
+					$where3['sid'] = $v['id'];
+					$model->table("hm_role_store")->add($where3);
+				}
+			}
+			if(empty($phone)){
+				$this->error("该账号手机号为空,商家后台账号未生成");
+			}
+		}
+		if($result!==false)
+			$this->success("OK");
+		else
+			$this->error("NO");
+	}
+}
+?>

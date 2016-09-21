@@ -1,0 +1,116 @@
+<admintpl file="header" />
+</head>
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Store/index')}" target="_self">所有终端</a></li>
+			<li class="active"><a href="javascript:;">订单统计</a></li>
+		</ul>
+		<form class="well form-search" method="post" action="{:U('Store/order_count')}">
+			<div class="search_type cc mb10">
+				<div class="mb10">
+					<span class="mr20">
+						&nbsp;日期：
+						<input type="text" name="start_time" class="J_date" value="{$formget.start_time}" style="width: 100px;" autocomplete="off">-
+						<input type="text" class="J_date" name="end_time" value="{$formget.end_time}" style="width: 100px;" autocomplete="off">
+						<input type="hidden" name="sid" value="{$sid}">
+						<input type="submit" class="btn btn-primary" value="搜索" />
+						<input type="reset" class="btn btn-primary" value="重置" />
+					</span>
+				</div>
+			</div>
+		</form>
+		<table class="table table-bordered table-striped">
+			<tr>
+				<th>下单数</th>
+				<th>付款单</th>
+				<th>下单金额</th>
+				<th>付款金额</th>
+			</tr>
+			<tr>
+				<td>{$info.xd}</td>
+				<td>{$info.fd}</td>
+				<td>￥{$info.xdmoney}</td>
+				<td>￥{$info.fdmoney}</td>
+			</tr>
+		</table>
+		<div id="chart" style="width:100%;height:400px;">
+		</div>
+	</div>
+	<script src="__ROOT__/statics/js/common.js"></script>
+	<script src="__ROOT__/statics/js/echarts.min.js"></script>
+	<script>
+		var chart={$chart};
+		$("input[type='reset']").click(function(){
+			$(this).siblings("input").not("input[type='submit']").attr("value","");
+			$("select").find("option").attr("selected",false);
+		});
+
+		var myChart = echarts.init(document.getElementById('chart'));
+
+		// 指定图表的配置项和数据
+		option = {
+			title : {
+				text: '订单统计表'
+			},
+			tooltip : {
+				trigger: 'axis'
+			},
+			legend: {
+				data:['下单数','付款单数']
+			},
+			toolbox: {
+				show : true,
+				feature : {
+					dataZoom: {},
+					dataView: {readOnly: false},
+					magicType: {type: ['line', 'bar']},
+					restore: {},
+					saveAsImage: {}
+				}
+			},
+			xAxis : [
+				{
+					type : 'category',
+					boundaryGap : false,
+					data :chart.key
+				}
+			],
+			yAxis : [
+				{
+					type : 'value',
+					axisLabel : {
+						formatter: '{value}'
+					}
+				}
+			],
+			series : [
+				{
+					name:'下单数',
+					type:'line',
+					data:chart.xd,
+					markPoint : {
+						data : [
+							{type : 'max', name: '最大值'}
+						]
+					}
+				},
+				{
+					name:'付款单数',
+					type:'line',
+					data:chart.fd,
+					markPoint : {
+						data : [
+							{type : 'max', name: '最大值'}
+						]
+					}
+				}
+			]
+		};
+
+
+		// 使用刚指定的配置项和数据显示图表。
+		myChart.setOption(option);
+	</script>
+</body>
+</html>

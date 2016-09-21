@@ -1,0 +1,375 @@
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Tag[ app_begin ] --START--
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Run CheckLang Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Tag[ app_begin ] --END-- [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.004000s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.002001s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | NOTIC: [8] Undefined index: admin_info baseAction.class.php 第 80 行.
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | NOTIC: [8] Undefined index: admin_info baseAction.class.php 第 39 行.
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.019001s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | NOTIC: [8] Undefined index: admin_info baseAction.class.php 第 43 行.
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id= LIMIT 1   [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.029002s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.003001s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Tag[ view_template ] --START--
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Run LocationTemplate Behavior [ RunTime:0.036002s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Tag[ view_template ] --END-- [ RunTime:0.036002s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Tag[ view_parse ] --START--
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Run ParseTemplate Behavior [ RunTime:0.081004s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Tag[ view_parse ] --END-- [ RunTime:0.081004s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Tag[ view_filter ] --START--
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Run TokenBuild Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Run WriteHtmlCache Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Run ShowRuntime Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Tag[ view_filter ] --END-- [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Tag[ view_end ] --START--
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Run ShowPageTrace Behavior [ RunTime:0.001001s ]
+[ 2016-09-13T19:08:20+08:00 ] /hzsj/index.php?a=login&m=public | INFO: Tag[ view_end ] --END-- [ RunTime:0.001001s ]
+[ 2016-09-13T19:08:21+08:00 ] /hzsj/index.php?a=verify&m=verify&rand=1473764900 | INFO: Tag[ app_begin ] --START--
+[ 2016-09-13T19:08:21+08:00 ] /hzsj/index.php?a=verify&m=verify&rand=1473764900 | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:21+08:00 ] /hzsj/index.php?a=verify&m=verify&rand=1473764900 | INFO: Run CheckLang Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:21+08:00 ] /hzsj/index.php?a=verify&m=verify&rand=1473764900 | INFO: Tag[ app_begin ] --END-- [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Tag[ app_begin ] --START--
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Run CheckLang Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Tag[ app_begin ] --END-- [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.003001s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.017001s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.002001s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Tag[ view_template ] --START--
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Run LocationTemplate Behavior [ RunTime:0.013001s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Tag[ view_template ] --END-- [ RunTime:0.014001s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Tag[ view_parse ] --START--
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | NOTIC: [8] Undefined variable: lang 61acf2961088e1c8be817cc708b9bd0a.php 第 38 行.
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Run ParseTemplate Behavior [ RunTime:0.015000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Tag[ view_parse ] --END-- [ RunTime:0.015000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Tag[ view_filter ] --START--
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Run TokenBuild Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Run ShowRuntime Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Tag[ view_filter ] --END-- [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Tag[ view_end ] --START--
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Run ShowPageTrace Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=index&m=index | INFO: Tag[ view_end ] --END-- [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Tag[ app_begin ] --START--
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001001s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Run CheckLang Behavior [ RunTime:0.038002s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Tag[ app_begin ] --END-- [ RunTime:0.039003s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.003001s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.001001s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | SQL: select version() as ver [ RunTime:0.008001s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Tag[ view_template ] --START--
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Run LocationTemplate Behavior [ RunTime:0.018001s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Tag[ view_template ] --END-- [ RunTime:0.018001s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Tag[ view_parse ] --START--
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | NOTIC: [8] Undefined variable: sub_menu 39668b7739752a70dba9b6d72f8d0b27.php 第 41 行.
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | NOTIC: [8] Undefined variable: big_menu 39668b7739752a70dba9b6d72f8d0b27.php 第 41 行.
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Run ParseTemplate Behavior [ RunTime:0.050003s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Tag[ view_parse ] --END-- [ RunTime:0.050003s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Tag[ view_filter ] --START--
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Run TokenBuild Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Run WriteHtmlCache Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Run ShowRuntime Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Tag[ view_filter ] --END-- [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Tag[ view_end ] --START--
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Run ShowPageTrace Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=main&m=public | INFO: Tag[ view_end ] --END-- [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Tag[ app_begin ] --START--
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Run CheckLang Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:30+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Tag[ app_begin ] --END-- [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.004000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.004000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SELECT `role_id` FROM `sk_admin` WHERE id=1 LIMIT 1   [ RunTime:0.001001s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_access` [ RunTime:0.028001s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SELECT `node_id` FROM `sk_access` WHERE role_id=8  [ RunTime:0.073004s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SHOW COLUMNS FROM `sk_node` [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | SQL: SELECT `id`,`action`,`action_name`,`module`,`module_name`,`data` FROM `sk_node` WHERE auth_type<>2 AND status=1 AND is_show=0 AND group_id=6 ORDER BY sort DESC  [ RunTime:0.270015s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | NOTIC: [8] Undefined offset: 1 publicAction.class.php 第 26 行.
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Tag[ view_template ] --START--
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Tag[ view_template ] --END-- [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Tag[ view_parse ] --START--
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | NOTIC: [8] Undefined variable: lang 7cb575b33561d89a8912b1581f6b6fb7.php 第 1 行.
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | NOTIC: [8] Undefined variable: lang 7cb575b33561d89a8912b1581f6b6fb7.php 第 1 行.
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | NOTIC: [8] Undefined variable: lang 7cb575b33561d89a8912b1581f6b6fb7.php 第 1 行.
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | NOTIC: [8] Undefined variable: lang 7cb575b33561d89a8912b1581f6b6fb7.php 第 1 行.
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Run ParseTemplate Behavior [ RunTime:0.189011s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Tag[ view_parse ] --END-- [ RunTime:0.189011s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Tag[ view_filter ] --START--
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Run ContentReplace Behavior [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Run TokenBuild Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Run ShowRuntime Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Tag[ view_filter ] --END-- [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Tag[ view_end ] --START--
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Run ShowPageTrace Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:31+08:00 ] /hzsj/index.php?a=menu&m=public&tag=0 | INFO: Tag[ view_end ] --END-- [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:39+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ app_begin ] --START--
+[ 2016-09-13T19:08:39+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:39+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run CheckLang Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:39+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ app_begin ] --END-- [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:39+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:39+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.003001s ]
+[ 2016-09-13T19:08:39+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:39+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:39+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.003001s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.003000s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_template ] --START--
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run LocationTemplate Behavior [ RunTime:0.046003s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_template ] --END-- [ RunTime:0.047003s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_parse ] --START--
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ParseTemplate Behavior [ RunTime:0.039002s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_parse ] --END-- [ RunTime:0.039002s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_filter ] --START--
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run TokenBuild Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ShowRuntime Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_filter ] --END-- [ RunTime:0.002000s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_end ] --START--
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ShowPageTrace Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:08:40+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_end ] --END-- [ RunTime:0.000000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ app_begin ] --START--
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run CheckLang Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ app_begin ] --END-- [ RunTime:0.002000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.003000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.003000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.005000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.007001s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.007000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.002000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.005001s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.000000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.003000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.003000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_template ] --START--
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run LocationTemplate Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_template ] --END-- [ RunTime:0.001000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_parse ] --START--
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ParseTemplate Behavior [ RunTime:0.005001s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_parse ] --END-- [ RunTime:0.005001s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_filter ] --START--
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ContentReplace Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run TokenBuild Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ShowRuntime Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_filter ] --END-- [ RunTime:0.002000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_end ] --START--
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ShowPageTrace Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:09:43+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_end ] --END-- [ RunTime:0.000000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ app_begin ] --START--
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001001s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run CheckLang Behavior [ RunTime:0.002000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ app_begin ] --END-- [ RunTime:0.003001s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.003000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.004000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.004001s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.003000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.003000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.003000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.003000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.001000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.003001s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.004000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_template ] --START--
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run LocationTemplate Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_template ] --END-- [ RunTime:0.002000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_parse ] --START--
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ParseTemplate Behavior [ RunTime:0.005000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_parse ] --END-- [ RunTime:0.005000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_filter ] --START--
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run TokenBuild Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ShowRuntime Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_filter ] --END-- [ RunTime:0.002000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_end ] --START--
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ShowPageTrace Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:09:53+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_end ] --END-- [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ app_begin ] --START--
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run CheckLang Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ app_begin ] --END-- [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.004000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.003001s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.002000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.004000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.002000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.003000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.003000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.001001s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.002000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.004000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_template ] --START--
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run LocationTemplate Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_template ] --END-- [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_parse ] --START--
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ParseTemplate Behavior [ RunTime:0.005000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_parse ] --END-- [ RunTime:0.005000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_filter ] --START--
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run TokenBuild Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run WriteHtmlCache Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ShowRuntime Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_filter ] --END-- [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_end ] --START--
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ShowPageTrace Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:01+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_end ] --END-- [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ app_begin ] --START--
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ReadHtmlCache Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run CheckLang Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ app_begin ] --END-- [ RunTime:0.002000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.003000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.003000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.003000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.002001s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.003000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.003000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.002000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.003000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.003001s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_template ] --START--
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run LocationTemplate Behavior [ RunTime:0.002000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_template ] --END-- [ RunTime:0.002000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_parse ] --START--
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ParseTemplate Behavior [ RunTime:0.004000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_parse ] --END-- [ RunTime:0.004000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_filter ] --START--
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run TokenBuild Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ShowRuntime Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_filter ] --END-- [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_end ] --START--
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ShowPageTrace Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:07+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_end ] --END-- [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ app_begin ] --START--
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run CheckLang Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ app_begin ] --END-- [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.006000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.002000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.002001s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.002000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.002000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.004000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.004000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.003001s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.004000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_template ] --START--
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run LocationTemplate Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_template ] --END-- [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_parse ] --START--
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ParseTemplate Behavior [ RunTime:0.004000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_parse ] --END-- [ RunTime:0.004000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_filter ] --START--
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run TokenBuild Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run WriteHtmlCache Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ShowRuntime Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_filter ] --END-- [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_end ] --START--
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ShowPageTrace Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:10+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_end ] --END-- [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ app_begin ] --START--
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run CheckLang Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ app_begin ] --END-- [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_admin` [ RunTime:0.003000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_items_cate` [ RunTime:0.003000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user` [ RunTime:0.004001s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user_info` [ RunTime:0.002000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_user_msg` [ RunTime:0.003000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_seo` [ RunTime:0.002000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_role` [ RunTime:0.002000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT `name`,`status`,`remark`,`create_time`,`update_time` FROM `sk_role` WHERE id=8 LIMIT 1   [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_group` [ RunTime:0.003001s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT `id`,`title` FROM `sk_group` WHERE status=1 ORDER BY sort ASC  [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SHOW COLUMNS FROM `sk_setting` [ RunTime:0.002000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | SQL: SELECT * FROM `sk_setting`  [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | NOTIC: [8] Undefined index: iframe baseAction.class.php 第 66 行.
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_template ] --START--
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_template ] --END-- [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_parse ] --START--
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ParseTemplate Behavior [ RunTime:0.006000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_parse ] --END-- [ RunTime:0.006000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_filter ] --START--
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run TokenBuild Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ShowRuntime Behavior [ RunTime:0.000000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_filter ] --END-- [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_end ] --START--
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Run ShowPageTrace Behavior [ RunTime:0.001000s ]
+[ 2016-09-13T19:10:12+08:00 ] /hzsj/index.php?a=test&m=goods | INFO: Tag[ view_end ] --END-- [ RunTime:0.001000s ]

@@ -1,0 +1,84 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<form action="{:u('user_goods/ug_edit')}" method="post" name="myform" id="myform"  enctype="multipart/form-data"    style="margin-top:10px;">
+    <div class="pad-10">
+        <div class="col-tab">
+            <ul class="tabBut cu-li">
+                <li id="tab_setting_1" class="on">修改时间</li>
+            </ul>
+            <div id="div_setting_1" class="contentList pad-10">
+                <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                    <tbody id="item_body"  >
+                    <tr>
+                        <th width="100">开始日期时间 :</th>
+                        <td>    
+                            <input type="text"   class="textinput requireinput" placeholder="格式为2015-11-18 10:40" name="start_time" id="start_time" size="60" value='{$sg.start_time}'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="100">结束日期时间 :</th>
+                        <td>
+                            <input type="text"   class="textinput requireinput" placeholder="格式为2015-11-18 10:40,不填写默认当天结束" name="end_time" id="end_time" size="60" value='{$sg.end_time}'>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div><input type="hidden" name="id" id="id" value="{$sg.id}" />
+                <input type="submit" value="{$Think.lang.submit}" name="dosubmit" class="smt " id="dosubmit"></div>
+
+        </div>
+    </div>
+
+</form>
+<script type="text/javascript">
+    function SwapTab(name,cls_show,cls_hide,cnt,cur){
+        for(i=1;i<=cnt;i++){
+            if(i==cur){
+                $('#div_'+name+'_'+i).show();
+                $('#tab_'+name+'_'+i).attr('class',cls_show);
+            }else{
+                $('#div_'+name+'_'+i).hide();
+                $('#tab_'+name+'_'+i).attr('class',cls_hide);
+            }
+        }
+    }
+    $(function(){
+        $("#price").blur(function () {
+            var str = $(this).val();
+            str = $.trim(str);
+            var fp_price = $("#fp_price").val();
+            if(str!=''&&fp_price == ''&&parseFloat(str)>0) {
+                var money=parseFloat(str)*0.4;//
+                $('#fp_price').val(money);
+            }
+        });
+
+   $("#bankid").val($("#hd_bankid").val());
+        $("#ratetime").val($("#hd_ratetime").val());
+        $("#cardtype").val($("#hd_cardtype").val());
+        $.formValidator.initConfig({
+            formid:"myform",
+            autotip:true,
+            onerror:function(msg,obj){
+                window.top.art.dialog({
+                            content:msg,
+                            lock:true,
+                            width:'200',
+                            height:'50'},
+                        function()
+                        {
+                            this.close();
+                            $(obj).focus();
+                        })
+            }});
+
+        $("#xs_time").formValidator({
+            onshow:"不能为空",onfocus:"时间不能为空哦"
+        }).inputValidator({
+            min:4,onerror:"请输入时间"
+        }); 
+
+    });
+</script>
+</body></html>

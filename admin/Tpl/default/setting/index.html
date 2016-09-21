@@ -1,0 +1,146 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<form id="myform" name="myform" action="{:u('setting/edit')}" enctype="multipart/form-data" method="post">
+  <div class="pad-10">
+    <div class="col-tab">
+      <ul class="tabBut cu-li">
+        <li id="tab_setting_1" class="on" onclick="SwapTab('setting','on','',3,1);">网站信息</li>       
+
+		<li id="tab_setting_2" onclick="SwapTab('setting','on','',3,2);">网站状态</li>
+      </ul>      
+      <div id="div_setting_1" class="contentList pad-10">
+          <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+            <tr>
+              <th width="120">{:L('site_name')} :</th>
+              <td><input type="text" name="site[site_name]" size="80" value="{$set.site_name}"></td>
+            </tr>
+            <tr>
+              <th width="120">{:L('site_domain')} :</th>
+              <td><input type="text" name="site[site_domain]" size="80" value="{$set.site_domain}"></td>
+            </tr>    
+			<tr>
+              <th>{:L('site_title')}:</th>
+              <td><input type="text" name="site[site_title]" size="80" value="{$set.site_title}"></td>
+            </tr>
+            <tr>
+              <th>{:L('site_keyword')} :</th>
+              <td><input type="text" name="site[site_keyword]" size="80" value="{$set.site_keyword}"></td>
+            </tr>
+            <tr>
+              <th>{:L('site_description')} :</th>
+              <td><textarea rows="3" cols="80" name="site[site_description]">{$set.site_description}</textarea></td>
+            </tr> 
+			<tr>
+              <th>{:L('site_logo')} :</th>
+              <td>              	
+				<input type="file" name="img" id="img" class="input-text" size=21 />
+				<if condition="$set['site_logo'] neq ''">
+					<img src="{$set['site_logo']}" style="max-height:64px;" />
+				</if>
+			  </td>
+            </tr>
+              <tr style=" display: none;">
+              <th>{:L('default_kw')} :</th>
+              <td><input type="text" name="site[default_kw]" id="site_icp" class="input-text" size="80" value="{$set.default_kw}">
+                  <br/>可根据需求定义多个热门关键字，用","号分隔。
+              </td>
+            </tr>
+              <tr style=" display: none;">
+              	<th>{:L('search_words')}:</th>
+              	<td>
+                    <textarea rows="3" cols="80" name="site[search_words]" id="search_words">{$set.search_words}</textarea>
+            	</td>
+        	</tr>
+
+
+
+			<tr>
+              <th width="120">{:L('check_code')} :</th>
+              <td>
+                <input type="radio" <if condition="$set.check_code eq '1'">checked="checked"</if> onclick="" value="1" name="site[check_code]" /> 开启 &nbsp;&nbsp;
+                <input type="radio" <if condition="$set.check_code eq '0'">checked="checked"</if> onclick="" value="0" name="site[check_code]" /> 关闭 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;				
+              </td>
+            </tr>
+			
+
+
+			
+
+            <tr>
+              <th width="120">文章显示条数 :</th>
+              <td>
+                <input type="text" name="site[article_count]" value="{$set.article_count}"/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                
+              </td>
+            </tr>
+
+              <tr style=" display: none;">
+                  <th>页脚内容:</th>
+                  <td><wego:editor id="footer_share" name="site[footer_share]" type="KINDEDITOR" style="width:70%;height:350px;" >{$set.footer_share}</wego:editor></td>
+              </tr>
+              <tr style=" display: none;">
+                  <th>{:L('statistics_code')} :</th>
+                  <td>
+                      <textarea rows="3" cols="80" name="site[statistics_code]" id="statistics_code">{$set.statistics_code}</textarea>
+                  </td>
+              </tr>
+
+			
+            <tr>
+              <th>{:L('site_icp')} :</th>
+              <td><input type="text" name="site[site_icp]" id="site_icp" class="input-text" value="{$set.site_icp}"></td>
+            </tr>
+            <tr>
+              	<th>{:L('statistics_code')} :</th>
+              	<td>
+                    <textarea rows="3" cols="80" name="site[statistics_code]" id="statistics_code">{$set.statistics_code}</textarea>
+            	</td>
+        	</tr>
+
+        </table>
+      </div>
+      
+      <div id="div_setting_2" class="contentList pad-10 hidden">
+      	<table width="100%" cellpadding="2" cellspacing="1" class="table_form">       
+            <tr>
+              <th width="120">{:L('site_status')} :</th>
+              <td>
+                <input type="radio" <if condition="$set.site_status eq '1'">checked="checked"</if> onclick="" value="1" name="site[site_status]"> 开启 &nbsp;&nbsp;
+                <input type="radio" <if condition="$set.site_status eq '0'">checked="checked"</if> onclick="" value="0" name="site[site_status]"> 关闭 &nbsp;&nbsp;
+              </td>
+            </tr>
+            <tr>
+              <th>{:L('closed_reason')} :</th>
+              <td><textarea rows="4" cols="80" name="site[closed_reason]">{$set.closed_reason}</textarea></td>
+            </tr>
+         </table>      
+      </div>
+
+        
+      <div class="bk15"></div>
+
+      <div class="btn"><input type="submit" value="{$Think.lang.submit}" onclick="return submitFrom();" name="dosubmit" class="button" id="dosubmit"></div>
+
+    </div>
+
+  </div>
+
+</form>
+
+<script type="text/javascript">
+function SwapTab(name,cls_show,cls_hide,cnt,cur){
+    for(i=1;i<=cnt;i++){
+		if(i==cur){
+			 $('#div_'+name+'_'+i).show();
+			 $('#tab_'+name+'_'+i).attr('class',cls_show);
+		}else{
+			 $('#div_'+name+'_'+i).hide();
+			 $('#tab_'+name+'_'+i).attr('class',cls_hide);
+		}
+	}
+}
+
+</script>
+
+</body></html>

@@ -1,0 +1,81 @@
+
+<include file="public:header" />
+<div class="pad-10" >
+    <a class="blue" href="{:u('items_cate/mp_add')}"><div class="smt">添加品牌</div></a>
+    <form name="searchform" action="{:u('items_cate/mp_index')}" method="get" >
+        <table width="100%" cellspacing="0" class="search-form">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="explain-col">
+<!--                            &nbsp;是否在活动 :
+                            <select name="status" id='status'>
+                                <option value="-1" <if condition="$status eq -1">selected="selected"</if>>-请选择-</option>
+                                <option value="1" <if condition="$status eq 1">selected="selected"</if>>是</option>
+                                <option value="0" <if condition="$status eq 0">selected="selected"</if>>否</option>
+                            </select>-->
+                            &nbsp;关键字 :
+                            <input name="keyword" type="text" id="tex" class="input-text" size="25" value="{$keyword}" />
+                             &nbsp;&nbsp;所属分类：
+                            <select name="pcate" id="pcate" >
+                                <option value="-1">--请选择--</option>
+                               <volist name="arr" id="list">
+                                   <option value="{$list.id}" <if condition="$pcate eq $list['id']">selected="selected"</if>>{$list.name}</option>
+                               </volist>
+                            </select>&nbsp;&nbsp;
+                            <input type="hidden" name="m" value="mp_index" />
+                            <span  class="smt" style="display:inline-block;float:none;" onclick="sousuo()">搜索</span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <div class="table-list">
+        <table width="100%" cellspacing="0">    
+            <thead>
+                <tr><th>ID</th>
+                    <th>品牌名称</th>
+                    <th>所属上级</th>
+<!--                    <th>是否在搞活动</th>-->
+                    <th>图片</th>
+                    <th>启用状态</th>
+                    <th>操作</th></tr>
+            </thead>
+            <foreach name="items_cate_list" item="vo">
+                <tr>
+                    <td align="center">{$vo.id}</td><td align="center">{$vo.name}</td>
+                    <!--                <if condition="($vo.huodong eq 1)"><td style="color:red;" align="center">是<else /><td align="center">否</if></td>-->
+                      <td align="center">
+                        <if condition="$vo.cate_id eq 65">
+                            进口母婴
+                            <elseif condition="$vo.cate_id eq 100" />
+                            美妆个护
+                            <elseif condition="$vo.cate_id eq 118"/>
+                            保健品
+                            <elseif condition="$vo.cate_id eq 147"/>
+                            进口食品
+                             <elseif condition="$vo.cate_id eq 167"/>
+                            店铺商品
+                        </if>
+                    </td>
+                    <td align="center"><img width="100px" height="80px" src="{$vo.mp_img}"/></td>
+                    <td align="center"><if condition="$vo.is_enable eq 1 "> 是<else /> 否</if></td>
+                    <td align="center">
+                        <!--        <a class="blue" href="{:u('huodong/index',array('canyuhdid'=>$vo['id'],'leim'=>'2'))}">参与到活动</a>&nbsp;|&nbsp;-->
+                        <a class="blue" href="{:u('items_cate/mp_add',array('id'=>$vo['id']))}">编辑</a>&nbsp;|&nbsp;<a class="blue" href="{:u('items_cate/mp_del',array('id'=>$vo['id']))}">删除</a></td></tr>
+            </foreach>
+        </table><br />
+        <div class="btn">
+            <div id="pages">{$page}</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function sousuo() {
+        window.location.href = '__GROUP__?a=mp_index&m=items_cate&tex=' + $('#tex').val() + '&status=' + $("#status").val()+'&pcate='+$("#pcate").val();
+    }
+</script>
+</body>
+</html>

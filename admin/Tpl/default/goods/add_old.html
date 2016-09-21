@@ -1,0 +1,380 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<form action="{:u('goods/add')}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+  <div class="pad-10">
+    <div class="col-tab">
+      <ul class="tabBut cu-li">
+        <li id="tab_setting_1" class="on" onclick="SwapTab('setting','on','',3,1);">商品信息</li>
+        <li id="tab_setting_2" onclick="SwapTab('setting','on','',3,2);">详细介绍</li>
+          <li id="tab_setting_3" onclick="SwapTab('setting','on','',3,3);">SEO设置</li>
+      </ul>
+      <div id="div_setting_1" class="contentList pad-10">
+        <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+            <tbody id="item_body"  >   <tr>
+                <th width="100">商品编号 :</th>
+                <td>
+                    <input type="text" size="60"  class="textinput requireinput" name="pcode" id="pcode"    placeholder="请输入商品编号">
+
+                </td>
+            </tr> <tr>
+            <th width="100">商品名称 :</th>
+            <td>
+            	<input type="text"   class="textinput requireinput" placeholder="请输入商品名称" name="good_name" id="good_name"  value="" size="60">
+            </td>
+          </tr>
+            <tr>
+                <th width="100">商品规格 :</th>
+                <td>
+                    <input type="text"   class="textinput requireinput" placeholder="请输入商品规格" name="guige" id="guige" size="60">
+                </td>
+            </tr>
+          <tr>
+            <tr>
+                <th width="100">商品类型 :</th>
+                <td>
+                    <input type="text"   class="textinput requireinput" placeholder="请输入商品类型：0普通 1代理 2店家3积分兑换" name="goodtype" id="goodtype" size="60">
+                </td>
+            </tr>
+          <tr>
+            <th>商品分类 :</th>
+            <td>
+                <select name="cate_id" id="cate_id" >
+                    <option value="">--请选择分类--</option>
+                    <volist name="cate_list" id="val">
+                        <option value="{$val.id}" level="{$val.level}" >
+                        {:str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',$val['level'])}
+                        {:trim($val['name'])}
+                        </option>
+                    </volist>
+                </select>
+
+			  </td>
+          </tr>  
+          <tr>
+            <th>品牌选择 :</th>
+            <td>
+                <select name="mp_id" id="mp_id" >
+                    <option value="">--请选择品牌--</option>
+                    <volist name="mingp" id="val">
+                        <option value="{$val.id}" level="{$val.level}" >
+                        {:str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',$val['level'])}
+                        {:trim($val['name'])}
+                        </option>
+                    </volist>
+                </select>
+
+			  </td>
+          </tr>
+          <tr>
+            <th>功效选择 :</th>
+            <td>
+                <select name="gx_id" id="gx_id" >
+                    <option value="">--请选择功效--</option>
+                    <volist name="gongx" id="val">
+                        <option value="{$val.id}" level="{$val.level}" >
+                        {:str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',$val['level'])}
+                        {:trim($val['name'])}
+                        </option>
+                    </volist>
+                </select>
+
+			  </td>
+          </tr>
+          <th>发货方式 :</th>
+            <td>
+                <select name="fh_type" id="fh_type" >
+                    <option value="">--请选择--</option>                    
+                         <option value ="保税">保税</option>
+                          <option value ="直邮" >直邮</option> 
+                </select>
+
+              </td>
+          </tr>
+                    <tr>
+                        <th width="100">商品条形码 :</th>
+                        <td>    
+                            <input type="text"   class="textinput requireinput" placeholder="请输入商品条形码" name="goods_tiaoxm" id="goods_tiaoxm" value="{$items.goods_tiaoxm}" size="60">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="100">生产地 :</th>
+                        <td>
+                            <input type="text"   class="textinput requireinput" placeholder="请输入商品生产地" name="yieldly" id="yieldly" value="{$items.yieldly}" size="60">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="100">保质期 :</th>
+                        <td>
+                            <input type="text"   class="textinput requireinput" placeholder="请输入商品保质期 格式为*个月" name="period" id="period" value="{$items.period}" size="60">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="100">适应人群 :</th>
+                        <td>
+                            <input type="text"   class="textinput requireinput" placeholder="请输入商品适应人群" name="suit" id="suit" value="{$items.suit}" size="60">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="100">功效 :</th>
+                        <td>
+                            <input type="text"   class="textinput requireinput" placeholder="请输入商品功效" name="effect" id="effect" value="{$items.effect}" size="60">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="100">利润商品原价(元) :</th>
+                        <td>
+                            <input type="text" size="60"  class="textinput requireinput" name="orgprice" id="orgprice" value="{$items.orgprice}"   placeholder="请输入商品原价(元)">
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="100">商品售价(元) :</th>
+                        <td>
+                            <input type="text" size="60"  class="textinput requireinput" name="price" id="price" value="{$items.price}"   placeholder="请输入商品单价(元)">
+
+                        </td>
+                    </tr><tr>
+                        <th width="100">活动折扣 :</th>
+                        <td>
+                            <input type="text" size="60"  class="textinput requireinput" name="zhekou" id="zhekou" value="{$items.zhekou}"   placeholder="请输入商品搞活折扣，如 5.5，9.8，7.0">
+
+                        </td>
+                    </tr><tr>
+                        <th width="100">今日推荐活动价(元) :</th>
+                        <td>
+                            <input type="text" size="60"  class="textinput requireinput" name="huodongjia" id="huodongjia" value="{$items.huodongjia}"   placeholder="请输入商品搞活动时的售卖价(元)">
+
+                        </td>
+                    </tr><tr>
+                        <th width="100">闪购价(元) :</th>
+                        <td>
+                            <input type="text" size="60"  class="textinput requireinput" name="shangoujia" id="shangoujia" value="{$items.shangoujia}"   placeholder="请输入商品闪购时的售卖价(元)">
+
+                        </td>
+                    </tr>
+
+          	<tr>
+                        <th width="100">利润分配价格(元) :</th>
+                        <td>
+                            <input type="text" size="60"  class="textinput requireinput" name="fp_price" id="fp_price" value="{$items.fp_price}"   placeholder="请输入利润分配价格(元)">
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="100">兑换所需积分 :</th>
+                        <td>
+                            <input type="text" size="60"  class="textinput requireinput" name="dhjifen" id="dhjifen" value="{$items.dhjifen}"   placeholder="请输入商品兑换所需积分">
+
+                        </td>
+                    </tr>
+          	<tr>
+                        <th width="100">库存 :</th>
+                        <td>
+                            <input type="text" size="60"  class="textinput requireinput" name="kucun" id="kucun" value="{$items.kucun}"   placeholder="请输入库存数量">
+
+                        </td>
+                    </tr>
+          <tr>
+          	<th>产品图片 :</th>
+            <td>
+            	<img id="img_show" src="" style="display:none" style="width:200px;" /><br /><br />
+            	<input type="file" name="img" id="img" class="input-text" size=21 />
+            </td>
+          </tr>
+          <tr>
+          	<th>产品图片(长图) :</th>
+            <td>
+            	<img id="img_show2" src="" style="display:none" style="width:200px;" /><br /><br />
+            	<input type="file" name="img2" id="img2" class="input-text" size=21 />
+            </td>
+          </tr>
+            <tr>
+                <th>是否能使用优惠券 :</th>
+                <td><input type="radio" name="is_coupon" class="radio_style" value="1" checked>&nbsp;是&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="is_coupon" class="radio_style" value="0" >&nbsp;不
+                </td>
+            </tr>
+            <tr>
+                <th>首页热门推荐状态 :</th>
+                <td><input type="radio" name="is_hots" class="radio_style" value="1" checked>&nbsp;推荐&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="is_hots" class="radio_style" value="0" >&nbsp;不推荐
+                </td>
+            </tr>
+            <tr>
+                <th>推荐状态 :</th>
+                <td><input type="radio" name="recom" class="radio_style" value="1" checked>&nbsp;推荐&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="recom" class="radio_style" value="0" >&nbsp;不推荐
+                </td>
+            </tr>
+            <th>商品状态 :</th>
+            <td><input type="radio" name="status" class="radio_style" value="1" checked>上架&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="status" class="radio_style" value="0" >下架
+            </td>
+                    <tr>
+                        <th>是否参与今日推荐活动:</th>
+                        <td><input type="radio" name="canyuhd" class="canyuhd" value="1" <if condition="$items.canyuhd eq 1"> checked</if>>
+                            &nbsp;是&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="canyuhd" class="canyuhd" value="0" <if condition="$items.canyuhd eq 0">  checked</if>>
+                            &nbsp;否
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>今日推荐活动是否推荐该商品:</th>
+                        <td><input type="radio" name="hdtuijian" class="radio_style" value="1" <if condition="$items.hdtuijian eq 1"> checked</if>>
+                            &nbsp;是&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="hdtuijian" class="radio_style" value="0" <if condition="$items.hdtuijian eq 0">  checked</if>>
+                            &nbsp;否
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>推荐理由 :</th>
+                        <td><textarea name="hdtjtext" id="hdtjtext" cols="80" rows="8" placeholder="请输入推荐理由，最多100个字">{$items.hdtjtext}</textarea></td>
+                    </tr>
+            <tr>
+                <th>显示顺序:</th>
+                <td><input type="text" name="sort_order" size="60"  class="input-text" id="sort_order"   placeholder="请输入显示顺序，数越大越靠前"></td>
+            </tr>
+
+            <tr> <th width="100">相关URL :</th>
+            <td>
+                <input type="text"   class="textinput requireinput" name="url" id="url"  size="60" placeholder="请输入相关URL">
+            </td>
+            </tr>
+            <tr>
+                <th>简单描述 :</th>
+                <td><textarea name="remark" id="remark" cols="80" rows="8" placeholder="请输入简单描述，最多100个字"></textarea></td>
+            </tr>
+           <!--<tr>
+                        <th>是否关闭 :</th>
+                        <td><input type="radio" name="closed" class="radio_style" value="1">&nbsp;打开&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="closed" class="radio_style" value="0" checked="checked">&nbsp;关闭
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>关闭原因 :</th>
+                        <td><textarea name="close_reason" id="close_reason" cols="80" rows="8"></textarea></td>
+                    </tr>
+                    <tr>
+                        <th>商品标签 :</th>
+                        <td><textarea name="tags" id="tags" cols="80" rows="8"></textarea></td>
+                    </tr>-->
+          </tbody>
+        </table>
+      </div>
+
+        <div id="div_setting_2" class="contentList pad-10 hidden">
+            <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                <tr>
+                    <th width="100">详细信息:</th>
+                    <td>	<wego:editor id="desc" name="desc" type="KINDEDITOR" style="width:70%;height:350px;" ></wego:editor></td>
+                </tr>
+            </table>
+        </div>
+      <div id="div_setting_3" class="contentList pad-10 hidden">
+        <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+            <tr>
+                <th width="100">SEO标题:</th>
+                <td><input type="text" name="seo_title" id="seo_title" class="input-text" size="60"  placeholder="请输入商品名称"   value=""></td>
+            </tr>
+            <tr>
+                <th>SEO关键字 :</th>
+                <td><input type="text" name="seo_keys" id="seo_keys" class="input-text" size="60"  placeholder="请输入商品名称"  value=""></td>
+            </tr>
+            <tr>
+                <th>SEO描述:</th>
+                <td><textarea name="seo_desc" id="seo_desc" cols="80" rows="8"  placeholder="请输入商品名称" ></textarea></td>
+            </tr>
+        </table>
+      </div>
+        <div class="bk15">
+
+      <input type="hidden" name="simg" id="simg" value="" />
+      <input type="hidden" name="bimg" id="bimg" value="" />
+      </div>
+        <div><input type="submit" value="{$Think.lang.submit}" name="dosubmit" class="smt " id="dosubmit"></div>
+
+    </div>
+  </div>
+
+</form>
+<script type="text/javascript">
+function SwapTab(name,cls_show,cls_hide,cnt,cur){
+    for(i=1;i<=cnt;i++){
+		if(i==cur){
+			 $('#div_'+name+'_'+i).show();
+			 $('#tab_'+name+'_'+i).attr('class',cls_show);
+		}else{
+			 $('#div_'+name+'_'+i).hide();
+			 $('#tab_'+name+'_'+i).attr('class',cls_hide);
+		}
+	}
+}
+$(function(){
+    $("#price").blur(function () {
+        var str = $(this).val();
+        str = $.trim(str);
+        var fp_price = $("#fp_price").val();
+        if(str!=''&&fp_price == ''&&parseFloat(str)>0) {
+            var money=parseFloat(str)*0.4;//
+            $('#fp_price').val(money);
+        }
+    });
+    $.formValidator.initConfig({
+        formid:"myform",
+        autotip:true,
+        onerror:function(msg,obj){
+            window.top.art.dialog({
+                        content:msg,
+                        lock:true,
+                        width:'200',
+                        height:'50'},
+                    function()
+                    {
+                        this.close();
+                        $(obj).focus();
+                    })
+        }});
+
+    $("#pcode").formValidator({
+        onshow:"不能为空",onfocus:"商品编号不能为空哦"
+    }).inputValidator({
+        min:4,max:20,onerror:" 商品编号不能少于4位"
+    });
+    $("#good_name").formValidator({
+        onshow:"不能为空",onfocus:"商品名称不能为空哦"
+    }).inputValidator({
+        min:4,onerror:"请输入商品名称"
+    });
+    $("#goodtype").formValidator({
+        onshow:"不能为空",onfocus:"商品类型不能为空哦"
+    }).inputValidator({
+        min:1,max:1,onerror:"请输入一位数的商品类型"
+    });
+	$("#cate_id").formValidator({
+        onshow:"商品分类必选",onfocus:"选择商品分类哦"
+    }).inputValidator({
+        min:1,onerror:"选择商品分类哦"
+    });
+	$("#mp_id").formValidator({
+        onshow:"商品品牌必选",onfocus:"选择商品品牌哦"
+    }).inputValidator({
+        min:1,onerror:"选择商品品牌哦"
+    });
+	$("#gx_id").formValidator({
+        onshow:"商品功效必选",onfocus:"选择商品功效哦"
+    }).inputValidator({
+        min:1,onerror:"选择商品功效哦"
+    });
+        $("#fh_type").formValidator({
+        onshow:"不能为空",onfocus:"发货不能为空哦"
+    }).inputValidator({
+        min:1,onerror:"请选择发货方式"
+    });
+  $("#sort_order").formValidator({onshow:"请输入显示顺序，数越大越靠前（1-99）（注意：1-5是商品界面图，从6开始是售卖商品）",onfocus:"只能输入（1-99）之间的整数哦（注意：1-5是商品界面图，从6开始是售卖商品）",oncorrect:"恭喜你,输入正确"}).inputValidator({min:1,max:99,type:"number",onerrormin:"你输入的值必须大于等于0",onerror:"分期利率必须在(1~99)之间，必须是整数，请确认"}).defaultPassed();
+
+});
+
+
+</script>
+</body></html>

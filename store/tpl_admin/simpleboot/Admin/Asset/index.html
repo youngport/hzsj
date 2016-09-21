@@ -1,0 +1,91 @@
+<admintpl file="header" />
+</head>
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('asset/index')}">附件列表</a></li>
+			<php>if(sp_auth_check($admin['id'],"/admin/asset/add")){</php>
+				<li><a href="{:U('asset/add')}">添加附件</a></li>
+			<php>}</php>
+		</ul>
+		<form class="well form-search" method="post" action="{:U('asset/index')}">
+			<div class="search_type cc mb10">
+				<div class="mb10">
+					<span class="mr20">
+						&nbsp;
+						<select name="cate" style="width:100px">
+							<option value="">状态</option>
+							<option value="0">其他</option>
+							<option value="1">文档</option>
+							<option value="2">图片</option>
+							<option value="3">视频</option>
+						</select>
+						&nbsp;文件名：
+						<input type="text" name="name" style="width: 200px;" value="{$formget.name}" placeholder="请输入文件名...">
+						<input type="submit" class="btn btn-primary" value="搜索" />
+						<input type="reset" class="btn btn-primary" value="重置" />
+					</span>
+				</div>
+			</div>
+		</form>
+		<table class="table table-hover table-bordered table-list">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>分类</th>
+					<th>文件名</th>
+					<th>后缀</th>
+					<th>大小</th>
+					<th>发布时间</th>
+					<th>备注</th>
+					<th>状态</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<foreach name="list" item="vo">
+			<tr>
+				<td>{$vo.id}</td>
+				<td><switch name="vo.cate"><case value="0">其他</case><case value="1">文档</case><case value="2">图片</case><case value="3">视频</case></switch></td>
+				<td>{$vo.name}</td>
+				<td>{$vo.suffix}</td>
+				<td>{$vo.size}</td>
+				<td>{$vo.time|date='Y-m-d H:i:s',###}</td>
+				<td>{$vo.meta}</td>
+				<td><switch name="vo.status"><case value="0">停用</case><case value="1">正常</case></switch></td>
+				<td>
+					<a href="{$vo.path}">下载</a>
+					<php>if(sp_auth_check($admin['id'],"/admin/asset/delete")){</php>
+						&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{:U('delete',array('id'=>$vo['id']))}">删除</a>
+					<php>}</php>
+				</td>
+			</tr>
+			</foreach>
+			<tfoot>
+				<tr>
+					<th>ID</th>
+					<th>分类</th>
+					<th>文件名</th>
+					<th>后缀</th>
+					<th>大小</th>
+					<th>发布时间</th>
+					<th>备注</th>
+					<th>状态</th>
+					<th>操作</th>
+				</tr>
+			</tfoot>
+		</table>
+		<div class="pagination pull-right"><span href="#" class="btn btn-primary disabled">{$count}条记录</span>{$Page}</div>
+	</div>
+</body>
+<script src="__ROOT__/statics/js/common.js"></script>
+<script>
+	$("select[name='cate']").find("option").each(function(){
+		if($(this).val()=="{$formget.cate}")
+			$(this).attr("selected",true);
+	});
+	$("input[type='reset']").click(function(){
+		$(this).siblings("input").not("input[type='submit']").attr("value","");
+		$("select").find("option").attr("selected",false);
+	});
+</script>
+</html>

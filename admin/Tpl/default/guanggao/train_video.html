@@ -1,0 +1,52 @@
+
+<include file="public:header" />
+<div class="pad-10" >
+    <form name="searchform" action="{:u('items_cate/mp_index')}" method="get" >
+        <table width="100%" cellspacing="0" class="search-form">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="explain-col">
+                            <span  class="smt" style="display:inline-block;float:none;" onclick="sousuo()">添加</span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <div class="table-list">
+        <table width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>视频名称</th>
+                    <th>视频地址</th>
+                    <th>有效性</th>
+                    <th>排序</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <foreach name="list" item="vo">
+                <tr>
+                    <td align="center">{$vo.vi_id}</td>
+                    <td align="center">{$vo.vi_name}</td>
+                    <td align="center">{$vo.vi_url}</td>
+                    <td align="center"><if condition="$vo.vi_youxiao eq 0 ">无效<else />有效</if></td>
+                <td align="center">{$vo.vi_paixu}</td>
+                <td align="center"><a href="{:U('guanggao/train_video_xg',array('id'=>$vo['vi_id']))}">编辑</a> / <a href="{:U('guanggao/train_video_del',array('id'=>$vo['vi_id']))}">删除</a></td>
+                </tr>
+            </foreach>
+        </table><br />
+        <div class="btn">
+            <div id="pages">{$page}</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function sousuo() {
+        window.location.href = '__GROUP__?a=webuploader&m=guanggao';
+    }
+</script>
+</body>
+</html>

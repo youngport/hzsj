@@ -1,0 +1,15 @@
+<include file="public:header" />
+<div class="pad-10" >
+	<volist name="items_cate_list" id="vo">
+	<form id="myform" name="myform" action="{:u('public/banner_xgget',array('id'=>$vo['id']))}" method="post" enctype="multipart/form-data" ><br />
+	    <div>编号ID：{$vo.id}</div><br />
+		banner图：<if condition="($vo.imgurl neq '')"><img src="__ROOT__/{$vo.imgurl}"/><else /></if><br /><br />
+		banner图修改：<input type="file" name="img" id="img" class="input-text" size=21 /><br /><br />
+		图片链接：<input type="text" size="60"  class="textinput requireinput" name="links" id="links" value="{$vo.links}"   placeholder="请输入链接  例如（main/category/flss_xq.php?quid=5） id请去商品分类查看"><br /><br />
+		排序：<input type="text" size="60"  class="textinput requireinput" name="paixu" id="paixu" value="{$vo.paixu}" ><br /><br />
+	    <div><input type="submit" name="dosubmit" value="  保存  " /></div>
+	</form>
+	</volist>
+</div>
+</body>
+</html>

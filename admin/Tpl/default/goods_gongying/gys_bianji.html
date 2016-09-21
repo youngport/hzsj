@@ -1,0 +1,14 @@
+<include file="public:header" />
+<div class="pad-10" >
+	<volist name="items_cate_list" id="vo">
+		<form id="myform" name="myform" action="{:u('goods_gongying/gys_bianji_get',array('id'=>$vo['gys_id']))}" method="post"><br />
+		    <div>供应商编码：<input type="text" name="gys_bianma" id="gys_bianma" value="{$vo.gys_bianma}"></div><br />
+		    <div>供应商名称：<input type="text" name="gys_name" id="gys_name" value="{$vo.gys_name}"></div><br />
+		    <div>供应商联系QQ：<input type="text" name="gys_qq" id="gys_qq" value="{$vo.gys_qq}"></div><br />
+		    <div>供应商联系手机：<input type="text" name="gys_shouji" id="gys_shouji" value="{$vo.gys_shouji}"></div><br />
+		    <div> <input type="submit" name="dosubmit" value="确认修改" /></div>
+		</form>
+	</volist>
+</div>
+</body>
+</html>

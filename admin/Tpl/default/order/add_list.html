@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<h3 style="text-align:center">添加数据</h3>
+<table border="1" style="width:60%;margin-left:20%">
+<tr><th>序列号</th><th>订单号</th><th>操作</th></tr>
+
+<foreach name="data" item="value">	
+	<tr align="center">
+		<td>{$value['id']}</td><td>{$value['orderCode']}</td><td><a href="{:u('order/add',array('orderCode'=>$value['orderCode']))}">添加订单数据</a></td>
+	</tr>
+</foreach>
+</table>
+<div style="text-align: center;">{$pageinfo}</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<include file="public:header"/>
+
+<style>
+.tu1{ max-width:200px;}
+.tu2{ max-width:220px;}
+.fomh{ float:left; margin:20px;}
+.zitik{ color:#72ACE3; line-height:30px; font-size:14px; text-align:center;cursor:pointer;font-weight: bold;}
+</style>
+<div class="pad_10">
+	<div></div>
+    <volist name="erweima" id="val" >
+    <div class="fomh">
+    	<div>
+    		<img class="tu1" src="{$url}/{$val.img}"/>
+    		<img class="tu2" src="{$url}/{$val.dz}"/>
+    	</div>
+    	<div class="zitik"><span class="gezhishengxiao" data-oi="{$val.oi}" data-state="{$val.tf}"><if condition="$val.tf eq 0 ">状态：搁置<else />状态：生效</if></span></div>
+    </div>
+    </volist>
+	<div style="float:none;clear:both;"></div>
+    <center>&nbsp; <input type="button"  onclick="javascript:history.go(-1);"  id="btnreturn" class="smt " value="返回">
+    </center>
+</div>
+<script>
+$('.gezhishengxiao').click(function(){
+    var xx;
+    var id=$(this).attr('data-oi');
+    if($(this).attr('data-state')==0)xx=1;
+    if($(this).attr('data-state')!=0)xx=0;
+    var $this=$(this);
+	$.ajax({
+		type: "POST",
+		url: "{:U('orders/serweima')}",
+		data: "oi="+id+"&tf="+xx,
+		success: function(data){
+		if(data==0){
+            $this.html('状态：搁置');
+            $this.attr('data-state',data)
+        }else{
+            $this.html('状态：生效');
+            $this.attr('data-state',data)
+        };
+		}
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<include file="public:header" />
+<form action="{:u('user_goods/ug_cz',array('cz'=>$cz))}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+    <div class="col-tab">
+        <ul class="tabBut cu-li">
+            <li><a href="{:U('user_goods/ug')}">商品列表</a></li>
+            <li class="on">添加会员商品</li>
+        </ul>
+        <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+            <tr>
+                <th width="100">商品ID:</th>
+                <td><input type='text' name='gid' size='30' id='goodsid' value="<eq name='cz' value='add'>{$Think.get.gid}</eq>"></td>
+            </tr>
+            <tr>
+                <th width="100">价格(元) :</th>
+                <td>
+                    <input type="text" size="60"  class="textinput requireinput" name="price" id="price" placeholder="请输入商品的售卖价(元)" value="{$data.price}">
+
+                </td>
+            </tr>
+            <tr>
+                <th width="100">利润价格(元) :</th>
+                <td>
+                    <input type="text" size="60"  class="textinput requireinput" name="fp_price" id="fp_price" placeholder="请输入商品的利润价(元)" value="{$data.fp_price}">
+
+                </td>
+            </tr>
+            <tr>
+                <th width="100">开始时间 :</th>
+                <td>
+<!--                    <input type="text" size="60"  class="textinput requireinput" name="start_time" id="start_time"  placeholder="请输入商品开始时间  例如：2008-09-09 10:20:00">-->
+                   <input type="text" size="40"  class="Wdate" name="start_time" id="start_time"  onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+                </td>
+            </tr>
+            <tr>
+                <th width="100">结束时间 :</th>
+                <td>
+                    <!--                    <input type="text" size="60"  class="textinput requireinput" name="end_time" id="end_time" placeholder="请输入商品结束时间 例如：2008-09-09 10:20:00">-->
+                     <input type="text" size="40"  class="Wdate" name="end_time" id="end_time"  onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+                </td>
+            </tr>
+
+            <tr>
+                <th>{:L('status')} :</th>
+                <td><input type="radio" name="status" class="radio_style" value="1" checked="checked">
+                    &nbsp;默认已启用&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="status" class="radio_style" value="0">
+                    &nbsp;待启用
+                </td>
+            </tr>
+            <tr>
+                <th>精品 :</th>
+                <td><input type="radio" name="boutique" class="radio_style" value="0" checked="checked">
+                    &nbsp;默认不是精品&nbsp;&nbsp;
+                    <input type="radio" name="boutique" class="radio_style" value="1">
+                    &nbsp;精品
+                </td>
+            </tr>            
+            <tr>
+                <th width="100">描述 :</th>
+                <td>
+                    <input type="text" size="60"  class="textinput requireinput" name="remarks" id="remarks" value="" placeholder="请填写描述"> 不同描述请用英文分号隔开，例如：不上火;宝宝爱喝
+                </td>
+            </tr>
+            <tr>
+                <th width="100">排序 :</th>
+                <td>
+                    <input type="text" size="20"  class="textinput requireinput" name="by_order" id="by_order" value="99">
+                </td>
+            </tr>
+
+            <tr>
+                <th width="100">商品列表图 :</th>
+                <td>
+                    <input type="file" size="20"  class="textinput requireinput" name="view" id="view" value="99">
+                     <img src=""  id="min_images" />
+                </td>
+              
+            </tr>
+            <tr>
+                <th width="100">商品详情图 :</th>
+                <td>
+                    <input type="file" size="20"  class="textinput requireinput" name="price_view" id="price_view" value="99">
+                    <img src=""  id="max_images" />
+                </td>
+            </tr>
+        </table>
+        <div class="bk15"></div>
+        <div class="btn"><input type="submit" value="{$Think.lang.submit}"  name="dosubmit" class="button" id="dosubmit"></div>
+    </div>
+</form>
+<script type="text/javascript">
+    if ("{$cz}" == 'edit') {
+        $(".on").text('修改');
+        $("input[name='gid']").val("{$data.gid}");
+        $("input[name='gid']").attr("readonly","readonly");
+        $('div.btn').append("<input type='hidden' name='id' value='{$data.id}'/>");
+        $("input[name='start_time']").val("{$data.start_time|date='Y-m-d H:i:s',###}");
+        $("input[name='end_time']").val("{$data.end_time|date='Y-m-d H:i:s',###}");
+        if ("{$data.status}" == false) {
+            $("input[name='status']").eq(0).attr('checked', false);
+            $("input[name='status']").eq(1).attr('checked', true);
+        }
+        if ("{$data.boutique}" == true) {
+            $("input[name='boutique']").eq(0).attr('checked', false);
+            $("input[name='boutique']").eq(1).attr('checked', true);
+
+        }       
+        $("input[name=remarks]").val("{$data.remarks}");
+        $("input[name=by_order]").val("{$data.by_order}");
+        $("#min_images").attr("src","{$data.view}");
+        $("#max_images").attr("src","{$data.price_view}");
+    }
+</script>
+<script>
+    $(function () {
+        $.formValidator.initConfig({
+            formid: "myform",
+            autotip: true,
+            onerror: function (msg, obj) {
+                window.top.art.dialog({
+                    content: msg,
+                    lock: true,
+                    width: '200',
+                    height: '50'},
+                        function ()
+                        {
+                            this.close();
+                            $(obj).focus();
+                        })
+            }});
+
+        $("#goodsid").formValidator({
+            onshow: "不能为空", onfocus: "商品ID不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入库存"
+        });
+
+        $("#price").formValidator({
+            onshow: "不能为空", onfocus: "价格不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入价格"
+        });
+
+        $("#fp_price").formValidator({
+            onshow: "不能为空", onfocus: "利润价格不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入利润价格"
+        });
+
+        $("#start_time").formValidator({
+            onshow: "不能为空", onfocus: "开始时间不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入开始时间"
+        });
+
+        $("#end_time").formValidator({
+            onshow: "不能为空", onfocus: "结束时间不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入结束时间"
+        }).compareValidator({
+            desid: "start_time", operateor: ">=", datatype: "datetime", onerror: "结束时间不能小于开始时间"
+        });
+    });
+</script>
+</body></html>

@@ -1,0 +1,449 @@
+<include file="public:header"/>
+<div class="pad_10">
+    <div class="pad-10">
+        <div class="col-tab">
+            <ul class="tabBut cu-li">
+                <li id="tab_setting_1" class="on" onclick="SwapTab('setting', 'on', '', 3, 1);">订单信息</li>
+                <li id="tab_setting_2" onclick="SwapTab('setting', 'on', '', 3, 2);">购买商品</li>
+                <li id="tab_setting_3" onclick="SwapTab('setting', 'on', '', 3, 3);">订单流水</li>
+            </ul>
+            <div id="div_setting_1" class="contentList pad-10" >
+                <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                    <tr>
+                        <th width="100">订单流水号:</th>
+                        <td colspan="3"> {$info.order_sn}</td>
+                        <!--         id` smallint(6) NOT NULL AUTO_INCREMENT,
+                                                 `user_id` int(11) DEFAULT NULL COMMENT '用户的id',
+                                                 `order_sn` varchar(50) DEFAULT NULL COMMENT '订单流水号',
+                                                 `trade_no` varchar(50) DEFAULT NULL COMMENT '支付宝交易号',
+                                                 `good_id` smallint(6) DEFAULT NULL COMMENT '商品id',
+                                                 `good_num` int(11) DEFAULT NULL COMMENT '商品数量',
+                                                 `total_price` decimal(10,2) DEFAULT NULL COMMENT '总价',
+                                                 `order_state` char(1) DEFAULT NULL COMMENT '订单 状态 0代表未付款，1代表已经付款，2代表备货中，3代表已发货，4代表已完成，5代表退货',
+                                                 `order_type` varchar(100) DEFAULT NULL COMMENT '支付方式，支付宝或者微信支付',
+                                                 `logistics` varchar(255) DEFAULT NULL COMMENT '物流',
+                                                 `order_desc` varchar(1000) DEFAULT NULL COMMENT '备注，留言',
+                                                 `addr_id` int(10) DEFAULT NULL COMMENT '收货地址id',
+                                                 `mcoupon_money` decimal(10,2) DEFAULT NULL COMMENT '使用的现金券',
+                                                 `is_mcoupon` char(1) DEFAULT '0' COMMENT '是否使用现金券，1使用，0不使用',
+                                                 `is_mcoupon_res` char(1) DEFAULT '0' COMMENT '是否使用成功，0代表不成功，1代表成功',
+                                                 `pay_time` int(10) DEFAULT NULL COMMENT '付款时间',
+                                                 `add_time` int(10) DEFAULT NULL COMMENT '添加时间',
+                                                 `logistics_no` varchar(200) DEFAULT NULL,-->
+                    </tr>
+                    <tr>
+                        <th width="100">下单人:</th>
+                        <td colspan="3">{$info.order_state}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="100">订单状态:</th>
+                        <td><switch name="info.order_state">
+                    <case value="0">未付款</case>
+                    <case value="1">已付款</case>
+                    <case value="2">清关中</case>
+                    <case value="3">已发货</case>
+                    <case value="4">已完成</case>
+                    <case value="6">退换货申请中</case>
+                    </switch>
+                    </td>
+                    <th width="100">下单时间:</th>
+                    <td>
+                    <notempty name="info.add_time">{$info.add_time|date="Y-m-d H:i:s",###}
+                        <else/>
+                        --
+                    </notempty>
+                    </td>
+                    </tr>
+                    <tr>
+                        <th width="100">订单总价:</th>
+                        <td>{$info.total_price}</td>
+                        <th width="100">支付方式:</th>
+                        <td>{$info.order_type}</td>
+                    </tr>
+                    <tr>
+                        <th width="100">外部交易号:</th>
+                        <td>{$info.out_trade_sn}</td>
+                        <th width="100">支付时间:</th>
+                        <td>{$info.pay_time|date="Y-m-d H:i:s",###}</td>
+                    </tr>
+                    <tr>
+                        <th width="60">支付信息:</th>
+                        <td colspan="3">{$info.order_desc}
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <th width="100">快递公司:</th>
+                        <td>
+                    <if condition="($info.shipping_name eq 'ems') ">EMS
+                        <elseif condition="$info.shipping_name eq 'pcaexpress'"/>PCA Express
+                        <elseif condition="$info.shipping_name eq 'youzhengguoji'"/>邮政小包（国际）
+                        <elseif condition="$info.shipping_name eq 'youzhengguonei'"/>邮政小包（国内）
+                        <elseif condition="$info.shipping_name eq 'yunda'"/>韵达快运
+                        <elseif condition="$info.shipping_name eq 'shunfeng'"/>顺丰速递
+                        <elseif condition="$info.shipping_name eq 'zhongtong'"/>中通速递
+                        <elseif condition="$info.shipping_name eq 'yuantong'"/>圆通速递
+                        <elseif condition="$info.shipping_name eq 'shentong'"/>申通快递
+                        <elseif condition="$info.shipping_name eq 'tiantian'"/>天天快递
+                        <elseif condition="$info.shipping_name eq 'quanfengkuaidi'"/>全峰快递
+                        <elseif condition="$info.shipping_name eq 'huitongkuaidi'"/>百世汇通
+                        <elseif condition="$info.shipping_name eq 'disifang'"/>递四方快递
+                        <elseif condition="$info.shipping_name eq 'youshuwuliu'"/>优速物流 
+                        <elseif condition="$info.shipping_name eq 'guotongkuaidi'"/>国通快递
+                        <elseif condition="$info.shipping_name eq 'quanfengkuaidi'"/>全峰快递
+                        <elseif condition="$info.shipping_name eq 'emsguoji'"/>EMS-国际件
+                        <elseif condition="$info.shipping_name eq 'epanex'"/>泛捷国际
+                        <elseif condition="$info.shipping_name eq 'lmfex'"/>良藤国际速递
+                    </if>
+                    </td>
+                    <th width="100">快递单号:</th>
+                    <td>{$info.logistics_no}</td>
+                    </tr> 
+                    <tr>
+                        <th width="100">买家附言:</th>
+                        <td colspan="3">{$info.order_desc}</td>
+                    </tr>
+                    <tr id="order_xiu_1">
+                        <th width="100">备注:</th>
+                        <td width="455" id="order_te">{$info.order_notes}</td>
+                        <th><input type="button" onclick="order_xiu();" name="refuseOrder" class="button " value="修改备注"></th>
+                    </tr>
+                    <tr id="order_xiu_2" style="display:none;">
+                        <th width="100">修改备注:</th>
+                        <td width="455" id="order_te"><textarea  name="order_beiz" id="order_beiz"  rows="10" cols="60" class="neirong" >{$info.order_notes}</textarea>（注意：500字以内）</td>
+                        <th><input type="button" id="order_beiz_inpuxt" onclick="order_beiz();" name="refuseOrder" data-id="{$info.order_id}" class="button " value="确认修改"><br/><br/><input type="button" onclick="order_beiz_qx();" name="refuseOrder" class="button " value="取消修改"></th>
+
+                    </tr>
+                    <eq name="info.status" value="98"> <tr  >
+                        <th width="100">关闭原因:</th>
+                        <td colspan="3">{$info.close_info}</td>
+                    </tr><else/>
+                    <tr id="tr_close_info" style="display: none;">
+                        <th width="100">关闭原因:</th>
+                        <td colspan="3"><textarea name="close_info" id="close_info" cols="100" rows="8"></textarea></td>
+                    </tr>
+                    </eq>
+                    <eq name="info.status" value="99"> <tr  >
+                        <th width="100">拒绝原因:</th>
+                        <td colspan="3">{$info.refuse_info}</td>
+                    </tr><else/>
+                    <tr id="tr_refuse_info" style="display: none;">
+                        <th width="100">拒绝原因:</th>
+                        <td colspan="3"><textarea name="refuse_info" id="refuse_info" cols="100" rows="8"></textarea></td>
+                    </tr>
+                    </eq>
+                    <tr><th></th><td colspan="3"><input type="hidden" name="order_id" id="order_id" value="{$info.order_id}">
+                            <switch name="info.status">
+                    <case value="0">
+                        <!-- &nbsp; <input type="button" onclick="submitOrder('aduit','{$info.order_id}',1)" name="aduitOrder" id="btnAduit" class="button " value="审核订单">
+                        &nbsp; <input type="button"  onclick="submitOrder('refuse','{$info.order_id}',99)" name="refuseOrder"   class="button " value="拒绝订单">
+                        --></case>
+                    <case value="1">
+                        &nbsp; <input type="button" onclick="submitOrder('sending', '{$info.order_id}', 2)" name="SendingGoods" id="btnSending" class="button " value="备货">
+                        &nbsp; <input type="button" onclick="submitOrder('close', '{$info.order_id}', 98)" name="SendingGoods" id="btnClose" class="button " value="关闭订单">
+                    </case>
+                    <case value="2"><input type="button"  onclick="submitOrder('close', '{$info.order_id}', 99)" name="refuseOrder"   class="button " value="关闭订单">
+                    </case>
+                    <case value="3"><eq name="kd.count" value="$kd.kcount"><input type="button"  onclick="submitOrder('tradefinished', '{$info.order_id}', 4)"name="TradeFinished" id="btnTradeFinished" class="button " value="订单完成"></eq>
+                    </case>
+                    <case value="4"> </case>
+                    </switch>
+                    </td></tr>
+                </table>
+            </div>
+
+            <div id="div_setting_2" class="contentList pad-10" style=" display: none;">
+                <div class="table-list">
+                    <table width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="20%">ID</th>
+                                <th width="20%">商品名称</th>
+                                <th width="20%">价格(元)</th>
+                                <th width="20%">快递信息</th>
+                                <th width="20%">操作</th>
+                                
+<!--                                  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+  `good_name` varchar(100) NOT NULL COMMENT '商品名称',
+  `good_price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '商品价格',
+  `good_postage` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '邮费',
+  `good_orders` tinyint(10) unsigned DEFAULT NULL,
+  `good_detail_img` varchar(100) DEFAULT NULL COMMENT '商品详情图',
+  `add_user` varchar(50) DEFAULT NULL COMMENT '添加人',
+  `add_time` int(10) unsigned DEFAULT NULL COMMENT '添加时间',
+  `carousel_id` smallint(6) unsigned DEFAULT NULL COMMENT 'sk_carousel轮播图的主键',
+  `modify_time` int(10) unsigned DEFAULT NULL COMMENT '修改时间',-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="goods" id="val">
+                            <tr>
+                                <td align="center">{$val.id}</td>
+                                <td align="center">{$val.good_name}</td>
+                                <td align="center"><em style="color:green;">{$val.good_price}</em></td> 
+                            <td align="center">
+                                快递公司:
+                                <select name="shipping_name" id="shipping_name" >
+                                    <option value="" <eq name="val.shipping_name" value="">selected</eq>>请选择</option>
+                                    <option value="ems" <eq name="val.shipping_name" value="ems">selected</eq>>EMS</option>
+                                    <option value="kingfreight" <eq name="val.shipping_name" value="kingfreight">selected</eq>>貨運皇</option>
+                                    <option value="pcaexpress" <eq name="val.shipping_name" value="pcaexpress">selected</eq>>PCA Express</option>
+                                    <option value="youzhengguoji" <eq name="val.shipping_name" value="youzhengguoji">selected</eq>>邮政小包（国际）</option>
+                                    <option value="youzhengguonei" <eq name="val.shipping_name" value="youzhengguonei">selected</eq>>邮政小包（国内）</option>
+                                    <option value="yunda" <eq name="val.shipping_name" value="yunda">selected</eq>>韵达快运</option>
+                                    <option value="shunfeng" <eq name="val.shipping_name" value="shunfeng">selected</eq>>顺丰速递</option>
+                                    <option value="zhongtong" <eq name="val.shipping_name" value="zhongtong">selected</eq>>中通速递</option>
+                                    <option value="yuantong" <eq name="val.shipping_name" value="yuantong">selected</eq>>圆通速递</option>
+                                    <option value="shentong" <eq name="val.shipping_name" value="shentong">selected</eq>>申通快递</option>
+                                    <option value="tiantian" <eq name="val.shipping_name" value="tiantian">selected</eq>>天天快递</option>
+                                    <option value="quanfengkuaidi" <eq name="val.shipping_name" value="quanfengkuaidi">selected</eq>>全峰快递</option>
+                                    <option value="huitongkuaidi" <eq name="val.shipping_name" value="huitongkuaidi">selected</eq>>百世汇通</option>
+                                    <option value="disifang" <eq name="val.shipping_name" value="disifang">selected</eq>>递四方快递</option>
+                                    <option value="youshuwuliu" <eq name="val.shipping_name" value="youshuwuliu">selected</eq>>优速物流</option>
+                                    <option value="guotongkuaidi" <eq name="val.shipping_name" value="guotongkuaidi">selected</eq>>国通快递</option>
+                                    <option value="guotongkuaidi" <eq name="val.shipping_name" value="quanfengkuaidi">selected</eq>>全峰快递</option>
+                                    <option value="guotongkuaidi" <eq name="val.shipping_name" value="emsguoji">selected</eq>>EMS-国际件</option>
+                                    <option value="guotongkuaidi" <eq name="val.shipping_name" value="epanex">selected</eq>>泛捷国际</option> 
+                                    <option value="guotongkuaidi" <eq name="val.shipping_name" value="lmfex">selected</eq>>良藤国际速递</option> 
+                                </select></br>
+                                快递号:<input type="text" name="invoice_no" value="{$val.invoice_no}"/><br/>
+                            </td>
+                            <td align="center">
+                                <input type="button" value="修改" name="kd"/><br/>
+                                <input type="button" value="订阅跟踪" onclick="dingyue('{$val.shipping_name}', '{$val.invoice_no}')"/>
+                            </td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="div_setting_3" class="contentList pad-10" style=" display: none;">
+                <div class="table-list">
+                    <table width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="30">ID</th>
+                                <th width="130">操作内容</th>
+                                <th width="60">订单状态</th>
+                                <th width="120">操作时间</th>
+                                <th> 备注信息</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="logs" id="val">
+                            <tr>
+                                <td align="center">{$val.log_id}</td>
+                                <td align="center">{$val.operator}</td>
+                                <td align="left">{$val.order_status}</td>
+                                <td align="left">
+                            <notempty name="val.log_time">{$val.log_time|date="Y-m-d H:i:s",###}
+                                <else/>
+                                --
+                            </notempty>
+                            </td>
+                            <td align="center">{$val.remark}</td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>
+<script type="text/javascript">
+
+    function SwapTab(name, cls_show, cls_hide, cnt, cur) {
+    for (i = 1; i <= cnt; i++) {
+    if (i == cur) {
+    $('#div_' + name + '_' + i).show();
+    $('#tab_' + name + '_' + i).attr('class', cls_show);
+    } else {
+    $('#div_' + name + '_' + i).hide();
+    $('#tab_' + name + '_' + i).attr('class', cls_hide);
+    }
+    }
+    }
+    function submitOrder(handle, id, status){
+    var flag = true;
+    var params = "";
+    switch (status)
+    {
+    case 3:
+            var shipping_name = $("#shipping_name").val();
+    var invoice_no = $("#invoice_no").val();
+    var kuaidigongsi = $("#shipping_name option:selected").text();
+    if (shipping_name == "")
+    {
+    alert('请输入快递公司,方便客户查询物流信息');
+    flag = false;
+    $("#shipping_name").focus();
+    return;
+    }
+    if (invoice_no == "")
+    {
+    alert('请输入快递单号,方便客户查询物流信息');
+    $("#invoice_no").focus();
+    flag = false;
+    return;
+    }
+    params = {id: id, action: handle, invoice_no:invoice_no, shipping_name:shipping_name, kuaidigongsi:kuaidigongsi};
+    break;
+    case 99:
+            $("#tr_refuse_info").show();
+    $("#tr_close_info").hide();
+    $("#btnAduit").hide();
+    $("#btnSendedGoods").hide();
+    $("#btnSendedGoods").hide();
+    var refuse_info = $("#refuse_info").val();
+    if (refuse_info == "")
+    {
+    alert('请输入拒绝原因');
+    flag = false;
+    $("#tr_refuse_info").show();
+    $("#tr_close_info").hide();
+    $("#refuse_info").focus();
+    }
+    params = {id: id, action: handle, refuse_info:refuse_info };
+    break;
+    case 98:
+            $("#tr_close_info").show();
+    $("#tr_refuse_info").hide();
+    var close_info = $("#close_info").val();
+    $("#btnAduit").hide();
+    if (close_info == "")
+    {
+    alert('请输入关闭原因');
+    flag = false;
+    $("#close_info").focus();
+    return;
+    }
+    params = {id: id, action: handle, close_info:close_info };
+    break;
+    case 0:
+            $("#tr_close_info").show();
+    $("#tr_refuse_info").hide();
+    var close_info = $("#close_info").val();
+    $("#btnAduit").hide();
+    if (close_info == "")
+    {
+    alert('请输入关闭原因');
+    flag = false;
+    $("#close_info").focus();
+    return;
+    }
+    params = {id: id, action: handle, close_info:close_info };
+    break;
+    default : params = {id: id, action: handle};
+    break;
+    }
+
+    if (flag && params != "") {
+    $.post("{:U('orders/status')}", params, function (jsondata) {
+    var return_data = eval("(" + jsondata + ")");
+    switch (return_data.status) {
+    case 1:
+            alert(return_data.info);
+    window.location.href = window.location.href;
+    break;
+    }
+    });
+    }
+    }
+    function order_xiu(){
+    $("#order_xiu_2").show();
+    $("#order_xiu_1").hide();
+    }
+    function order_beiz(){
+    var beiz_text = $('#order_beiz').val();
+    var beiz_id = $('#order_beiz_inpuxt').attr('data-id');
+    $.post('{:U('orders / order_beiz')}', {order_beiz_text:beiz_text, id:beiz_id}, function(data){
+    if (data == 1){
+    $('#order_te').text(beiz_text);
+    $("#order_xiu_1").show();
+    $("#order_xiu_2").hide();
+    alert('该备注已修改成功！');
+    } else{
+    alert('备注修改失败！');
+    };
+    });
+    }
+    function order_shenfenz(){
+    var xingm = $('#xingm').val();
+    var shenf = $('#shenf').val();
+    var order_shenfenz = $('#order_shenfenz').attr('data-id');
+    $.post('{:U('orders / order_shenfenz')}', {xingmz:xingm, shenfzh:shenf, id:order_shenfenz}, function(data){
+    if (data == 1){
+    //$('#order_te').text(beiz_text);
+    //$("#order_xiu_1").show();
+    //$("#order_xiu_2").hide();
+    alert('身份证信息修改成功！');
+    } else{
+    alert('身份证信息修改失败！');
+    };
+    });
+    }
+    function order_beiz_qx(){
+    $("#order_xiu_1").show();
+    $("#order_xiu_2").hide();
+    }
+    function dingyue(name, danhao){
+    $.post("{:U('orders/dingyue')}", {name:name, danhao:danhao}, function (jsondata) {
+    //var return_data = eval("(" + jsondata + ")");
+    var jsondata = eval("(" + jsondata + ")");
+    if (jsondata.returnCode == 200)
+            alert('订阅跟踪成功');
+    else if (jsondata.returnCode == 701)
+            alert('拒绝订阅的快递公司');
+    else if (jsondata.returnCode == 700)
+            alert('订阅方的订阅数据存在错误');
+    else if (jsondata.returnCode == 600)
+            alert('您不是合法的订阅者(key错误或过期)');
+    else if (jsondata.returnCode == 500)
+            alert('服务器错误');
+    else if (jsondata.returnCode == 501)
+            alert('该订单已订阅跟踪，重复订阅');
+    else
+            alert("快递信息为空");
+    });
+    }
+    $("#div_setting_2 input[name='kd']").click(function(){
+    var shipping_name = $(this).parents('tr').find('select').val();
+    var invoice_no = $(this).parents('tr').find("input[name='invoice_no']").val();
+    var rec_id = $(this).parents('tr').find("td:eq(0)").text();
+    var oid = "{$info.order_id}";
+    $.post("{:U('termorders/editkd')}", {rec_id:rec_id, shipping_name:shipping_name, invoice_no:invoice_no, oid:oid}, function(data){
+    if (data == 1) {
+    alert('修改成功');
+    } else
+            alert("修改失败");
+    location.reload(true);
+    });
+    });
+    $("#div_setting_2 input[name='splitgoods']").click(function(){
+    var rec_id = $(this).parents('tr').find("td:eq(0)").text();
+    var oid = "{$info.order_id}";
+    var number = $(this).prev().val();
+    if (number == '') {
+    alert("请填写数据");
+    return;
+    }
+    $.post("{:U('orders/splitgoods')}", {oid:oid, rec_id:rec_id, number:number}, function(data){
+    if (data == 0)
+            alert("商品数量为1或订单非法!");
+    else if (data == 1) {
+    alert("拆分成功");
+    location.reload(true);
+    } else if (data == 2)
+            alert("拆分失败");
+    });
+    });
+</script>

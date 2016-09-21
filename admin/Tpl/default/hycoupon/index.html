@@ -1,0 +1,92 @@
+
+<include file="public:header" />
+<div class="pad-10" >
+    <form name="searchform" action="{:u('hycoupon/index')}" method="post" >
+        <table width="100%" cellspacing="0" class="search-form">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="explain-col">
+                            &nbsp;openid :
+                            <input name="openid" type="text" id="openid" class="input-text" size="30" value="{$condition['openid']}" />
+                            &nbsp;开始时间 :
+                            <if condition="$condition.start_time eq ''">
+                                <input type="text"   class="Wdate" name="start_time" id="start_time"   onFocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss', alwaysUseStartDate: true})"/>
+                                <else/> 
+                                <input type="text"   class="Wdate" name="start_time" id="start_time" value="{$condition.start_time|date='Y-m-d H:i',###}"  onFocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss', alwaysUseStartDate: true})"/>
+                            </if>
+
+                            &nbsp;结束时间 :
+                            <if condition="$condition.end_time eq ''">
+                                <input type="text"   class="Wdate" name="end_time" id="end_time"   onFocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss', alwaysUseStartDate: true})"/>
+                                <else/> 
+                                <input type="text"   class="Wdate" name="end_time" id="end_time" value="{$condition.start_time|date='Y-m-d H:i',###}"  onFocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss', alwaysUseStartDate: true})"/>
+                            </if>
+                            <input type="submit" name="search" class="button" value="搜索" /> 
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <div class="table-list">
+
+        <form id="myform" name="myform" action="{:U('hycoupon/del')}" method="POST" onsubmit="return check();" >
+        <table width="100%" cellspacing="0">    
+            <thead>
+                <tr>
+                    <th width=25><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>              
+                    <th>ID</th>
+                    <th>openid</th>
+                    <th>金额</th>
+                    <th>面值</th>
+                    <th>开始时间</th>
+                    <th>结束时间</th>
+                    <!--                    <th>添加时间</th>
+                                        <th>修改时间</th>-->
+                    <th>操作人</th>
+                    <th>状态</th>
+                    <th>使用范围</th>
+                    <th>查看</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <foreach name="list" item="vo">
+                <tr>
+                    <td align="center">
+                        <input type="checkbox" value="{$vo.id}" id="ckk" name="id[]">
+                    </td>     
+                    <td align="center">{$vo.id}</td>
+                    <td align="center">{$vo.openid}</td>
+                    <td align="center">{$vo.money}</td>
+                    <td align="center">{$vo.per_money}</td>
+                    <td align="center">{$vo.start_time|date="Y-m-d H:i",###}</td>
+                    <td align="center">{$vo.end_time|date="Y-m-d H:i",###}</td>
+                    <!--                <td align="center">{$vo.add_time|date="Y-m-d H:i",###}</td>
+                                    <td align="center"><if condition="$vo.modify_time eq '' ">暂无修改<else/>{$vo.modify_time|date="Y-m-d H:i",###}</if></td>-->
+                    <td align="center">{$vo.by_user}</td>
+                    <td align="center"><if condition="$vo.shenhe eq 1 ">通过<elseif condition="$vo.shenhe eq 0"/>禁用</if></td>
+                    
+                    <td align="center"> <?php echo $vo['rule'] ? '会员区使用' : '全场使用' ;?> </td>
+
+                    <td align="center"><a href="{:U('hycoupon/coupon_list',array('id'=>$vo['id']))}"><font color="red">详情</font></a></td>
+
+                <td align="center">
+                    <a href="{:U('hycoupon/edit',array('id'=>$vo['id']))}">编辑</a> | <a  onClick="return confirm('确定删除?');"  href="{:U('hycoupon/del',array('id'=>$vo['id']))}">删除</a>
+                </td>
+                </tr>
+            </foreach>
+        </table>
+        <br />
+        <div class="btn">
+                <label for="check_box" style="float:left;">{$Think.lang.select_all}/{$Think.lang.cancel}</label>
+                <input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left; margin:0 10px 0 10px;"/>
+                <div id="pages">{$page}</div>
+        </div>
+
+    </div>
+    </form>
+</div> 
+</body>
+</html>
+

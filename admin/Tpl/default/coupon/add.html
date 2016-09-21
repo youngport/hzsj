@@ -1,0 +1,158 @@
+<tagLib name="wego" />
+<include file="public:header" />
+
+<form action="{:u('coupon/add')}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+    <div class="pad-10">
+        <div class="col-tab">
+            <ul class="tabBut cu-li">
+                <li id="tab_setting_1" class="on">{$Think.lang.general_info}</li>
+            </ul>
+            <div id="div_setting_1" class="contentList pad-10">
+                <table width="100%" cellpadding="2" cellspacing="1" class="table_form"> 
+                    <tr>
+                        <th width="100">优惠券标题:</th>
+                        <td><input type="text" name="coupon_title" id="coupon_title" class="input-text" size="60" placeholder="请填写优惠券标题"></td>
+                    </tr>
+                    <tr>
+                        <th width="100">发放用户:</th>
+                        <td><input type="text" name="rec" id="rec" class="input-text" size="60" placeholder="空默认为全体用户"></td>
+                    </tr>
+                    <tr>
+                        <th width="100">使用范围:</th>
+                        <td>
+                            <input type="radio" name="type" value="0" checked>&nbsp;通用&nbsp;
+                            <input type="radio" name="type" value="1">&nbsp;栏目(65(母婴),100(美妆),118(保健),147(零食))&nbsp;
+                            <input type="radio" name="type" value="2">&nbsp;会员商品&nbsp;
+<!--                            <input type="radio" name="type" value="3">&nbsp;活动区&nbsp;-->
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="100">主键ID:</th>
+                        <td><input type="text" name="tid" id="tid" class="input-text" size="60"/>根据使用范围填写,通用不需要填,用逗号隔开，例如：123,456,789</td>
+                    </tr>
+                    <tr>
+                        <th>限额:</th>
+                        <td><input type='text' name='xz' id='xz' placeholder="输入限额"/></td>
+                    </tr>
+                    <tr>
+                        <th>减免:</th>
+                        <td><input type="text" name="js" id="js" placeholder="输入减少的金额"></td>
+                    </tr>
+                    <tr>
+                        <th>时间:</th>
+                        <td>
+                    <wego:calendar name="start_time" id="start_time"></wego:calendar>
+                    -
+                    <wego:calendar name="end_time" more="true" id="end_time"></wego:calendar>
+                    </td>
+                    </tr>
+                    <tr>
+                        <th>发放原因:</th>
+                        <td>
+                            <select name="reason" id="reason">
+                                <option value ="">--请选择发放原因--</option>
+                                <option value ="生日关怀">生日关怀</option>
+                                <option value ="商城活动--橙色周三">商城活动--橙色周三</option>  
+                                <option value ="商城活动--葡萄节">商城活动--葡萄节</option> 
+                                <option value ="商城活动--专题活动">商城活动--专题活动</option> 
+                                <option value="购物满发">购物满发</option>
+                                <option value="第一次购">第一次购</option>
+                                <option value="每日推荐">每日推荐</option>
+                                <option value="用户分享">用户分享</option>
+                                <option value="每日签到">每日签到</option>
+                                <option value="红包优惠">红包优惠</option>
+                                <option value="补偿">补偿</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>是否可转发:</th>
+                        <td>
+                            <input type="radio" name="is_repost" class="radio_style" value="1" checked="checked">
+                            &nbsp;是&nbsp;
+                            <input type="radio" name="is_repost" class="radio_style" value="0">
+                            &nbsp;否&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>{:L('status')} :</th>
+                        <td><input type="radio" name="status" class="radio_style" value="1" checked="checked">
+                            &nbsp;未使用&nbsp;
+                            <input type="radio" name="status" class="radio_style" value="2">
+                            &nbsp;已使用&nbsp;
+                            <input type="radio" name="status" class="radio_style" value="0">
+                            &nbsp;停用&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>优惠券使用描述:</th>
+                        <td>
+                           <wego:editor  name="coupon_desc" id="coupon_desc" type="KINDEDITOR" style="width:70%;height:350px;" ></wego:editor>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="bk15"></div>
+            <div class="btn"><input type="submit" value="{$Think.lang.submit}" onclick="return submitFrom();" name="dosubmit" class="button" id="dosubmit"></div>
+        </div>
+    </div>
+</form>
+<script>
+    $(function () {
+        $.formValidator.initConfig({
+            formid: "myform",
+            autotip: true,
+            onerror: function (msg, obj) {
+                window.top.art.dialog({
+                    content: msg,
+                    lock: true,
+                    width: '200',
+                    height: '50'},
+                        function ()
+                        {
+                            this.close();
+                            $(obj).focus();
+                        })
+            }});
+        
+        $("#coupon_title").formValidator({
+            onshow: "不能为空", onfocus: "优惠券标题不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入优惠券标题"
+        });
+        
+        $("#xz").formValidator({
+            onshow: "不能为空", onfocus: "限额不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入限额"
+        });
+
+        $("#js").formValidator({
+            onshow: "不能为空", onfocus: "减免金额不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入减免金额"
+        });
+
+        $("#start_time").formValidator({
+            onshow: "不能为空", onfocus: "活动开始时间不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入活动开始时间"
+        });
+        $("#end_time").formValidator({
+            onshow: "不能为空", onfocus: "活动结束时间不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入活动结束时间"
+        }).compareValidator({
+            desid: "start_time", operateor: ">=", datatype: "date", onerror: "结束时间不能小于开始时间"
+        });
+        $("#reason").formValidator({
+            onshow: "不能为空", onfocus: "发放原因不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请选择发放原因"
+        });
+
+    });
+</script>
+</body>
+</html>

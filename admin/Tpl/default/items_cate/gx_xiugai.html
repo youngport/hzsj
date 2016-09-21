@@ -1,0 +1,63 @@
+<include file="public:header" />
+<div class="pad-10" >
+	<volist name="items_cate_list" id="vo">
+	<form id="myform" name="myform" action="{:u('items_cate/gx_xiugai_get',array('id'=>$vo['id']))}" method="post" enctype="multipart/form-data" ><br />
+	    <div>编号ID：{$vo.id}</div><br />
+	    <div>功效名称：<input type="text" name="mp_name" id="mp_name" value="{$vo.name}"></div><br />
+	    <div>是否搞活动：<input name="Fruit" type="radio" value="1" <if condition="($vo.huodong eq 1)">checked="checked"<else /></if> />是  <input name="Fruit" type="radio" value="0" <if condition="($vo.huodong eq 0)">checked="checked"<else /></if> />否<br /><br />
+		活动宣传图：<if condition="($vo.img neq '')"><img src="__ROOT__/{$vo.img}"/><else /></if><br /><br />
+		<div>宣传图修改：<input type="file" name="img" id="img" class="input-text" size=21 /></div><br />
+		<div>活动开始时间：<input type="text" size="60"  class="textinput requireinput" name="huodks" id="huodks" value="{$vo.huodks}" onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd',minDate:'2015-01-01'})"></div><br />
+		<div>活动结束时间：<input type="text" size="60"  class="textinput requireinput" name="huodjs" id="huodjs" value="{$vo.huodjs}" onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd',minDate:'2015-01-01'})"></div><br />
+	    <div><input type="submit" name="dosubmit" value="  保存  " /></div>
+	</form>
+	</volist>
+</div>
+<script>
+        $(function(){
+            $.formValidator.initConfig({
+            formid: "myform",
+            autotip: true,
+            onerror: function (msg, obj) {
+                window.top.art.dialog({
+                    content: msg,
+                    lock: true,
+                    width: '200',
+                    height: '50'},
+                        function ()
+                        {
+                            this.close();
+                            $(obj).focus();
+                        })
+            }});
+
+        $("#mp_name").formValidator({
+         onshow: "不能为空", onfocus: "功效名称不能为空哦"
+        }).inputValidator({           
+        });
+
+         $("#img").formValidator({ 
+            onshow: "请选择一张图片", oncorrect: "图片名格式正确" 
+        }).regexValidator({ 
+            regexp: "picture", datatype: "enum", onerror: "图片名格式不正确"
+        });
+
+        $("#huodks").formValidator({
+         onshow: "活动开始时间不能为空", onfocus: "活动开始时间不能为空哦"
+        }).inputValidator({   
+           min: 1, onerror: "请输入活动开始时间"        
+        });
+
+        $("#huodjs").formValidator({
+         onshow: "活动结束时间不能为空", onfocus: "活动结束时间不能为空哦"
+        }).inputValidator({   
+           min: 1, onerror: "请输入活动结束时间"        
+        }).compareValidator({
+          desid:"huodks",operateor:">=",datatype:"date",onerror:"结束时间不能小于开始时间"
+        });
+        
+    })
+
+</script>
+</body>
+</html>

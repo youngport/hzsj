@@ -1,0 +1,120 @@
+<include file="public:header" />
+<div class="pad-10" style="margin-left:20px;">
+    <volist name="items_cate_list" id="vo">
+        <form id="myform" name="myform" action="{:u('dianpu/dianpu_shenheget',array('id'=>$vo['id']))}" method="post" enctype="multipart/form-data" ><br />
+
+            <img style="max-width:400px;" src="{$vo.dianp_img}" /><img style="max-width:400px;" src="{$vo.dianp_img2}" /><br /><br />
+            <div>微信昵称：{$vo.wei_nickname}</div><br />
+            <div>ID：{$val.open_id}</div><br />
+            微信登录帐号：<input type="text" size="60"  class="textinput requireinput" name="weixin_account" id="weixin_account" value="{$vo.weixin_account}"   placeholder="请输入微信登录帐号"><br /><br />
+            <div>店铺图修改：<input type="file" name="img[]" id="img" class="input-text" size=21 />第二张图
+                <input type="file" name="img[]" id="img" class="input-text" size=21 /></div><br/>
+            <div>店铺名称：<input type="text" size="60"  class="textinput requireinput" name="dianpname" id="dianpname" value="{$vo.dianpname}"   placeholder="请输入店铺名称"></div><br />
+            店铺性质：<input type="text" size="60" class="textinput requireinput" name="attribute" value="{$vo.attribute}" placeholder="--餐饮--小吃"/><br/><br/>
+            <div>账号：<input type="text" size="60"  class="textinput requireinput" name="dianp_lxfs" id="dianp_lxfs" value="{$vo.dianp_lxfs}"   placeholder="请输入经纬度坐标"></div><br />
+            <div>店铺联系方式：<input type="text" size="60"  class="textinput requireinput" name="dianp_num" id="dianp_num" value="{$vo.dianp_num}"   placeholder="请输入店铺联系方式"></div><br />
+            <div>经纬坐标：<input type="text" size="60"  class="textinput requireinput" name="zuobiao" id="zuobiao" value="{$vo.zuobiao}"   placeholder="请输入经纬度坐标"></div><br />
+            <div>详细地址：<input type="text" size="60"  class="textinput requireinput" name="xxdizhi" id="xxdizhi" value="{$vo.xxdizhi}"   placeholder="请输入详细地址"></div><br />
+            终端透明柜编号：<input type="text" size="60"  class="textinput requireinput" name="zd_bianhao" id="zd_bianhao" value="{$vo.zd_bianhao}"   placeholder="请输入终端透明柜编号"><br /><br />
+            <div>透明柜mac：<input type="text" size="60"  class="textinput requireinput" name="mac" id="mac" value="{$vo.mac}"   placeholder="请输入终端透明柜MAC地址"> <input type="button" name="dosubmit" value="  检查mac地址  "    id="checkmac"/> </div> <br />
+            路由器mac：<input type="text" size="60"  class="textinput requireinput" name="rmac" id="rmac" value="{$vo.rmac}"   placeholder="请输入路由器MAC地址"><br/><br />
+            区域负责人：<input type="text" size="60"  class="textinput requireinput" name="regional" value="{$vo.regional}" placeholder="请填写区域负责人姓名+联系方式,例谭总(谭万里)"><br/><br/>
+            代理人：<input type="text" size="60"  class="textinput requireinput" name="proxy" value="{$vo.proxy}" placeholder="请填写代理人姓名+联系方式,例达州--付总(付张洪)"><br/><br/>
+            实体店老板：<input type="text" size="60"  class="textinput requireinput" name="storeboss" value="{$vo.storeboss}" placeholder="请填写店主姓名+联系方式"><br/><br/>
+            终端付款人：<input type="text" size="60"  class="textinput requireinput" name="macpayer" value="{$vo.macpayer}" placeholder="终端付款人姓名+联系方式"><br/><br/>
+            是否进培训群：<input type="radio" size="60" class="radio_style" name="peixun" value="1" <if condition="$vo.peixun eq 1 ">checked</if>/>&nbsp;是&nbsp;<input type="radio" size="60" class="radio_style" name="peixun" value="0" <if condition="$vo.peixun eq 0">checked</if>/>&nbsp;否<br/><br/>
+            店铺实际对接人：<input type="text" size="60"  class="textinput requireinput" name="docking" value="{$vo.docking}" placeholder="店铺实际对接人姓名+联系方式"/><br/><br/>
+            终端启动时间：<input type="text" size="60"  class="textinput requireinput" name="starttime" value="{$vo.starttime}" placeholder="店铺启动时间" onclick="WdatePicker({skin: 'whyGreen', readOnly: true, dateFmt: 'yyyy-MM-dd', startDate: '1980-05-01', alwaysUseStartDate: true})"/><br/><br/>
+            谁布的点：<input type="text" size="60"  class="textinput requireinput" name="budian" value="{$vo.budian}" placeholder="请填写布点人姓名+联系方式"/><br/><br/>		
+            备注:
+            <textarea rows="2" cols="50" class="textinput requireinput" name="remark" placeholder="请输入备注">{$vo.remark}</textarea><br/><br/>
+
+
+            <div><input type="radio" name="shenhe" class="radio_style" value="0" checked >
+                &nbsp;待审&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="shenhe" class="radio_style" value="1" <if condition="$vo.shenhe eq 1 ">checked</if>>
+                &nbsp;通过&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="shenhe" class="radio_style" value="2" <if condition="$vo.shenhe eq 2 ">checked</if>>
+                &nbsp;不通过<br /><br />
+                <div><input type="hidden" name='id' value="{$vo.id}"/><input type="submit" name="dosubmit" value="  保存  " /></div>
+        </form>
+    </volist>
+</div>
+<script>
+    $(function () {
+        $.formValidator.initConfig({
+            formid: "myform",
+            autotip: true,
+            onerror: function (msg, obj) {
+                window.top.art.dialog({
+                    content: msg,
+                    lock: true,
+                    width: '200',
+                    height: '50'},
+                        function ()
+                        {
+                            this.close();
+                            $(obj).focus();
+                        })
+            }});
+
+        $("#dianpname").formValidator({
+            onshow: "不能为空", onfocus: "店铺名称不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入店铺名称"
+        });
+
+        $("#dianp_lxfs").formValidator({
+            onshow: "不能为空", onfocus: "账号不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入账号"
+        });
+
+        $("#dianp_num").formValidator({
+            onshow: "不能为空", onfocus: "店铺联系方式不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入利润价格"
+        });
+
+        $("#zuobiao").formValidator({
+            onshow: "不能为空", onfocus: "经纬坐标不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入经纬坐标"
+        });
+
+        $("#xxdizhi").formValidator({
+            onshow: "不能为空", onfocus: "详细地址不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入详细地址"
+        });
+
+        $("#mac").formValidator({
+            onshow: "不能为空", onfocus: "透明柜mac不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入透明柜mac"
+        });
+        
+       
+        $("#checkmac").click(function () {
+           var mac = $("#mac").val();
+            if (mac == '' || mac == null) {
+                alert('mac地址不能为空！');
+                return;
+            }
+
+            $.post("{:u('dianpu/checkmac')}", {mac :mac}, function (result) {
+                console.log(result);
+                if(result==1){
+                    alert('mac地址已被使用');
+                }
+         });
+
+        });
+
+
+
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<admintpl file="header" />
+</head>
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap" style="padding-bottom:0;">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Store/index')}" target="_self">所有终端</a></li>
+			<li class="active"><a href="javascript:;">客流统计</a></li>
+		</ul>
+	</div>
+	<table class="table table-bordered table-hover table-striped" style="width:60%;margin:0 auto;">
+		<tr>
+			<th colspan="2">店铺名:</th><td colspan="2">{$info.dianpname}</td>
+		</tr>
+		<tr>
+			<th colspan="2">mac地址:</th><td colspan="2">{$info.rmac}</td>
+		</tr>
+		<tr>
+			<th colspan="4">昨日状态</th>
+		</tr>
+		<tr>
+			<th>连接WIFI总量:</th><td><php>echo $data['all'][0]->total;</php></td>
+			<th>打开商城总量:</th><td>0</td>
+		</tr>
+		<tr>
+			<th>旧访客:</th><td><php>echo $data['old'][0]->total;</php></td>
+			<th>旧访客:</th><td>0</td>
+		</tr>
+		<tr>
+			<th>新访客:</th><td><php>echo $data['new'][0]->total;</php></td>
+			<th>新访客:</th><td>0</td>
+		</tr>
+		<tr>
+			<th colspan="4">周状态</th>
+		</tr>
+		<tr>
+			<th>连接WIFI总量:</th><td><php>echo $data['all'][1]->total;</php></td>
+			<th>打开商城总量:</th><td>0</td>
+		</tr>
+		<tr>
+			<th>旧访客:</th><td><php>echo $data['old'][1]->total;</php></td>
+			<th>旧访客:</th><td>0</td>
+		</tr>
+		<tr>
+			<th>新访客:</th><td><php>echo $data['new'][1]->total;</php></td>
+			<th>新访客:</th><td>0</td>
+		</tr>
+		<tr>
+			<th colspan="4">月状态</th>
+		</tr>
+		<tr>
+			<th>连接WIFI总量:</th><td><php>echo $data['all'][2]->total;</php></td>
+			<th>打开商城总量:</th><td>0</td>
+		</tr>
+		<tr>
+			<th>旧访客:</th><td><php>echo $data['old'][2]->total;</php></td>
+			<th>旧访客:</th><td>0</td>
+		</tr>
+		<tr>
+			<th>新访客:</th><td><php>echo $data['new'][2]->total;</php></td>
+			<th>新访客:</th><td>0</td>
+		</tr>
+		<tr>
+			<th colspan="4">总状态</th>
+		</tr>
+		<tr>
+			<th>连接WIFI总量:</th><td><php>echo $data['all'][3]->total;</php></td>
+			<th>打开商城总量:</th><td>0</td>
+		</tr>
+		<tr>
+			<th>旧访客:</th><td><php>echo $data['old'][3]->total;</php></td>
+			<th>旧访客:</th><td>0</td>
+		</tr>
+		<tr>
+			<th>新访客:</th><td><php>echo $data['new'][3]->total;</php></td>
+			<th>新访客:</th><td>0</td>
+		</tr>
+	</table>
+</body>
+</html>

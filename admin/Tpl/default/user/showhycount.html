@@ -1,0 +1,24 @@
+<include file="public:header"/>
+
+<div class="pad_10">
+    <form action="{:u('user/xiaoxi')}" method="post" name="myform" id="myform"  >
+        <div class="pad-10">
+            <div class="col-tab">
+                <ul class="tabBut cu-li">
+                    <li id="tab_setting_1" class="on">盟友会员</li>
+                </ul>
+                <div id="div_setting_1" class="contentList pad-10">
+                    该用户的盟友是会员的人数 ：<if condition="($count eq 0 )or ($count eq '')">0<else/>{$count}</if> 人
+                </div>
+            </div>
+        </div>
+        <div  id="dosubmit" class="smt ">返回</div>
+    </form>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+  $("#dosubmit").click(function(){
+      window.location.href='{:U("user/index")}';
+  });
+</script>

@@ -1,0 +1,36 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<div class="pad-10" >    
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th width=50>ID</th>
+               	
+				<th width=280>内容</th>				
+                <th width=100>目标用户</th>
+                <th width=150>{:L('time')}</th>              				
+            </tr>
+        </thead>
+    	<tbody>
+        <volist name="sms_list" id="val" >
+        <tr>       
+		 	<td align="center">{$val.id}</td> 	
+			<td align="center">{$val.sms_id}</td>		
+            <td align="center"><b><eq name='val.rec_id' value=''>全体<else/>{$val.rec_id}</eq></b></td>
+            <td align="center">{$val.date|date="Y-m-d H:i:s",###}</td>     					
+        </volist>
+    	</tbody>
+    </table>
+
+    <div class="btn">
+    	
+    	
+    	<div id="pages">{$page}</div>
+    </div>
+
+    </div>
+  
+</div>
+</body>
+</html>

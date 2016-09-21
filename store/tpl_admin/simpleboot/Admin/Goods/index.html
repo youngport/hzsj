@@ -1,0 +1,109 @@
+<admintpl file="header" />
+<script></script>
+</head>
+<body class="J_scroll_fixed">
+    <div class="wrap J_check_wrap">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="javascript:;">商品搜索</a></li>
+        </ul>
+        <form class="well form-search" method="post" action="{:U('goods/index')}">
+            <div class="search_type cc mb10">
+                <div class="mb10">
+                    <span class="mr20">
+                        &nbsp;商品ID：
+                        <input type="text" name="id" style="width: 200px;" value="{$formget.id}" placeholder="请输入商品ID...">
+                        &nbsp;商品名称：
+                        <input type="text" name="good_name" style="width: 200px;" value="{$formget.good_name}" placeholder="请输入名称...">
+                        <input type="hidden" name="sid" value="{$sid}" />
+                        <input type="submit" class="btn btn-primary" value="搜索" />
+                        <input type="reset" class="btn btn-primary" value="重置" />
+                    </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="color: red">温馨提示：单个台签尺寸为5.5cmx8.7cm，一张a4纸上做多可容纳9张台签。</span>
+                </div>
+            </div>
+        </form>
+        <form id="form2" method="post" action="{:U('goods/createlable')}" target="_blank" />
+        <input type="hidden" value="{$sid}" name="sid"  />
+        <table class="table table-hover table-bordered table-list">
+            <thead>
+                <tr>
+                    <td></td>
+                    <th>ID</th>
+                    <th>分类</th>
+                    <th>名称</th>
+                    <th>图片</th>
+                    <th>规格</th>
+                    <th>价格</th>
+                    <th>库存</th>
+                    <th>人气</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <foreach name="list" item="vo">
+                <tr>
+                    <td><input type="checkbox" value="{$vo.id}" name="ids[]" /></td>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.cate_name}</td>
+                    <td>{$vo.good_name}</td>
+                    <td><img src="../{$vo.simg}" style="max-width:200px;max-height:200px;"/></td>
+                    <td>{$vo.guige}</td>
+                    <td>{$vo.price}</td>
+                    <td>{$vo.kucun}</td>
+                    <td>{$vo.hits}</td>
+                    <td>
+                        <a href="{:U('goods/goodlabel',array('id'=>$vo['id'],'sid'=>$sid))}" >生成台签</a>
+                    </td>
+                </tr>
+            </foreach>
+            <tfoot>
+            <td></td>
+            <th>ID</th>
+            <th>分类</th>
+            <th>名称</th>
+            <th>图片</th>
+            <th>规格</th>
+            <th>价格</th>
+            <th>库存</th>
+            <th>人气</th>
+            <th>操作</th>
+            </tfoot>
+        </table>
+        <div style="line-height: 30px; background: #f6f6f6">
+            <input id="Button1" type="button" value="全选" onclick="allSelect();" />&nbsp;&nbsp;
+            <input id="Button2" type="button" value="反选" onclick="otherSelect();" />&nbsp;&nbsp;
+            <input id="Button3" type="submit" value="批量生成台签"  />&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <span style="color: red">温馨提示：单个台签尺寸为5.5cmx8.7cm，一张a4纸上做多可容纳9张台签。</span>
+        </div>
+        </form>
+        <div class="pagination pull-right"><span href="#" class="btn btn-primary disabled">{$count}条记录</span>{$Page}</div>
+    </div>
+    <script src="__ROOT__/statics/js/common.js"></script>
+    <script>
+                $("input[type='reset']").click(function () {
+                    $(this).siblings("input").not("input[type='submit']").attr("value", "");
+                    $("select").find("option").attr("selected", false);
+                });
+
+                //全选，全不选
+                function allSelect() {
+                    if ($(":checkbox").attr("checked") != "checked") {
+                        $(":checkbox").attr("checked", "checked");
+                    } else {
+                        $(":checkbox").removeAttr("checked");
+                    }
+                }
+                //反选
+                function otherSelect() {
+                    $(":checkbox").each(function () {
+                        if ($(this).attr("checked") == "checked") {
+                            $(this).removeAttr("checked");
+                        } else {
+                            $(this).attr("checked", "checked");
+                        }
+                    });
+                }              
+
+    </script>
+</body>
+</html>

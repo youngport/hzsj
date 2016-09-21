@@ -1,0 +1,83 @@
+
+<include file="public:header" />
+	 <div class="col-tab">
+      <ul class="tabBut cu-li">
+        <li class="on">团购列表</li>
+        <li><a href="{:U('goods/gs_cz',array('cz'=>'add'))}">添加团购</a></li>
+      </ul>
+	  </div>
+    <form name="searchform" action="" method="get" >
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <div class="explain-col">
+                &nbsp;商品ID :
+                <input name="gid" type="text" id="gid" class="input-text" size="10"/>
+                &nbsp;商品名称 :
+                <input name="good_name" type="text" id="good_name" class="input-text" size="25"/>
+                <input type="hidden" name="m" value="goods" />
+                <input type="hidden" name="a" value="gs" />
+                <input type="submit" name="search" class="button" value="搜索" />
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+    <form id="myform" name="myform" action="{:u('goods/gs_cz',array('cz'=>'del'))}" method="post" onsubmit="return check();">
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th width=50>ID</th>
+                <th width=25><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>              
+                <th width=50>商品ID</th>
+                <th width=200>团购商品</th>             
+                <th width=100>原价格</th>             
+                <th width=100>团购价格</th>
+				<th width=50>团购人数</th>
+				<th width=250>团购日期</th>
+                <th width="40">状态</th>
+				<th width="80">编辑</th>
+            </tr>
+        </thead>
+    	<tbody>
+        <volist name="list" id="val" >
+        <tr>       
+		 	<td align="center">{$val.id}</td> 	
+            <td align="center">
+           	 <input type="checkbox" value="{$val.id}" name="id[]">
+			</td>        
+			<td align="center">{$val.gid}</td>
+            <td align="center"><a class="blue" href="{:u('goods/edit', array('id'=>$val['gid'],'cz'=>'edit'))}">{$val.good_name}</a></td>
+			<td align="center">{$val.orgprice}</td>
+			<td align="center">{$val.price}</td>
+			<td align="center">{$val.number}</td>
+			<td align="center">开始日期{$val.start_time|date='Y-m-d H:i:s',###}</br>截至日期{$val.end_time|date='Y-m-d H:i:s',###}</br><if condition="($val.start_time gt time())">还没开始<elseif condition="($val.end_time lt time())"/>已结束<else/>正在进行中</if></td>
+      		<td align="center" onclick="status({$val.id})" id="status_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.status}.gif" /></td>
+			<td align="center"><a class="blue" href="{:u('goods/gs_cz', array('id'=>$val['id'],'cz'=>'edit'))}">编辑</a></td>
+        </volist>
+    	</tbody>
+    </table>
+
+    <div class="btn">
+    	<label for="check_box" style="float:left;">{$Think.lang.select_all}/{$Think.lang.cancel}</label>
+		<input type='hidden' name='table' value="{$table}"/>
+    	<input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin:0 10px 0 10px;"/>
+    	
+    	<div id="pages">{$page}</div>
+    </div>
+
+    </div>
+    </form>
+<script>
+function status(id){
+    $.post("{:u('goods/gs_cz',array('cz'=>'status'))}", { id: id}, function(jsondata){
+		var return_data  = eval("("+jsondata+")");
+		$("#status_"+id+" img").attr('src', '__ROOT__/statics/images/status_'+return_data.data+'.gif')
+	}); 
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+<?php
+//000000000000a:1:{i:0;a:21:{s:2:"id";s:3:"169";s:4:"name";s:12:"店铺商品";s:8:"keywords";s:0:"";s:3:"img";s:35:"./data/items_cate/575cc7dc0be47.jpg";s:3:"pid";s:3:"167";s:9:"item_nums";s:1:"0";s:10:"item_likes";s:1:"0";s:5:"ordid";s:1:"0";s:4:"tags";s:0:"";s:7:"is_hots";s:1:"0";s:6:"status";s:1:"1";s:9:"recommend";s:1:"0";s:13:"import_status";s:1:"1";s:9:"seo_title";s:0:"";s:8:"seo_keys";s:0:"";s:5:"color";s:0:"";s:8:"seo_desc";s:0:"";s:14:"matching_title";s:0:"";s:7:"huodong";s:1:"0";s:6:"huodks";s:19:"0000-00-00 00:00:00";s:6:"huodjs";s:19:"0000-00-00 00:00:00";}}
+?>

@@ -1,0 +1,63 @@
+<include file="public:header"/>
+
+<div class="pad_10">
+    <form action="{:u('user/xiaoxi')}" method="post" name="myform" id="myform"  >
+        <div class="pad-10">
+            <div class="col-tab">
+                <ul class="tabBut cu-li">
+                    <li id="tab_setting_1" class="on">个人消息推送</li>
+                </ul>
+                <div id="div_setting_1" class="contentList pad-10">
+                    <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                        <tr>
+                            <th width="60">微信昵称</th>
+                            <td><if condition="$info.wei_nickname eq ''">--<else />{$info.wei_nickname}</if></td>
+                        </tr>
+                        <tr>
+                            <th width="60">姓名：</th>
+                            <td><if condition="$info.real_name eq ''">--<else />{$info.real_name}</if></td>
+                        </tr>
+                        <tr>
+                            <th width="60">标题 :</th>
+                            <td colspan="3"><input type="text" name="biaoti" id="biaoti" size="25" placeholder="请输入标题"></td>
+                        </tr>
+                        <tr>
+                            <th width="60">推送内容 :</th>
+                            <td colspan="3"><textarea name="feed_config" id="neirong" rows="4" cols="110"></textarea></td>
+                        </tr>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+        <input type="hidden" name="usrid" id="id" value="{$info.open_id}">
+        <div name="dosubmit" id="dosubmit" class="smt ">推送</div>
+    </form>
+</div>
+
+
+</body>
+</html>
+<script type="text/javascript">
+$('#dosubmit').click(function(){
+	if($('#neirong').val()==""||$('#biaoti').val()==""){
+		alert('标题跟内容不得为空');
+	}else{
+		$.ajax({
+			type: "POST",
+			url: "{:U('user/xiaoxiget')}",
+			data: {id:$('#id').val(),neirong:$('#neirong').val(),biaoti:$('#biaoti').val()},
+			success: function(data){
+				 data = eval("("+data+")");
+				if(data.status==0){
+					alert('推送失败！');
+		        }else if(data.status==1){
+		        	alert("推送成功！");
+		        	//window.location.href='__GROUP__?a=geren_dianpu&m=user&openid='+$('#opid').attr('data-opid');
+		        }
+			}
+		});
+	}
+});
+</script>

@@ -1,0 +1,113 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<script type="text/javascript" src="__ROOT__/statics/js/jquery/plugins/jquery.imagePreview.js"></script>
+<div class="pad-10" >
+    <form name="searchform" action="?kucun=0" method="get" >
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <!--<div class="explain-col">
+            	上架时间：
+                <input type="text" name="time_start" id="time_start"  value="{$time_start}" width="130px"
+                       onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd',startDate:'1980-05-01',alwaysUseStartDate:true})"
+                        placeholder="选择上架起始时间">
+
+                -  <input type="text" name="time_end" id="time_end"  value="{$time_end}" width="130px"
+                          onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd',startDate:'1980-05-01',alwaysUseStartDate:true})"
+                           placeholder="选择上架截止时间">
+            	&nbsp;商品分类：
+                <select name="cate_id">
+            	<option value="0">--请选择分类--</option>
+				<volist name="cate_list" id="val">
+                <option value="{$val.id}" level="{$val.level}" <if condition="$cate_id eq $val['id']"> selected="selected" </if>>
+                    {:str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',$val['level'])}
+                    {:trim($val['name'])}
+                </option>
+            	</volist>                
+              	</select>
+				 &nbsp;
+                <select name="status">
+            	<option value="-1">-请选择-</option>
+                <option value="1" <if condition="$status eq 1">selected="selected"</if>>已上架</option>
+                <option value="0" <if condition="$status eq 0">selected="selected"</if>>已下架</option>
+                </select>
+                &nbsp;关键字 :
+                <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
+                <input type="hidden" name="m" value="goods" />
+                <input type="submit" name="search" class="button" value="搜索" />
+        	</div>-->
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+    <form id="myform" name="myform" action="{:u('goods/delete')}" method="post" onsubmit="return check();">
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th width="30">ID</th>
+                <!-- <th width=15><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+                <th width="40">&nbsp;</th> -->
+                <th  width="60">店铺名</th>
+                <th  width="60">评论人</th>
+                <th  width="60">评论时间</th>
+                <th width=250>内容</th>
+                <th width=60>审核</th>
+            </tr>
+        </thead>
+    	<tbody>
+        <volist name="info" id="val" >
+        <tr>
+        	<td align="center" class="plid">{$val.id}</td>
+            <!-- <td align="center"><input type="checkbox" value="{$val.id}" name="id[]"></td> -->     
+            <td align="center">{$val.dianpname}</td>
+            <td align="center">{$val.wei_nickname}</td>
+            <td align="center">{$val.shijian|date='Y-m-d H:i:s',###} </td>
+            <td align="center">{$val.neirong}</td>
+            <td align="center">
+                <input type="radio" value="1" cz="status" name="status{$val.id}" <eq name="val.jiancha" value="1">checked</eq>/>通过&nbsp;&nbsp;
+                <input type="radio" value="0" cz="status"  name="status{$val.id}" <neq name="val.jiancha" value="1">checked</neq>/>不通过
+            </td>
+        </tr>
+        </volist>
+    	</tbody>
+    </table>
+
+    <div class="btn">
+    	<!-- <label for="check_box" style="float:left;">全选/取消</label>
+    	<input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin:0 10px 0 10px;"/>
+         -->
+    	<div id="pages">{$page}</div>
+    </div>
+
+    </div>
+    </form>
+</div>
+<script language="javascript">
+$(function(){
+	$('.tg').click(function(){
+		var type=0;
+		if($(this).html()=="不通过")
+			type=1;
+		$thi = $(this);
+		 $.get("{:u('public/pingluntg')}", { id: $(this).attr('data-id'), type: type }, function(jsondata){
+				//alert(jsondata);
+				var return_data  = eval("("+jsondata+")");
+				//$("#"+type+"_"+id+" img").attr('src', '__ROOT__/statics/images/status_'+return_data.data+'.gif')
+				if(return_data.status==1){
+					if(type==1)
+						$thi.html('通过');
+					else
+						$thi.html('不通过');
+				}
+			});
+	})
+})
+$("input[cz='status']").click(function(){
+    $.post("{:U('public/dppl')}",{id:$(this).parent().siblings('.plid').text(),status:$(this).val()});
+});
+</script>
+</body>
+</html>

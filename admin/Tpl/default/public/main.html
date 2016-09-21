@@ -1,0 +1,64 @@
+<include file="public:header" />
+<link href="__ROOT__/statics/admin/css/main.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+$(function(){	
+	$(".main_con").hover(
+			  function () {
+			    $(this).css("background","#ffffcc");
+			  },
+			  function () {
+			    $(this).css("background","#ffffff");
+			  }
+	);
+})
+</script>
+<div style="padding:10px; overflow:hidden;">
+	<div class="main_top" style="clear:both;">			
+		<if condition="$no_security_info eq 1">
+			<h4>安全提示</h4>	
+			 <volist name="security_info" id="v">              
+					<p class="red" style="font-size:14px;">※　{$v}</p>				
+	       	</volist>	
+		</if>	
+		<h4>网站无法显示</h4>	
+		<p class="green">网站以前正常显示，现在无法显示请清除缓存试试，【<a href="{:u('cache/index')}">{$Think.lang.flush_cache}</a>】</p>
+		
+	</div>
+	<div style="width:50%;" class="fl">
+
+		<div class="main_con fl">
+			<h6>配置信息</h6>
+			<div class="content">				
+				<volist name="server_info" id="v">
+					<p>{$key} : {$v}</p>                   
+                </volist>
+				<div class="hr">			
+				</div>					
+			
+			</div>
+		</div>
+	</div>
+	<div style="width:49%;" class="fr">
+		<div class="main_con fl">
+			<h6>我的个人信息</h6>
+			<div class="content">
+				<p>您好，<b style="color:#06C">{$my_info.user_name}</b> &nbsp;[{$admin_level.name}]<br></p>
+				<div class="hr">			
+				</div>               
+			 </div>
+		</div>
+        <div class="main_con fl">
+            <h6>版权信息</h6>
+            <div class="content">
+                <p>版权所有：深圳IT飞虎队</p>
+                <p>程序版本：v2.6</p>
+                <p>更新时间：2015-3-13</p>
+                <div class="hr">
+                </div>
+
+            </div>
+        </div>
+	</div>
+</div>
+</body>
+</html>

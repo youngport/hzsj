@@ -1,0 +1,62 @@
+<include file="public:header" />
+<div class="pad-10" >
+    <form id="myform" name="myform" action="{:u('guanggao/train_video_addget')}" method="post" enctype="multipart/form-data" ><br />
+        <div>视频名称：<input type="text" size="60" width=140px class="textinput requireinput" name="vi_name" id="vi_name" ></div><br />
+        <!--        分销须知:
+                <input type="file" name="img" id="img" class="textinput requireinput" size=21 /><br /><br />
+                导购必看:
+                <input type="file" name="img1" id="img1" class="textinput requireinput" size=21 /><br /><br />-->
+        <div>视频分类：
+        <select name="vi_cate" id='vi_cate'>
+            <option value=""  >--请选择视频分类--</option>
+            <option value="1" selected="selected" >分销须知</option>
+            <option value="2"  >导购必看</option>
+        </select></div><br />
+        <div>上传视频：<input type="file"  class="textinput " name="vi_url" id="vi_url" ></div><br />
+        <div>上传视频背景图：<input type="file"  class="textinput " name="vi_bgimg" id="vi_bgimg" ></div><br />
+        有效：<input type="radio" name="vi_youxiao" class="radio_style" value="1" checked >
+        &nbsp;有效&nbsp;&nbsp;&nbsp;
+        <input type="radio" name="vi_youxiao" class="radio_style" value="0" >
+        &nbsp;无效<br /><br />
+        排序：<input type="text" size="60" width=50px class="textinput requireinput" name="vi_paixu" id="vi_paixu" value="0" ><br /><br />
+        <div><input type="submit" name="dosubmit" value="  保存  "  class="button"/></div>
+    </form>
+</div>
+
+<script>
+        $(function(){
+        $.formValidator.initConfig({
+        formid: "myform",
+        autotip: true,
+        onerror: function (msg, obj) {
+            window.top.art.dialog({
+                content: msg,
+                lock: true,
+                width: '200',
+                height: '50'},
+                    function ()
+                    {
+                        this.close();
+                        $(obj).focus();
+                    })
+        }});
+
+        $("#vi_name").formValidator({ 
+            onshow: "不能为空", onfocus: "视频名称不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请输入视频名称"
+        });
+        $("#vi_cate").formValidator({ 
+            onshow: "不能为空", onfocus: "发放原因不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请选择发放原因"
+        });
+        $("#vi_bgimg").formValidator({ 
+            onshow: "请选择一张图片", oncorrect: "图片名格式正确" 
+        }).regexValidator({ 
+            regexp: "picture", datatype: "enum", onerror: "图片名格式不正确"
+        });
+    });
+</script>
+</body>
+</html>

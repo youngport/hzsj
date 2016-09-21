@@ -1,0 +1,103 @@
+
+<include file="public:header" />
+<div class="col-tab">
+    <ul class="tabBut cu-li">
+        <li class="on">分类列表</li>
+        <li><a href="{:U('items_cate/mp_cate_cz',array('cz'=>'add'))}">添加分类</a></li>
+    </ul>
+</div>
+<form name="searchform" action="" method="get" >
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+                <td>
+                    <div class="explain-col">
+                        &nbsp;关键字 :
+                        <input name="keyword" type="text" id="keyword" class="input-text" value="{$keywords}" size="25"/>
+                        <input type="hidden" name="m" value="items_cate" />
+                        <input type="hidden" name="a" value="mp_cate" />
+                        &nbsp;&nbsp;所属分类：
+                            <select name="pcate" id="pcate" >
+                                <option value="-1">--请选择--</option>
+                               <volist name="data" id="vo">
+                                   <option value="{$vo.id}" <if condition="$pcate eq $vo['id']">selected="selected"</if>>{$vo.name}</option>
+                               </volist>
+                            </select>&nbsp;&nbsp;
+                        <input type="submit" name="search" class="button" value="搜索" />
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+<form id="myform" name="myform" action="{:u('items_cate/mp_cate_cz',array('cz'=>'del'))}" method="post" onsubmit="return check();">
+    <div class="table-list">
+        <table width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th width=50>ID</th>
+                    <th width=25><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>              
+                    <th width=150>分类名称</th> 
+                    <th width=150>所属分类</th>
+                    <!--                    <th width=250>关键词</th>-->
+                    <th width=250>品类图片</th>
+                    <!--				<th width=400>下属品牌</th>-->
+                    <!--                <th width="40">状态</th>-->
+                    <th width="80">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            <volist name="list" id="val" >
+                <tr>       
+                    <td align="center">{$val.id}</td> 	
+                    <td align="center">
+                        <input type="checkbox" value="{$val.id}" name="id[]">
+                    </td>        
+                    <td align="center"><a class="blue" href="{:u('items_cate/mp_cate_cz', array('id'=>$val['id'],'cz'=>'edit'))}">{$val.name}</a></td>
+                    <td align="center">
+                         <if condition="$val.cate_id eq 65">
+                        进口母婴
+                        <elseif condition="$val.cate_id eq 100" />
+                        美妆个护
+                        <elseif condition="$val.cate_id eq 118"/>
+                        保健品
+                        <elseif condition="$val.cate_id eq 147"/>
+                        进口食品
+                         <elseif condition="$val.cate_id eq 167"/>
+                        店铺商品
+                    </if>
+                    </td>
+                    <!--                    <td align="center">{$val.keywords}</td>-->
+                    <td align="center"><if condition="$val.mp_img eq ''"><else/><img width="80px" height="60px" src="{$val.mp_img}" /></if></td>
+                    <!--			<td align="center">
+                            <php>$xs=M('mingp')->where('cid='.$val['id'])->field('id,name')->select();foreach($xs as $v){echo "<a href='".U('items_cate/mpxiugai',array('id'=>$v['id']))."'>".$v['name']."</a>&nbsp;&nbsp;&nbsp;";}</php></td>
+                                    <td align="center" onclick="status({$val.id})" id="status_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.status}.gif" /></td>-->
+
+                    <td align="center"><a class="blue" href="{:u('items_cate/mp_cate_cz', array('id'=>$val['id'],'cz'=>'edit'))}">编辑</a>|<a class="blue" href="{:u('items_cate/mpcate_del', array('id'=>$val['id']))}" onclick="if(confirm('确定删除?')==false)return false;"> 删除</a></td>
+            </volist>
+            </tbody>
+        </table>
+
+        <div class="btn">
+            <label for="check_box" style="float:left;">{$Think.lang.select_all}/{$Think.lang.cancel}</label>
+            <input type='hidden' name='table' value="{$table}"/>
+            <input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin:0 10px 0 10px;"/>
+
+            <div id="pages">{$page}</div>
+        </div>
+
+    </div>
+</form>
+<script>
+    function sousuo() {
+        window.location.href = '__GROUP__?a=mp_index&m=items_cate&tex=' + $('#tex').val() + '&status=' + $("#status").val()+'&pcate='+$("#pcate").val();
+    }
+    function status(id) {
+        $.post("{:u('items_cate/mp_cate_cz',array('cz'=>'status'))}", {id: id}, function (jsondata) {
+            var return_data = eval("(" + jsondata + ")");
+            $("#status_" + id + " img").attr('src', '__ROOT__/statics/images/status_' + return_data.data + '.gif')
+        });
+    }
+</script>
+</body>
+</html>

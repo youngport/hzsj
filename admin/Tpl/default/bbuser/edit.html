@@ -1,0 +1,47 @@
+<include file="public:header"/>
+
+<div class="pad_10">
+
+        <div class="pad-10">
+            <div class="col-tab">
+                <ul class="tabBut cu-li">
+                    <li id="tab_setting_1" class="on">会员信息修改</li>
+                </ul>
+                     <form action="{:U('bbuser/editcheck')}" method="post" > 
+                <div id="div_setting_1" class="contentList pad-10">
+
+
+                    <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                        <tr>
+                            <th width="60">手机号</th>
+                            <td>{$geren.phone}</td>
+                        </tr>
+                        <tr>
+                            <th width="60">审核状态:</th>
+                            <td><input type="radio" name="status" value="0" <if condition="$geren.status eq 0">checked</if>/>未审核&nbsp;&nbsp;<input type="radio" name="status" value="1" <if condition="$geren.status eq 1">checked</if>/>通过&nbsp;&nbsp;<input type="radio" name="status" value="2" <if condition="$geren.status eq 2">checked</if>/>不通过</td>
+                        </tr>
+                        <tr>
+                            <th width="80">账号是否锁定:</th>
+                            <td><input type="radio" name="lock" value="0" <if condition="$geren.lock eq 0">checked</if>/>否&nbsp;&nbsp;<input type="radio" name="lock" value="1" <if condition="$geren.lock eq 1">checked</if>/>锁定</td>
+                        </tr>
+                        <tr>
+                        <input type="hidden" name="id" value="{$geren.id}"/>
+                    </table>
+                    
+                </div>
+
+
+            </div>
+        </div>
+        
+        <input type="submit" id="dosubmit" class="smt " value="提交">
+ </form>
+</div>
+
+
+</body>
+</html>
+<script type="text/javascript">
+
+
+</script>

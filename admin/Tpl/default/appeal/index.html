@@ -1,0 +1,85 @@
+<include file="public:header" />
+<div class="pad-10" >
+    <form name="searchform" action="" method="post" >
+        <table width="100%" cellspacing="0" class="search-form">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="explain-col">
+                            盟友微信号 :
+                            <input name="wei_id" type="text" class="input-text" size="25" value="{$wei_id}" />
+                            &nbsp;&nbsp;
+                            审核状态：
+                            <select name="status" id="status">
+                                <option value="-1">-请选择-</option>
+                                <option value="1" <if condition="$status eq 1">selected="selected"</if>>已通过</option>
+                                <option value="2" <if condition="$status eq 2">selected="selected"</if>>未审核</option>
+                                <option value="0" <if condition="$status eq 0">selected="selected"</if>>不通过</option>
+                            </select>  &nbsp;
+                            <input type="submit" name="search" class="button" value="搜索" />
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <form id="myform" name="myform" action="{:u('appeal/del')}" method="post" onsubmit="return check();">
+        <div class="table-list">
+            <table width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th width=15><input type="checkbox" value="" id="check_box" onclick="selectall('ids[]');"></th>
+                        <th width="50">ID</th>
+                        <th width=80>盟友微信号</th>
+                        <th width=80>openid</th>
+                        <th width=80>联系方式</th>
+                        <th width=80>审核状态</th>
+                        <th width=180>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <volist name="list" id="val" key="k">
+                    <tr >
+                        <td align="center"><input type="checkbox" value="{$val.id}" name="ids[]"></td>
+                        <td align="center">{$val.id}</td>
+                        <td align="center">{$val.wei_id}</td>
+                        <td align="center">{$val.openid}</td>
+                        <td align="center">{$val.number}</td> 
+                        <td align="center"><if condition="$val.shenhe eq 1">通过<elseif condition="$val.shenhe eq 0"/>不通过<elseif condition="$val.shenhe eq 2"/>未审核</if> </td>
+                    <td align="center"> <a href="{:U('appeal/edit',array('id'=>$val['id']))}">审核</a></td> 
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+            <div class="btn">
+                <label for="check_box" style="float:left;">全选/取消</label>
+                <input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin:0 10px 0 10px;"/>
+                <div id="pages">{$page}</div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script language="javascript">
+    function check() {
+        if ($("#myform").attr('action') == '{:u("appeal/del")}') {
+            var ids = '';
+            $("input[name='ids[]']:checked").each(function (i, n) {
+                ids += $(n).val() + ',';
+            });
+            if (ids == '') {
+                window.top.art.dialog({content: lang_please_select + lang_cate_name, lock: true, width: '200', height: '50', time: 1.5}, function () {});
+                return false;
+            }
+        }
+        return true;
+    }
+//    function status(id, type) {
+//        $.get("{:u('cooper/status')}", {id: id, type: type}, function (jsondata) {
+//            var return_data = eval("(" + jsondata + ")");
+//            $("#" + type + "_" + id + " img").attr('src', '__ROOT__/statics/images/status_' + return_data.data + '.gif')
+//        });
+//    }
+</script>
+</body>
+</html>

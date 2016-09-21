@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<h3 style="text-align:center">入库单号表</h3>
+<table border="1" style="width:60%;margin-left:20%">
+<tr><th>序列号</th><th>入库单号</th><th>状态</th><th>操作</th></tr>
+<foreach name="data" item="value">
+	
+	<tr align="center">
+	<td>{$value['id']}</td><td>{$value['receivingCode']}</td>
+	<td>
+	    <if condition="$value['status'] eq 'O'"> 新建
+			<elseif condition="$value['status'] eq 'R'"/>已收货
+			<elseif condition="$value['status'] eq 'T'"/>转运中
+			<elseif condition="$value['status'] eq 'E'"/>待入库
+			<elseif condition="$value['status'] eq 'I'"/>已入库
+			<elseif condition="$value['status'] eq 'P'"/>已上架
+			<elseif condition="$value['status'] eq 'X'"/>已取消
+			<else />彻底删除
+		</if>
+	</td>
+	<td><a href="__URL__/edit?receivingCode={$value['receivingCode']}">更新</a>|<a href="__URL__/del?receivingCode={$value['receivingCode']}">取消</a></td>
+	</tr>
+
+</foreach>	
+</table>
+<div style="text-align: center;">{$pageinfo}</div>
+</body>
+</html>

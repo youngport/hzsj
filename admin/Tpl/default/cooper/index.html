@@ -1,0 +1,98 @@
+<include file="public:header" />
+<div class="pad-10" >
+    <form name="searchform" action="" method="get" >
+        <table width="100%" cellspacing="0" class="search-form">
+            <tbody>
+            <tr>
+                <td>
+                    <div class="explain-col">
+                        姓名、称呼 :
+                        <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
+                        <input type="hidden" name="m" value="cooper" />
+                        &nbsp;
+                        <select name="status" id="status">
+                            <option value="-1">-审核状态-</option>
+                            <option value="1" <if condition="$status eq 1">selected="selected"</if>>已审核</option>
+                            <option value="0" <if condition="$status eq 0">selected="selected"</if>>未审核</option>
+                        </select>  &nbsp;
+                        <select name="flag" id="flag">
+                            <option value="-1">-状态-</option>
+                            <option value="1" <if condition="$flag eq 1">selected="selected"</if>>正常</option>
+                            <option value="0" <if condition="$flag eq 2">selected="selected"</if>>作废</option>
+                        </select> &nbsp;
+                        <input type="submit" name="search" class="button" value="搜索" />
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+    <form id="myform" name="myform" action="{:u('cooper/delete')}" method="post" onsubmit="return check();">
+        <div class="table-list">
+            <table width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th width=15><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+                    <th width="30">ID</th>
+                    <th width=80>姓名、称呼</th>
+                    <th width=80>联系电话</th>
+                    <th width=40>详细地址</th>
+                    <th width=80>申请时间</th>
+                    <th width=80>ip</th>
+                    <th width=80>审核时间</th>
+                    <th width=30>审核</th>
+                    <th width=30>状态</th>
+                    <th width=80>更新时间</th>
+                    <th width=30>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="list" id="val" key="k">
+                    <tr>
+                        <td align="center"><input type="checkbox" value="{$val.id}" name="id[]"></td>
+                        <td align="center">{$val.id}</td>
+                        <td align="center"> <em class="blue">{$val.usrname}</em></td>
+                        <td  align="center">{$val.phone}</td>
+                        <td  align="center">{$val.address}</td>
+                        <td  align="center">{$val.add_time|date="Y-m-d h:i:s",###}</td>
+                        <td  align="center">{$val.ip}</td>
+                        <td  align="center"><notempty name="val.aduit_time">{$val.aduit_time|date="Y-m-d h:i:s",###}<else/>--</notempty></td>
+                       <td align="center" onclick="status({$val.id},'status')" id="status_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.status}.gif" /></td>
+                        <td align="center" onclick="status({$val.id},'flag')" id="flag_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.flag}.gif" /></td>
+                        <td  align="center">{$val.utime|date="Y-m-d h:i:s",###}</td>
+                       <td><a href="{:U('cooper/detail',array('id'=>$val['id']))}">查看</a></td>
+                </volist>
+                </tbody>
+            </table>
+            <div class="btn">
+                <label for="check_box" style="float:left;">全选/取消</label>
+                <input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin:0 10px 0 10px;"/>
+                <div id="pages">{$page}</div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script language="javascript">
+    function check(){
+        if($("#myform").attr('action') == '{:u("cooper/delete")}') {
+            var ids='';
+            $("input[name='id[]']:checked").each(function(i, n){
+                ids += $(n).val() + ',';
+            });
+            if(ids=='') {
+                window.top.art.dialog({content:lang_please_select+lang_cate_name,lock:true,width:'200',height:'50',time:1.5},function(){});
+                return false;
+            }
+        }
+        return true;
+    }
+    function status(id,type){
+        $.get("{:u('cooper/status')}", { id: id, type: type }, function(jsondata){
+            var return_data  = eval("("+jsondata+")");
+            $("#"+type+"_"+id+" img").attr('src', '__ROOT__/statics/images/status_'+return_data.data+'.gif')
+        });
+    }
+</script>
+</body>
+</html>

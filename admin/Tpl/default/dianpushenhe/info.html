@@ -1,0 +1,24 @@
+<include file="public:header" />
+<div class="pad-10" style="margin-left:20px;">
+	<form id="myform" name="myform" action="{:u('dianpushenhe/edit')}" method="post"><br />
+	    
+		<img style="max-width:400px;" src="{$data.dianp_img}" /><br /><br />
+		店铺名称：{$data.dianpname}<br /><br />
+		店铺联系方式：{$data.dianp_lxfs}<br /><br />
+		经纬坐标：{$data.zuobiao}<br /><br />
+		详细地址：{$data.xxdizhi}<br /><br />
+		终端透明柜编号：{$data.zd_bianhao}<br /><br />
+		路由器mac：{$data.rmac}<br /><br />
+	    <div><input type="radio" name="status" class="radio_style" value="0" <if condition="$data.status eq 0 ">checked</if>>
+                     &nbsp;待审&nbsp;&nbsp;&nbsp;
+                     <input type="radio" name="status" class="radio_style" value="1" <if condition="$data.status eq 1 ">checked</if>>
+                      &nbsp;通过&nbsp;&nbsp;&nbsp;
+                     <input type="radio" name="status" class="radio_style" value="2" <if condition="$data.status eq 2 ">checked</if>>
+                      &nbsp;不通过<br /><br />
+			<eq name="data.status" value="0">
+	    <div><input type="hidden" name='id' value="{$data.id}"/><input type="submit" name="dosubmit" value="  保存  " /></div>
+			</eq>
+	</form>
+</div>
+</body>
+</html>

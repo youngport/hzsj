@@ -1,0 +1,54 @@
+<admintpl file="header" />
+		<div id="chart" style="width:100%;height:{$height|default=200}px;float:left;" class="text-center">
+		</div>
+	<script src="__ROOT__/statics/js/common.js"></script>
+	<script src="__ROOT__/statics/js/echarts.min.js"></script>
+	<script>
+		var chart={$chart};
+		if(chart.key.length==1&&chart.key[0]==0){
+			$("#chart").html("暂时没有数据");
+		}else {
+			var myChart = echarts.init(document.getElementById('chart'));
+			// 指定图表的配置项和数据
+			option = {
+				tooltip: {
+					trigger: 'axis'
+				},
+				legend: {
+					data: ['访问量']
+				},
+				calculable: true,
+				xAxis: [
+					{
+						type: 'category',
+						data: chart.key
+					}
+				],
+				yAxis: [
+					{
+						type: 'value'
+					}
+				],
+				series: [
+					{
+						name: '访问量',
+						type: 'bar',
+						data: chart.count,
+						markPoint: {
+							data: [
+								{type: 'max', name: '最大值'},
+								{type: 'min', name: '最小值'}
+							]
+						}
+					}
+				]
+			};
+
+
+			// 使用刚指定的配置项和数据显示图表。
+			myChart.setOption(option);
+		}
+
+	</script>
+</body>
+</html>

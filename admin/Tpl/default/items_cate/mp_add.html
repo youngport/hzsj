@@ -1,0 +1,72 @@
+<include file="public:header" />
+<form action="{:u('items_cate/mp_add_get')}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+    <div class="pad-10">
+        <div class="col-tab">
+            <div id="div_setting_1" class="contentList pad-10">
+                <input type="hidden" value="{$id}" name="id" />
+                <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                    <tr style="text-align: left">
+                        <td>品牌名称: &nbsp;&nbsp;<input type="text" name="mp_name" id="mp_name" value="{$data[0]['name']}"></td>
+                    </tr>
+                    <tr>
+                        <td>上传图片：<input type="file" name="img" id="img" value="{$data[0]['mp_img']}"></td>
+                    </tr>
+                    <tr>
+                        <td>所属上级：
+                            <select name="cate_id"  id="cate_id">
+                                <option value="0" >--请选择--</option> 
+                                <volist name="arr" id="vo">
+                                    <option value="{$vo.id}"  <if condition="$data[0]['cate_id'] eq $vo['id']">selected="selected"</if> >{$vo.name}</option>
+                                </volist>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>是否启用：&nbsp;&nbsp;<input name="is_enable" type="radio" value="1" <if condition="$data[0]['is_enable'] eq 1">checked="checked"</if> />是 &nbsp;&nbsp;<input name="is_enable" type="radio" <if condition="$data[0]['is_enable'] eq 0">checked="checked"</if>   value="0" />否  </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="bk15"></div>
+            <div class="btn"><input type="submit" value="{$Think.lang.submit}"  name="dosubmit" class="button" id="dosubmit"></div>
+        </div>
+    </div>
+</form>
+     <script>
+        $(function(){
+
+            $.formValidator.initConfig({
+            formid: "myform",
+            autotip: true,
+            onerror: function (msg, obj) {
+                window.top.art.dialog({
+                    content: msg,
+                    lock: true,
+                    width: '200',
+                    height: '50'},
+                        function ()
+                        {
+                            this.close();
+                            $(obj).focus();
+                        })
+            }});
+
+        $("#mp_name").formValidator({
+            onshow: "不能为空", onfocus: "商品名称不能为空哦"
+        }).inputValidator({
+            min: 4, onerror: "请输入商品名称"
+        });
+
+         $("#img").formValidator({ 
+            onshow: "请选择一张图片", oncorrect: "图片名格式正确" 
+        }).regexValidator({ 
+            regexp: "picture", datatype: "enum", onerror: "图片名格式不正确"
+        });
+
+        $("#cate_id").formValidator({ 
+            onshow: "上级不能为空", onfocus: "所属上级不能为空哦"
+        }).inputValidator({
+            min: 1, onerror: "请选择上级"
+        });
+    });
+    </script>
+</body></html>

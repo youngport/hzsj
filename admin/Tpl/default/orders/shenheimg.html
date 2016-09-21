@@ -1,0 +1,18 @@
+<include file="public:header"/>
+
+<style>
+.sh_img{ width:600px;}
+.sh_img img{ max-width:600px;}
+</style>
+<div class="pad_10">
+	<div></div>
+	<div>支付方：<if condition="$info.jiezhangren eq 0 ">店家<else />推广</if></div><br /> <br /> 
+
+	<div><img src="{$info_url.url}{$info.zhangdan_img}"></img></div><br /> <br /> 
+    <center>&nbsp; <input type="button"  onclick="javascript:history.go(-1);"  id="btnreturn" class="smt " value="返回">
+    </center>
+</div>
+
+
+</body>
+</html>

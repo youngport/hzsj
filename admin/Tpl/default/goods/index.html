@@ -1,0 +1,194 @@
+<tagLib name="wego" />
+<include file="public:header" />
+<script type="text/javascript" src="__ROOT__/statics/js/jquery/plugins/jquery.imagePreview.js"></script>
+<div class="pad-10" >
+    <a href="{:U('goods/test')}">现金券拆分历史记录</a>
+    <form name="searchform" action="?kucun=0" method="get" >
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <div class="explain-col">
+            	<if condition="$huodong_id neq '' ">
+            	活动ID :
+                <input name="huodong_id" type="text" class="input-text" width="50" size="25" value="{$huodong_id}" />
+                &nbsp;
+                </if>
+            	商品编号 :
+                <input name="pcode" type="text" class="input-text" size="25" value="{$pcode}" />
+                &nbsp;
+            	商品录入时间：
+                <input type="text" name="addtime_start" id="addtime_start"  value="{$addtime_start}" width="130px"
+                       onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd',startDate:'1980-05-01',alwaysUseStartDate:true})"
+                        placeholder="选择录入起始时间">
+
+                -  <input type="text" name="addtime_end" id="addtime_end"  value="{$addtime_end}" width="130px"
+                          onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd',startDate:'1980-05-01',alwaysUseStartDate:true})"
+                           placeholder="选择录入截止时间">
+                &nbsp;
+            	上架时间：
+                <input type="text" name="time_start" id="time_start"  value="{$time_start}" width="130px"
+                       onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd',startDate:'1980-05-01',alwaysUseStartDate:true})"
+                        placeholder="选择上架起始时间">
+
+                -  <input type="text" name="time_end" id="time_end"  value="{$time_end}" width="130px"
+                          onclick="WdatePicker({skin:'whyGreen',readOnly:true,dateFmt:'yyyy-MM-dd',startDate:'1980-05-01',alwaysUseStartDate:true})"
+                           placeholder="选择上架截止时间">
+            	&nbsp;<div style="height:10px;"></div>商品分类：
+                <select name="cate_id">
+            	<option value="0">--请选择分类--</option>
+				<volist name="cate_list" id="val">
+                <option value="{$val.id}" level="{$val.level}" <if condition="$cate_id eq $val['id']"> selected="selected" </if>>
+                    {:str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',$val['level'])}
+                    {:trim($val['name'])}
+                </option>
+            	</volist>                
+              	</select>
+				 &nbsp;上架状态:
+                <select name="status">
+            	<option value="-1">-请选择-</option>
+                <option value="1" <if condition="$status eq 1">selected="selected"</if>>已上架</option>
+                <option value="0" <if condition="$status eq 0">selected="selected"</if>>已下架</option>
+                </select>
+				 &nbsp;今日推荐活动状态:
+                <select name="canyuhd">
+            	<option value="-1">-请选择-</option>
+                <option value="1" <if condition="$canyuhd eq 1">selected="selected"</if>>参与</option>
+                <option value="0" <if condition="$canyuhd eq 0">selected="selected"</if>>不参与</option>
+                </select>
+                &nbsp;首页推荐状态:
+                <select name="is_hots">
+                    <option value="-1">-请选择-</option>
+                    <option value="1" <if condition="$is_hots eq 1">selected="selected"</if>>参与</option>
+                    <option value="0" <if condition="$is_hots eq 0">selected="selected"</if>>不参与</option>
+                </select>
+				 &nbsp;商品类型 :
+                <select name="goodtype">
+            	<option value="-1">-请选择-</option>
+                <option value="0" <if condition="$goodtype eq 0">selected="selected"</if>>普通</option>
+                <option value="1" <if condition="$goodtype eq 1">selected="selected"</if>>会员</option>
+                <option value="2" <if condition="$goodtype eq 2">selected="selected"</if>>店铺</option>
+                <option value="3" <if condition="$goodtype eq 3">selected="selected"</if>>积分</option>
+                <option value="99" <if condition="$goodtype eq 99">selected="selected"</if>>商城界面图</option>
+                </select><br /><br />
+                &nbsp;关键字 :
+                <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
+                &nbsp;供应商编号:
+                <input name="gys_bianma" type="text" class="input-text" size="25" value="{$gys_bianma}" />
+                &nbsp;仓库编号 :
+                <input name="cangku_bianhao" type="text" class="input-text" size="25" value="{$cangku_bianhao}" />
+                &nbsp;<br /><br />供应商名称:
+                <input name="gys_name" type="text" class="input-text" size="25" value="{$gys_name}" />
+                &nbsp;仓库名称 :
+                <input name="cangku_name" type="text" class="input-text" size="25" value="{$cangku_name}" />
+                <input type="hidden" name="m" value="goods" />
+                <input type="submit" name="search" class="button" value="搜索" />
+                <input type="submit" name="daochu" class="button" value="搜索结果导出Excel" />
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+    <form id="myform" name="myform" action="{:u('goods/delete')}" method="post" onsubmit="return check();">
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th width="30">ID</th>
+                <th width=15><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>                
+                <th width="40">&nbsp;</th>
+                <th  width="60">商品编号</th>
+                <th  width="60">产品规格</th>
+                <th    align="left"> 商品名称 </th>
+                <th width=60>库存</th>
+                <th width=60>所属分类</th>
+                <th  width="60">单价(元)</th>
+                <th width=150><a href="{:U('goods/index',array('time_start'=>$time_start,'time_end'=>$time_end,'cate_id'=>$cate_id,'keyword'=>$keyword,'order'=>'add_time','sort'=>$sort))}" class="blue <if condition="$order eq 'add_time'">order_sort_<if condition="$sort eq 'desc'">1<else/>0</if></if>">上架时间</a></th>
+				<th width=150>商品录入时间</th>
+                <th width=40><a href="{:U('goods/index',array('time_start'=>$time_start,'time_end'=>$time_end,'cate_id'=>$cate_id,'keyword'=>$keyword,'order'=>'hits','sort'=>$sort))}" class="blue <if condition="$order eq 'hits'">order_sort_<if condition="$sort eq 'desc'">1<else/>0</if></if>">人气</a></th>
+                <th width="30">排序</th>			
+                <th width=60>上架状态</th>
+                <th width=170>操作</th>
+            </tr>
+        </thead>
+    	<tbody>
+        <volist name="items_list" id="val" >
+        <tr>
+        	<td align="center">{$val.id}</td>
+            <td align="center"><input type="checkbox" value="{$val.id}" name="id[]"></td>           
+            <td align="right"><img src="{$val.simg}" width="35" width="35" class="preview" bimg="{$val.img}"></td>
+            <td align="center">{$val.pcode}</td>
+            <td align="center">{$val.guige}</td>
+            <td align="left"><a href="{:U('goods/edit', array('id'=>$val['id']))}">{$val.good_name}</a></td>
+            <td align="center">{$val.kucun}</td>
+            <td align="center">{$val.items_cate.name}</td>
+            <td align="center"><em style="color:green;">{$val.price}</em></td>
+            <td align="center" id="time_{$val.id}"><if condition="$val.add_time eq 0">--<else />{$val.add_time|date="Y-m-d H:i:s",###}</if></td>
+            <td align="center">{$val.goods_addtime|date="Y-m-d H:i:s",###}</td>
+            <td align="center"><em style="color:green;">{$val.hits}</em></td>
+            <td>
+            <input type="text" class="input-text-c input-text" value="{$val.sort_order}" size="4" name="listorders[{$val.id}]" id="sort_{$val.id}" onblur="sort({$val.id},'sort_order',this.value)" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+            </td>
+             <td align="center" onclick="status({$val.id},'status')" id="status_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.status}.gif" /></td>
+            <td align="center"><a class="blue" href="{:U('goods_gongying/goods_cangku_bang',array('id'=>$val['id']))}">绑定仓库</a> | <a class="blue" href="{:U('goods_gongying/gys_cangku_index',array('goodsid'=>$val['id']))}">查看供应商</a> | <a class="blue" href="{:U('goods/edit',array('id'=>$val['id']))}">编辑</a> | <a class="blue" href="{:U('goods/gs_cz',array('cz'=>'add','gid'=>$val['id']))}">添加团购</a> | <a class="blue" href="{:U('goods/sg_cz',array('cz'=>'add','gid'=>$val['id']))}">添加闪购</a></td>
+        </volist>
+    	</tbody>
+    </table>
+
+    <div class="btn">
+    	<label for="check_box" style="float:left;">全选/取消</label>
+    	<input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin:0 10px 0 10px;"/>
+        
+    	<div id="pages">{$page}</div>
+    </div>
+
+    </div>
+    </form>
+</div>
+<script language="javascript">
+$(function(){
+	$(".preview").preview();
+});
+
+var lang_cate_name = "商品名称";
+function check(){
+	if($("#myform").attr('action') == '{:u("goods/delete")}') {
+		var ids='';
+		$("input[name='id[]']:checked").each(function(i, n){
+			ids += $(n).val() + ',';
+		});
+
+		if(ids=='') {
+			window.top.art.dialog({content:lang_please_select+lang_cate_name,lock:true,width:'200',height:'50',time:1.5},function(){});
+			return false;
+		}
+	}
+	return true;
+}
+function status(id,type){
+    $.get("{:u('goods/status')}", { id: id, type: type }, function(jsondata){
+		var return_data  = eval("("+jsondata+")");
+		$("#"+type+"_"+id+" img").attr('src', '__ROOT__/statics/images/status_'+return_data.data+'.gif')
+		if(return_data.data==1){
+			var time_d = new Date();
+			var   year=time_d.getFullYear();     
+	        var   month=time_d.getMonth()+1<10?'0'+(time_d.getMonth()+1):time_d.getMonth()+1;     
+	        var   date=time_d.getDate()<10?'0'+time_d.getDate():time_d.getDate();    
+	        var   hour=time_d.getHours()<10?'0'+time_d.getHours():time_d.getHours();   
+	        var   minute=time_d.getMinutes()<10?'0'+time_d.getMinutes():time_d.getMinutes();     
+	        var   second=time_d.getSeconds()<10?'0'+time_d.getSeconds():time_d.getSeconds();    
+			$("#time_"+id).html(year+"-"+month+"-"+date+"   "+hour+":"+minute+":"+second) ;
+		}
+	});
+}
+//排序方法
+function sort(id,type,num){
+    $.get("{:u('goods/sort')}", { id: id, type: type,num:num }, function(jsondata){
+        
+		$("#"+type+"_"+id+" ").attr('value', jsondata.data);
+	},'json'); 
+}
+</script>
+</body>
+</html>

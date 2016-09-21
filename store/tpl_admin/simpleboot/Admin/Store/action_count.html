@@ -1,0 +1,105 @@
+<admintpl file="header" />
+<style>
+	.list{width:26%;float:left;border:1px solid #ededed;padding:1%}
+	.list li{border-bottom:1px solid #000;padding:5px 0px;;}
+</style>
+</head>
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Store/index')}" target="_self">所有终端</a></li>
+			<li class="active"><a href="javascript:;">记录统计</a></li>
+		</ul>
+		<form class="well form-search" method="post" action="{:U('Store/action_count')}">
+			<div class="search_type cc mb10">
+				<div class="mb10">
+					<span class="mr20">
+						&nbsp;日期：
+						<input type="text" name="start_time" class="J_date" value="{$formget.start_time}" style="width: 100px;" autocomplete="off">-
+						<input type="text" class="J_date" name="end_time" value="{$formget.end_time}" style="width: 100px;" autocomplete="off">
+						<input type="hidden" name="sid" value="{$sid}">
+						<input type="submit" class="btn btn-primary" value="搜索" />
+						<input type="reset" class="btn btn-primary" value="重置" />
+					</span>
+				</div>
+			</div>
+		</form>
+		<div id="chart" style="width:70%;height:400px;float:left;" class="text-center">
+		</div>
+		<div class="list text-left">
+			<ul class="unstyled">
+				<li style="text-align:center;border:0;padding-bottom:3%"><h4>排行榜</h4></li>
+			<foreach name="data" item="vo" key="ko">
+				<li>{$ko}&nbsp;&nbsp;{$vo.good_name}</li>
+			</foreach>
+			</ul>
+		</div>
+	</div>
+	<script src="__ROOT__/statics/js/common.js"></script>
+	<script src="__ROOT__/statics/js/echarts.min.js"></script>
+	<script>
+		$("input[type='reset']").click(function(){
+			$(this).siblings("input").not("input[type='submit']").attr("value","");
+			$("select").find("option").attr("selected",false);
+		})
+		var chart={$chart};
+		if(chart.key.length==1&&chart.key[0]==0){
+			$("#chart").html("暂时没有数据");
+		}else {
+			var myChart = echarts.init(document.getElementById('chart'));
+			// 指定图表的配置项和数据
+			option = {
+				title: {
+					text: '商品访问统计表'
+				},
+				tooltip: {
+					trigger: 'axis'
+				},
+				legend: {
+					data: ['访问量']
+				},
+				toolbox: {
+					show: true,
+					feature: {
+						mark: {show: true},
+						dataView: {show: true, readOnly: false},
+						magicType: {show: true, type: ['line', 'bar']},
+						restore: {show: true},
+						saveAsImage: {show: true}
+					}
+				},
+				calculable: true,
+				xAxis: [
+					{
+						type: 'category',
+						data: chart.key
+					}
+				],
+				yAxis: [
+					{
+						type: 'value'
+					}
+				],
+				series: [
+					{
+						name: '访问量',
+						type: 'bar',
+						data: chart.count,
+						markPoint: {
+							data: [
+								{type: 'max', name: '最大值'},
+								{type: 'min', name: '最小值'}
+							]
+						}
+					}
+				]
+			};
+
+
+			// 使用刚指定的配置项和数据显示图表。
+			myChart.setOption(option);
+		}
+
+	</script>
+</body>
+</html>

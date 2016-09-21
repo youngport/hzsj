@@ -1,0 +1,19 @@
+<include file="public:header"/>
+
+<tagLib name="wego" />
+<include file="public:header" />
+<script type="text/javascript" src="__ROOT__/statics/js/jquery/plugins/jquery.imagePreview.js"></script>
+<div class="pad-10" >
+    <form action="{:u('goods/kucun_x')}" method="post" name="myform" id="myform"  enctype="multipart/form-data"    style="margin-top:10px;">
+		<div class="pad_10">
+			<div></div>
+			<div>库存数量：<input type="text" size="60"  class="textinput requireinput" name="orgprice" id="orgprice" value="{$info.kucun}"   placeholder="请输入库存"></div><br /> <br /> 
+			<div><img src="{$info.zhangdan_img}"></img></div><br /> <br /> 
+		    <center>&nbsp; <input type="button"  id="btnreturn" class="smt " value="提交">
+		    </center>
+		</div>
+    </form>
+</div>
+
+</body>
+</html>
